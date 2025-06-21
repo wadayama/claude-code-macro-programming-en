@@ -1,7 +1,7 @@
 # Academic Research Pipeline (Sequential Pipeline - Intermediate)
 
 ## Research Theme Setting
-Please save "Impact of Generative AI on Educational Settings" as the research theme to {{research_theme}}, 
+Please save "Impact of Generative AI on Education" as the research theme to {{research_theme}}, 
 and save {{research_theme}} to research_theme.json for persistence.
 
 ## Hypothesis Construction

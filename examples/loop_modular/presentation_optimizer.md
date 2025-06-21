@@ -35,7 +35,7 @@ Create presentation content about "{{theme}}" with the following quality levels:
 - Simple 3-part structure (structure quality level 35)
 - Plain and basic expressions (presentation quality level 30)
 
-Please create including actual slide structure and key points for each slide.
+Please create this including the actual slide structure and key points for each slide.
 
 ## Quality Optimization Loop
 

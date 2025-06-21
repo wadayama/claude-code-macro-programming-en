@@ -45,7 +45,7 @@ If {{user_request}} is like "About that" or "The previous one" with complete lac
 → Record "Providing generic information due to interpretation difficulty. Re-input of specific request is recommended" to {{clarification_request}}
 
 ## Experience & Evaluation of Ambiguity Processing Results
-Please confirm the following and experience natural language ambiguity fallback firsthand:
+Please confirm the following and experience natural language ambiguity fallback first-hand:
 
 1. **Inference Validity**: Whether {{interpretation}} matched your intentions
 2. **Fallback Value**: Whether {{research_result}} had useful value despite ambiguity
