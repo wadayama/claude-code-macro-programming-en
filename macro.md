@@ -635,7 +635,7 @@ Detailed practical examples of the basic 3 patterns can be learned from the foll
 
 ---
 
-### Pattern 4: Loop & Modular Programming (State Management, Iterative Processing, Modular Design)
+### Pattern 4: Loop & Modular Programming
 
 **Overview**: Advanced pattern executing iterative processing while maintaining state and separating complex logic into external modules to improve system maintainability and reusability. Gradually constructs from simple iterative processing to practical loop systems with conditional control and safety mechanisms.
 
@@ -783,7 +783,7 @@ Detailed practical examples of Loop & Modular Programming:
 
 ---
 
-### Pattern 5: Problem Solving & Recursion (Dynamic Problem Solving, Recursive Division)
+### Pattern 5: Problem Solving & Recursion
 
 **Overview**: Advanced pattern for recursively dividing complex problems using TODO tools and solving them step by step. Decomposes large problems into understandable units, accumulates reliable progress, and achieves final integrated solutions.
 
@@ -900,7 +900,7 @@ Detailed practical examples of Problem Solving & Recursion:
 
 ---
 
-### Pattern 6: Learning from Experience (Experience Learning, Knowledge Accumulation, Memory Management)
+### Pattern 6: Learning from Experience
 
 **Overview**: Advanced pattern where agents save processing results to persistent files and improve decision-making quality by learning from accumulated experience. Gradually constructs from simple experience recording to similarity-based knowledge search and failure pattern recognition.
 
@@ -1048,7 +1048,7 @@ Detailed practical examples of Learning from Experience:
 
 ---
 
-### Pattern 7: Environment sensing, Knowledge-base and Environment model (Environment Sensing, Knowledge Base, Environment Model)
+### Pattern 7: Environment Sensing, Knowledge-base and Environment Model
 
 **Overview**: Knowledge systems and model construction techniques for agents to understand environments and make optimal situation-based decisions. Adds "environment understanding" and "situation judgment" intellectual capabilities to basic pattern execution abilities, realizing more practical and adaptive agent systems.
 
@@ -1332,7 +1332,7 @@ Detailed practical examples of Environment sensing, Knowledge-base and Environme
 
 ---
 
-### Pattern 8: Human-in-the-Loop (HITL) - Human-Collaborative Agent Design
+### Pattern 8: Human-in-the-Loop (HITL)
 
 **Overview**: Advanced pattern that strategically incorporates human judgment, creativity, and supervision into agent automated processing, constructing safe and responsible systems while maintaining efficiency. Overcomes limitations of complete automation through appropriate intervention point design, realizing complementary human-AI collaboration.
 
