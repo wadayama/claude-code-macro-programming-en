@@ -37,7 +37,7 @@ The natural language macro programming techniques presented in this guide are ba
    - Loop & Modular Programming
    - Problem Solving & Recursion
    - Learning from Experience
-   - Environment sensing, Knowledge-base and Environment model
+   - Environment Sensing, Knowledge-base and Environment Model
    - Human-in-the-Loop
 
 3. **Practical System Construction Capabilities**
@@ -120,7 +120,7 @@ Please save {{final_report}} to report.json for permanent storage.
 
 ### Variable Management Features
 
-Natural language unified notation is adopted:
+A unified natural language notation is used:
 
 ```markdown
 # Result Storage
@@ -159,7 +159,7 @@ Depending on {{data_type}}, execute the following:
 **Module Execution Benefits**:
 - **Reusability**: Manage common processes as independent modules
 - **Maintainability**: Develop and test each module independently
-- **Scalability**: Realistic construction of large-scale systems
+- **Scalability**: Practical construction of large-scale systems
 - **Collaboration**: Easy responsibility sharing in team development
 
 ---
@@ -222,7 +222,7 @@ save {{today_study}} to study_log.json for persistence.
 
 ## Progress Confirmation
 Load study_log.json and set to {{study_history}},
-summarize and display learning continuation days and content.
+summarize and display consecutive learning days and content.
 ```
 
 ### 5. Integration Example: Market Research System
@@ -371,7 +371,7 @@ Analyze characteristics of social activities (dining with friends, event partici
 Combine {{indoor}}, {{outdoor}}, {{social}} to propose balanced weekend activities.
 ```
 
-**Key Learning Point**: Ensuring each parallel task is independent and always including integration stage is crucial
+**Key Learning Point**: Ensuring each parallel task is independent and always including an integration stage is crucial
 
 ---
 
@@ -381,7 +381,7 @@ Combine {{indoor}}, {{outdoor}}, {{social}} to propose balanced weekend activiti
 
 ### System Overview
 
-The haiku generation multi-agent system is a practical example combining **Sequential Pipeline** and **Parallel Processing**. By macro-implementing the creative process, it efficiently generates consistent quality haiku.
+The haiku generation multi-agent system is a practical example combining **Sequential Pipeline** and **Parallel Processing**. By implementing the creative process as a macro, it efficiently generates consistently high-quality haiku.
 
 ### 🏗️ System Structure Analysis
 
@@ -405,7 +405,7 @@ Within Parallel Haiku Creation Section:
 
 ### 🔄 Data Flow Design
 
-**Sophisticated Variable Management Utilization**：
+**Sophisticated Variable Management**:
 
 1. **Theme Sharing**: `{{themes}}` → Common use across all parallel tasks
 2. **Individual Results**: `{{haiku_1}}`, `{{haiku_2}}`, `{{haiku_3}}`, `{{haiku_4}}` → Independent storage
@@ -511,7 +511,7 @@ Medium ambiguity case:
 
 ## Ambiguity Processing Result Experience
 Confirm speculation validity, fallback value, and transparency,
-and experience natural language ambiguity fallback firsthand.
+and experience natural language ambiguity fallback first-hand.
 ```
 
 **Key Learning Point**: Covering all conditional patterns and setting clear judgment criteria is crucial
@@ -556,7 +556,7 @@ Clarify level of created report ({{full_report}}, {{basic_report}}, or {{framewo
 explain limitations ({{limitation}} or {{status}}) and improvement methods.
 ```
 
-**Design Points**：
+**Design Points**:
 - ❌ "Cannot process due to insufficient data"
 - ✅ "Limited data, but following trends confirmed" + improvement suggestions
 
@@ -607,7 +607,7 @@ Ambiguous Input → Error → Processing Stop → User Departure
 Ambiguous Input → Speculative Processing → Useful Results + Uncertainty Indication → Gradual Improvement
 ```
 
-**Unique Value of Natural Language Macro Programming**：
+**Unique Value of Natural Language Macro Programming**:
 - **From Binary Judgment to Spectrum**: Gradual evaluation of confidence levels rather than success/failure
 - **From Perfection to Practicality**: Provide partially useful value rather than complete understanding
 - **From Error to Opportunity**: Design philosophy utilizing ambiguity as flexibility
@@ -717,7 +717,7 @@ Execute overall improvement process evaluation.
 Confirm current quality score {{score}} and display "Current score: {{score}}".
 
 ## Adaptive Improvement Processing
-Execute the following improvement processing according to {{score}} value:
+Execute the following improvement processing according to the {{score}} value:
 
 If {{score}} is below 60:
 → Display "Executing basic improvement processing"
@@ -740,9 +740,9 @@ If {{score}} is 85 or above:
 → Append "Fine-tuning: +2 points" to {{improvement_log}}
 
 ## Improvement Result Recording
-Display improved new score {{score}}.
+Display the improved new score {{score}}.
 
-Confirm type and effect of executed improvement and display "Improvement processing complete".
+Confirm the type and effect of the executed improvement and display "Improvement processing complete".
 ```
 
 ### 🔄 Three Patterns of Termination Conditions
@@ -1207,7 +1207,7 @@ Load customer_kb.md and set to {{knowledge_base}}.
 Set customer inquiry "Delivery seems delayed, what's happening?" to {{inquiry}}.
 
 ## Knowledge Matching and Response Generation
-Refer to {{knowledge_base}} to generate optimal response to {{inquiry}} and save to {{response}}.
+Refer to {{knowledge_base}} to generate an optimal response to {{inquiry}} and save to {{response}}.
 
 ## Response History Recording
 Record {{inquiry}} and {{response}} to support_log.json for persistence.
@@ -1215,7 +1215,7 @@ Record {{inquiry}} and {{response}} to support_log.json for persistence.
 
 ### 🌍 Environment Model
 
-**Definition**: Digital twin that captures environment as "system with state" and performs state estimation and prediction
+**Definition**: Digital twin that captures the environment as a "system with state" and performs state estimation and prediction
 
 **Application Criteria**:
 - ✅ Need to track environment state changes
@@ -1259,7 +1259,7 @@ Based on {{current_state}} and {{new_order}}:
 - Judge stock shortage warnings
 - Determine automatic ordering necessity
 
-Save updated state to {{updated_state}} and persist to inventory_status.json.
+Save the updated state to {{updated_state}} and persist to inventory_status.json.
 
 ## Prediction and Alert Function
 Analyze {{updated_state}} and extract products expected to be out of stock within 24 hours to {{alerts}}.
@@ -1295,7 +1295,7 @@ After meeting case:
 → Set action item follow-ups
 → Propose next meeting schedule
 
-Save results to {{meeting_action}}.
+Save the results to {{meeting_action}}.
 
 ## Experience Learning Integration
 Load similar meeting success patterns from past_meetings.json to {{lessons}} and
@@ -1407,7 +1407,7 @@ Please set your choice to {{human_choice}}.
 ## Deliverable Quality Confirmation
 Created {{generated_content}}.
 
-Please provide feedback from following perspectives:
+Please provide feedback from the following perspectives:
 - Content accuracy: Are there any problems?
 - Safety: Are there any inappropriate expressions?
 - Improvement suggestions: Are there points to add or modify?
@@ -1463,7 +1463,7 @@ If no problems, please respond with "Approved".
 Please set your quality confirmation results to {{quality_check}}.
 
 ## Final Output
-Only if {{quality_check}} is "Approved", save final article to article_output.md.
+Only if {{quality_check}} is "Approved", save the final article to article_output.md.
 
 ## Intervention Recording
 Record this series of intervention processes to hitl_log.json:
