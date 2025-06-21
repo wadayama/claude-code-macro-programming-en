@@ -28,13 +28,11 @@ Even users without programming experience can design agent behaviors using intui
 
 - **[macro.md](./macro.md)** - Complete guide (8 patterns with full explanations)
 - **[examples/](./examples/)** - Pattern-specific example collection
-- **[experiments/](./experiments/)** - Advanced experimental implementations
 
 ## 🚀 Getting Started
 
 1. **[macro.md](./macro.md)** - Learn basic concepts and 8 design patterns
 2. **[examples/](./examples/)** - Practice with step-by-step examples
-3. **[experiments/](./experiments/)** - Explore advanced applications
 
 ## 📋 Design Patterns
 
