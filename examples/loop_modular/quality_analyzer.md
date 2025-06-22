@@ -14,11 +14,11 @@
 
 ## Current Quality Analysis
 
-Please analyze the current quality situation:
+Analyze the current quality situation:
 
 Display "--- Quality Analysis Cycle {{iteration}} ---".
 
-Please display the current scores:
+Display the current scores:
 - Content quality: {{content_score}} points
 - Structure quality: {{structure_score}} points
 - Presentation quality: {{presentation_score}} points
@@ -27,7 +27,7 @@ Please identify the axis most in need of improvement and determine improvement s
 
 ## Content Quality Improvement
 
-Please execute content improvement based on the value of {{content_score}}:
+Execute content improvement based on the value of {{content_score}}:
 
 If {{content_score}} is less than 60:
 → Display "Executing content foundation strengthening"
@@ -49,7 +49,7 @@ If {{content_score}} is 75 or more:
 
 ## Structure Quality Improvement
 
-Please execute structure improvement based on the value of {{structure_score}}:
+Execute structure improvement based on the value of {{structure_score}}:
 
 If {{structure_score}} is less than 60:
 → Display "Executing basic structure design"
@@ -71,7 +71,7 @@ If {{structure_score}} is 75 or more:
 
 ## Presentation Quality Improvement
 
-Please execute presentation improvement based on the value of {{presentation_score}}:
+Execute presentation improvement based on the value of {{presentation_score}}:
 
 If {{presentation_score}} is less than 60:
 → Display "Executing basic presentation improvement"
@@ -93,7 +93,7 @@ If {{presentation_score}} is 75 or more:
 
 ## Improvement Results Verification
 
-Please display the post-improvement quality scores:
+Display the post-improvement quality scores:
 - Content quality: {{content_score}} points (display improvement effect)
 - Structure quality: {{structure_score}} points (display improvement effect)
 - Presentation quality: {{presentation_score}} points (display improvement effect)

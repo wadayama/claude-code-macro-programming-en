@@ -12,21 +12,21 @@
 
 ## Initial Setup
 
-Please set the learning score to 30 and save to {{score}}.
-Please set the learning count to 0 and save to {{session}}.
-Please set the learning history to empty and save to {{learning_log}}.
+Set the learning score to 30 and save to {{score}}.
+Set the learning count to 0 and save to {{session}}.
+Set the learning history to empty and save to {{learning_log}}.
 
-Please display "=== Learning Progress Management System Started ===".
+Display "=== Learning Progress Management System Started ===".
 
 ## Learning Cycle
 
-Please repeat the following until {{score}} reaches 70 or above:
+Repeat the following until {{score}} reaches 70 or above:
 
 Add 1 to {{session}}.
 
 Display "--- Learning Session {{session}} Started ---".
 
-Please execute study_session.md.
+Execute study_session.md.
 
 Display "--- Learning Session {{session}} Completed ---".
 
@@ -34,14 +34,14 @@ If {{score}} reaches 70 or above, display "Goal achieved! Learning completed".
 
 ## Final Report
 
-Please display "=== Learning Results Report ===".
+Display "=== Learning Results Report ===".
 
-Please report the following learning outcomes:
+Report the following learning outcomes:
 - Final learning score: {{score}}
 - Number of learning sessions executed: {{session}}
 - Learning trajectory: {{learning_log}}
 
-Please summarize learning effectiveness and future recommendations.
+Summarize learning effectiveness and future recommendations.
 
 ---
 

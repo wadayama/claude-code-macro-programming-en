@@ -11,7 +11,7 @@ Please input a research request using **intentionally ambiguous expressions** li
 - "I need detailed information"
 - "More about that"
 
-Please save your ambiguous request to {{user_request}}.
+Save your ambiguous request to {{user_request}}.
 
 ## Ambiguity Level Assessment & Interpretation
 Please assess the ambiguity level of {{user_request}} and evaluate the following items:
@@ -45,7 +45,7 @@ If {{user_request}} is like "About that" or "The previous one" with complete lac
 → Record "Providing generic information due to interpretation difficulty. Re-input of specific request is recommended" to {{clarification_request}}
 
 ## Experience & Evaluation of Ambiguity Processing Results
-Please confirm the following and experience natural language ambiguity fallback first-hand:
+Confirm the following and experience natural language ambiguity fallback first-hand:
 
 1. **Inference Validity**: Whether {{interpretation}} matched your intentions
 2. **Fallback Value**: Whether {{research_result}} had useful value despite ambiguity

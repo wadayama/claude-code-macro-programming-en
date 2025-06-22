@@ -16,7 +16,7 @@
 
 ### Problem Setting and Analysis
 
-Please set the main task "Curry Recipe" to {{main_task}}.
+Set the main task "Curry Recipe" to {{main_task}}.
 
 Analyze {{main_task}} and identify the major components needed for a cooking recipe:
 - Ingredient preparation
@@ -26,7 +26,7 @@ Analyze {{main_task}} and identify the major components needed for a cooking rec
 
 ### First-Level Subtask Creation
 
-Based on the above analysis, please add the following subtasks to the TODO list:
+Based on the above analysis, add the following subtasks to the TODO list:
 
 1. "Create ingredient list" - Priority: High
 2. "Prepare cooking utensils" - Priority: Medium
@@ -35,11 +35,11 @@ Based on the above analysis, please add the following subtasks to the TODO list:
 
 **Decomposition rationale**: Divided into 4 independent domains necessary for curry making. Each domain can be prepared in parallel, and priorities can be clearly set.
 
-Please check the TODO list status and confirm that 4 pending tasks have been correctly added.
+Check the TODO list status and confirm that 4 pending tasks have been correctly added.
 
 ## Phase 2: Recursive Decomposition Assessment & Execution
 
-Please process tasks with "pending" status from the current TODO list one by one in priority order:
+Process tasks with "pending" status from the current TODO list one by one in priority order:
 
 #### Decomposition Decision Thinking Process
 
@@ -83,7 +83,7 @@ Mark "Create ingredient list" as completed (decomposition completed).
 
 ## Phase 3: Recursive Processing Continuation
 
-Please continue processing all pending tasks using the same decomposition logic:
+Continue processing all pending tasks using the same decomposition logic:
 
 For each remaining pending task:
 1. Assess complexity and decomposability
@@ -95,7 +95,7 @@ Continue until no pending tasks remain in the TODO list.
 
 ## Phase 4: Integration and Final Assembly
 
-Once all subtasks are completed, please integrate the results:
+Once all subtasks are completed, integrate the results:
 
 Gather all execution results and create a comprehensive curry recipe including:
 - Complete ingredient list with quantities
@@ -107,7 +107,7 @@ Save the integrated recipe to {{final_recipe}}.
 
 ## Phase 5: System Evaluation
 
-Please evaluate the decomposition process:
+Evaluate the decomposition process:
 
 1. **Decomposition effectiveness**: How did breaking down the problem improve understanding?
 2. **TODO management**: How did the TODO tool help track progress?

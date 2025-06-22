@@ -20,13 +20,13 @@ Please use the TODO tool to create the following large-scale task list and manag
 8. 【Writing & Integration】Writing each chapter and overall integration
 9. 【Verification & Improvement】Verification and improvement of logical consistency and data accuracy
 
-Please execute each TODO task sequentially while confirming completion as you progress.
+Execute each TODO task sequentially while confirming completion as you progress.
 
 ## Phase 2: 【Research Design】Basic Research Scope Setting
 
 Please start the first task on the TODO list.
 
-Please save the following research design to {{research_design}}:
+Save the following research design to {{research_design}}:
 
 ### Research Scope Definition
 - **Primary Focus**: Current implementation status and challenges of AI technology in society

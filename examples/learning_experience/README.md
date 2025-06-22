@@ -54,7 +54,7 @@ claude code run blind_optimization_learning.md
 ## 🔍 Learning Points
 
 ### Core of Learning from Experience Pattern
-1. **JSON Persistence**: `Please save {{variable_name}} to filename.json for persistence`
+1. **JSON Persistence**: `Save {{variable_name}} to filename.json for persistence`
 2. **Experience Accumulation**: Systematic recording of past trial results
 3. **Knowledge Utilization**: Logical inference from accumulated experience
 4. **Continuous Learning**: Iterative improvement through combination with Loop Pattern

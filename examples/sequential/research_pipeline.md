@@ -1,7 +1,7 @@
 # Academic Research Pipeline (Sequential Pipeline - Intermediate)
 
 ## Research Theme Setting
-Please save "Impact of Generative AI on Education" as the research theme to {{research_theme}}, 
+Save "Impact of Generative AI on Education" as the research theme to {{research_theme}}, 
 and save {{research_theme}} to research_theme.json for persistence.
 
 ## Hypothesis Construction
@@ -11,7 +11,7 @@ Please construct 3 research hypotheses about {{research_theme}} from the followi
 - Impact on learner creativity
 
 ## Literature Review
-Please investigate recent research papers and reports related to {{hypotheses}},
+Investigate recent research papers and reports related to {{hypotheses}},
 organize important findings, and save them to {{literature_review}}.
 
 ## Data Collection Planning
@@ -23,7 +23,7 @@ Following {{data_collection_plan}}, please execute preliminary analysis using av
 and save initial findings to {{preliminary_analysis}}.
 
 ## Report Creation
-Please integrate {{hypotheses}}, {{literature_review}}, and {{preliminary_analysis}},
+Integrate {{hypotheses}}, {{literature_review}}, and {{preliminary_analysis}},
 and create a comprehensive research progress report.
 
 ---

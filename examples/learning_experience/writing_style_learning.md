@@ -14,7 +14,7 @@
 Today's task: Create an explanatory email to team members about "New Project Management Tool Implementation".
 
 ### Writing Conditions
-Please create an email with a natural writing style that includes the following content:
+Create an email with a natural writing style that includes the following content:
 - Overview explanation of new tool "TeamFlow"
 - Reasons for implementation and benefits
 - Request for team cooperation
@@ -34,7 +34,7 @@ Please also calculate an overall evaluation.
 
 ## Phase 2: Experience Recording and Analysis
 
-Please save writing experience to writing_memory.json file for persistence with the following structure:
+Save writing experience to writing_memory.json file for persistence with the following structure:
 
 ```json
 {
@@ -68,7 +68,7 @@ Please save writing experience to writing_memory.json file for persistence with 
 
 ## Phase 3: Improvement Practice
 
-Please load writing_memory.json and set to {{past_writing_experience}}.
+Load writing_memory.json and set to {{past_writing_experience}}.
 
 Analyze the lessons and problems from {{past_writing_experience}}, and recreate the same content with improved writing style.
 
@@ -84,7 +84,7 @@ Please evaluate the improved version from the same 4 perspectives and compare wi
 
 ## Phase 4: Recording Improvement Results
 
-Please add improvement results to {{past_writing_experience}} and update writing_memory.json:
+Add improvement results to {{past_writing_experience}} and update writing_memory.json:
 
 ```json
 {
@@ -108,7 +108,7 @@ Please add improvement results to {{past_writing_experience}} and update writing
 
 ## Phase 5: Learning Outcome Analysis
 
-Please analyze the following from accumulated {{past_writing_experience}}:
+Analyze the following from accumulated {{past_writing_experience}}:
 
 ### Score Comparison Analysis
 Please conduct score comparison between initial and improved versions, and quantitatively evaluate improvement effects.

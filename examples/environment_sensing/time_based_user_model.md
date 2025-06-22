@@ -29,9 +29,9 @@ Evening (18+)        → Relaxed time      → Detailed explanation
 
 ## Step 1: Environment Sensing (Time Information Acquisition)
 
-Please check the current time and set to {{current_time}}.
+Check the current time and set to {{current_time}}.
 
-Please determine the current hour from {{current_time}} and set to {{hour}}.
+Determine the current hour from {{current_time}} and set to {{hour}}.
 
 Display "=== Environment Sensing Results ===".
 Display "Current time: {{current_time}} (around {{hour}} o'clock)".
@@ -62,7 +62,7 @@ Please apply the following user model based on {{hour}}:
 → Set {{busy_level}} to "Low"
 → Set {{response_style}} to "Detailed explanation"
 
-Please save the following information to user_state.json:
+Save the following information to user_state.json:
 ```json
 {
   "timestamp": "{{current_time}}",
@@ -100,11 +100,11 @@ After completing the response, display "Response adjustment considering user bus
 
 ## Step 4: Environment Model Effect Verification
 
-Please load user_state.json and set to {{model_state}}.
+Load user_state.json and set to {{model_state}}.
 
 Display "=== Environment Model Effect Verification ===".
 
-Please verify effectiveness from the following perspectives:
+Verify effectiveness from the following perspectives:
 
 ### Environment Sensing Accuracy
 - Was current time accurately acquired and determined?

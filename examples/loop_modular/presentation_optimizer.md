@@ -12,16 +12,16 @@
 
 ## Initial Setup
 
-Please set the presentation theme as "Future of AI Technology" and save to {{theme}}.
+Set the presentation theme as "Future of AI Technology" and save to {{theme}}.
 
-Please set the quality scores as follows:
+Set the quality scores as follows:
 - Set content quality to 40 and save to {{content_score}}
 - Set structure quality to 35 and save to {{structure_score}}
 - Set presentation quality to 30 and save to {{presentation_score}}
 
-Please set improvement iteration to 0 and save to {{iteration}}.
-Please set maximum improvement iterations to 10 and save to {{max_iterations}}.
-Please set improvement history to empty and save to {{improvement_history}}.
+Set improvement iteration to 0 and save to {{iteration}}.
+Set maximum improvement iterations to 10 and save to {{max_iterations}}.
+Set improvement history to empty and save to {{improvement_history}}.
 
 Display "=== Presentation Quality Optimization System Started ===".
 Display "Theme: {{theme}}".
@@ -35,11 +35,11 @@ Create presentation content about "{{theme}}" with the following quality levels:
 - Simple 3-part structure (structure quality level 35)
 - Plain and basic expressions (presentation quality level 30)
 
-Please create this including the actual slide structure and key points for each slide.
+Create this including the actual slide structure and key points for each slide.
 
 ## Quality Optimization Loop
 
-Please repeat the following until ALL of the following conditions are met:
+Repeat the following until ALL of the following conditions are met:
 - {{content_score}} reaches 80 or above
 - {{structure_score}} reaches 80 or above  
 - {{presentation_score}} reaches 80 or above
@@ -50,7 +50,7 @@ Add 1 to {{iteration}}.
 
 Display "=== Optimization Cycle {{iteration}} Started ===".
 
-Please execute quality_analyzer.md.
+Execute quality_analyzer.md.
 
 Display current overall quality status:
 - Overall progress: Calculate average of three scores
@@ -81,7 +81,7 @@ Create presentation content about "{{theme}}" reflecting the achieved quality le
 - Sophisticated logical structure (structure quality {{structure_score}} level)
 - Professional, engaging presentation (presentation quality {{presentation_score}} level)
 
-Please create including actual slide structure and detailed content for each slide.
+Create including actual slide structure and detailed content for each slide.
 
 ## Improvement Impact Analysis
 

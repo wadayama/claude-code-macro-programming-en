@@ -1,24 +1,24 @@
 # Market Analysis System (Parallel Processing - Beginner)
 
 ## Analysis Target Setting
-Please save "Electric Vehicle Market" as the analysis target to {{target_market}}.
+Save "Electric Vehicle Market" as the analysis target to {{target_market}}.
 
 ## Parallel Market Research
-**Please execute the following 3 tasks in parallel using the Task tool:**
+**Execute the following 3 tasks in parallel using the Task tool:**
 
-Please investigate {{target_market}} from the following 3 perspectives:
+Investigate {{target_market}} from the following 3 perspectives:
 
 ### Technology Trend Analysis
-Please investigate the latest electric vehicle technologies (batteries, autonomous driving, charging technology, etc.) trends and save to {{tech_trends}}.
+Investigate the latest electric vehicle technologies (batteries, autonomous driving, charging technology, etc.) trends and save to {{tech_trends}}.
 
 ### Market Size Analysis
-Please investigate the current size of the electric vehicle market, growth forecasts, and regional trends, and save to {{market_size}}.
+Investigate the current size of the electric vehicle market, growth forecasts, and regional trends, and save to {{market_size}}.
 
 ### Competitive Landscape Analysis
-Please investigate the strategies and market share of major electric vehicle manufacturers (Tesla, BYD, Toyota, etc.) and save to {{competitive_landscape}}.
+Investigate the strategies and market share of major electric vehicle manufacturers (Tesla, BYD, Toyota, etc.) and save to {{competitive_landscape}}.
 
 ## Integrated Analysis Report
-Please integrate {{tech_trends}}, {{market_size}}, and {{competitive_landscape}} to create a comprehensive analysis report of the electric vehicle market.
+Integrate {{tech_trends}}, {{market_size}}, and {{competitive_landscape}} to create a comprehensive analysis report of the electric vehicle market.
 
 ---
 

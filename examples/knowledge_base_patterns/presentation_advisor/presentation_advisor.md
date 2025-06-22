@@ -24,11 +24,11 @@ System that databases professional knowledge of presentation design and automati
 
 Display "=== Presentation Design Knowledge Loading ===".
 
-Please load presentation_framework.md and set to {{presentation_knowledge}}.
+Load presentation_framework.md and set to {{presentation_knowledge}}.
 
 Display "Presentation design framework loaded".
 
-Please verify the following main elements from {{presentation_knowledge}}:
+Verify the following main elements from {{presentation_knowledge}}:
 - Types of audience-specific approaches
 - Types of structure patterns
 - Time-based structure guides
@@ -45,7 +45,7 @@ Please answer the following questions:
 **Question 1**: What is the theme of your presentation?
 (Examples: New product proposal, project report, technical explanation, etc.)
 
-Please set your answer to {{presentation_theme}}.
+Set your answer to {{presentation_theme}}.
 
 **Question 2**: What type is your audience?
 A) Executives/Decision makers
@@ -54,7 +54,7 @@ C) General employees
 D) External customers
 E) Mixed audience
 
-Please set your answer to {{audience_type}}.
+Set your answer to {{audience_type}}.
 
 **Question 3**: How much time do you have for the presentation?
 A) 5 minutes (lightning talk)
@@ -62,7 +62,7 @@ B) 15 minutes (brief presentation)
 C) 30 minutes (standard presentation)
 D) 60 minutes (detailed presentation)
 
-Please set your answer to {{presentation_time}}.
+Set your answer to {{presentation_time}}.
 
 **Question 4**: What is the main purpose?
 A) Persuasion (seeking approval/decision)
@@ -70,7 +70,7 @@ B) Information sharing (reporting/explaining)
 C) Education (training/teaching)
 D) Inspiration (motivation/vision sharing)
 
-Please set your answer to {{presentation_purpose}}.
+Set your answer to {{presentation_purpose}}.
 
 Display "Requirement collection completed".
 

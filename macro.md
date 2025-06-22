@@ -111,11 +111,11 @@ Claude Code can manage variables through natural language instructions, enabling
 
 ```markdown
 ## Data Analysis Pipeline
-Please analyze the sales data and save the results to {{analysis_result}}.
+Analyze the sales data and save the results to {{analysis_result}}.
 
 Based on {{analysis_result}}, create a summary report and save it to {{final_report}}.
 
-Please save {{final_report}} to report.json for permanent storage.
+Save {{final_report}} to report.json for permanent storage.
 ```
 
 ### Variable Management Features
@@ -124,7 +124,7 @@ A unified natural language notation is used:
 
 ```markdown
 # Result Storage
-Please analyze data and save results to {{analysis_result}}.
+Analyze data and save results to {{analysis_result}}.
 
 # Result Reference  
 Based on {{analysis_result}}, create a report.
@@ -146,14 +146,14 @@ Modular design is possible by calling external module files:
 
 ```markdown
 ## Data Processing Pipeline
-Please execute data_collection.md.
-Please execute data_analysis.md.
-Please execute report_generation.md.
+Execute data_collection.md.
+Execute data_analysis.md.
+Execute report_generation.md.
 
 ## Conditional Module Execution
 Depending on {{data_type}}, execute the following:
-- For text data: Please execute text_analysis.md
-- For numerical data: Please execute numerical_analysis.md
+- For text data: Execute text_analysis.md
+- For numerical data: Execute numerical_analysis.md
 ```
 
 **Module Execution Benefits**:
@@ -170,7 +170,7 @@ Depending on {{data_type}}, execute the following:
 
 ```markdown
 ## Basic Information Collection
-Please research "Python Introduction" on the web and save 3 key points for beginners to {{basics}}.
+Research "Python Introduction" on the web and save 3 key points for beginners to {{basics}}.
 
 ## Learning Plan Creation
 Based on {{basics}}, create a 1-week learning schedule and save to {{schedule}}.
@@ -183,7 +183,7 @@ Combine {{basics}} and {{schedule}} to create a "Python Introduction Guide".
 
 ```markdown
 ## Morning Routine Analysis
-**Please execute the following 3 tasks in parallel using the Task tool:**
+**Execute the following 3 tasks in parallel using the Task tool:**
 
 ### Grooming Analysis
 Analyze morning grooming activities (washing face, brushing teeth, dressing, etc.) and save characteristics and efficiency tips to {{grooming}}.
@@ -232,7 +232,7 @@ summarize and display consecutive learning days and content.
 Save "AI Market Trends" as research theme to {{theme}}.
 
 ## Parallel Information Gathering
-**Please execute the following 3 tasks in parallel using the Task tool:**
+**Execute the following 3 tasks in parallel using the Task tool:**
 
 Research the following about {{theme}}:
 
@@ -354,7 +354,7 @@ Upon each phase completion, confirm overall progress and determine transition to
 Save "Fulfilling Weekend" as analysis target to {{weekend}}.
 
 ## Parallel Activity Analysis
-**Please execute the following 3 tasks in parallel using the Task tool:**
+**Execute the following 3 tasks in parallel using the Task tool:**
 
 Analyze the following activities for {{weekend}}:
 
@@ -488,7 +488,7 @@ This file serves as a **useful bridge** from basic patterns to practical systems
 **Practical Example: Ambiguous Request Interpretation System (Natural Language Ambiguity Fallback)**
 ```markdown
 ## Ambiguous Request Input
-Please input intentionally ambiguous expressions like:
+Input intentionally ambiguous expressions like:
 - "Research about AI"
 - "Want to know educational impact"
 - "More about that"
@@ -694,7 +694,7 @@ Repeat the following until {{score}} reaches 85 or above or {{iteration}} reache
 
 Display "=== Improvement Cycle {{iteration}} Start ===".
 
-Please execute improvement_process.md.
+Execute improvement_process.md.
 
 Add 1 to {{iteration}}.
 
@@ -1027,7 +1027,7 @@ Add estimation result to {{game_history}} and save to game_history.json:
 ## Final Learning Results
 After game completion, reflect on learning process from {{game_history}}:
 "Number guessing learning complete! Reached correct answer in {{attempt_count}} attempts"
-"Please freely analyze learning effects and strategies you discovered"
+"Freely analyze learning effects and strategies you discovered"
 
 ## Learning Completion and Cleanup
 For next execution, delete game_history.json file.
@@ -1490,5 +1490,32 @@ Detailed practical examples of Human-in-the-Loop:
 
 - **Beginner**: [Creative Blog Article Creation System](./examples/human_in_the_loop/creative_blog_writer.md) - Human-collaborative article creation with strategic intervention points
 - **Intermediate**: [Investment Decision Support System](./experiments/investment_decision_support/experiment.md) - Responsibility clarification and staged approval process for high-risk decisions
+
+---
+
+## 📜 Disclaimer
+
+Please read the following terms carefully before using this "Claude Code Natural Language Macro Programming Guide." By using this guide, you agree to these terms.
+
+1.  **No Warranties**
+    This guide, including all information, sample code, and techniques, is provided on an "as-is" basis without any warranties of any kind, express or implied. The authors do not warrant the accuracy, completeness, usefulness, or fitness for a particular purpose of the content provided.
+
+2.  **Probabilistic Nature of Operation**
+    The techniques described in this guide rely heavily on the probabilistic nature of Large Language Models (LLMs). Therefore, there is no guarantee that they will always produce the expected results or behave as described, even when instructions are followed verbatim. Outputs may vary with each execution.
+
+3.  **Limitation of Liability**
+    In no event shall the authors or contributors be liable for any damages arising from the use of this guide. This includes, but is not limited to, direct, indirect, incidental, or consequential damages such as data loss, business interruption, or loss of profits.
+
+4.  **Use at Your Own Risk**
+    Your use of the techniques and information in this guide is entirely at your own risk. You must exercise extreme caution when using features that can affect your system environment, such as file operations or command execution (e.g., Bash). **Never run these commands in a production environment or on a system containing critical data. Always perform thorough testing in a safe, isolated environment first, and ensure you have adequate backups before proceeding.**
+
+5.  **Security**
+    You are solely responsible for implementing security measures when using the techniques in this guide. This includes avoiding execution of untrusted code, properly managing permissions, and being cautious with automated file operations or system commands.
+
+6.  **Third-Party Services**
+    This guide refers to features of Claude, a product of Anthropic. The authors of this guide are independent of Anthropic, and this guide is not an official publication. The terms of service and specifications of Claude are subject to change, which may render parts of this guide obsolete.
+
+7.  **Content Modification**
+    The content of this guide may be changed or removed without prior notice.
 
 ---

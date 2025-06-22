@@ -11,11 +11,11 @@
 
 ## Current Status Check
 
-Please check the current learning score {{score}} and display "Current score: {{score}} points".
+Check the current learning score {{score}} and display "Current score: {{score}} points".
 
 ## Learning Level Assessment & Execution
 
-Please execute the following learning processes based on the value of {{score}}:
+Execute the following learning processes based on the value of {{score}}:
 
 If {{score}} is less than 50:
 → Display "Executing basic learning"
@@ -37,9 +37,9 @@ If {{score}} is 65 or more:
 
 ## Learning Outcome Recording
 
-Please display the post-learning score {{score}} and show "Session {{session}} completed. New score: {{score}} points".
+Display the post-learning score {{score}} and show "Session {{session}} completed. New score: {{score}} points".
 
-Please verify the type and effectiveness of learning executed, and present recommended items for next learning session if available.
+Verify the type and effectiveness of learning executed, and present recommended items for next learning session if available.
 
 ---
 

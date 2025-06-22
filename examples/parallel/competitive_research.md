@@ -1,7 +1,7 @@
 # Competitive Research System (Parallel Processing - Intermediate)
 
 ## Research Target Setting
-Please save the following 5 companies as major players in the "Cloud Services Market" to {{target_companies}}, and save {{target_companies}} to target_companies.json for persistence:
+Save the following 5 companies as major players in the "Cloud Services Market" to {{target_companies}}, and save {{target_companies}} to target_companies.json for persistence:
 - Amazon AWS
 - Microsoft Azure  
 - Google Cloud Platform
@@ -9,24 +9,24 @@ Please save the following 5 companies as major players in the "Cloud Services Ma
 - Oracle Cloud
 
 ## Parallel Company Analysis
-**Please execute the following 5 tasks in parallel using the Task tool:**
+**Execute the following 5 tasks in parallel using the Task tool:**
 
-Please analyze each company in {{target_companies}} as follows:
+Analyze each company in {{target_companies}} as follows:
 
 ### AWS Analysis
-Please analyze Amazon AWS's business strategy, technological advantages, market share, and latest services, and save to {{aws_analysis}}.
+Analyze Amazon AWS's business strategy, technological advantages, market share, and latest services, and save to {{aws_analysis}}.
 
 ### Azure Analysis  
-Please analyze Microsoft Azure's business strategy, enterprise focus, Office365 integration, and growth strategy, and save to {{azure_analysis}}.
+Analyze Microsoft Azure's business strategy, enterprise focus, Office365 integration, and growth strategy, and save to {{azure_analysis}}.
 
 ### GCP Analysis
-Please analyze Google Cloud Platform's technological innovation, AI/ML specialized strategy, and data analytics strengths, and save to {{gcp_analysis}}.
+Analyze Google Cloud Platform's technological innovation, AI/ML specialized strategy, and data analytics strengths, and save to {{gcp_analysis}}.
 
 ### IBM Analysis
-Please analyze IBM Cloud's hybrid strategy, enterprise solutions, and AI Watson utilization, and save to {{ibm_analysis}}.
+Analyze IBM Cloud's hybrid strategy, enterprise solutions, and AI Watson utilization, and save to {{ibm_analysis}}.
 
 ### Oracle Analysis
-Please analyze Oracle Cloud's database strengths, enterprise customer base, and integration strategy, and save to {{oracle_analysis}}.
+Analyze Oracle Cloud's database strengths, enterprise customer base, and integration strategy, and save to {{oracle_analysis}}.
 
 ## Competitive Comparison Matrix Creation
 Please compare {{aws_analysis}}, {{azure_analysis}}, {{gcp_analysis}}, {{ibm_analysis}}, and {{oracle_analysis}}, and create a competitive matrix from the following perspectives, saving to {{comparison_matrix}}:

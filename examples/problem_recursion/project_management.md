@@ -63,7 +63,7 @@
 
 ### TODO List Initialization
 
-Please add the following first-level tasks to TODO list:
+Add the following first-level tasks to TODO list:
 
 1. "Strategic Planning & Content Design" - Priority: Critical, Status: Pending
 2. "Venue & Logistics Management" - Priority: High, Status: Pending

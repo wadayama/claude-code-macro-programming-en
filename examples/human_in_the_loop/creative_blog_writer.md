@@ -12,7 +12,7 @@ Is it acceptable to proceed with the following article theme?
 Please provide instructions if you have any modifications or changes.
 If this theme is acceptable, please respond with "Approved".
 
-Please set your approval to {{theme_approval}}.
+Set your approval to {{theme_approval}}.
 
 ## Step 2: Article Structure Proposal
 
@@ -29,7 +29,7 @@ Regarding this structure, please let me know:
 - Are there any areas you'd like to emphasize?
 - Is there a particular message you'd like to convey to readers?
 
-Please set your structure feedback to {{structure_feedback}}.
+Set your structure feedback to {{structure_feedback}}.
 
 ## Step 3: Adding Creative Ideas
 
@@ -43,13 +43,13 @@ In addition to the structure reflecting {{structure_feedback}}, please share ide
 
 Please freely share any ideas that could enhance the article's uniqueness and appeal.
 
-Please set your creative ideas to {{creative_ideas}}.
+Set your creative ideas to {{creative_ideas}}.
 
 ## Step 4: Article Writing
 
-Please integrate {{structure_feedback}} and {{creative_ideas}} to write an engaging blog article of 800-1200 words and save to {{draft_article}}.
+Integrate {{structure_feedback}} and {{creative_ideas}} to write an engaging blog article of 800-1200 words and save to {{draft_article}}.
 
-Please emphasize the following points in writing:
+Emphasize the following points in writing:
 - Friendly and readable writing style
 - Rich use of specific examples
 - Content that resonates with readers
@@ -57,7 +57,7 @@ Please emphasize the following points in writing:
 
 ## Step 5: Safety and Quality Verification
 
-Please verify {{draft_article}} from the following perspectives:
+Verify {{draft_article}} from the following perspectives:
 
 **Content Verification**:
 - Are there any factual errors?
@@ -72,17 +72,17 @@ Please verify {{draft_article}} from the following perspectives:
 If there are problems, please provide specific revision instructions.
 If there are no problems, please respond with "Final Approval".
 
-Please set your quality verification results to {{final_approval}}.
+Set your quality verification results to {{final_approval}}.
 
 ## Step 6: Final Output and Recording
 
 Only if {{final_approval}} is "Final Approval", please execute the following:
 
 ### Article Storage
-Please save {{draft_article}} to blog_article.md.
+Save {{draft_article}} to blog_article.md.
 
 ### Intervention Record Storage
-Please save the following HITL intervention record to hitl_log.json:
+Save the following HITL intervention record to hitl_log.json:
 
 ```json
 {

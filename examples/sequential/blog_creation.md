@@ -1,19 +1,19 @@
 # Blog Article Creation System (Sequential Pipeline - Beginner)
 
 ## Topic Setting
-Please save "2025 Technology Trends" as the blog article topic to {{topic}}.
+Save "2025 Technology Trends" as the blog article topic to {{topic}}.
 
 ## Background Research
-Please research the latest information about {{topic}} on the web and save 5 noteworthy technologies to {{research_data}}.
+Research the latest information about {{topic}} on the web and save 5 noteworthy technologies to {{research_data}}.
 
 ## Article Structure Creation
-Based on {{research_data}}, please create a reader-friendly blog article structure (introduction, 3 main sections, conclusion) and save it to {{article_structure}}.
+Based on {{research_data}}, create a reader-friendly blog article structure (introduction, 3 main sections, conclusion) and save it to {{article_structure}}.
 
 ## Article Writing
-Following {{article_structure}}, please write an engaging blog article of 800-1200 words and save it to {{draft_article}}.
+Following {{article_structure}}, write an engaging blog article of 800-1200 words and save it to {{draft_article}}.
 
 ## Proofreading and Completion
-Please proofread {{draft_article}} and create a final version that improves readability, accuracy, and appeal.
+Proofread {{draft_article}} and create a final version that improves readability, accuracy, and appeal.
 
 ---
 

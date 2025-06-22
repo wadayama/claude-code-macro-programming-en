@@ -16,7 +16,7 @@
 The improvement target for this session is the following task:
 
 **Task**: Optimization of blog article title generation
-**Initial Prompt**: "Please generate 5 attractive titles based on the following blog article content"
+**Initial Prompt**: "Generate 5 attractive titles based on the following blog article content"
 **Constraint**: Maximum 7 improvement attempts
 **Goal**: Maximize overall score of evaluation metrics
 
@@ -30,7 +30,7 @@ The improvement target for this session is the following task:
 
 ## Phase 2: Improvement History Initialization
 
-Please create prompt_history.json file with the following structure and initialize improvement history:
+Create prompt_history.json file with the following structure and initialize improvement history:
 
 ```json
 {
@@ -45,20 +45,20 @@ Please create prompt_history.json file with the following structure and initiali
 }
 ```
 
-Please set improvement count to 0 and save to {{improvement_count}}.
+Set improvement count to 0 and save to {{improvement_count}}.
 
 ---
 
 ## Phase 3: Improvement Loop Execution
 
-Please repeat the following until {{improvement_count}} reaches 7:
+Repeat the following until {{improvement_count}} reaches 7:
 
 Add 1 to {{improvement_count}}.
 
 ### Current Prompt Execution
 
 If {{improvement_count}} is 1:
-→ Use initial prompt: "Please generate 5 attractive titles based on the following blog article content"
+→ Use initial prompt: "Generate 5 attractive titles based on the following blog article content"
 
 If {{improvement_count}} is 2 or more:
 → Load prompt_history.json and set to {{history}}
