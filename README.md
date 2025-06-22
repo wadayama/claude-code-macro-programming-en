@@ -59,6 +59,11 @@ The natural language macro programming techniques presented in this guide are ba
 - **English**: This repository (claude-code-macro-programming-en)
 - **Japanese**: [claude-code-macro-programming](https://github.com/wadayama/claude-code-macro-programming) (Original version)
 
+## 📧 Contact
+
+- **Technical questions, bug reports**: [GitHub Issues](../../issues)
+- **Academic inquiries**: wadayama@nitech.ac.jp
+
 ## 🛡️ License
 
 MIT License - see [LICENSE](./LICENSE) for details.
