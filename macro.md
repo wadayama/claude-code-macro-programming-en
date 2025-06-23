@@ -58,6 +58,22 @@ then integrate results through Parallel Processing
 
 By leveraging the strengths of existing techniques while utilizing natural language macro programming for overall system design and control, more advanced and practical AI systems can be constructed.
 
+## 🔍 High Explainability and Contribution to Responsible AI Development
+
+Natural Language Macro Programming possesses **high explainability**, an extremely important characteristic for Responsible AI development:
+
+**Explainability Features**:
+- **Natural language description**: Processing steps expressed in human-understandable form
+- **Transparent execution process**: Clear inputs, outputs, and decision rationale for each step
+- **Auditability**: Easy verification and tracking of system behavior retrospectively
+- **Debuggability**: Intuitive problem identification and correction when issues arise
+
+**Contribution to Responsible AI Development**:
+- Higher transparency in decision-making processes compared to traditional black-box AI systems
+- Easier accountability for AI system operations
+- Enables appropriate human oversight and control
+- Facilitates discovery and correction of errors and biases
+
 ## ⚠️ Probabilistic Behavior Characteristics
 
 The natural language macro programming techniques presented in this guide are based on the probabilistic operational characteristics of Large Language Models (LLMs):
