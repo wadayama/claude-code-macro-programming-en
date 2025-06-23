@@ -4,7 +4,7 @@
 
 ## 🤖 Core Concept: Agent Programming Using Claude Code as Interpreter
 
-This guide presents a **Natural Language Macro Programming** approach that **executes structured tasks using natural language as an interpreter**. This guide uses Claude Code as an implementation example.
+This guide presents a **Natural Language Macro Programming** approach that **executes structured tasks using natural language as an interpreter**. This guide uses Claude Code as an execution environment.
 
 While conventional programming requires computers to interpret programming languages with specific syntax, natural language macro programming enables:
 
@@ -19,7 +19,7 @@ Even people without programming experience can design agent behaviors using intu
 
 This "Natural Language Macro Programming" concept and design philosophy is not bound to any specific LLM. It is expected to be sufficiently applicable to other high-performance LLMs that meet certain conditions.
 
-The core of this framework lies not in tools or specific products, but in **"the approach itself of executing structured tasks using natural language as an interpreter."** Claude Code is positioned as one excellent implementation example that realizes this approach.
+The core of this framework lies not in tools or specific products, but in **"the approach itself of executing structured tasks using natural language as an interpreter."** Claude Code is positioned as one excellent execution environment that realizes this approach.
 
 **Applicable Conditions**:
 - Ability to understand and execute complex natural language instructions
@@ -31,7 +31,7 @@ The core of this framework lies not in tools or specific products, but in **"the
 
 The natural language macro programming techniques presented in this guide are based on the probabilistic operational characteristics of Large Language Models (LLMs):
 
-- **High-probability operations**: Variable management (`{{variable_name}}`), external module execution (`filename.md execution`), etc., operate with very high probability as expected
+- **High-probability operations**: Variable management (`{{variable_name}}`), external module execution (`filename.md execution`), etc., in the case of sufficiently excellent LLMs, operate with very high probability as expected
 - **Non-deterministic nature**: 100% deterministic operation cannot be expected due to LLM characteristics
 - **Practical reliability**: Operates at a level with sufficient reliability for actual use
 - **Error handling capabilities**: Continues to provide partial value through graceful degradation and systematic error recovery
@@ -75,10 +75,10 @@ With the rapid development of modern AI technology, new approaches to designing 
 
 ### Proposed Approach
 
-This research proposes a novel methodology called "Claude Code Natural Language Macro Programming," consisting of the following elements:
+This research proposes a novel methodology called "Natural Language Macro Programming," consisting of the following elements:
 
 1. **Establishment of Systematic Design Patterns**
-   - Construction of a graduated learning system through 8 design patterns
+   - Construction of a graduated learning system through 9 design patterns
    - Design methodologies comprehensively covering from basic processing to advanced human collaboration
    - Development of reusable and extensible pattern libraries
 
@@ -94,11 +94,11 @@ This research proposes a novel methodology called "Claude Code Natural Language 
 
 ### Shared Documentation in Collaboration with Claude Code
 
-By including this document in the context, you can provide specific instructions such as: "For sales data, execute parallel analysis along 3 axes (regional, product, time series) using the Parallel Processing pattern, integrate results into {{analysis_result}}, and execute report creation through Sequential Pipeline." This enables specifying design patterns when having Claude Code create prompts, utilizing design patterns as a common language in human-AI collaboration.
+When considering having Claude Code write natural language macro programming code, by including this document in the context, you can provide specific instructions such as: "For sales data, execute parallel analysis along 3 axes (regional, product, time series) using the Parallel Processing pattern, integrate results into {{analysis_result}}, and execute report creation through Sequential Pipeline." This enables specifying design patterns when having Claude Code create prompts, utilizing the design patterns presented here as a common language in human-AI collaboration.
 
 ### Significance and Future Prospects
 
-The approach proposed in this research provides practical solutions to important challenges in AI technology social implementation—removing barriers to utilization due to technical complexity. Furthermore, it is expected to provide methodological foundations for future human-AI collaborative system design as a concrete implementation method for human-centered design in responsible AI development.
+The approach proposed in this research is expected to provide methodological foundations for human-AI collaborative system design, which is an important challenge in the social implementation of AI technology.
 
 ---
 
