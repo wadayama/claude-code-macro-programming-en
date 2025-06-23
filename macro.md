@@ -27,6 +27,37 @@ The core of this framework lies not in tools or specific products, but in **"the
 - Ability to integrate with external tools and modules
 - Ability to interpret structured documents in Markdown format
 
+## 🔗 Complementary Relationship with Existing Prompt Techniques
+
+Natural language macro programming is not competitive with existing prompt techniques such as CoT (Chain of Thought) and ReAct, but rather operates as a complementary technology at different layers.
+
+### Differences in Technical Layers
+
+**Existing Prompt Techniques (CoT, ReAct, etc.)**:
+- **Purpose**: Optimization of individual reasoning processes
+- **Scope**: Improvement of thought processes within single tasks
+- **Examples**: Enhanced problem analysis accuracy, step-by-step reasoning implementation
+
+**Natural Language Macro Programming**:
+- **Purpose**: Construction, control, and integration of entire systems
+- **Scope**: Multi-task coordination, state management, flow control
+- **Examples**: Pipeline design, parallel processing, error handling
+
+### Practical Combination Examples
+
+```markdown
+## CoT + Sequential Pipeline Combination
+Step 1: Analyze complex problems step-by-step using CoT
+Step 2: Save analysis results to {{analysis_result}}
+Step 3: Execute solutions sequentially through Sequential Pipeline
+
+## ReAct + Parallel Processing Combination
+Execute ReAct-based information gathering in each parallel task,
+then integrate results through Parallel Processing
+```
+
+By leveraging the strengths of existing techniques while utilizing natural language macro programming for overall system design and control, more advanced and practical AI systems can be constructed.
+
 ## ⚠️ Probabilistic Behavior Characteristics
 
 The natural language macro programming techniques presented in this guide are based on the probabilistic operational characteristics of Large Language Models (LLMs):
