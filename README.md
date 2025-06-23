@@ -4,9 +4,13 @@ A comprehensive guide to building agent systems using **Claude Code** as a natur
 
 ## 🎯 Overview
 
-**8 Design Patterns for Systematic Learning**
+**9 Design Patterns for Systematic Learning**
 - Basic Processing Patterns (Sequential, Parallel, Conditional, Loop)
-- Advanced Patterns (Problem Solving, Learning, Environment Understanding, Human Collaboration)
+- Advanced Patterns (Problem Solving, Learning, Environment Understanding, Human Collaboration, Error Handling)
+
+**Appendix: Implementation Technologies**
+- A.1: System Control via Claude Code Slash Commands
+- A.2: Event-Driven Execution and System Integration
 
 **Practical Applications**
 - Haiku generation, blog creation, investment decision support systems
@@ -26,12 +30,12 @@ Even users without programming experience can design agent behaviors using intui
 
 ## 📚 Main Contents
 
-- **[macro.md](./macro.md)** - Complete guide (8 patterns with full explanations)
+- **[macro.md](./macro.md)** - Complete guide (9 design patterns + appendix)
 - **[examples/](./examples/)** - Pattern-specific example collection
 
 ## 🚀 Getting Started
 
-1. **[macro.md](./macro.md)** - Learn basic concepts and 8 design patterns
+1. **[macro.md](./macro.md)** - Learn basic concepts and 9 design patterns
 2. **[examples/](./examples/)** - Practice with step-by-step examples
 
 ## 📋 Design Patterns
@@ -44,6 +48,19 @@ Even users without programming experience can design agent behaviors using intui
 6. **Learning from Experience** - Knowledge accumulation and improvement
 7. **Environment Sensing, Knowledge-base and Environment Model** - Context-aware processing
 8. **Human-in-the-Loop** - Human-AI collaborative systems
+9. **Error Handling** - Try-Catch-Finally and Graceful Degradation
+
+## 📋 Appendix
+
+**A.1: System Control via Claude Code Slash Commands**
+- Real-time system information retrieval
+- Dynamic environment control and optimization
+- Integration with conditional branching
+
+**A.2: Event-Driven Execution and System Integration**
+- Asynchronous processing implementation
+- External trigger models (cron, watchdog, inotify)
+- Integration with macro files
 
 ## ⚠️ Probabilistic Behavior Characteristics
 
@@ -85,4 +102,4 @@ This work contributes to the field of human-AI collaboration and natural languag
 
 **Version**: 1.0  
 **Created**: 2025-06-21  
-**Last Updated**: 2025-06-21
+**Last Updated**: 2025-06-23
