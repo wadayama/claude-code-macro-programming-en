@@ -138,13 +138,13 @@ The approach proposed in this research is expected to provide methodological fou
 ```markdown
 - Conditional branching: Natural language conditional instructions ("if...", "depending on...", etc.)
 - `{{variable_name}}`: Variable reference
-- Variable storage: "Please save ... to {{variable_name}}"
-- Persistent storage: "Please save {{variable_name}} to filename.json for persistence"
-- File loading: "Please load filename.json and set to {{variable_name}}"
-- External module execution: "Please execute filename.md"
-- File search: "Please search for files containing 'keyword'"
-- Parallel execution: "Please execute the following tasks in parallel:"
-- Loop processing: "Please repeat the following process until [condition]:"
+- Variable storage: "Save ... to {{variable_name}}"
+- Persistent storage: "Save {{variable_name}} to filename.json for persistence"
+- File loading: "Load filename.json and set to {{variable_name}}"
+- External module execution: "Execute filename.md"
+- File search: "Search for files containing 'keyword'"
+- Parallel execution: "Execute the following tasks in parallel:"
+- Loop processing: "Repeat the following process until [condition]:"
 ```
 
 ## 🔧 Basic Variable Management
@@ -1527,7 +1527,7 @@ Realizes a structure similar to try-catch-finally in programming languages using
 
 ```markdown
 ## Main Task Execution
-Please try the following process (Try):
+Try the following process:
 
 Execute primary_task.md.
 
@@ -1543,7 +1543,7 @@ Record the execution result (success or failure) to execution_log.txt.
 **1. API Call Redundancy**
 ```markdown
 ## Data Retrieval Process
-Please try the following process:
+Try the following process:
 
 Retrieve data from the main API and save to {{api_data}}.
 
@@ -1557,7 +1557,7 @@ Record the retrieval status to {{api_status}} and save to api_log.json.
 **2. File Operation Safety Assurance**
 ```markdown
 ## File Writing Process
-Please try the following process:
+Try the following process:
 
 Write {{report_data}} to final_report.md.
 
@@ -1572,7 +1572,7 @@ Record the writing result to the processing log.
 **3. External Tool Execution Reliability Improvement**
 ```markdown
 ## Multi-tool Verification
-Please try the following process:
+Try the following process:
 
 Execute the task using Tool A.
 
@@ -1651,7 +1651,7 @@ Example of a robust system combining Try-Catch-Finally and Graceful Degradation:
 
 ```markdown
 ## Market Analysis Report Generation System
-Please try the following process (Try):
+Try the following process:
 
 Retrieve information from the latest market data API and execute detailed analysis.
 
