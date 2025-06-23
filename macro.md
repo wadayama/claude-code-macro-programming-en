@@ -4,7 +4,7 @@
 
 ## 🤖 Core Concept: Agent Programming Using Claude Code as Interpreter
 
-This guide presents a **Natural Language Macro Programming** approach that treats **Claude Code as a natural language interpreter for realizing agent programming**.
+This guide presents a **Natural Language Macro Programming** approach that **executes structured tasks using natural language as an interpreter**. This guide uses Claude Code as an implementation example.
 
 While conventional programming requires computers to interpret programming languages with specific syntax, natural language macro programming enables:
 
@@ -15,6 +15,18 @@ While conventional programming requires computers to interpret programming langu
 
 Even people without programming experience can design agent behaviors using intuitive natural language and have Claude Code execute them.
 
+## 🌍 Framework Generality and Design Philosophy
+
+This "Natural Language Macro Programming" concept and design philosophy is not bound to any specific LLM. It is expected to be sufficiently applicable to other high-performance LLMs that meet certain conditions.
+
+The core of this framework lies not in tools or specific products, but in **"the approach itself of executing structured tasks using natural language as an interpreter."** Claude Code is positioned as one excellent implementation example that realizes this approach.
+
+**Applicable Conditions**:
+- Ability to understand and execute complex natural language instructions
+- Variable management and state retention capabilities
+- Ability to integrate with external tools and modules
+- Ability to interpret structured documents in Markdown format
+
 ## ⚠️ Probabilistic Behavior Characteristics
 
 The natural language macro programming techniques presented in this guide are based on the probabilistic operational characteristics of Large Language Models (LLMs):
@@ -22,7 +34,7 @@ The natural language macro programming techniques presented in this guide are ba
 - **High-probability operations**: Variable management (`{{variable_name}}`), external module execution (`filename.md execution`), etc., operate with very high probability as expected
 - **Non-deterministic nature**: 100% deterministic operation cannot be expected due to LLM characteristics
 - **Practical reliability**: Operates at a level with sufficient reliability for actual use
-- **Graceful degradation**: Continues to provide partial value even when ideal operation is difficult
+- **Error handling capabilities**: Continues to provide partial value through graceful degradation and systematic error recovery
 
 ## 🎯 Learning Objectives
 
@@ -30,7 +42,7 @@ The natural language macro programming techniques presented in this guide are ba
    - Information management and result passing
    - Implementation of conditional branching and multitask processing
 
-2. **8 Design Patterns**
+2. **9 Design Patterns**
    - Sequential Pipeline
    - Parallel Processing
    - Conditional Execution
@@ -39,6 +51,7 @@ The natural language macro programming techniques presented in this guide are ba
    - Learning from Experience
    - Environment Sensing, Knowledge-base and Environment Model
    - Human-in-the-Loop
+   - Error Handling
 
 3. **Practical System Construction Capabilities**
    - Hands-on practice with graduated samples
@@ -75,7 +88,7 @@ This research proposes a novel methodology called "Claude Code Natural Language 
    - Description rules considering the balance between ambiguity control and structuring
 
 3. **Graduated Learning Model Design**
-   - Systematic progression from basic patterns (sequential, parallel, conditional) to advanced patterns (learning, environment understanding, human collaboration)
+   - Systematic progression from basic patterns (sequential, parallel, conditional) to advanced patterns (learning, environment understanding, human collaboration, error handling)
    - Educational approach integrating theoretical learning with practical application
    - Demonstration of versatility through application examples in diverse fields
 
@@ -517,50 +530,6 @@ and experience natural language ambiguity fallback first-hand.
 **Key Learning Point**: Covering all conditional patterns and setting clear judgment criteria is crucial
 
 ---
-
-## 🛡️ Graceful Degradation
-
-**Overview**: Design principle that provides maximum possible value through gradual quality adjustment when ideal conditions cannot be met, rather than complete stoppage. Core concept supporting robustness of natural language macros.
-
-### 📋 Core Principles
-
-**4-stage Fallback Strategy**: `Ideal → Alternative → Minimum → Error Response`
-
-1. **Partial Value Provision**: Provide useful results even if not perfect
-2. **Transparency Assurance**: Clearly communicate limitations to users
-3. **Gradual Adaptation**: Quality level adjustment according to situations
-4. **Recoverability**: Automatic recovery when conditions improve
-
-### 🔧 Practical Example: Adaptive Report Generation System
-
-```markdown
-## Resource Status Confirmation
-Confirm availability of web search, database, and specialized materials and save to {{resources}}.
-
-## Adaptive Report Generation
-Based on {{resources}}, execute the following:
-
-Complete resource availability case:
-→ Create comprehensive report including latest data, specialized analysis, detailed predictions and save to {{full_report}}
-
-Web search only availability case:
-→ Create basic report based on public information and save to {{basic_report}}
-→ Record "Analysis based on public information only. Does not include specialized data" to {{limitation}}
-
-Severely resource-limited case:
-→ Provide general overview and analysis framework and save to {{framework}}
-→ Record "Overview level due to constraints. Additional resources needed for details" to {{status}}
-
-## Quality Level Clarification
-Clarify level of created report ({{full_report}}, {{basic_report}}, or {{framework}}) and
-explain limitations ({{limitation}} or {{status}}) and improvement methods.
-```
-
-**Design Points**:
-- ❌ "Cannot process due to insufficient data"
-- ✅ "Limited data, but following trends confirmed" + improvement suggestions
-
-This principle makes natural language macro systems **practical tools that provide value in many situations**.
 
 ### 🔤 Ambiguity Tolerance Processing
 
@@ -1490,6 +1459,182 @@ Detailed practical examples of Human-in-the-Loop:
 
 - **Beginner**: [Creative Blog Article Creation System](./examples/human_in_the_loop/creative_blog_writer.md) - Human-collaborative article creation with strategic intervention points
 - **Intermediate**: [Investment Decision Support System](./experiments/investment_decision_support/experiment.md) - Responsibility clarification and staged approval process for high-risk decisions
+
+---
+
+## Pattern 9: Error Handling
+
+### Overview
+
+The Error Handling pattern provides methods for dealing with various types of problems that occur during system execution. It is an essential pattern for building robust agent systems.
+
+**Two Approaches**:
+1. **Try-Catch-Finally (Traditional Exception Handling)**: Responding to unexpected runtime errors
+2. **Graceful Degradation (Gradual Quality Adjustment)**: Adapting to foreseeable constraints and limitations
+
+By combining these two approaches, robust systems capable of handling various situations can be constructed.
+
+### 9-1: Try-Catch-Finally (Traditional Exception Handling)
+
+Realizes a structure similar to try-catch-finally in programming languages using natural language. Defines explicit recovery processes for unexpected runtime errors such as API call failures, network errors, and tool bugs.
+
+#### Basic Syntax Pattern
+
+```markdown
+## Main Task Execution
+Please try the following process (Try):
+
+Execute primary_task.md.
+
+If it fails (Catch):
+Execute backup_task.md.
+
+Finally:
+Record the execution result (success or failure) to execution_log.txt.
+```
+
+#### Practical Patterns
+
+**1. API Call Redundancy**
+```markdown
+## Data Retrieval Process
+Please try the following process:
+
+Retrieve data from the main API and save to {{api_data}}.
+
+If it fails:
+Retrieve the same data from the backup API and save to {{api_data}}.
+
+Finally:
+Record the retrieval status to {{api_status}} and save to api_log.json.
+```
+
+**2. File Operation Safety Assurance**
+```markdown
+## File Writing Process
+Please try the following process:
+
+Write {{report_data}} to final_report.md.
+
+If it fails:
+Write {{report_data}} to backup_report.md and
+display the message "Main file writing failed."
+
+Finally:
+Record the writing result to the processing log.
+```
+
+**3. External Tool Execution Reliability Improvement**
+```markdown
+## Multi-tool Verification
+Please try the following process:
+
+Execute the task using Tool A.
+
+If it fails:
+Execute the same task using Tool B.
+
+If that also fails:
+Create instructions for manual processing and notify the administrator.
+
+Finally:
+Record the execution result and tools used to the execution history.
+```
+
+### 9-2: Graceful Degradation (Gradual Quality Adjustment)
+
+A technique that continues to provide valuable results by gradually adjusting quality when ideal operation is difficult, rather than complete failure. It maintains maximum functionality under constrained environments.
+
+#### Basic Concept
+
+Even when the system cannot operate ideally, quality is adjusted gradually in the following priority order:
+1. **Ideal Operation**: Complete functionality and quality
+2. **Practical Operation**: Maintain main functions, partial limitations
+3. **Minimum Operation**: Provide only core value
+
+#### Practical Patterns
+
+**1. Response to Resource Constraints**
+```markdown
+## Report Generation Process
+When sufficient time and resources are available:
+- Complete market analysis
+- Detailed graph creation
+- Comprehensive recommendations
+
+When time is limited:
+- Analysis of main indicators only
+- Simple graph creation
+- Important recommendations only
+
+In emergency situations:
+- Summary of most important data only
+- Text-based concise reporting
+```
+
+**2. Adaptation to Data Quality**
+```markdown
+## Analysis Accuracy Adjustment
+When data is completely available:
+Execute high-precision statistical analysis and save to {{detailed_analysis}}.
+
+When some data is missing:
+Execute approximate analysis with available data and save to {{approximate_analysis}}.
+
+When data is significantly insufficient:
+Execute trend analysis only and save to {{trend_analysis}}, and
+record "Detailed analysis could not be executed due to data shortage."
+```
+
+**3. Response to Tool Availability**
+```markdown
+## Gradual Information Collection
+When web search tools are available:
+Execute comprehensive research including latest information.
+
+When web search is unavailable:
+Extract relevant information from existing knowledge base.
+
+When both are difficult:
+Provide basic information based on general knowledge and
+add the note "Latest information verification recommended."
+```
+
+### Error Handling Integration Example
+
+Example of a robust system combining Try-Catch-Finally and Graceful Degradation:
+
+```markdown
+## Market Analysis Report Generation System
+Please try the following process (Try):
+
+Retrieve information from the latest market data API and execute detailed analysis.
+
+If API retrieval fails (Catch):
+Switch to analysis using existing data (Graceful Degradation).
+
+If existing data is also insufficient:
+Execute outline analysis based on general industry trends (Further Degradation).
+
+Finally:
+- Record the analysis level executed
+- Specify data sources and reliability levels
+- Record improvement suggestions for next execution
+```
+
+### Learning Points
+
+**Try-Catch-Finally**:
+1. **Explicit Error Response**: Pre-define specific recovery procedures for failures
+2. **Ensuring Redundancy**: Improve reliability through multiple execution paths
+3. **Situation Recording**: Utilize success/failure information for future improvements
+4. **Preparation for Unexpected Failures**: Avoid complete system shutdown
+
+**Graceful Degradation**:
+1. **Gradual Quality Adjustment**: Provide valuable results even when not perfect
+2. **Adaptation to Constraints**: Optimization under resource or data limitations
+3. **User Expectation Management**: Clear explanation of limitations
+4. **Continuous Service**: Maintain system value through partial functionality provision
 
 ---
 
