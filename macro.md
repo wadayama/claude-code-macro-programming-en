@@ -453,7 +453,7 @@ Within Parallel Haiku Creation Section:
 
 ### 🔄 Data Flow Design
 
-**Sophisticated Variable Management**:
+**Variable Management**:
 
 1. **Theme Sharing**: `{{themes}}` → Common use across all parallel tasks
 2. **Individual Results**: `{{haiku_1}}`, `{{haiku_2}}`, `{{haiku_3}}`, `{{haiku_4}}` → Independent storage
