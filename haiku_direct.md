@@ -1,4 +1,4 @@
-# 🎌 Haiku Generation Multi-Agent System
+# 🎌 Haiku Generation Agent System
 
 ## Theme Generation
 Please generate 4 creative and unusual haiku themes. Focus on unique and intriguing concepts rather than seasonal or natural elements.

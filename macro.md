@@ -388,13 +388,17 @@ Combine {{indoor}}, {{outdoor}}, {{social}} to propose balanced weekend activiti
 
 ---
 
-## 🎌 Practical Example Explanation: Haiku Generation Multi-Agent System
-
-**File**: [`haiku_direct.md`](./haiku_direct.md)
+## 🎌 Practical Example Explanation: Haiku Generation Agent System
 
 ### System Overview
 
-The haiku generation multi-agent system is a practical example combining **Sequential Pipeline** and **Parallel Processing**. By implementing the creative process as a macro, it efficiently generates consistently high-quality haiku.
+The haiku generation agent system is a practical example combining **Sequential Pipeline** and **Parallel Processing**. By implementing the creative process as a macro, it efficiently generates consistently high-quality haiku.
+
+### 📁 Implementation File
+
+- **[haiku_direct.md](./haiku_direct.md)** - Complete implementation code
+- **Learning Purpose**: Combination techniques of Sequential Pipeline and Parallel Processing
+- **Execution Method**: Run the file directly in Claude Code
 
 ### 🏗️ System Structure Analysis
 
