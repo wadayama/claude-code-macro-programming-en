@@ -1664,3 +1664,94 @@ Please read the following terms carefully before using this "Claude Code Natural
     The content of this guide may be changed or removed without prior notice.
 
 ---
+
+# Appendix
+
+## A.1: System Control via Claude Code Slash Commands
+
+When agents perform tasks, they need to be mindful of resource constraints (budget, API call limits, time allowances, computational costs, etc.). Real-world agents do not possess infinite resources, and cost-conscious decision-making under resource constraints is essential for practical systems.
+
+### What are Slash Commands?
+
+**Slash commands** are special commands in Claude Code that begin with "/". They can be executed directly during natural language conversations and enable checking and controlling Claude Code's system state. Unlike traditional command-line operations, they can be executed seamlessly within the flow of dialogue.
+
+#### Main Built-in Commands
+
+Claude Code provides the following built-in slash commands:
+
+- `/help` - Display list and descriptions of available commands
+- `/clear` - Reset conversation history and context (memory optimization)
+- `/model` - Switch between Claude models (Opus/Sonnet, etc.)
+- `/ide` - Check IDE integration status (open files, linter errors, etc.)
+- `/init` - Automatically generate CLAUDE.md file
+- `/permissions` - Manage tool allowlists
+
+
+### Key Points
+
+**1. Actual System Information Retrieval**
+- Real-time development environment status checking via `/ide`
+- Dynamic discovery of available functions via `/help`
+- Decision-making based on actual system state
+
+**2. Dynamic Environment Control**
+- Timely memory management via `/clear`
+- Optimization according to processing characteristics via `/model`
+- Dynamic adjustment based on performance requirements
+
+**3. Integration with Conditional Branching**
+- Processing branches based on system state
+- Determining next actions based on execution results
+- Practical workflow automation
+
+The use of slash commands enables practical agent design that leverages Claude Code's system capabilities.
+
+## A.2: Event-Driven Execution and System Integration
+
+Many processes in the real world occur asynchronously. Systems that can immediately respond to external stimuli such as file creation, email reception, and sensor value changes are required to have high responsiveness. Event-Driven execution is a primitive that asynchronously listens for specific events and executes corresponding tasks when detected.
+
+### What is Event-Driven?
+
+**Event-Driven execution** is an execution model that starts tasks asynchronously triggered by external events, in contrast to Sequential Pipeline which is synchronous. Agents monitor events in a waiting state and automatically begin processing when specific conditions are met.
+
+### External Trigger Model
+
+The most practical and robust approach is a hybrid design that delegates event monitoring to existing proven technologies and allows the LLM to focus on post-trigger processing.
+
+#### Main Implementation Technology Examples
+
+**1. Time Triggers with cron**
+- Automatic invocation at specified times
+- Basic implementation method for scheduled tasks
+
+**2. File Monitoring with watchdog**
+- File system monitoring using Python's watchdog library
+- Detection of file creation, modification, and deletion events
+- Continuous monitoring of specified directories with immediate response
+
+**3. inotify System**
+- Linux native file system monitoring functionality
+- Efficient event detection at low level
+
+### Integration Patterns
+
+Typical integration example: "Continuously monitor directory `/orders`, and when a new file (e.g., `order123.json`) is created, evaluate `order_processing.md` with that file path as an argument" by running a resident script.
+
+### Key Points
+
+**1. Asynchronous Processing Implementation**
+- Immediate response to external events
+- Parallel monitoring of multiple events
+- Improved system-wide responsiveness
+
+**2. Flexibility in Technology Selection**
+- Choice of monitoring technology according to requirements
+- Easy integration with existing systems
+- Adaptability to operational environments
+
+**3. Integration with Macro Files**
+- Separation of event information and processing logic
+- Dynamic modification of processing content
+- Construction of reusable processing patterns
+
+Event-Driven execution enables the construction of agent systems with high responsiveness for real-time systems and business automation.
