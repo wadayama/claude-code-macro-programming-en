@@ -498,33 +498,43 @@ This file serves as a **useful bridge** from basic patterns to practical systems
 - ❌ Same processing is always sufficient (→Consider [Sequential Pipeline](./examples/sequential_pipeline/))
 - ❌ Complex problem division needed (→Consider [Problem Solving & Recursion](./examples/problem_recursion/))
 
-**Practical Example: Ambiguous Request Interpretation System (Natural Language Ambiguity Fallback)**
+**Practical Example: Automatic File Processing and Routing System**
 ```markdown
-## Ambiguous Request Input
-Input intentionally ambiguous expressions like:
-- "Research about AI"
-- "Want to know educational impact"
-- "More about that"
+## File Information Acquisition
+Specify the target file and acquire the following information:
+- Save file format to {{file_type}}
+- Save file size to {{file_size}}
+- Save number of lines in file to {{line_count}}
 
-Save your ambiguous request to {{user_request}}.
+## Processing Branch by File Format
+Branch processing according to {{file_type}}:
 
-## Ambiguity Level Judgment & Interpretation
-Judge ambiguity of {{user_request}} and save interpretation to {{interpretation}}.
+CSV format case:
+→ Execute data analysis processing and save result to {{analysis_result}}
 
-## Ambiguity-based Fallback Execution
-Depending on ambiguity level of {{user_request}}:
+JSON format case:
+→ Execute structure analysis processing and save result to {{structure_result}}
 
-High ambiguity case:
-→ Execute with "Will research based on most likely interpretation" speculative approach
-→ Record "Interpretation based on high speculation" to {{uncertainty_note}}
+Text format case:
+→ Execute natural language processing and save result to {{nlp_result}}
 
-Medium ambiguity case:
-→ Execute with "Will research based on context inference" partial speculation approach
-→ Record "Includes partial speculation" to {{interpretation_note}}
+Other format case:
+→ Extract basic information only and save to {{basic_info}}
 
-## Ambiguity Processing Result Experience
-Confirm speculation validity, fallback value, and transparency,
-and experience natural language ambiguity fallback first-hand.
+## Processing Method Selection by File Size
+Adjust processing method according to {{file_size}}:
+
+10MB or larger case:
+→ "Large file detected, executing split processing"
+→ Execute chunk split processing with {{chunk_processing}}
+
+Under 1MB case:
+→ "Small file detected, executing batch processing"
+→ Execute batch processing with {{batch_processing}}
+
+## Result Integration and Output
+Integrate processing results into {{final_result}},
+and record processing method and execution time to {{processing_log}}
 ```
 
 **Key Learning Point**: Covering all conditional patterns and setting clear judgment criteria is crucial
