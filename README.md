@@ -15,7 +15,7 @@ A comprehensive guide to building agent systems using **Claude Code** as a natur
 **Practical Applications**
 - Haiku generation, blog creation, investment decision support systems
 - Business process automation methodologies
-- Multi-agent system orchestration
+- Complex workflow orchestration
 
 ## 🤖 Core Concept
 

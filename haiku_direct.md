@@ -94,4 +94,4 @@ This haiku generation system demonstrates several key Natural Language Macro Pro
 - Complex creative process broken into manageable subtasks
 - Each task has clear inputs, outputs, and success criteria
 
-This example showcases how natural language instructions can orchestrate sophisticated multi-agent workflows while maintaining simplicity and readability.
+This example showcases how natural language instructions can orchestrate sophisticated parallel processing workflows while maintaining simplicity and readability.
