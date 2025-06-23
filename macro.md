@@ -530,7 +530,7 @@ This file serves as a **useful bridge** from basic patterns to practical systems
 - ✅ Need to change processing based on data or situations
 - ✅ Error handling and exception processing are important
 - ✅ Need function control based on user permissions or settings
-- ❌ Same processing is always sufficient (→Consider [Sequential Pipeline](./examples/sequential_pipeline/))
+- ❌ Same processing is always sufficient (→Consider [Sequential Pipeline](./examples/sequential/))
 - ❌ Complex problem division needed (→Consider [Problem Solving & Recursion](./examples/problem_recursion/))
 
 **Practical Example: Automatic File Processing and Routing System**
@@ -808,7 +808,7 @@ Detailed practical examples of Loop & Modular Programming:
 - ✅ Problem structure that can be divided step by step
 - ✅ Reliable progress management and state retention important
 - ✅ Long-term tasks with interruption and resumption capability
-- ❌ Simple processing not requiring division (→Consider [Sequential Pipeline](./examples/sequential_pipeline/))
+- ❌ Simple processing not requiring division (→Consider [Sequential Pipeline](./examples/sequential/))
 
 **Value of Recursive Thinking**:
 - **Decomposition**: Divide large problems into understandable units
