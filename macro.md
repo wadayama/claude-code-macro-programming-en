@@ -15,6 +15,8 @@ While conventional programming requires computers to interpret programming langu
 
 Even people without programming experience can design agent behaviors using intuitive natural language and have Claude Code execute them.
 
+*The macro syntax used in this guide operates based on the grammar defined in CLAUDE.md (or CLAUDE_EN.md for English). Users write macros in natural language, and Claude executes them according to the grammar rules defined in CLAUDE.md.*
+
 ## 🌍 Framework Generality and Design Philosophy
 
 This "Natural Language Macro Programming" concept and design philosophy is not bound to any specific LLM. It is expected to be sufficiently applicable to other high-performance LLMs that meet certain conditions.
