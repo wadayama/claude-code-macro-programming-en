@@ -1816,3 +1816,167 @@ Typical integration example: "Continuously monitor directory `/orders`, and when
 - Construction of reusable processing patterns
 
 Event-Driven execution enables the construction of agent systems with high responsiveness for real-time systems and business automation.
+
+## A.3: Risk Mitigation Strategies for Mission-Critical Environments
+
+### Background and Challenge Recognition
+
+Natural Language Macro Programming is expected to be utilized across diverse fields due to its intuitiveness and high explainability. However, uncertainties derived from the probabilistic behavioral characteristics of LLMs (Large Language Models) can pose significant risks in specific environments.
+
+**Challenges from Probabilistic Uncertainty**:
+- Difficulty in guaranteeing 100% operational reliability in principle
+- Possibility of unexpected interpretations or execution results
+- Discrepancy with reliability requirements in mission-critical decisions
+- Application constraints in fields with strict legal responsibility and safety requirements
+
+**Purpose of This Section**:
+To achieve safe and responsible utilization of natural language macro programming through a three-layer defense strategy (proactive design prevention, runtime error handling, auditing and continuous improvement) to approach the reliability levels required by traditional deterministic systems.
+
+### Layer 1: Proactive Design Measures (Proactive Design)
+
+Incorporate risk reduction mechanisms in advance during the workflow design stage.
+
+#### 1. Strategic Placement of Human-in-the-Loop (HITL)
+
+**Approval Gate Design at Critical Points**:
+
+```markdown
+## Approval Process for Critical Decisions
+Please review the following processing content:
+{{proposed_action}}
+
+This process includes irreversible changes.
+Please respond with "Approved" or "Revision Required".
+Will not proceed to next step without approval.
+
+Save approval result to {{human_approval}}.
+
+## Safety Control through Conditional Branching
+Only when {{human_approval}} is "Approved":
+Execute critical_operation.md
+
+Otherwise:
+Stop processing and transition to revision pending state.
+```
+
+**Implementation Points**:
+- Must be placed immediately before irreversible operations (file deletion, external API calls, financial transactions, etc.)
+- Utilize "Approval Waiting Pattern" from "Human-in-the-Loop" pattern
+- Predefine clear approval and rejection criteria
+
+#### 2. Graceful Degradation Design
+
+Design that continues to provide limited but valuable service when ideal conditions are not available, rather than immediately stopping the system.
+
+```markdown
+## Staged Alternative Processing for API Connections
+Try the following process:
+Retrieve latest data from external API and save to {{latest_data}}
+
+If it fails (Catch):
+Retrieve latest available data from local cache and save to {{cached_data}}
+Set warning "Note: Data is from {{cache_date}}" to {{warning}}
+
+Finally:
+Continue analysis using {{latest_data}} or {{cached_data}}
+Include {{warning}} in results if quality degradation warning exists
+```
+
+#### 3. Execution Permission Minimization
+
+Minimize permissions granted to the system and implement strict access control for functions involving risks.
+
+```markdown
+## Permission Control Implementation Example
+/permissions Allow file reading and text generation only
+
+When dangerous command execution is required:
+"This operation requires system administrator privileges.
+Request manual execution by administrator."
+Pause processing and wait for human intervention
+```
+
+### Layer 2: Runtime Error Handling
+
+Prevent the system from falling into catastrophic states when unexpected errors occur.
+
+#### 1. Redundancy through Try-Catch-Finally
+
+```markdown
+## Robust External Integration Processing
+Try the following process:
+Retrieve important data from main API
+
+If it fails (Catch):
+Retrieve similar data from backup API
+Record that source is different in {{data_source_warning}}
+
+If backup also fails (Catch):
+Search existing database for available alternative data
+Set "Data freshness is limited" to {{limitation_note}}
+
+Finally:
+Clearly record retrieved data and its limitations
+Report quality level along with processing results
+```
+
+#### 2. State Persistence and Recovery Mechanisms
+
+Address the risk of process interruption, especially for long-running tasks.
+
+```markdown
+## Design for Interruptible Long-term Processing
+Save progress to progress_state.json at each stage of long-term tasks:
+
+Upon Step 1 completion:
+{"completed_steps": ["data_collection"], "current_step": "analysis", "timestamp": "2025-01-15T10:30:00Z"}
+
+Upon Step 2 completion:
+{"completed_steps": ["data_collection", "analysis"], "current_step": "report_generation", "timestamp": "2025-01-15T11:45:00Z"}
+
+## Recovery Processing
+Check progress_state.json and resume processing from last completed step
+Record "Processing resumed from {{timestamp}}" in log
+```
+
+### Layer 3: Auditing and Continuous Improvement
+
+Record and analyze system behavior to reduce future risks.
+
+#### 1. Comprehensive Log Recording
+
+```markdown
+## Create Audit Log for All Processing
+At execution start:
+{"timestamp": "2025-01-15T09:00:00Z", "action": "process_start", "user_input": "{{original_request}}", "system_state": "{{initial_state}}"}
+
+During Human-in-the-Loop intervention:
+{"timestamp": "2025-01-15T09:15:00Z", "action": "human_intervention", "decision": "{{human_decision}}", "rationale": "{{human_rationale}}", "context": "{{decision_context}}"}
+
+When error occurs:
+{"timestamp": "2025-01-15T09:30:00Z", "action": "error_occurred", "error_type": "{{error_type}}", "error_message": "{{error_details}}", "recovery_action": "{{recovery_method}}"}
+
+Persist all logs to audit_log.json
+```
+
+#### 2. Utilizing Learning from Experience
+
+```markdown
+## Converting Failure Patterns to Learning Data
+Update learning database when errors occur:
+
+Record in failure_patterns.json:
+{
+  "error_type": "API_timeout",
+  "context": "high_traffic_period",
+  "failed_action": "external_data_fetch",
+  "successful_recovery": "switch_to_cached_data",
+  "lesson_learned": "Prioritize cached data from the start during high traffic periods"
+}
+
+In similar situations next time:
+Check past failure patterns and proactively use cached data
+"Selected safe alternative based on past learning"
+```
+
+Understanding the probabilistic characteristics of natural language macro programming and implementing appropriate risk mitigation measures enables safe and responsible utilization across diverse fields.
