@@ -4,7 +4,7 @@
 
 ## 🤖 Core Concept: Agent Programming Using Claude Code as Interpreter
 
-This guide presents a **Natural Language Macro Programming** approach that **executes structured tasks using natural language as an interpreter**. This guide uses Claude Code as an execution environment.
+This guide presents a **Natural Language Macro Programming** approach that **executes structured tasks using natural language as macro code, with LLM as interpreter**. This guide uses Claude Code as an execution environment.
 
 While conventional programming requires computers to interpret programming languages with specific syntax, natural language macro programming enables:
 
@@ -19,7 +19,7 @@ Even people without programming experience can design agent behaviors using intu
 
 This "Natural Language Macro Programming" concept and design philosophy is not bound to any specific LLM. It is expected to be sufficiently applicable to other high-performance LLMs that meet certain conditions.
 
-The core of this framework lies not in tools or specific products, but in **"the approach itself of executing structured tasks using natural language as an interpreter."** Claude Code is positioned as one excellent execution environment that realizes this approach.
+The core of this framework lies not in tools or specific products, but in **"the approach itself of executing structured tasks using LLM as natural language interpreter."** Claude Code is positioned as one excellent execution environment that realizes this approach.
 
 **Applicable Conditions**:
 - Ability to understand and execute complex natural language instructions
