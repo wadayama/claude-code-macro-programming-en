@@ -1945,7 +1945,7 @@ Record "Processing resumed from {{timestamp}}" in log
 
 Record and analyze system behavior to reduce future risks.
 
-#### 1. Comprehensive Log Recording
+#### 1. Log Recording Examples
 
 ```markdown
 ## Create Audit Log for All Processing
