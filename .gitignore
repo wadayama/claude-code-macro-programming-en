@@ -1,6 +1,3 @@
-# Experimental files (private development use only)
-experiments/
-
 # OS generated files
 .DS_Store
 .DS_Store?
@@ -21,3 +18,17 @@ Thumbs.db
 *.tmp
 *.temp
 verification_status.md
+
+# Generated output files (exclude but keep reference examples)
+article_*.md
+*_analysis.md
+*_output.md
+*_report.md
+
+# Runtime generated JSON files (exclude but keep example configs)
+ai_market_report.json
+competitive_insights.json
+hitl_log.json
+research_theme.json
+study_log.json
+target_companies.json

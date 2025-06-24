@@ -1,6 +1,11 @@
-# Macro Programming Features Guide
+# Natural Language Macro Syntax Definition
 
-This file describes how to use macro programming features in Claude Code.
+This specification defines the basic syntax and behavior of natural language macro programming. AI (you) must behave as an interpreter that accurately follows the specifications described here and interprets and executes instructions.
+
+## 💡 Important Operating Principles
+- When users use the following syntax, always operate according to the specifications in this definition
+- Even with ambiguous expressions, appropriately interpret and execute through pattern matching
+- When errors occur, achieve objectives through alternative means whenever possible
 
 ## Variable System
 
@@ -8,13 +13,15 @@ This file describes how to use macro programming features in Claude Code.
 - **Variable Reference**: `{{variable_name}}`
 - **Variable Storage**: "Save ... to {{variable_name}}"
 
-### Usage Examples
+### Execution Specifications
 ```
-# Storage example
+# Storage Operation
 "Save 3 key points for Python beginners to {{basics}}"
+→ AI stores content as {{basics}} variable and makes it available for reference in subsequent processing
 
-# Reference example
+# Reference Operation
 "Create a learning plan based on {{basics}}"
+→ AI retrieves content saved in {{basics}} and executes processing based on it
 ```
 
 ## Conditional Branching
@@ -26,10 +33,13 @@ Use natural language conditional instructions:
 - "When..."
 - "According to..."
 
-### Usage Examples
+### Execution Specifications
 ```
 "If {{user_level}} is beginner, suggest basic course; if advanced, suggest advanced course"
+→ AI determines the value of {{user_level}} and executes different processing according to conditions
+
 "Choose appropriate tech stack according to {{project_type}}"
+→ AI presents optimal choices based on the value of {{project_type}}
 ```
 
 ## Persistence Features
@@ -38,13 +48,15 @@ Use natural language conditional instructions:
 - **Persistent Storage**: "Save {{variable_name}} to filename.json for persistence"
 - **File Loading**: "Load filename.json and set to {{variable_name}}"
 
-### Usage Examples
+### Execution Specifications
 ```
-# Persistent storage
+# Persistent Storage Operation
 "Save {{project_config}} to config.json for persistence"
+→ AI writes the content of {{project_config}} to config.json file
 
-# File loading
+# File Loading Operation
 "Load config.json and set to {{saved_config}}"
+→ AI reads the content of config.json and sets it to {{saved_config}} variable
 ```
 
 ## External Module Execution
@@ -52,10 +64,13 @@ Use natural language conditional instructions:
 ### Basic Syntax
 - **Module Execution**: "Execute filename.md"
 
-### Usage Examples
+### Execution Specifications
 ```
 "Execute data_analysis_workflow.md"
+→ AI reads data_analysis_workflow.md file and interprets/executes its content
+
 "Execute setup_instructions.md"
+→ AI sequentially executes the instructions in setup_instructions.md file
 ```
 
 ## Tool Usage
@@ -69,11 +84,16 @@ You can instruct tool usage with natural language like:
 - **Git Operations**: "Commit", "Create branch"
 - **Execution**: "Run...", "Execute tests"
 
-### Usage Examples
+### Execution Specifications
 ```
 "Search the web for latest AI technologies and save to {{ai_trends}}"
+→ AI uses WebSearch tool and saves results to {{ai_trends}} variable
+
 "Read package.json file and check dependencies"
+→ AI reads package.json with Read tool and analyzes/reports dependencies
+
 "Use TODO tool to organize today's tasks"
+→ AI uses TodoRead and TodoWrite tools to execute task management
 ```
 
 ## Notes
