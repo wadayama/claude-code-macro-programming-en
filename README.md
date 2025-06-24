@@ -2,6 +2,22 @@
 
 A comprehensive guide to building agent systems using **Claude Code** as a natural language interpreter, enabling programming through intuitive natural language without traditional coding experience.
 
+## ⚡ Quick Start
+
+Try variable storage and reference:
+
+**Store in variable**:
+```
+"Save 3 tasks for today to {{tasks}}"
+```
+
+**Reference variable**:
+```
+"Organize {{tasks}} by priority"
+```
+
+Execute these directly in Claude Code to experience natural language macro programming.
+
 ## 🎯 Overview
 
 **9 Design Patterns for Systematic Learning**
