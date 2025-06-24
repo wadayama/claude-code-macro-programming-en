@@ -894,7 +894,7 @@ Repeat Phase 2 as long as pending tasks remain
 After all task completion, integrate results and present as complete recipe
 ```
 
-### 🔄 Three Benefits of Recursive Thinking
+### 🔄 Three Benefits of TODO List Tool
 
 #### 1. Complexity Management
 ```markdown
