@@ -8,12 +8,12 @@ Try variable storage and reference:
 
 **Store in variable**:
 ```
-"Save 3 tasks for today to {{tasks}}"
+"Create 3 haiku poems about spring and save to {{haiku}}"
 ```
 
 **Reference variable**:
 ```
-"Organize {{tasks}} by priority"
+"Select the most beautiful one from {{haiku}} and refine it"
 ```
 
 Execute these directly in Claude Code to experience natural language macro programming.
@@ -49,6 +49,7 @@ Even users without programming experience can design agent behaviors using intui
 
 - **[macro.md](./macro.md)** - Complete guide (9 design patterns + appendix)
 - **[examples/](./examples/)** - Pattern-specific example collection
+- **[CLAUDE.md](./CLAUDE.md)** - Macro definition file
 
 ## 🚀 Getting Started
 
