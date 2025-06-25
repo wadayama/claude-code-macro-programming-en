@@ -1,6 +1,6 @@
 # Claude Code Natural Language Macro Programming Guide
 
-**Claude Code** is a specialized coding environment that extends Anthropic's AI assistant Claude ([Official Documentation](https://docs.anthropic.com/en/docs/claude-code)). It integrates powerful tool suites including file operations, Bash execution, and web search, supporting a wide range of tasks from programming to document creation. This guide presents methods for utilizing Claude Code not merely as a coding tool, but as an agent execution environment programmable through natural language.
+**Claude Code** is a specialized coding environment that extends Anthropic's AI assistant Claude ([Official Documentation](https://docs.anthropic.com/en/docs/claude-code)). It integrates powerful tool suites including file operations, Bash execution, and web search, supporting a wide range of tasks from programming to document creation. This guide presents methods and design patterns for utilizing Claude Code not merely as a coding tool, but as an agent execution environment programmable through natural language.
 
 ## 🤖 Core Concept: Agent Programming Using Claude Code as Interpreter
 
