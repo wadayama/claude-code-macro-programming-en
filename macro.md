@@ -15,6 +15,11 @@ While conventional programming requires computers to interpret programming langu
 
 Even people without programming experience can design agent behaviors using intuitive natural language and have Claude Code execute them.
 
+The key characteristics of natural language macro programming and design patterns presented in this document can be summarized in the following three points:
+1. **Readability and Accessibility**: Written in natural language, making it understandable and editable even for non-experts.
+2. **Structure and Reusability**: Complex tasks can be systematically constructed using design patterns.
+3. **High Suitability for Metaprogramming**: "Behaviors" themselves can be treated and manipulated as data.
+
 *The macro syntax used in this guide operates based on the grammar defined in CLAUDE.md. Users write macros in natural language, and Claude executes them according to the grammar rules defined in CLAUDE.md.* **Before actual execution, the CLAUDE.md file must be loaded into Claude Code.**
 
 ## 🌍 Framework Generality and Design Philosophy
