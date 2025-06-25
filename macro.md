@@ -16,9 +16,12 @@ While conventional programming requires computers to interpret programming langu
 Even people without programming experience can design agent behaviors using intuitive natural language and have Claude Code execute them.
 
 The key characteristics of natural language macro programming and design patterns presented in this document can be summarized in the following three points:
-1. **Readability and Accessibility**: Written in natural language, making it understandable and editable even for non-experts.
-2. **Structure and Reusability**: Complex tasks can be systematically constructed using design patterns.
-3. **High Suitability for Metaprogramming**: "Behaviors" themselves can be treated and manipulated as data.
+
+**1. Readability and Accessibility**: Written in natural language, making it understandable and editable even for non-experts.
+
+**2. Structure and Reusability**: Complex tasks can be systematically constructed using design patterns.
+
+**3. High Suitability for Metaprogramming**: "Behaviors" themselves can be treated and manipulated as data.
 
 Natural language macro programming also has aspects of metaprogramming. Natural language macro programming possesses "code-data equivalence" similar to LISP. This characteristic particularly facilitates metaprogramming (writing programs that manipulate programs). Advanced metaprogramming is possible, such as dynamically generating macros and incorporating them back into itself for execution.
 
