@@ -105,7 +105,7 @@ When referencing variables defined at the beginning of a macro after very long p
 **Ambiguous Instructions in Natural Language**:
 Qualitative and ambiguous conditional branches such as "when the score is sufficiently high" or "if the results are good" can cause fluctuations in LLM interpretation, leading to different behavior on each execution. It is recommended to use quantitative instructions like "{{score}} > 90" whenever possible.
 
-## 🎯 Learning Objectives
+## 🎯 Table of Contents
 
 1. **Fundamental Concepts of Natural Language Macro Programming**
    - Information management and result passing
@@ -854,7 +854,7 @@ Detailed practical examples of Loop & Modular Programming:
 - **Execution**: Concrete completion of non-decomposable tasks
 - **Integration**: Systematic combination of distributed results
 
-### 🎯 3-Step Gradual Learning
+### 🎯 3-Step Gradual Development
 
 #### Step 1: TODO Tool Basic Operations
 ```markdown
@@ -1788,7 +1788,7 @@ Execute the following in debug mode:
 → Provide detailed diagnostic information for abnormal cases
 ```
 
-### 🎯 3-Step Gradual Learning
+### 🎯 3-Step Gradual Development
 
 #### Step 1: Basic Variable Debug
 ```markdown
