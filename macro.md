@@ -20,6 +20,8 @@ The key characteristics of natural language macro programming and design pattern
 2. **Structure and Reusability**: Complex tasks can be systematically constructed using design patterns.
 3. **High Suitability for Metaprogramming**: "Behaviors" themselves can be treated and manipulated as data.
 
+Natural language macro programming also has aspects of metaprogramming. Natural language macro programming possesses "code-data equivalence" similar to LISP. This characteristic particularly facilitates metaprogramming (writing programs that manipulate programs). Advanced metaprogramming is possible, such as dynamically generating macros and incorporating them back into itself for execution.
+
 *The macro syntax used in this guide operates based on the grammar defined in CLAUDE.md. Users write macros in natural language, and Claude executes them according to the grammar rules defined in CLAUDE.md.* **Before actual execution, the CLAUDE.md file must be loaded into Claude Code.**
 
 ## 🌍 Framework Generality and Design Philosophy
