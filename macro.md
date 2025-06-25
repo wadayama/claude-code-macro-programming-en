@@ -114,16 +114,17 @@ Qualitative and ambiguous conditional branches such as "when the score is suffic
    - Information management and result passing
    - Implementation of conditional branching and multitask processing
 
-2. **9 Design Patterns**
-   - Sequential Pipeline
-   - Parallel Processing
-   - Conditional Execution
-   - Loop & Modular Programming
-   - Problem Solving & Recursion
-   - Learning from Experience
-   - Environment Sensing, Knowledge-base and Environment Model
-   - Human-in-the-Loop
-   - Error Handling
+2. **10 Design Patterns**
+   - Pattern 1: Sequential Pipeline
+   - Pattern 2: Parallel Processing
+   - Pattern 3: Conditional Execution
+   - Pattern 4: Loop & Modular Programming
+   - Pattern 5: Problem Solving & Recursion
+   - Pattern 6: Learning from Experience
+   - Pattern 7: Environment Sensing, Knowledge-base and Environment Model
+   - Pattern 8: Human-in-the-Loop
+   - Pattern 9: Error Handling
+   - Pattern 10: Debug & Tracing
 
 3. **Practical System Construction Capabilities**
    - Hands-on practice with graduated samples
@@ -150,7 +151,7 @@ With the rapid development of modern AI technology, new approaches to designing 
 This research proposes a novel methodology called "Natural Language Macro Programming," consisting of the following elements:
 
 1. **Establishment of Systematic Design Patterns**
-   - Construction of a graduated learning system through 9 design patterns
+   - Construction of a graduated learning system through 10 design patterns
    - Design methodologies comprehensively covering from basic processing to advanced human collaboration
    - Development of reusable and extensible pattern libraries
 
