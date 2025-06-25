@@ -20,9 +20,9 @@ Execute these directly in Claude Code to experience natural language macro progr
 
 ## 🎯 Overview
 
-**9 Design Patterns for Systematic Learning**
+**10 Design Patterns for Systematic Learning**
 - Basic Processing Patterns (Sequential, Parallel, Conditional, Loop)
-- Advanced Patterns (Problem Solving, Learning, Environment Understanding, Human Collaboration, Error Handling)
+- Advanced Patterns (Problem Solving, Learning, Environment Understanding, Human Collaboration, Error Handling, Debug)
 
 **Appendix: Implementation Technologies**
 - A.1: System Control via Claude Code Slash Commands
@@ -47,13 +47,14 @@ Even users without programming experience can design agent behaviors using intui
 
 ## 📚 Main Contents
 
-- **[macro.md](./macro.md)** - Complete guide (9 design patterns + appendix)
+- **[macro.md](./macro.md)** - Complete guide (10 design patterns + appendix)
 - **[examples/](./examples/)** - Pattern-specific example collection
 - **[CLAUDE.md](./CLAUDE.md)** - Macro definition file
+- **[debugger.md](./debugger.md)** - Debug mode specification
 
 ## 🚀 Getting Started
 
-1. **[macro.md](./macro.md)** - Learn basic concepts and 9 design patterns
+1. **[macro.md](./macro.md)** - Learn basic concepts and 10 design patterns
 2. **[examples/](./examples/)** - Practice with step-by-step examples
 
 ## 📋 Design Patterns
@@ -67,6 +68,7 @@ Even users without programming experience can design agent behaviors using intui
 7. **Environment Sensing, Knowledge-base and Environment Model** - Context-aware processing
 8. **Human-in-the-Loop** - Human-AI collaborative systems
 9. **Error Handling** - Try-Catch-Finally and Graceful Degradation
+10. **Debug & Tracing** - State tracking and problem diagnosis
 
 ## 📋 Appendix
 

@@ -1721,6 +1721,179 @@ Finally:
 
 ---
 
+## Pattern 10: Debug & Tracing
+
+**Overview**: State tracking and problem diagnosis functionality for macro execution processes. LLM provides real-time natural language debug information, explicitly showing variable values and decision rationales to enable identification of unintended behavior causes and promote understanding. When using debug functionality, enable the debugger by first running "Please load debugger.md".
+
+**Processing Flow**: `Execution → State Recording → Analysis & Judgment → Diagnostic Information Output`
+
+**Application Criteria**:
+- ✅ Complex macros requiring debugging
+- ✅ Learning purposes to deepen process understanding
+- ✅ Transparency and explainability required
+- ✅ Non-technical users need to understand processing
+- ❌ Simple processing where overhead is unnecessary (→ Consider [Sequential Pipeline](./examples/sequential/))
+- ❌ Production environments prioritizing performance (→ Recommend normal mode execution)
+
+**Practical Example: Learning Score Evaluation System Debug**
+
+```markdown
+## Conditional Branching Tracking with Debug Mode
+
+Execute the following in debug mode:
+1. Save learning score as 85 points to {{score}}
+2. If {{score}} is 80 or above, save as 'Excellent'; if 60 or above but below 80, save as 'Good'; otherwise save as 'Needs Improvement' to {{evaluation}}
+3. Save specific next steps based on {{evaluation}} to {{next_action}}
+4. Display organized results
+
+# Expected Debug Output Example:
+[DEBUG] Step 1: Saving learning score to {{score}}
+[DEBUG] Variable State: {{score}} = 85
+[DEBUG] Step 2: Evaluation determination by conditional branching
+[DEBUG] Condition 1 Check: {{score}} >= 80 → 85 >= 80 = true
+[DEBUG] Branch Decision: Condition 1 is true, selecting "Excellent" branch
+[DEBUG] Variable State: {{evaluation}} = "Excellent"
+[DEBUG] Step 3: Next step determination based on {{evaluation}}
+[DEBUG] Decision Rationale: Excellent evaluation → Provide advanced learning opportunities
+[DEBUG] Variable State: {{next_action}} = "Recommend challenging advanced application tasks"
+```
+
+**Key Learning Point**: This is a revolutionary debugging technique that enables visualization of LLM thought processes through "natural language explanation of decision reasons" impossible in traditional programming.
+
+### 🔧 Basic Debug Modes
+
+**Simple Debug**: Variable value confirmation only
+```markdown
+"Create clothing suggestions based on {{weather}} in simple debug mode"
+→ Display only variable values and basic processing steps
+```
+
+**Standard Debug**: Detailed information including decision rationales
+```markdown
+"Execute product recommendations from {{budget}} and {{required_qty}} in debug mode"
+→ Explain calculation processes, condition judgments, and decision reasons in detail
+```
+
+### 🛡️ Advanced Tracing Features
+
+**Variable-Specific Tracking**:
+```markdown
+"Execute evaluation system while debug tracking variable {{score}}"
+→ Focus monitoring on specific variable state changes
+```
+
+**Error Diagnosis Mode**:
+```markdown
+"Execute budget check system with detailed explanations when errors occur"
+→ Provide detailed diagnostic information for abnormal cases
+```
+
+### 🎯 3-Step Gradual Learning
+
+#### Step 1: Basic Variable Debug
+```markdown
+## Variable Operation Visualization
+
+Execute the following in debug mode:
+"Save today's weather information to {{weather}}, then save clothing suggestions based on {{weather}} to {{outfit}}"
+
+Expected Learning Effects:
+- Understanding variable value setting processes
+- Visualization of inter-variable dependencies
+- Learning to read basic debug output
+```
+
+#### Step 2: Conditional Branching Debug
+```markdown  
+## Judgment Process Tracking
+
+Execute the following in debug mode:
+"If {{temperature}} is below 20 degrees and {{weather}} is rain, save as 'Caution for Going Out'; otherwise save as 'Normal Going Out' to {{advice}}"
+
+Expected Learning Effects:
+- Understanding compound condition evaluation processes
+- Visualization of logical operations (AND, OR)
+- Explanation of branch selection reasons
+```
+
+#### Step 3: Complex Workflow Debug
+```markdown
+## Complete Multi-Stage Process Tracking
+
+Execute the following in debug mode:
+"Execute the complete process of price filtering → inventory check → recommendation decision → quotation creation from product data with budget 150,000 yen and required quantity 3 units"
+
+Expected Learning Effects:
+- State management in long processes
+- Integration of numerical calculations and business logic
+- End-to-end process tracking
+```
+
+### 🔧 Debug Syntax Reference
+
+#### Basic Debug Instructions
+```markdown
+"Execute [processing content] in debug mode"
+→ Output standard level debug information
+```
+
+#### Level-Based Debug
+```markdown
+# Simple Debug (basic information only)
+"Create clothing suggestions based on {{weather}} in simple debug mode"
+
+# Standard Debug (detailed information)
+"Execute product recommendation system from {{budget}} in debug mode"
+
+# Detailed Debug (maximum detail)
+"Execute complex inventory management workflow in detailed debug mode"
+```
+
+#### Specific Element Debug
+```markdown
+# Variable Tracking
+"Execute evaluation system while debug tracking variable {{score}}"
+
+# Conditional Branching
+"Execute recommendation system while debugging conditional branching"
+
+# Error Diagnosis
+"Execute budget check system with detailed explanations when errors occur"
+```
+
+#### Debug Output Format
+```
+[DEBUG] Step [number]: [description of execution content]
+[DEBUG] Variable State: {{variable_name}} = [current value]
+[DEBUG] Decision Rationale: [reason for condition evaluation]
+[DEBUG] Next Action: [next processing to execute]
+```
+
+### 📋 Debug Execution Preparation Steps
+
+When using debug functionality, prepare with the following steps:
+
+#### Step 1: Load Debug Functionality
+```markdown
+"Please load debugger.md"  
+→ Enable debug-specific syntax and output functionality
+```
+
+#### Step 2: Debug Execution
+```markdown
+"Execute [processing content] in debug mode"
+→ Visualize detailed execution processes
+```
+
+#### Integrated Execution Example
+```markdown
+"Load debugger.md then execute product recommendation system in debug mode"
+```
+
+**Important**: The `debugger.md` file contains complete specifications of the above syntax and can be used as a more detailed reference during actual debugging. This file includes experimentally verified accurate syntax definitions, rich execution examples, and troubleshooting guides.
+
+---
+
 ## 📜 Disclaimer
 
 Please read the following terms carefully before using this "Claude Code Natural Language Macro Programming Guide." By using this guide, you agree to these terms.
