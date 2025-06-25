@@ -85,6 +85,19 @@ The natural language macro programming techniques presented in this guide are ba
 - **Practical reliability**: Operates at a level with sufficient reliability for actual use
 - **Error handling capabilities**: Continues to provide partial value through graceful degradation and systematic error recovery
 
+### Cases with a Higher Potential for Failure
+
+To use this framework effectively, it is crucial to be aware of the following situations where the LLM's probabilistic nature can lead to unexpected behavior:
+
+**Complex Control Structures**:
+Nested loops (double, triple loops) and deep multi-level if-then-else branches increase the likelihood that the LLM will lose track of the current context or state, leading to unintended behavior.
+
+**Distant Variable References**:
+When referencing variables defined at the beginning of a macro after very long processing sequences, the LLM may "forget" the accurate values or context of those variables, potentially causing incorrect references.
+
+**Ambiguous Instructions in Natural Language**:
+Qualitative and ambiguous conditional branches such as "when the score is sufficiently high" or "if the results are good" can cause fluctuations in LLM interpretation, leading to different behavior on each execution. It is recommended to use quantitative instructions like "{{score}} > 90" whenever possible.
+
 ## 🎯 Learning Objectives
 
 1. **Fundamental Concepts of Natural Language Macro Programming**
