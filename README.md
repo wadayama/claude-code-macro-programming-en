@@ -20,9 +20,9 @@ Execute these directly in Claude Code to experience natural language macro progr
 
 ## 🎯 Overview
 
-**10 Design Patterns for Systematic Learning**
+**10 Design Patterns for Systematic Development**
 - Basic Processing Patterns (Sequential, Parallel, Conditional, Loop)
-- Advanced Patterns (Problem Solving, Learning, Environment Understanding, Human Collaboration, Error Handling, Debug)
+- Advanced Patterns (Problem Solving, Learning from Experience, Environment Understanding, Human Collaboration, Error Handling, Debug)
 
 **Appendix: Implementation Technologies**
 - A.1: System Control via Claude Code Slash Commands
@@ -54,7 +54,7 @@ Even users without programming experience can design agent behaviors using intui
 
 ## 🚀 Getting Started
 
-1. **[macro.md](./macro.md)** - Learn basic concepts and 10 design patterns
+1. **[macro.md](./macro.md)** - Master basic concepts and 10 design patterns
 2. **[examples/](./examples/)** - Practice with step-by-step examples
 
 ## 📋 Design Patterns

@@ -498,7 +498,7 @@ Within Parallel Haiku Creation Section:
 3. **Evaluation Integration**: `{{best_selection}}` → Integrated evaluation of parallel results
 4. **Final Output**: Comprehensive report referencing all variables
 
-### 💡 Learning Points
+### 💡 Key Points
 
 #### 1. Appropriate Pattern Combination
 - **Outer Framework**: Sequential Pipeline (Overall process)
@@ -695,7 +695,7 @@ Detailed practical examples of the basic 3 patterns can be learned from the foll
 
 **Application Criteria**:
 - ✅ Iterative processing with state updates needed
-- ✅ Want to implement continuous improvement or learning processes
+- ✅ Want to implement continuous improvement or experience-based learning processes
 - ✅ Need to execute complex processing logic within loops
 - ✅ Loop processing readability and maintainability are important
 - ✅ Need loops with conditional control and safety mechanisms
@@ -727,7 +727,7 @@ Display "Count: {{counter}}, Current total: {{total}}".
 Display "Complete! Final count: {{counter}}, Grand total: {{total}}".
 ```
 
-**Learning Points**:
+**Key Points**:
 - **State Variables**: `{{counter}}` and `{{total}}` are updated each loop
 - **Fixed Count**: Clear termination condition of 5 times
 - **State Accumulation**: Values change gradually through repetition
@@ -1017,7 +1017,7 @@ Display "Cooking learning cycle complete!"
 For next execution, delete learning_memory.json file.
 ```
 
-**Learning Points**:
+**Key Points**:
 - **Experience Recording**: Persist specific results in JSON format
 - **Lesson Extraction**: Derive specific improvement points from problems
 - **Knowledge Utilization**: Improvement practice referencing past experience
@@ -1077,7 +1077,7 @@ Add estimation result to {{game_history}} and save to game_history.json:
 - What you noticed (optional)
 
 ## Final Learning Results
-After game completion, reflect on learning process from {{game_history}}:
+After game completion, reflect on improvement process from {{game_history}}:
 "Number guessing learning complete! Reached correct answer in {{attempt_count}} attempts"
 "Freely analyze learning effects and strategies you discovered"
 
@@ -1524,7 +1524,7 @@ Record this series of intervention processes to hitl_log.json:
 - Revision count: {{revision_count}}
 ```
 
-**Learning Points**:
+**Key Points**:
 1. **Staged approval** realizes human intervention at important judgment points
 2. **Explicit waiting** controls automated processing and clarifies responsibility
 3. **Feedback integration** reflects human insights into system
@@ -1705,7 +1705,7 @@ Finally:
 - Record improvement suggestions for next execution
 ```
 
-### Learning Points
+### Key Points
 
 **Try-Catch-Finally**:
 1. **Explicit Error Response**: Pre-define specific recovery procedures for failures
@@ -1797,7 +1797,7 @@ Execute the following in debug mode:
 Execute the following in debug mode:
 "Save today's weather information to {{weather}}, then save clothing suggestions based on {{weather}} to {{outfit}}"
 
-Expected Learning Effects:
+Expected Effects:
 - Understanding variable value setting processes
 - Visualization of inter-variable dependencies
 - Learning to read basic debug output
@@ -1810,7 +1810,7 @@ Expected Learning Effects:
 Execute the following in debug mode:
 "If {{temperature}} is below 20 degrees and {{weather}} is rain, save as 'Caution for Going Out'; otherwise save as 'Normal Going Out' to {{advice}}"
 
-Expected Learning Effects:
+Expected Effects:
 - Understanding compound condition evaluation processes
 - Visualization of logical operations (AND, OR)
 - Explanation of branch selection reasons
@@ -1823,7 +1823,7 @@ Expected Learning Effects:
 Execute the following in debug mode:
 "Execute the complete process of price filtering → inventory check → recommendation decision → quotation creation from product data with budget 150,000 yen and required quantity 3 units"
 
-Expected Learning Effects:
+Expected Effects:
 - State management in long processes
 - Integration of numerical calculations and business logic
 - End-to-end process tracking
