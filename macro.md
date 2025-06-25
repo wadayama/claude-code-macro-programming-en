@@ -1746,7 +1746,6 @@ Claude Code provides the following built-in slash commands:
 - `/clear` - Reset conversation history and context (memory optimization)
 - `/model` - Switch between Claude models (Opus/Sonnet, etc.)
 - `/ide` - Check IDE integration status (open files, linter errors, etc.)
-- `/init` - Automatically generate CLAUDE.md file
 - `/permissions` - Manage tool allowlists
 
 
