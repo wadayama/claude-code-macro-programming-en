@@ -104,23 +104,41 @@ You can instruct tool usage with natural language like:
 ## Loop Processing Specifications
 
 ### Basic Syntax
-- "Repeat ... N times"
-- "Execute the following N times"
+- **Count-based loops**: "Repeat ... N times", "Execute the following N times"
+- **Conditional loops**: "Repeat until...", "Continue until..."
 
 ### Execution Specifications
+
+#### Count-based loops
 - Execute completely for the specified number of times **without abbreviation**
 - Abbreviation expressions like "continuing", "..." are **PROHIBITED**
 - Display results each time and continue until the Nth iteration
-- **Ignore** system conciseness constraints
 
-### Execution Example
+#### Conditional loops
+- Continue execution until the condition is met
+- **Safety limit**: Set maximum iteration count internally (typically 10-20 times)
+- To prevent infinite loops, terminate with warning when limit is reached
+- Display processing results for each iteration
+
+### Execution Examples
 ```
 "Repeat the following 3 times: increment count by 1 and display"
 → Display 1st iteration processing and results
 → Display 2nd iteration processing and results
 → Display 3rd iteration processing and results
 (Execute and display all iterations without abbreviation)
+
+"Repeat the following until {{score}} becomes 70 or higher"
+→ 1st iteration: execute processing and check score
+→ 2nd iteration: execute processing and check score
+→ ...
+→ Terminate when condition is met or safety limit is reached
 ```
+
+### Recommendations
+- Prefer count-based loops over conditional loops when possible
+- Avoid complex conditions; simple numeric comparisons are recommended
+- Consider alternative approaches using external commands + event-driven processing
 
 ## Behavior When Specification is Violated
 
