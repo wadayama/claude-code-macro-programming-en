@@ -2065,20 +2065,20 @@ Typical integration example: "Continuously monitor directory `/orders`, and when
 
 Event-Driven execution enables the construction of agent systems with high responsiveness for real-time systems and business automation.
 
-## A.3: Risk Mitigation Strategies for Mission-Critical Environments
+## A.3: Risk Mitigation Strategies for Important Tasks
 
 ### Background and Challenge Recognition
 
-Natural Language Macro Programming is expected to be utilized across diverse fields due to its intuitiveness and high explainability. However, uncertainties derived from the probabilistic behavioral characteristics of LLMs (Large Language Models) can pose significant risks in specific environments.
+Natural Language Macro Programming is expected to be utilized across diverse fields due to its intuitiveness and high explainability. However, due to uncertainties derived from the probabilistic behavioral characteristics of LLMs (Large Language Models), appropriate risk mitigation strategies are necessary for high-importance tasks.
 
-**Challenges from Probabilistic Uncertainty**:
-- Difficulty in guaranteeing 100% operational reliability in principle
+**Characteristics and Challenges of Probabilistic Systems**:
+- Difficulty in guaranteeing 100% operational reliability in principle (probabilistic operating system)
 - Possibility of unexpected interpretations or execution results
-- Discrepancy with reliability requirements in mission-critical decisions
-- Application constraints in fields with strict legal responsibility and safety requirements
+- Need for careful operation in important business processes
+- Clarification of application scope and recognition of limitations
 
 **Purpose of This Section**:
-To achieve safe and responsible utilization of natural language macro programming through a three-layer defense strategy (proactive design prevention, runtime error handling, auditing and continuous improvement) to approach the reliability levels required by traditional deterministic systems.
+Assuming the nature of probabilistic systems, to achieve safe and responsible utilization of natural language macro programming for important business tasks through a three-layer defense strategy (proactive design prevention, runtime error handling, auditing and continuous improvement).
 
 ### Layer 1: Proactive Design Measures (Proactive Design)
 
