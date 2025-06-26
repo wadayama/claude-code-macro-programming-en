@@ -34,7 +34,7 @@ Please also calculate an overall evaluation.
 
 ## Phase 2: Experience Recording and Analysis
 
-Save writing experience to writing_memory.json file for persistence with the following structure:
+Save writing experience to writing_memory.json file with the following structure:
 
 ```json
 {

@@ -181,7 +181,7 @@ The approach proposed in this research is expected to provide methodological fou
 - Conditional branching: Natural language conditional instructions ("if...", "depending on...", etc.)
 - `{{variable_name}}`: Variable reference
 - Variable storage: "Save ... to {{variable_name}}"
-- Persistent storage: "Save {{variable_name}} to filename.json for persistence"
+- File storage: "Save {{variable_name}} to filename.json"
 - File loading: "Load filename.json and set to {{variable_name}}"
 - External module execution: "Execute filename.md"
 - File search: "Search for files containing 'keyword'"
@@ -312,7 +312,7 @@ Display results in appropriate format using {{content}}.
 ```markdown
 ## Today's Learning Record
 Save today's learning content as "Claude Code Basic Operations" to {{today_study}}, and
-save {{today_study}} to study_log.json for persistence.
+save {{today_study}} to study_log.json.
 
 ## Progress Confirmation
 Load study_log.json and set to {{study_history}},
@@ -345,7 +345,7 @@ Confirm completeness of {{tech_trends}}, {{market_size}}, {{company_strategies}}
 - If 2 or fewer: Create basic report with available information and note missing parts
 
 ## Result Storage
-Save final report to ai_market_report.json for persistence.
+Save final report to ai_market_report.json.
 ```
 
 ---
@@ -713,7 +713,7 @@ Detailed practical examples of the basic 3 patterns can be learned from the foll
 
 ---
 
-### Pattern 4: Loop Processing (TODO-list Based Iteration)
+### Pattern 4: Loop & Modular Programming
 
 **Overview**: A new pattern utilizing TODO lists to realize reliable and highly visible iterative processing. Eliminates traditional counter control methods and achieves stable loop operation through TODO task management. Confirmed stable operation in experiments.
 
@@ -992,10 +992,7 @@ After all task completion, integrate results and present as complete recipe
 
 
 **Key Learning Points**: 
-1. **Recursive decomposition thinking** masters programming-like problem solving
-2. **TODO tool coordination** realizes reliable state management
-3. **Decomposition judgment logic** learns appropriate granularity control
-4. **Integration process** practices systematization of distributed results
+**Recursive decomposition thinking** masters programming-like problem solving. **TODO tool coordination** realizes reliable state management. **Decomposition judgment logic** learns appropriate granularity control. **Integration process** practices systematization of distributed results.
 
 ### 📁 Practical Samples
 
@@ -1038,7 +1035,7 @@ Cooking time: 20 minutes
 Evaluation: Bland taste, somewhat sticky (5/10 points)
 
 ## Experience Recording
-Save the following cooking experience to learning_memory.json for persistence:
+Save the following cooking experience to learning_memory.json:
 
 {
   "cooking_experiences": [
@@ -1140,10 +1137,7 @@ For next execution, delete game_history.json file.
 ```
 
 **Key Learning Points**: 
-1. **Experience persistence** realizes long-term memory across sessions
-2. **Continuous learning cycle** constructs iterative improvement processes
-3. **Insight extraction** discovers general principles from individual experiences
-4. **State management** tracks and visualizes learning progress
+**Experience persistence** realizes long-term memory across sessions. **Continuous learning cycle** constructs iterative improvement processes. **Insight extraction** discovers general principles from individual experiences. **State management** tracks and visualizes learning progress.
 
 ### 📁 Practical Samples
 
@@ -1316,7 +1310,7 @@ Set customer inquiry "Delivery seems delayed, what's happening?" to {{inquiry}}.
 Refer to {{knowledge_base}} to generate an optimal response to {{inquiry}} and save to {{response}}.
 
 ## Response History Recording
-Record {{inquiry}} and {{response}} to support_log.json for persistence.
+Record {{inquiry}} and {{response}} to support_log.json.
 ```
 
 ### 🌍 Environment Model
@@ -1365,7 +1359,7 @@ Based on {{current_state}} and {{new_order}}:
 - Judge stock shortage warnings
 - Determine automatic ordering necessity
 
-Save the updated state to {{updated_state}} and persist to inventory_status.json.
+Save the updated state to {{updated_state}} to inventory_status.json.
 
 ## Prediction and Alert Function
 Analyze {{updated_state}} and extract products expected to be out of stock within 24 hours to {{alerts}}.
@@ -1407,7 +1401,7 @@ Save the results to {{meeting_action}}.
 Load similar meeting success patterns from past_meetings.json to {{lessons}} and
 utilize for {{meeting_action}} improvement.
 
-Append updated insights to past_meetings.json for persistence.
+Append updated insights to past_meetings.json.
 ```
 
 ### 🎯 Coordination of Knowledge base and Environment model
@@ -1424,10 +1418,7 @@ Append updated insights to past_meetings.json for persistence.
 - **Parallel Processing**: Parallel reference and integration of multiple knowledge sources
 
 **Key Learning Points**:
-1. **Appropriate knowledge separation** to distinguish between knowledge base and environment model usage
-2. **State management design** to reliably capture important environment changes
-3. **Multiple information integration** to realize judgment leveraging characteristics of each information source
-4. **Continuous updates** to gradually improve knowledge and model accuracy
+**Appropriate knowledge separation** to distinguish between knowledge base and environment model usage. **State management design** to reliably capture important environment changes. **Multiple information integration** to realize judgment leveraging characteristics of each information source. **Continuous updates** to gradually improve knowledge and model accuracy.
 
 ### 📁 Practical Samples
 
@@ -1585,10 +1576,7 @@ Record this series of intervention processes to hitl_log.json:
 4. **Record retention** ensures transparency of decision-making process
 
 **Key Learning Points**:
-1. **Appropriate intervention frequency** balances efficiency and safety
-2. **Clear judgment criteria** reduce human burden and promote quick decisions
-3. **Flexible modification function** effectively utilizes human feedback
-4. **Responsibility visualization** ensures transparency and accountability of decisions
+**Appropriate intervention frequency** balances efficiency and safety. **Clear judgment criteria** reduce human burden and promote quick decisions. **Flexible modification function** effectively utilizes human feedback. **Responsibility visualization** ensures transparency and accountability of decisions.
 
 ### 📁 Practical Samples
 
@@ -1762,16 +1750,10 @@ Finally:
 ### Key Points
 
 **Try-Catch-Finally**:
-1. **Explicit Error Response**: Pre-define specific recovery procedures for failures
-2. **Ensuring Redundancy**: Improve reliability through multiple execution paths
-3. **Situation Recording**: Utilize success/failure information for future improvements
-4. **Preparation for Unexpected Failures**: Avoid complete system shutdown
+**Explicit Error Response** pre-defines specific recovery procedures for failures. **Ensuring Redundancy** improves reliability through multiple execution paths. **Situation Recording** utilizes success/failure information for future improvements. **Preparation for Unexpected Failures** avoids complete system shutdown.
 
 **Graceful Degradation**:
-1. **Gradual Quality Adjustment**: Provide valuable results even when not perfect
-2. **Adaptation to Constraints**: Optimization under resource or data limitations
-3. **User Expectation Management**: Clear explanation of limitations
-4. **Continuous Service**: Maintain system value through partial functionality provision
+**Gradual Quality Adjustment** provides valuable results even when not perfect. **Adaptation to Constraints** optimizes under resource or data limitations. **User Expectation Management** clearly explains limitations. **Continuous Service** maintains system value through partial functionality provision.
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## Research Theme Setting
 Save "Impact of Generative AI on Education" as the research theme to {{research_theme}}, 
-and save {{research_theme}} to research_theme.json for persistence.
+and save {{research_theme}} to research_theme.json.
 
 ## Hypothesis Construction
 Please construct 3 research hypotheses about {{research_theme}} from the following perspectives and save them to {{hypotheses}}:

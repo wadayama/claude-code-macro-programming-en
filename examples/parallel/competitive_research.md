@@ -1,7 +1,7 @@
 # Competitive Research System (Parallel Processing - Intermediate)
 
 ## Research Target Setting
-Save the following 5 companies as major players in the "Cloud Services Market" to {{target_companies}}, and save {{target_companies}} to target_companies.json for persistence:
+Save the following 5 companies as major players in the "Cloud Services Market" to {{target_companies}}, and save {{target_companies}} to target_companies.json:
 - Amazon AWS
 - Microsoft Azure  
 - Google Cloud Platform
@@ -37,7 +37,7 @@ Please compare {{aws_analysis}}, {{azure_analysis}}, {{gcp_analysis}}, {{ibm_ana
 - Growth potential
 
 ## Strategic Insights Extraction
-Based on {{comparison_matrix}}, please analyze the competitive structure in the market and future development forecasts, and save strategic insights to competitive_insights.json for persistence.
+Based on {{comparison_matrix}}, please analyze the competitive structure in the market and future development forecasts, and save strategic insights to competitive_insights.json.
 
 ---
 

@@ -1,5 +1,12 @@
 # 🎌 Haiku Generation Agent System
 
+## Complete Initialization (Clean Start)
+
+Delete variables.json if it exists
+Clear all TODO list items
+
+Display "=== Haiku Generation Agent System Started ===".
+
 ## Theme Generation
 Please generate 4 creative and unusual haiku themes. Focus on unique and intriguing concepts rather than seasonal or natural elements.
 
