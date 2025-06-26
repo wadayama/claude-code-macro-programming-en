@@ -699,151 +699,201 @@ Detailed practical examples of the basic 3 patterns can be learned from the foll
 
 ---
 
-### Pattern 4: Loop & Modular Programming
+### Pattern 4: Loop Processing (TODO-list Based Iteration)
 
-**Overview**: Advanced pattern executing iterative processing while maintaining state and separating complex logic into external modules to improve system maintainability and reusability. Gradually constructs from simple iterative processing to practical loop systems with conditional control and safety mechanisms.
+**Overview**: A new pattern utilizing TODO lists to realize reliable and highly visible iterative processing. Eliminates traditional counter control methods and achieves stable loop operation through TODO task management. Confirmed stable operation in experiments.
 
-**Processing Flow**: `Initialization → [State Update → External Module Execution → Condition Judgment] → Termination Processing`
+**Processing Flow**: `Initialization → TODO Task Creation → Sequential Execution → [Condition Check → Delete Remaining Tasks] → Completion`
 
 **Application Criteria**:
-- ✅ Iterative processing with state updates needed
-- ✅ Want to implement continuous improvement or experience-based learning processes
-- ✅ Need to execute complex processing logic within loops
-- ✅ Loop processing readability and maintainability are important
-- ✅ Need loops with conditional control and safety mechanisms
-- ❌ Simple repetition without state changes (→Basic iteration is sufficient)
+- ✅ Reliable iterative processing needed
+- ✅ When execution state visibility is important
+- ✅ Conditional loop termination required
+- ✅ Want to implement debuggable loop processing
+- ✅ Want to avoid complexity of counter management
+- ❌ Very simple one-time processing (→Basic processing is sufficient)
 
-**Modular Design Value**:
-- **Readability**: Separation of loop control and processing logic
-- **Reusability**: Independent use of processing modules
-- **Maintainability**: Independent development and testing of each part
-- **Scalability**: Large-scale system construction
+**TODO-list Based Value**:
+- **Reliability**: High stability through elimination of counter management
+- **Visibility**: Complete transparency of execution state through TODO lists
+- **Control**: Flexible termination control through dynamic task deletion
+- **Debuggability**: Clear understanding of each task's execution status
 
-### 🔢 Basic Example: Simple Count-up System
+### 🧹 Clean Start Functionality
 
-First, to understand the most basic concepts of Loop & Modular Programming, start with simple fixed-count loops:
+All loop processing executes clean start for reliable initialization:
 
 ```markdown
-## Initial Setup
-Set counter to 0 as {{counter}}.
-Set total value to 0 as {{total}}.
-
-## 5-time Repeat Loop
-Repeat the following 5 times:
-
-Add 1 to {{counter}}.
-Add {{counter}} to {{total}}.
-Display "Count: {{counter}}, Current total: {{total}}".
-
-## Final Result
-Display "Complete! Final count: {{counter}}, Grand total: {{total}}".
+## Complete Initialization
+Delete variables.json if it exists
+Clear all TODO list items
 ```
 
-**Key Points**:
-- **State Variables**: `{{counter}}` and `{{total}}` are updated each loop
-- **Fixed Count**: Clear termination condition of 5 times
-- **State Accumulation**: Values change gradually through repetition
+**Importance**:
+- **Pure experimental environment**: No results from previous executions remain
+- **Predictable behavior**: Always starts from the same initial state
+- **Debugging ease**: Easy to identify problem causes
 
-### 🏗️ Application Example: Modular Quality Improvement System
+### 🔢 Basic Example: Fixed-count Loop
 
-*Main Loop File (main_improvement.md)*:
+The most basic implementation of TODO-list based fixed-count loops:
+
 ```markdown
-## Initial Setup
-Set quality score to 40 as {{score}}.
-Set improvement count to 0 as {{iteration}}.
-Set improvement history to empty state as {{improvement_log}}.
+# Fixed-count TODO-list Based Loop
 
-## Quality Improvement Loop
-Repeat the following until {{score}} reaches 85 or above or {{iteration}} reaches 8:
+## Complete Initialization
+Delete variables.json if it exists
+Clear all TODO list items
 
-Display "=== Improvement Cycle {{iteration}} Start ===".
+Display "=== Loop System Start ===".
 
-Execute improvement_process.md.
+## Variable Initialization
+Set {{counter}} to 0
+Set {{result}} to empty
 
-Add 1 to {{iteration}}.
+## Loop Task Creation
+Add the following task pair to TODO list 5 times:
+- Execute one processing cycle
+- Display current progress
 
-Display "=== Improvement Cycle {{iteration}} Complete ===".
+## Execution
+Execute TODO list tasks sequentially from top
 
-## Final Result Report
-Display "Quality improvement process complete".
+For each "Execute one processing cycle" task:
+1. Add 1 to {{counter}}
+2. Display "Processing cycle {{counter}} in progress"
+3. Append "Cycle{{counter}}" to {{result}}
+4. Display "Processing cycle {{counter}} complete"
 
-Report the following information:
-- Final quality score: {{score}}
-- Improvement cycles executed: {{iteration}}
-- Improvement history: {{improvement_log}}
+For each "Display current progress" task:
+1. Display "Current counter: {{counter}}"
+2. Display "Current result: {{result}}"
 
-Execute overall improvement process evaluation.
+## Final Report
+After all TODO tasks complete:
+Display "=== Processing Complete ===".
+Display "Total cycles executed: {{counter}}"
+Display "Final result: {{result}}"
 ```
 
-*Processing Module File (improvement_process.md)*:
+**Technical Features**:
+- **No counter management needed**: TODO list handles iteration count
+- **Complete visibility**: All execution states visible through TODO list
+- **Reliable termination**: Definite end when all tasks complete
+
+### 🔀 Conditional Loop: Dynamic Task Deletion
+
+TODO-list based approach enables reliable conditional termination:
+
 ```markdown
-## Current Situation Analysis
-Confirm current quality score {{score}} and display "Current score: {{score}}".
+# Conditional TODO-list Based Loop
 
-## Adaptive Improvement Processing
-Execute the following improvement processing according to the {{score}} value:
+## Complete Initialization
+Delete variables.json if it exists
+Clear all TODO list items
 
-If {{score}} is below 60:
-→ Display "Executing basic improvement processing"
-→ Add 12 to {{score}}
-→ Append "Basic improvement: +12 points" to {{improvement_log}}
+## Variable Initialization
+Set {{score}} to 30
+Set {{session}} to 0
 
-If {{score}} is 60 or above but below 75:
-→ Display "Executing intermediate improvement processing"  
-→ Add 8 to {{score}}
-→ Append "Intermediate improvement: +8 points" to {{improvement_log}}
+## Loop Task Creation
+Add the following task pair to TODO list up to 5 times:
+- Execute one learning session
+- If {{score}} is 70 or above, delete remaining tasks and terminate
 
-If {{score}} is 75 or above but below 85:
-→ Display "Executing advanced improvement processing"
-→ Add 5 to {{score}}
-→ Append "Advanced improvement: +5 points" to {{improvement_log}}
+## Execution
+Execute TODO list tasks sequentially from top
 
-If {{score}} is 85 or above:
-→ Display "Executing fine-tuning processing"
-→ Add 2 to {{score}}
-→ Append "Fine-tuning: +2 points" to {{improvement_log}}
+For each "Execute one learning session" task:
+1. Add 1 to {{session}}
+2. Add 12 to {{score}} (learning effect)
+3. Display "Session {{session}}: Score {{score}}"
 
-## Improvement Result Recording
-Display the improved new score {{score}}.
-
-Confirm the type and effect of the executed improvement and display "Improvement processing complete".
+For each conditional termination task:
+1. Check if {{score}} is 70 or above
+2. If condition met: Delete all remaining TODO tasks
+3. Display termination message
 ```
 
-### 🔄 Three Patterns of Termination Conditions
+**Technical Advantages**:
+- **Dynamic termination control**: Flexible loop exit through task deletion
+- **No infinite loop risk**: Maximum task count provides safety limit
+- **Clear termination logic**: Explicit condition checking and task management
 
-#### 1. Pure Conditional Termination
+### 🏗️ Application Example: Adaptive Quality Improvement System
+
+*Main Processing File (quality_improvement.md)*:
 ```markdown
-Continue processing until {{score}} reaches target value:
-→ No count limit, termination judgment by condition only
-→ Reliable goal achievement, predictable convergence
+## Complete Initialization
+Delete variables.json if it exists
+Clear all TODO list items
+
+Display "=== Quality Improvement System Start ===".
+
+## Variable Initialization  
+Set {{quality_score}} to 45
+Set {{improvement_cycle}} to 0
+Set {{improvement_history}} to empty
+
+## Loop Task Creation
+Add the following task pair to TODO list up to 8 times:
+- Execute one quality improvement cycle
+- If {{quality_score}} is 85 or above, delete remaining tasks and terminate
+
+## Execution
+Execute TODO list tasks sequentially from top
+
+For each "Execute one quality improvement cycle" task:
+1. Add 1 to {{improvement_cycle}}
+2. Display "=== Improvement Cycle {{improvement_cycle}} Start ==="
+3. Display "Current quality score: {{quality_score}}"
+
+4. Execute adaptive improvement processing:
+   - If {{quality_score}} is below 60:
+     → Display "Executing basic quality improvement"
+     → Add 15 to {{quality_score}}
+     → Append "Basic improvement +15 points" to {{improvement_history}}
+   
+   - If {{quality_score}} is 60 or above but below 75:
+     → Display "Executing intermediate quality improvement"
+     → Add 10 to {{quality_score}}  
+     → Append "Intermediate improvement +10 points" to {{improvement_history}}
+   
+   - If {{quality_score}} is 75 or above but below 85:
+     → Display "Executing advanced quality improvement"
+     → Add 6 to {{quality_score}}
+     → Append "Advanced improvement +6 points" to {{improvement_history}}
+
+5. Display "Post-improvement score: {{quality_score}}"
+6. Display "=== Improvement Cycle {{improvement_cycle}} Complete ==="
+
+## Final Quality Report
+After all TODO tasks complete:
+
+Display "=== Quality Improvement Complete Report ===".
+
+Report the following improvement results:
+- Initial quality score: 45
+- Final quality score: {{quality_score}}
+- Improvement cycles executed: {{improvement_cycle}}
+- Improvement history: {{improvement_history}}
+- Quality improvement rate: Calculate and display
+
+Summarize quality improvement effectiveness analysis and future continuous improvement proposals.
 ```
 
-#### 2. Multiple Condition Termination
-```markdown
-Continue until any of the following is satisfied:
-→ Quality goal achieved OR zero errors achieved OR improvement stagnation detected
-→ Complex termination judgment, flexible control
-```
-
-#### 3. Safety Mechanism Termination
-```markdown
-Main condition: {{score}} >= target value
-Safety limit: Maximum {{max_iterations}} times
-→ Infinite loop prevention, practical limit setting
-```
-
-**Key Learning Points**: 
-1. **Separation of loop control and processing logic** manages complexity
-2. **Consistent state variable management** realizes predictable behavior  
-3. **Appropriate termination condition design** balances practicality and safety
-4. **External module execution** enables reusable component design
+**System Characteristics**:
+- **Adaptive processing**: Efficient score improvement through adaptive improvement processing
+- **Complex conditional branching**: Real-world modeling including complex conditional branches
+- **Dynamic termination control**: Reliable goal achievement detection through dynamic termination control
+- **Complete traceability**: Full traceability through improvement history
 
 ### 📁 Practical Samples
 
-Detailed practical examples of Loop & Modular Programming:
+Detailed practical examples of TODO-list Based Loop Processing:
 
-- **Beginner**: [Learning Progress Management System](./examples/loop_modular/learning_progress.md) - Iterative learning for score improvement
-- **Intermediate**: [Presentation Quality Optimization System](./examples/loop_modular/presentation_optimizer.md) - Multi-axis iterative improvement
+- **Beginner**: [Learning Progress Management System](./examples/loop_modular/learning_progress.md) - Basic TODO-list based loops with conditional termination
+- **Intermediate**: [Quality Improvement System](./examples/loop_modular/quality_improvement.md) - Adaptive improvement processing with score-based termination
 
 ---
 

@@ -1,38 +1,49 @@
 # Learning Progress Management System (Beginner)
 
-**Overview**: Basic example of Loop & Modular Programming that progressively improves learning scores. Main loop manages learning cycles while external modules execute specific learning processes.
+**Overview**: Basic example of TODO-list based Loop Processing that progressively improves learning scores. Achieves reliable, highly visible loop processing by using TODO task management without traditional counter control.
 
 **Learning Objectives**: 
-- Separation of loop control and processing logic
-- State variable management
-- Conditional termination assessment
-- External module execution
+- Understanding basic TODO-list based loops
+- Utilizing clean start functionality
+- Implementing conditional loop termination
+- Complete visibility of execution state
 
 ---
 
-## Initial Setup
+## Complete Initialization (Clean Start)
 
-Set the learning score to 30 and save to {{score}}.
-Set the learning count to 0 and save to {{session}}.
-Set the learning history to empty and save to {{learning_log}}.
+Delete variables.json if it exists
+Clear all TODO list items
 
 Display "=== Learning Progress Management System Started ===".
 
-## Learning Cycle
+## Variable Initialization
 
-Repeat the following until {{score}} reaches 70 or above:
+Set {{score}} to 30
+Set {{session}} to 0
+Set {{learning_log}} to empty
 
-Add 1 to {{session}}.
+## Loop Task Creation
 
-Display "--- Learning Session {{session}} Started ---".
+Add the following task pair to TODO list up to 5 times:
+- Execute one learning session
+- If {{score}} is 70 or above, delete remaining tasks and terminate
 
-Execute study_session.md.
+## Execution
 
-Display "--- Learning Session {{session}} Completed ---".
+Execute TODO list tasks sequentially from top
 
-If {{score}} reaches 70 or above, display "Goal achieved! Learning completed".
+For each "Execute one learning session" task:
+1. Add 1 to {{session}}
+2. Display "--- Learning Session {{session}} Started ---"
+3. Add 12 to {{score}} (learning effect)
+4. Append "Learning+12 points" to {{learning_log}}
+5. Display "--- Learning Session {{session}} Completed ---"
+6. Display "Current score: {{score}}"
 
 ## Final Report
+
+After all TODO tasks complete:
 
 Display "=== Learning Results Report ===".
 
@@ -49,14 +60,13 @@ Summarize learning effectiveness and future recommendations.
 
 **Initial State**: Score 30, Session 0
 **Goal**: Score 70 or above
-**Expected Cycle Count**: 3-4 sessions
-**Learning Point**: Improved readability through module separation
+**Expected Execution Pattern**: 
+- Session 1: 30→42 (continue)
+- Session 2: 42→54 (continue)  
+- Session 3: 54→66 (continue)
+- Session 4: 66→78 (condition met! delete remaining tasks)
 
-**Loop & Modular Programming Pattern Characteristics**:
-1. **Loop Control**: Main system manages iteration and termination conditions
-2. **Modular Execution**: Specific learning logic separated into study_session.md
-3. **State Persistence**: Variables maintain state across loop iterations
-4. **Progressive Improvement**: Each iteration builds upon previous results
-5. **Clean Separation**: Loop management and business logic are distinct concerns
-
-This example demonstrates how Loop & Modular Programming enables maintainable, scalable systems by separating control flow from business logic while maintaining state across multiple iterations.
+**Technical Features**: 
+- No counter management required for stability
+- Complete progress visibility through TODO list state
+- Reliable conditional termination through dynamic task deletion
