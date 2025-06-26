@@ -103,7 +103,7 @@ To use this framework effectively, it is crucial to be aware of the following si
 Nested loops (double, triple loops) and deep multi-level if-then-else branches increase the likelihood that the LLM will lose track of the current context or state, leading to unintended behavior.
 
 **Distant Variable References**:
-When referencing variables defined at the beginning of a macro after very long processing sequences, the LLM may "forget" the accurate values or context of those variables, potentially causing incorrect references.
+While the variables.json auto-management system ensures variable value persistence, issues may arise with appropriate variable selection or variable name confusion when dealing with numerous similar variable names or dynamically generated variables. Explicit variable naming conventions and periodic variable verification are recommended.
 
 **Ambiguous Instructions in Natural Language**:
 Qualitative and ambiguous conditional branches such as "when the score is sufficiently high" or "if the results are good" can cause fluctuations in LLM interpretation, leading to different behavior on each execution. It is recommended to use quantitative instructions like "{{score}} > 90" whenever possible.
@@ -990,28 +990,6 @@ Repeat Phase 2 as long as pending tasks remain
 After all task completion, integrate results and present as complete recipe
 ```
 
-### 🔄 Three Benefits of TODO List Tool
-
-#### 1. Complexity Management
-```markdown
-Large Problem → Understandable Units → Gradual Solution:
-→ Division considering human cognitive limits
-→ Reliable understanding and execution at each step
-```
-
-#### 2. Reliable Progress Assurance
-```markdown  
-Non-decomposable → Concrete Execution → Completed → Accumulation:
-→ Each task completion guarantees overall progress
-→ Design leaving no half-finished states
-```
-
-#### 3. Interruption and Resumption Capability
-```markdown
-TODO List → State Retention → Session Spanning → Continued Processing:
-→ Flexible management of long-term projects
-→ Possible work sharing among multiple people
-```
 
 **Key Learning Points**: 
 1. **Recursive decomposition thinking** masters programming-like problem solving
