@@ -206,15 +206,23 @@ Save {{final_report}} to report.json for permanent storage.
 
 ### Variable Management Features
 
-A unified natural language notation is used:
+A unified natural language notation is adopted with **JSON file-based external variable management** for reliable state persistence:
 
 ```markdown
 # Result Storage
 Analyze data and save results to {{analysis_result}}.
+→ Automatically saved to variables.json as {"analysis_result": "analysis results"}
 
 # Result Reference  
 Based on {{analysis_result}}, create a report.
+→ Reliably retrieves value from variables.json for processing
 ```
+
+**Variable Management System Features**:
+- **Reliability**: Eliminates LLM speculation-based variable value fluctuations
+- **Transparency**: All variable states can be verified in variables.json at any time
+- **Persistence**: Variables are retained even after session termination
+- **Debuggability**: Variable setting and reference history can be tracked
 
 ### Control Structures
 
