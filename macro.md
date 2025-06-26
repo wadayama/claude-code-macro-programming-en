@@ -366,6 +366,13 @@ Save final report to ai_market_report.json for persistence.
 
 **Practical Example: Blog Article Creation System**
 ```markdown
+## Complete Initialization (Clean Start)
+
+Delete variables.json if it exists
+Clear all TODO list items
+
+Display "=== Sequential Pipeline Processing Started ===".
+
 ## Topic Research
 Research "Remote Work Benefits" on the web and save 5 main points to {{research}}.
 
@@ -444,6 +451,13 @@ Upon each phase completion, confirm overall progress and determine transition to
 
 **Practical Example: Weekend Activities Analysis System**
 ```markdown
+## Complete Initialization (Clean Start)
+
+Delete variables.json if it exists
+Clear all TODO list items
+
+Display "=== Parallel Processing System Started ===".
+
 ## Analysis Target Setting
 Save "Fulfilling Weekend" as analysis target to {{weekend}}.
 

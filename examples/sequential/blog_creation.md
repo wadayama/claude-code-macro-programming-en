@@ -1,5 +1,12 @@
 # Blog Article Creation System (Sequential Pipeline - Beginner)
 
+## Complete Initialization (Clean Start)
+
+Delete variables.json if it exists
+Clear all TODO list items
+
+Display "=== Sequential Pipeline Processing Started ===".
+
 ## Topic Setting
 Save "2025 Technology Trends" as the blog article topic to {{topic}}.
 

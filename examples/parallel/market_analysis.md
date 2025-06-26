@@ -1,5 +1,12 @@
 # Market Analysis System (Parallel Processing - Beginner)
 
+## Complete Initialization (Clean Start)
+
+Delete variables.json if it exists
+Clear all TODO list items
+
+Display "=== Parallel Processing System Started ===".
+
 ## Analysis Target Setting
 Save "Electric Vehicle Market" as the analysis target to {{target_market}}.
 
