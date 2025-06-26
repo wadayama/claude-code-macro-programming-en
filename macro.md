@@ -102,7 +102,7 @@ To use this framework effectively, it is crucial to be aware of the following si
 **Complex Control Structures**:
 Nested loops (double, triple loops) and deep multi-level if-then-else branches increase the likelihood that the LLM will lose track of the current context or state, leading to unintended behavior.
 
-**Distant Variable References**:
+**Variable Selection Errors and Name Confusion**:
 While the variables.json auto-management system ensures variable value persistence, issues may arise with appropriate variable selection or variable name confusion when dealing with numerous similar variable names or dynamically generated variables. Explicit variable naming conventions and periodic variable verification are recommended.
 
 **Ambiguous Instructions in Natural Language**:
@@ -1777,7 +1777,7 @@ Finally:
 
 ## Pattern 10: Debug & Tracing
 
-**Overview**: State tracking and problem diagnosis functionality for macro execution processes. LLM provides real-time natural language debug information, explicitly showing variable values and decision rationales to enable identification of unintended behavior causes and promote understanding. When using debug functionality, enable the debugger by first running "Please load debugger.md".
+**Overview**: State tracking and problem diagnosis functionality for macro execution processes. LLM provides real-time natural language debug information, explicitly showing variable values and decision rationales to enable identification of unintended behavior causes and promote understanding.
 
 **Processing Flow**: `Execution → State Recording → Analysis & Judgment → Diagnostic Information Output`
 
@@ -1788,6 +1788,29 @@ Finally:
 - ✅ Non-technical users need to understand processing
 - ❌ Simple processing where overhead is unnecessary (→ Consider [Sequential Pipeline](./examples/sequential/))
 - ❌ Production environments prioritizing performance (→ Recommend normal mode execution)
+
+### 📋 Debug Execution Preparation Steps
+
+When using debug functionality, prepare with the following steps:
+
+#### Step 1: Load Debug Functionality
+```markdown
+"Please load debugger.md"  
+→ Enable debug-specific syntax and output functionality
+```
+
+#### Step 2: Debug Execution
+```markdown
+"Execute [processing content] in debug mode"
+→ Visualize detailed execution process
+```
+
+#### Integrated Execution Example
+```markdown
+"Please load debugger.md and then execute the product recommendation system in debug mode"
+```
+
+**Important**: The [`debugger.md`](./debugger.md) file contains complete specifications of the above syntax and can be used as a more detailed reference during actual debugging. This file includes experimentally verified accurate syntax definitions, rich execution examples, and troubleshooting guides.
 
 **Practical Example: Learning Score Evaluation System Debug**
 
@@ -1923,28 +1946,6 @@ Expected Effects:
 [DEBUG] Next Action: [next processing to execute]
 ```
 
-### 📋 Debug Execution Preparation Steps
-
-When using debug functionality, prepare with the following steps:
-
-#### Step 1: Load Debug Functionality
-```markdown
-"Please load debugger.md"  
-→ Enable debug-specific syntax and output functionality
-```
-
-#### Step 2: Debug Execution
-```markdown
-"Execute [processing content] in debug mode"
-→ Visualize detailed execution processes
-```
-
-#### Integrated Execution Example
-```markdown
-"Load debugger.md then execute product recommendation system in debug mode"
-```
-
-**Important**: The `debugger.md` file contains complete specifications of the above syntax and can be used as a more detailed reference during actual debugging. This file includes experimentally verified accurate syntax definitions, rich execution examples, and troubleshooting guides.
 
 ---
 
