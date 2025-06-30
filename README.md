@@ -27,7 +27,8 @@ Execute these directly in Claude Code to experience natural language macro progr
 **Appendix: Implementation Technologies**
 - A.1: System Control via Claude Code Slash Commands
 - A.2: Event-Driven Execution and System Integration
-- A.3: Risk Mitigation Strategies for Mission-Critical Environments
+- A.3: Risk Mitigation Strategies for Important Tasks
+- A.4: Python Tool Integration
 
 **Practical Applications**
 - Haiku generation, blog creation, investment decision support systems
@@ -82,10 +83,16 @@ Even users without programming experience can design agent behaviors using intui
 - External trigger models (cron, watchdog, inotify)
 - Integration with macro files
 
-**A.3: Risk Mitigation Strategies for Mission-Critical Environments**
+**A.3: Risk Mitigation Strategies for Important Tasks**
 - Three-layer defense strategies for reliable operation
 - Human-in-the-loop implementation patterns
 - Proactive design, runtime handling, and continuous improvement
+
+**A.4: Python Tool Integration**
+- Seamless information exchange via variables.json
+- Access to entire Python ecosystem (NumPy, pandas, TensorFlow, etc.)
+- Natural language invocation of Python tools
+- Transparent debugging and state management
 
 ## ⚠️ Probabilistic Behavior Characteristics
 
