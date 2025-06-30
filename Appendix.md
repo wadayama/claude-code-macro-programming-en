@@ -255,3 +255,136 @@ Check past failure patterns and proactively use cached data
 ```
 
 Understanding the probabilistic characteristics of natural language macro programming and implementing appropriate risk mitigation measures enables safe and responsible utilization across diverse fields.
+
+## A.4: Python Tool Integration
+
+### Background and Concept
+
+In natural language macro programming, information exchange between macros and Python programs through the variables.json file enables utilization of Python's rich library ecosystem. This integration approach makes it possible to infinitely extend the functionality of macro systems.
+
+### Basic Integration Pattern
+
+#### Standard Python Tool Structure
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import json
+from pathlib import Path
+
+def main():
+    try:
+        # Read data from variables.json
+        with open("variables.json", 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        # Get input data
+        input_data = data.get("input_key", "")
+        
+        # Execute Python processing (e.g., text analysis)
+        result = analyze_data(input_data)
+        
+        # Write results back to variables.json
+        data["output_key"] = result
+        with open("variables.json", 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        
+        print("Processing completed")
+        
+    except Exception as e:
+        # Record error information
+        try:
+            with open("variables.json", 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            data["error"] = {"message": str(e), "status": "failed"}
+            with open("variables.json", 'w', encoding='utf-8') as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+        except:
+            pass
+        print(f"An error occurred: {e}")
+
+def analyze_data(input_data):
+    """Actual processing logic"""
+    # Implement processing using Python libraries here
+    return {"processed": input_data, "analysis": "result"}
+
+if __name__ == "__main__":
+    main()
+```
+
+#### Macro Invocation
+
+```markdown
+## Execute Python Tool
+Execute analysis_tool.py.
+
+Set processing results to {{analysis_result}}.
+```
+
+### Practical Example: Haiku Data Analysis Tool
+
+As a validated example, we present a tool for detailed haiku analysis:
+
+#### Processing Content
+- **Structure Analysis**: Evaluation of 5-7-5 syllable structure
+- **Vocabulary Analysis**: Classification and diversity measurement of used words
+- **Creativity Evaluation**: Quantification of poetic techniques and creativity
+- **Statistics Generation**: Automatic generation of overall statistics and recommendations
+
+#### Information Exchange Flow
+1. Read haiku data (`haiku_1`~`haiku_4`, `themes`, etc.) from variables.json
+2. Execute detailed text analysis processing using Python
+3. Save structured analysis results as `analysis_report` in variables.json
+
+#### Macro Usage
+
+**Prerequisites**: variables.json contains haiku data after executing the haiku generation system (haiku_direct.md)
+
+```markdown
+To analyze the haiku data currently saved in variables.json,
+execute haiku_analyzer_en.py.
+
+Set analysis results to {{analysis_report}}.
+```
+
+**Execution Example**:
+1. `Execute haiku_direct.md` - Save haiku data to variables.json
+2. `Execute haiku_analyzer_en.py` - Analyze saved haiku data
+
+### Application Possibilities
+
+#### Numerical and Scientific Computing
+- **NumPy/SciPy**: Advanced numerical analysis, statistical processing, optimization calculations
+- **SymPy**: Symbolic mathematics, calculus, equation solving
+
+#### Data Analysis and Visualization
+- **pandas**: CSV/Excel processing, data cleansing, aggregation analysis
+- **matplotlib/plotly**: Graph generation, chart creation, data visualization
+
+#### Machine Learning and AI
+- **scikit-learn**: Classification, regression, clustering analysis
+- **TensorFlow/PyTorch**: Deep learning model construction and execution
+
+#### Business Automation
+- **requests/beautifulsoup**: Web scraping, API integration
+- **openpyxl/xlsxwriter**: Excel automation, report generation
+- **PIL/OpenCV**: Image processing, image analysis
+
+### Design Advantages
+
+#### Transparency and Debuggability
+- All information exchange visualized through variables.json file
+- Processing states before and after can be directly verified
+- Easy diagnosis when errors occur
+
+#### Natural Integration
+- Complete integration with existing macro syntax
+- No complex API design or configuration required
+- Intuitive invocation using natural language
+
+#### Extensibility and Maintainability
+- Implementable with standard Python code
+- Free choice and combination of libraries
+- Reusability through modularization
+
+Python Tool Integration enables natural language macro programming to achieve universal access to the entire Python ecosystem, making possible a wide range of applications from specialized computational processing to business automation.
