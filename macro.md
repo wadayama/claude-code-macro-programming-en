@@ -131,6 +131,12 @@ Qualitative and ambiguous conditional branches such as "when the score is suffic
    - Application examples including haiku generation systems
    - Methods for business process automation
 
+4. **Appendix**
+   - A.1: System Control via Claude Code Slash Commands
+   - A.2: Event-Driven Execution and System Integration
+   - A.3: Risk Mitigation Strategies for Important Tasks
+   - A.4: Python Tool Integration
+
 ---
 
 **Version**: 1.0  
