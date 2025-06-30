@@ -388,3 +388,46 @@ Set analysis results to {{analysis_report}}.
 - Reusability through modularization
 
 Python Tool Integration enables natural language macro programming to achieve universal access to the entire Python ecosystem, making possible a wide range of applications from specialized computational processing to business automation.
+
+## A.5: Multi-Agent System Design
+
+### Basic Architecture
+
+In natural language macro programming, a multi-agent system where multiple agents cooperate can be constructed by utilizing variables.json as a shared blackboard (Blackboard Model). Each agent detects changes to variables.json through file monitoring systems like watchdog and performs event-driven asynchronous execution.
+
+All inter-agent communication occurs via variables.json, resulting in a loosely coupled design where agents have no direct dependencies on each other. This design facilitates dynamic addition, removal, and modification of agents while ensuring system-wide transparency.
+
+### Implementation Patterns
+
+**Parallel Processing Pattern**: Multiple agents execute independent tasks simultaneously, saving results to different keys in variables.json. Agent progress status is shared, and overall processing flow is cooperatively controlled.
+
+**Collaborative Problem-Solving Pattern**: Complex problems are divided among multiple agents, with intermediate results shared for step-by-step resolution. Information integration and decision-making are executed jointly between agents.
+
+**Autonomous Learning Pattern**: A monitoring agent for system performance, an optimization proposal agent, and an improvement implementation agent cooperate to achieve continuous system improvement.
+
+### Basic Implementation Example
+
+```json
+{
+  "agent_status": {
+    "data_collector": "completed",
+    "analyzer": "processing", 
+    "reporter": "waiting"
+  },
+  "shared_data": {
+    "raw_data": "collected data",
+    "analysis_result": null,
+    "final_report": null
+  }
+}
+```
+
+### Advantages
+
+**Rapid Prototyping**: Multi-agent systems can be constructed with minimal code (watchdog monitoring script + natural language macros). Learning costs are low due to leveraging existing variables.json knowledge.
+
+**High Visibility**: The entire system state is centrally visualized through variables.json, making debugging, monitoring, and troubleshooting easy. All inter-agent information exchange is also fully traceable.
+
+**Flexible Extensibility**: Dynamic addition, modification, and removal of agents is possible, allowing configuration changes without stopping the system. Easy combination of agents with different processing capabilities and specializations.
+
+**Seamless Description**: Inter-agent message communication can also be described using the same methods as variable management (`save to {{message_key}}`, `check {{status_key}}`). No need to learn new communication protocols, as existing natural language macro syntax can be used directly.

@@ -29,6 +29,7 @@ Execute these directly in Claude Code to experience natural language macro progr
 - A.2: Event-Driven Execution and System Integration
 - A.3: Risk Mitigation Strategies for Important Tasks
 - A.4: Python Tool Integration
+- A.5: Multi-Agent System Design
 
 **Practical Applications**
 - Haiku generation, blog creation, investment decision support systems
@@ -93,6 +94,13 @@ Even users without programming experience can design agent behaviors using intui
 - Access to entire Python ecosystem (NumPy, pandas, TensorFlow, etc.)
 - Natural language invocation of Python tools
 - Transparent debugging and state management
+
+**A.5: Multi-Agent System Design**
+- Shared blackboard model using variables.json
+- Event-driven asynchronous execution with file monitoring
+- Loosely coupled, highly scalable architecture
+- Rapid prototyping capabilities for multi-agent systems
+- Seamless description using existing variable management syntax
 
 ## ⚠️ Probabilistic Behavior Characteristics
 

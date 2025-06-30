@@ -136,6 +136,7 @@ Qualitative and ambiguous conditional branches such as "when the score is suffic
    - A.2: Event-Driven Execution and System Integration
    - A.3: Risk Mitigation Strategies for Important Tasks
    - A.4: Python Tool Integration
+   - A.5: Multi-Agent System Design
 
 ---
 
