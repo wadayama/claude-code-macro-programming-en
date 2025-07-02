@@ -481,3 +481,37 @@ Add "Awaiting approval: {{approval_request}}" to audit_log
 **Transparency**: Complete visualization of all processing steps and decision-making processes
 **Learning Capability**: Continuous improvement through analysis of success and failure patterns
 **Reliability**: Compliance with research ethics reviews and business audit requirements
+
+## A.7: Self-Verification System (Self-Lint)
+
+### Basic Architecture
+
+In natural language macro programming, a self-verification system can be constructed where AI performs static analysis of macros before execution. This represents a form of metaprogramming as "code that reads code," managing verification results through variables.json and ensuring safety through conditional branching.
+
+### Key Verification Items
+
+**Security Analysis**: Detection of dangerous system commands, external network access, and confidential information exposure risks
+**Syntax Consistency**: Analysis of variable reference consistency, logical contradictions, and infinite loop possibilities
+**Quality Assessment**: Evaluation of error handling completeness and appropriateness of Human-in-the-Loop approval points
+
+### Implementation Patterns
+
+**Pre-execution Verification**: Analyze macro content to detect security risks, syntax issues, and quality concerns
+
+```markdown
+"Please verify the safety of the following macro: {{macro_content}}"
+Save verification results to {{lint_result}}
+```
+
+**Result Judgment**: Conditional execution based on verification results
+
+```markdown
+If {{lint_result}} severity is "error", halt execution
+If {{lint_result}} severity is "warning", request human approval
+```
+
+### Advantages
+
+**Proactive Safety**: Problem avoidance through pre-execution risk detection
+**Development Efficiency**: Time savings and quality improvement through early problem detection
+**Learning Support**: Real-time guidance and best practice recommendations for beginners

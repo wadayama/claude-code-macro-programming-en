@@ -31,6 +31,7 @@ Execute these directly in Claude Code to experience natural language macro progr
 - A.4: Python Tool Integration
 - A.5: Multi-Agent System Design
 - A.6: Audit Log System
+- A.7: Self-Verification System (Self-Lint)
 
 **Practical Applications**
 - Haiku generation, blog creation, investment decision support systems
@@ -108,6 +109,12 @@ Even users without programming experience can design agent behaviors using intui
 - Chronological recording of all critical processing steps
 - Natural language log recording integration
 - Compliance support for research ethics and business audits
+
+**A.7: Self-Verification System (Self-Lint)**
+- Pre-execution static analysis for safety and security assurance
+- Metaprogramming approach with "code that reads code" concept
+- Automated detection of risks, syntax issues, and quality concerns
+- Conditional execution based on verification severity levels
 
 ## ⚠️ Probabilistic Behavior Characteristics
 
