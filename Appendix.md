@@ -431,3 +431,53 @@ All inter-agent communication occurs via variables.json, resulting in a loosely 
 **Flexible Extensibility**: Dynamic addition, modification, and removal of agents is possible, allowing configuration changes without stopping the system. Easy combination of agents with different processing capabilities and specializations.
 
 **Seamless Description**: Inter-agent message communication can also be described using the same methods as variable management (`save to {{message_key}}`, `check {{status_key}}`). No need to learn new communication protocols, as existing natural language macro syntax can be used directly.
+
+## A.6: Audit Log System
+
+### Basic Architecture
+
+In natural language macro programming, an audit log system that extends variables.json enables recording of all important processing steps and decisions in chronological order. Complete integration with existing macro syntax ensures transparency and accountability tracking.
+
+### Implementation Patterns
+
+**Standard Log Structure**: Add audit_log array to variables.json with automatic recording at each processing step
+
+```json
+{
+  "current_data": {"task_status": "processing"},
+  "audit_log": [
+    {
+      "timestamp": "2025-07-01T10:30:00Z",
+      "event_type": "user_input",
+      "content": "Create market analysis report",
+      "source": "human"
+    },
+    {
+      "timestamp": "2025-07-01T10:35:00Z", 
+      "event_type": "human_approval",
+      "content": "Data collection scope approval: Approved",
+      "source": "human"
+    }
+  ]
+}
+```
+
+**Recording from Macros**: Intuitive log recording using natural language
+
+```markdown
+Record "Process started: {{task_description}}" to audit_log
+Add "Awaiting approval: {{approval_request}}" to audit_log
+```
+
+### Key Recording Targets
+
+**System Operations**: File operations, external API calls, Python Tool execution
+**Human Interventions**: Human-in-the-Loop approvals, modification instructions, emergency stops  
+**Error Handling**: Exception occurrences, recovery processing, alternative method selection
+**Agent Communication**: Message exchange in multi-agent systems
+
+### Advantages
+
+**Transparency**: Complete visualization of all processing steps and decision-making processes
+**Learning Capability**: Continuous improvement through analysis of success and failure patterns
+**Reliability**: Compliance with research ethics reviews and business audit requirements

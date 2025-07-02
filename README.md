@@ -30,6 +30,7 @@ Execute these directly in Claude Code to experience natural language macro progr
 - A.3: Risk Mitigation Strategies for Important Tasks
 - A.4: Python Tool Integration
 - A.5: Multi-Agent System Design
+- A.6: Audit Log System
 
 **Practical Applications**
 - Haiku generation, blog creation, investment decision support systems
@@ -101,6 +102,12 @@ Even users without programming experience can design agent behaviors using intui
 - Loosely coupled, highly scalable architecture
 - Rapid prototyping capabilities for multi-agent systems
 - Seamless description using existing variable management syntax
+
+**A.6: Audit Log System**
+- Transparency and accountability tracking via variables.json extension
+- Chronological recording of all critical processing steps
+- Natural language log recording integration
+- Compliance support for research ethics and business audits
 
 ## ⚠️ Probabilistic Behavior Characteristics
 
