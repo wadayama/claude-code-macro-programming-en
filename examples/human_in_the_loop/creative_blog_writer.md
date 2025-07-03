@@ -117,27 +117,4 @@ Save the following HITL intervention record to hitl_log.json:
 
 Display "Blog article creation completed: Creative and safe article created through human-AI collaboration".
 
----
 
-**Learning Points**:
-1. **Strategic Intervention Points**: Human involvement at 3 stages - direction, creativity, and safety
-2. **Explicit Approval Process**: Clear requirement for human judgment at each stage
-3. **Creativity Integration**: Effective incorporation of human ideas into AI generation
-4. **Responsibility Clarification**: Human responsibility and recording in final quality verification
-
-**HITL Effects**:
-- **Efficiency**: AI handles most of the writing work
-- **Creativity**: Humans add uniqueness and appeal
-- **Safety**: Humans guarantee final quality and appropriateness
-- **Transparency**: Complete recording of decision-making process
-
----
-
-**Human-in-the-Loop Pattern Characteristics**:
-1. **Strategic Intervention**: Human input at critical decision points
-2. **Creative Enhancement**: Human creativity amplifies AI capabilities
-3. **Quality Assurance**: Human oversight ensures safety and appropriateness
-4. **Responsibility Distribution**: Clear allocation of human vs. AI responsibilities
-5. **Process Transparency**: Complete audit trail of all human interventions
-
-This example demonstrates how Human-in-the-Loop enables effective collaboration where AI provides efficiency and humans provide judgment, creativity, and final accountability.

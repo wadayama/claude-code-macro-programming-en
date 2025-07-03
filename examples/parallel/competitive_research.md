@@ -39,21 +39,3 @@ Please compare {{aws_analysis}}, {{azure_analysis}}, {{gcp_analysis}}, {{ibm_ana
 ## Strategic Insights Extraction
 Based on {{comparison_matrix}}, please analyze the competitive structure in the market and future development forecasts, and save strategic insights to competitive_insights.json.
 
----
-
-**Learning Points**:
-- Scalable design with 5 parallel tasks
-- Individual analysis perspectives tailored to each company's characteristics
-- Systematic comparison methods for multiple analysis results
-- Strategic insight extraction process
-- File persistence for important information storage
-- Construction of more complex parallel processing systems
-
-**Advanced Parallel Processing Features**:
-1. **Scalability**: Easily expandable from 3 to 5+ parallel tasks
-2. **Specialization**: Each task targets company-specific strengths and strategies
-3. **Data Persistence**: Critical analysis saved to JSON files for future reference
-4. **Multi-stage Integration**: Parallel results → comparison matrix → strategic insights
-5. **Business Intelligence**: Converts raw data into actionable strategic intelligence
-
-This intermediate example demonstrates how Parallel Processing can handle complex competitive intelligence gathering with multiple data streams, specialized analysis approaches, and sophisticated integration workflows.

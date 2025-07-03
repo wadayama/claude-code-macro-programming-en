@@ -41,13 +41,3 @@ Display the post-learning score {{score}} and show "Session {{session}} complete
 
 Verify the type and effectiveness of learning executed, and present recommended items for next learning session if available.
 
----
-
-**Modular Design Characteristics**:
-1. **Self-contained Logic**: Complete learning process within single module
-2. **Variable Interface**: Clear input/output variable contract
-3. **Conditional Processing**: Score-based adaptive learning paths
-4. **State Management**: Score updates and log append operations
-5. **Reusability**: Can be called repeatedly with different session contexts
-
-This module demonstrates how natural language macro programming can create reusable, stateful components that maintain learning progress and adapt behavior based on current state.

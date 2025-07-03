@@ -26,18 +26,3 @@ and save initial findings to {{preliminary_analysis}}.
 Integrate {{hypotheses}}, {{literature_review}}, and {{preliminary_analysis}},
 and create a comprehensive research progress report.
 
----
-
-**Learning Points**:
-- Implementation of standard academic research process using Sequential Pipeline
-- Complex information integration through multiple variable combinations
-- Practice with realistic research themes
-- Step-by-step quality improvement process
-
-**Advanced Sequential Pipeline Features**:
-1. **Persistent storage**: Using `research_theme.json` for data permanence
-2. **Multi-variable integration**: Final report synthesizes multiple data streams
-3. **Iterative refinement**: Each stage builds upon and refines previous work
-4. **Real-world application**: Addresses current academic and practical concerns
-
-This intermediate example demonstrates how Sequential Pipeline can handle complex, multi-stage research workflows that mirror real academic methodologies.

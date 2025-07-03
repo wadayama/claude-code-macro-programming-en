@@ -59,21 +59,3 @@ Please try the following to experience the effectiveness of ambiguity fallback:
 2. **Clearer requests**: Re-run with more explicit requests and confirm quality improvements
 3. **Multiple ambiguous requests**: Run with various ambiguous requests and verify consistency of inferences
 
----
-
-**Learning Points**:
-- **Coexistence with Ambiguity**: Providing value through continued inference rather than error termination
-- **Confidence Spectrum**: Evolution from binary decisions to graduated confidence levels
-- **Inference Transparency**: Design that clearly communicates uncertain parts to users
-- **Progressive Clarification**: Built-in improvement process from ambiguous → clear
-- **Natural Language Characteristics Utilization**: System philosophy prioritizing practicality over strict precision
-- **Graceful Degradation + Ambiguity Tolerance**: Providing useful results even without complete understanding
-
-**Advanced Conditional Execution Features**:
-1. **Multi-level Branching**: Four distinct ambiguity levels with tailored responses
-2. **Confidence Tracking**: Each branch records different types of uncertainty notes
-3. **Fallback Strategies**: Different approaches for different levels of clarity
-4. **Transparency Mechanisms**: Clear communication of system limitations and assumptions
-5. **User Guidance**: Built-in suggestions for improving request clarity
-
-This intermediate example demonstrates how Conditional Execution can handle the inherent ambiguity of natural language while maintaining useful functionality and transparent operation.
