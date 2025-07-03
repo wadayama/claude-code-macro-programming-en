@@ -1729,6 +1729,24 @@ Finally:
 **Graceful Degradation**:
 **Gradual Quality Adjustment** provides valuable results even when not perfect. **Adaptation to Constraints** optimizes under resource or data limitations. **User Expectation Management** clearly explains limitations. **Continuous Service** maintains system value through partial functionality provision.
 
+### 📁 Practical Samples
+
+Detailed practical examples of Error Handling patterns:
+
+- **Basic**: [Robust Information Collection System](./examples/error_handling/robust_search_system.md) - Try-Catch-Finally and Graceful Degradation implementation for web search failures
+
+#### Error Handling Experience Method
+
+**Normal Execution**: Direct execution experiences ideal level through web search success
+
+**Error Experience**: To actually experience Catch processing and Graceful Degradation
+1. Execute `/permissions` in Claude Code UI to check current permissions
+2. **Set WebSearch tool to "Deny" in interactive UI** (permission changes only possible via UI operation)
+3. Execute macro (Web search fails → Catch processing → Practical level quality adjustment)
+4. **Restore WebSearch tool to "Allow" in interactive UI**
+
+**Note**: Claude Code permission changes are only possible through interactive UI operations for security reasons. Command-line format (`/permissions remove WebSearch` etc.) does not work. This procedure enables actual experience of the complete Try-Catch-Finally flow and stepwise quality adjustment through Graceful Degradation.
+
 ---
 
 ## Pattern 10: Debug & Tracing
