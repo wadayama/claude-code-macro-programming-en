@@ -838,10 +838,29 @@ For each conditional termination task:
 3. Display termination message
 ```
 
-**Technical Advantages**:
-- **Dynamic termination control**: Flexible loop exit through task deletion
-- **No infinite loop risk**: Maximum task count provides safety limit
-- **Clear termination logic**: Explicit condition checking and task management
+### 🔄 Loop Method Comparison Analysis
+
+| Feature | TODO-List Based | Counter-Based |
+|---------|----------------|---------------|
+| **Implementation Simplicity** | ◎ No counter management needed | △ Counter variable management required |
+| **Progress Visibility** | ◎ Complete visibility through TODO list | ◎ Clear numerical progress display |
+| **Safety** | ◎ Reliable termination via dynamic task deletion | ◎ Infinite loop prevention via upper limits |
+| **Resource Management** | △ Indirect control | ◎ Direct count/cost limitations |
+| **Debug Ease** | ◎ All states visible through TODO list | ○ State understanding via counter values |
+| **Use Cases** | Goal-achievement, quality improvement | Progress management, resource constraints |
+
+**Recommended Usage**：
+- **TODO-List Based**: Processing that continues until conditions are met (quality improvement, learning progress)
+- **Counter-Based**: Processing with clear iteration limits (evaluation counts, improvement cycles)
+
+**Alternative: Counter-Based Loops**
+For cases requiring explicit progress tracking or resource limits:
+```markdown
+Set {{counter}} to 0
+Add 1 to {{counter}}  
+If {{counter}} reaches [limit], terminate processing
+```
+- **Examples**: presentation_optimizer.md (`{{iteration}}/{{max_iterations}}`), prompt_improvement_learning.md (`{{improvement_count}}`)
 
 ### 🏗️ Core Implementation Pattern
 
