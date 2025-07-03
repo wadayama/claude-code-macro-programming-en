@@ -843,80 +843,27 @@ For each conditional termination task:
 - **No infinite loop risk**: Maximum task count provides safety limit
 - **Clear termination logic**: Explicit condition checking and task management
 
-### 🏗️ Application Example: Adaptive Quality Improvement System
+### 🏗️ Core Implementation Pattern
 
-*Main Processing File (quality_improvement.md)*:
-```markdown
-## Complete Initialization
-Delete variables.json if it exists
-Clear all TODO list items
+**Essential Structure**:
+1. **Complete Initialization**: Clear variables.json and TODO list
+2. **Variable Setup**: Initialize scores, counters, and history arrays
+3. **Loop Task Creation**: Add task pairs with conditional termination
+4. **Sequential Execution**: Process tasks with embedded condition checks
+5. **Dynamic Termination**: Delete remaining tasks when goal achieved
+6. **Final Report**: Display comprehensive results and analysis
 
-Display "=== Quality Improvement System Start ===".
-
-## Variable Initialization  
-Set {{quality_score}} to 45
-Set {{improvement_cycle}} to 0
-Set {{improvement_history}} to empty
-
-## Loop Task Creation
-Add the following task pair to TODO list up to 8 times:
-- Execute one quality improvement cycle
-- If {{quality_score}} is 85 or above, delete remaining tasks and terminate
-
-## Execution
-Execute TODO list tasks sequentially from top
-
-For each "Execute one quality improvement cycle" task:
-1. Add 1 to {{improvement_cycle}}
-2. Display "=== Improvement Cycle {{improvement_cycle}} Start ==="
-3. Display "Current quality score: {{quality_score}}"
-
-4. Execute adaptive improvement processing:
-   - If {{quality_score}} is below 60:
-     → Display "Executing basic quality improvement"
-     → Add 15 to {{quality_score}}
-     → Append "Basic improvement +15 points" to {{improvement_history}}
-   
-   - If {{quality_score}} is 60 or above but below 75:
-     → Display "Executing intermediate quality improvement"
-     → Add 10 to {{quality_score}}  
-     → Append "Intermediate improvement +10 points" to {{improvement_history}}
-   
-   - If {{quality_score}} is 75 or above but below 85:
-     → Display "Executing advanced quality improvement"
-     → Add 6 to {{quality_score}}
-     → Append "Advanced improvement +6 points" to {{improvement_history}}
-
-5. Display "Post-improvement score: {{quality_score}}"
-6. Display "=== Improvement Cycle {{improvement_cycle}} Complete ==="
-
-## Final Quality Report
-After all TODO tasks complete:
-
-Display "=== Quality Improvement Complete Report ===".
-
-Report the following improvement results:
-- Initial quality score: 45
-- Final quality score: {{quality_score}}
-- Improvement cycles executed: {{improvement_cycle}}
-- Improvement history: {{improvement_history}}
-- Quality improvement rate: Calculate and display
-
-Summarize quality improvement effectiveness analysis and future continuous improvement proposals.
-```
-
-**System Characteristics**:
-- **Adaptive processing**: Efficient score improvement through adaptive improvement processing
-- **Complex conditional branching**: Real-world modeling including complex conditional branches
-- **Dynamic termination control**: Reliable goal achievement detection through dynamic termination control
-- **Complete traceability**: Full traceability through improvement history
+**Key Features**:
+- **Conditional Loop Control**: Self-terminating loops based on variable states
+- **Progress Tracking**: Complete visibility through TODO list status
+- **Safe Execution**: No infinite loop risk through maximum task limits
+- **Clean Restart**: Reproducible execution environment
 
 ### 📁 Practical Samples
 
 Detailed practical examples of TODO-list Based Loop Processing:
 
 - **Beginner**: [Learning Progress Management System](./examples/loop_modular/learning_progress.md) - Basic TODO-list based loops with conditional termination
-- **Intermediate**: [Quality Improvement System](./examples/loop_modular/quality_improvement.md) - Adaptive improvement processing with score-based termination
 
 ---
 
