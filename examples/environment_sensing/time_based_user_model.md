@@ -2,13 +2,6 @@
 
 **Overview**: Agent system that estimates user busyness through time sensing and automatically adjusts response style
 
-**Learning Objectives**: 
-- Basics of environment sensing (time acquisition)
-- Construction of environment model (user state estimation)
-- Implementation of state-based behavior switching
-
-**Execution Time**: 3-5 minutes
-
 ---
 
 ## Complete Initialization (Clean Start)

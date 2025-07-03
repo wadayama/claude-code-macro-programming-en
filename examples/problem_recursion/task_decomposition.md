@@ -2,12 +2,6 @@
 
 **Overview**: Step-by-step solution system through recursive problem division using TODO tool. Decomposes large problems into comprehensible units and achieves final integrated solution by accumulating reliable progress.
 
-**Learning Objectives**: 
-- Acquisition of recursive decomposition thinking
-- State management through TODO tool integration
-- Understanding decomposition decision logic
-- Practice of integration processes
-
 **Main Task**: Curry recipe creation
 
 ---
@@ -115,14 +109,3 @@ Evaluate the decomposition process:
 4. **Learning outcome**: What insights were gained about recursive problem solving?
 
 Display a summary of the task decomposition experience and the final curry recipe.
-
----
-
-**Problem Solving & Recursion Pattern Characteristics**:
-1. **Recursive Thinking**: Large problems broken into smaller, manageable pieces
-2. **Decision Logic**: Clear criteria for when to decompose vs. execute
-3. **State Management**: TODO tool tracks progress across decomposition levels
-4. **Integration Process**: Decomposed solutions assembled into final result
-5. **Adaptive Approach**: Process adjusts based on complexity assessment at each level
-
-This example demonstrates how Problem Solving & Recursion enables systematic approach to complex tasks through structured decomposition and integration, making large problems tractable and solutions comprehensive.

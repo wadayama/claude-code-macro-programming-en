@@ -2,11 +2,6 @@
 
 **System Overview**: Learning system that accumulates writing experience and progressively improves writing skills through style analysis
 
-**Learning Objectives**: 
-- Recording and accumulating writing experience through JSON persistence
-- Discovering style analysis and improvement points
-- Enhancing document quality using past experience
-
 ---
 
 ## Complete Initialization (Clean Start)
