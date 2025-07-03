@@ -25,7 +25,9 @@ Please choose the most appropriate option for your programming learning experien
 
 **Please enter your choice (A, B, or C).**
 
-Save your response to {{learner_level}}.
+**⚠️ IMPORTANT: Wait for user input here. Do not proceed to the next step until the user actually enters A, B, or C.**
+
+Save the user's actual input to {{learner_level}}.
 
 ## User Response Confirmation
 
@@ -60,7 +62,9 @@ Before creating the curriculum, please tell us your specific learning goals:
 
 **Please enter your choice (number 1-4).**
 
-Save your response to {{learning_goal}}.
+**⚠️ IMPORTANT: Wait for user input here. Do not proceed to the next step until the user actually enters a number 1-4.**
+
+Save the user's actual input to {{learning_goal}}.
 
 ## Learning Plan Creation
 
@@ -78,7 +82,9 @@ Display the created learning plan and confirm the following:
 
 "Is this learning plan acceptable? If you have any modification requests, please be specific. If acceptable, please enter 'Approved'."
 
-Save the user's response to {{plan_approval}}.
+**⚠️ IMPORTANT: Wait for user input here. Do not proceed to the next step until the user actually enters approval or modification requests.**
+
+Save the user's actual input to {{plan_approval}}.
 
 ## Progress Management Proposal
 
