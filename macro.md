@@ -1902,6 +1902,11 @@ Expected Effects:
 [DEBUG] Next Action: [next processing to execute]
 ```
 
+### 📁 Practical Samples
+
+Detailed practical examples of Debug & Tracing:
+
+- **Beginner**: [Variable Debugging System](./examples/debug_tracing/variable_debugging.md) - Master basic variable state tracking and debug output
 
 ---
 
