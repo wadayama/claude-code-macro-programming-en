@@ -515,3 +515,9 @@ If {{lint_result}} severity is "warning", request human approval
 **Proactive Safety**: Problem avoidance through pre-execution risk detection
 **Development Efficiency**: Time savings and quality improvement through early problem detection
 **Learning Support**: Real-time guidance and best practice recommendations for beginners
+
+### 📁 Practical Samples
+
+Detailed practical examples of self-verification systems:
+
+- **Basic**: [Code Verification System](./examples/self_lint/code_verification.md) - Automated execution of basic security, syntax, and quality checks
