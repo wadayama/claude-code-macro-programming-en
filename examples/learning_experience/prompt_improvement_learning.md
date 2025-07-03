@@ -6,6 +6,13 @@
 
 ---
 
+## Complete Initialization (Clean Start)
+
+Delete variables.json if it exists
+Clear all TODO lists
+
+Display "=== Prompt Continuous Improvement System Started ===".
+
 ## Phase 1: Prompt Improvement Problem Setting
 
 The improvement target for this session is the following task:

@@ -9,6 +9,13 @@
 
 ---
 
+## Complete Initialization (Clean Start)
+
+Delete variables.json if it exists
+Clear all TODO lists
+
+Display "=== Writing Style Learning System Started ===".
+
 ## Phase 1: Initial Writing Experiment
 
 Today's task: Create an explanatory email to team members about "New Project Management Tool Implementation".

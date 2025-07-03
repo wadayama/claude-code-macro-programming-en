@@ -1,5 +1,12 @@
 # Large-Scale Research Report Creation System (Robust Sequential Pipeline - Advanced)
 
+## Complete Initialization (Clean Start)
+
+Delete variables.json if it exists
+Clear all TODO lists
+
+Display "=== Large-Scale Research Report Creation System Started ===".
+
 This macro implements a robust Sequential Pipeline using TODO lists for creating research reports that involve multiple large-scale tasks.
 
 ## System Overview

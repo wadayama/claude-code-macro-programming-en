@@ -1,6 +1,13 @@
 # Ambiguous Request Interpretation System (Conditional Execution - Intermediate)
 # Natural Language Ambiguity Fallback Experience
 
+## Complete Initialization (Clean Start)
+
+Delete variables.json if it exists
+Clear all TODO lists
+
+Display "=== Ambiguous Request Interpretation System Started ===".
+
 ## Ambiguous Request Input (Utilizing Natural Language Ambiguity)
 Please input a research request using **intentionally ambiguous expressions** like the following:
 

@@ -1,5 +1,12 @@
 # Adaptive Learning System (Conditional Execution - Beginner)
 
+## Complete Initialization (Clean Start)
+
+Delete variables.json if it exists
+Clear all TODO lists
+
+Display "=== Adaptive Learning System Started ===".
+
 ## Learner Level Assessment
 Please ask about learning experience in "Programming" and save the experience level to {{learner_level}}.
 

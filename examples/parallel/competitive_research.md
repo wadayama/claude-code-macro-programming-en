@@ -1,5 +1,12 @@
 # Competitive Research System (Parallel Processing - Intermediate)
 
+## Complete Initialization (Clean Start)
+
+Delete variables.json if it exists
+Clear all TODO lists
+
+Display "=== Competitive Research System Started ===".
+
 ## Research Target Setting
 Save the following 5 companies as major players in the "Cloud Services Market" to {{target_companies}}, and save {{target_companies}} to target_companies.json:
 - Amazon AWS

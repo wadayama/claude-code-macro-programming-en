@@ -11,6 +11,13 @@
 
 ---
 
+## Complete Initialization (Clean Start)
+
+Delete variables.json if it exists
+Clear all TODO lists
+
+Display "=== Time-based User State Model Started ===".
+
 ## 🎯 System Design
 
 ### User State Model

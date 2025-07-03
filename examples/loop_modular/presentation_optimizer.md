@@ -4,6 +4,13 @@
 
 ---
 
+## Complete Initialization (Clean Start)
+
+Delete variables.json if it exists
+Clear all TODO lists
+
+Display "=== Presentation Quality Optimization System Started ===".
+
 ## Initial Setup
 
 Set the presentation theme as "Future of AI Technology" and save to {{theme}}.

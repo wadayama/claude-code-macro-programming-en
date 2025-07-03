@@ -1,5 +1,12 @@
 # Academic Research Pipeline (Sequential Pipeline - Intermediate)
 
+## Complete Initialization (Clean Start)
+
+Delete variables.json if it exists
+Clear all TODO lists
+
+Display "=== Academic Research Pipeline Started ===".
+
 ## Research Theme Setting
 Save "Impact of Generative AI on Education" as the research theme to {{research_theme}}, 
 and save {{research_theme}} to research_theme.json.

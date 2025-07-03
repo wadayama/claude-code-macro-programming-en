@@ -1,5 +1,12 @@
 # Creative Blog Article Creation System (Human-in-the-Loop - Beginner)
 
+## Complete Initialization (Clean Start)
+
+Delete variables.json if it exists
+Clear all TODO lists
+
+Display "=== Creative Blog Article Creation System Started ===".
+
 ## Step 1: Theme Proposal and Direction Confirmation
 
 I propose "AI Technology and Changes in Daily Life" as the blog article theme.
