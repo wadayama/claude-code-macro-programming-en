@@ -1008,7 +1008,6 @@ After all task completion, integrate results and present as complete recipe
 Detailed practical examples of Problem Solving & Recursion:
 
 - **Beginner**: [Task Decomposition System](./examples/problem_recursion/task_decomposition.md) - Recursive division practice through curry recipe creation (Execution time: 3-5 minutes)
-- **Intermediate**: [Project Management System](./examples/problem_recursion/project_management.md) - Complex hierarchical management and complete event planning decomposition (Execution time: 8-12 minutes)
 
 ---
 
