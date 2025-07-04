@@ -40,3 +40,6 @@ CLAUDE_backup_*.md
 
 # Experiments directory (development use only, not for end users)
 experiments/
+
+# Archive directory (development use only, not for end users)
+archive/
