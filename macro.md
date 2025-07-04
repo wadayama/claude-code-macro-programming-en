@@ -115,31 +115,31 @@ Qualitative and ambiguous conditional branches such as "when the score is suffic
    - Implementation of conditional branching and multitask processing
 
 2. **10 Design Patterns**
-   - Pattern 1: Sequential Pipeline
-   - Pattern 2: Parallel Processing
-   - Pattern 3: Conditional Execution
-   - Pattern 4: Loop & Modular Programming
-   - Pattern 5: Problem Solving & Recursion
-   - Pattern 6: Learning from Experience
-   - Pattern 7: Environment Sensing, Knowledge-base and Environment Model
-   - Pattern 8: Human-in-the-Loop
-   - Pattern 9: Error Handling
-   - Pattern 10: Debug & Tracing
+   - [Pattern 1: Sequential Pipeline](#pattern-1-sequential-pipeline)
+   - [Pattern 2: Parallel Processing](#pattern-2-parallel-processing)
+   - [Pattern 3: Conditional Execution](#pattern-3-conditional-execution)
+   - [Pattern 4: Loop & Modular Programming](#pattern-4-loop--modular-programming)
+   - [Pattern 5: Problem Solving & Recursion](#pattern-5-problem-solving--recursion)
+   - [Pattern 6: Learning from Experience](#pattern-6-learning-from-experience)
+   - [Pattern 7: Environment Sensing, Knowledge-base and Environment Model](#pattern-7-environment-sensing-knowledge-base-and-environment-model)
+   - [Pattern 8: Human-in-the-Loop](#pattern-8-human-in-the-loop-hitl)
+   - [Pattern 9: Error Handling](#pattern-9-error-handling)
+   - [Pattern 10: Debug & Tracing](#pattern-10-debug--tracing)
 
 3. **Practical System Construction Capabilities**
    - Hands-on practice with graduated samples
    - Application examples including haiku generation systems
    - Methods for business process automation
 
-4. **Appendix**
-   - A.1: System Control via Claude Code Slash Commands
-   - A.2: Event-Driven Execution and System Integration
-   - A.3: Risk Mitigation Strategies for Important Tasks
-   - A.4: Python Tool Integration
-   - A.5: Multi-Agent System Design
-   - A.6: Audit Log System
-   - A.7: Self-Verification System (Self-Lint)
-   - A.8: Metaprogramming
+4. **Appendix** - [Appendix.md](./Appendix.md)
+   - [A.1: System Control via Claude Code Slash Commands](./Appendix.md#a1-system-control-via-claude-code-slash-commands)
+   - [A.2: Event-Driven Execution and System Integration](./Appendix.md#a2-event-driven-execution-and-system-integration)
+   - [A.3: Risk Mitigation Strategies for Important Tasks](./Appendix.md#a3-risk-mitigation-strategies-for-important-tasks)
+   - [A.4: Python Tool Integration](./Appendix.md#a4-python-tool-integration)
+   - [A.5: Multi-Agent System Design](./Appendix.md#a5-multi-agent-system-design)
+   - [A.6: Audit Log System](./Appendix.md#a6-audit-log-system)
+   - [A.7: Self-Verification System (Self-Lint)](./Appendix.md#a7-self-verification-system-self-lint)
+   - [A.8: Metaprogramming](./Appendix.md#a8-metaprogramming)
 
 ---
 
