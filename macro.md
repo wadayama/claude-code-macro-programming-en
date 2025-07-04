@@ -1977,16 +1977,3 @@ Please read the following terms carefully before using this "Claude Code Natural
 
 ---
 
-## 📚 Appendix
-
-For detailed information on advanced system integration and risk management, please refer to the [Appendix](./Appendix.md).
-
-- **A.1: System Control via Claude Code Slash Commands** - System state monitoring and control features
-- **A.2: Event-Driven Execution and System Integration** - Asynchronous processing and real-time response systems  
-- **A.3: Risk Mitigation Strategies for Important Tasks** - Safe operation methods through three-layer defense strategy
-- **A.4: Python Tool Integration** - Python ecosystem access via variables.json information exchange
-- **A.5: Multi-Agent System Design** - Cooperative agent systems using shared blackboard model
-- **A.6: Audit Log System** - Transparency and accountability tracking via variables.json extension
-- **A.7: Self-Verification System (Self-Lint)** - Pre-execution static analysis for security and quality assurance
-- **A.8: Metaprogramming** - Self-adaptive systems through dynamic macro generation, verification, evaluation, and improvement
-- **A.9: Ensemble Execution and Consensus Formation** - Statistical countermeasures for probabilistic behavior
