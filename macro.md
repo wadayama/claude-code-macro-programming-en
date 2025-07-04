@@ -45,6 +45,9 @@
 - [A.9: Ensemble Execution and Consensus Formation](./Appendix.md#a9-ensemble-execution-and-consensus-formation) - Statistical countermeasures for probabilistic behavior
 - [A.10: Type Safety and Schema Management](./Appendix.md#a10-type-safety-and-schema-management) - Gradual type safety enhancement and schema-based systematic data management
 
+### Disclaimer
+- [📜 Disclaimer](#-disclaimer)
+
 ### 📚 Main Contents
 - **[macro.md](./macro.md)** - Complete guide (10 design patterns + appendix references)
 - **[Appendix.md](./Appendix.md)** - Appendix (advanced system integration and risk management)
