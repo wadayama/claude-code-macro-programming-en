@@ -2,6 +2,17 @@
 
 Detailed information on advanced system integration and risk management for natural language macro programming.
 
+## Table of Contents
+
+- [A.1: System Control via Claude Code Slash Commands](#a1-system-control-via-claude-code-slash-commands)
+- [A.2: Event-Driven Execution and System Integration](#a2-event-driven-execution-and-system-integration)
+- [A.3: Risk Mitigation Strategies for Important Tasks](#a3-risk-mitigation-strategies-for-important-tasks)
+- [A.4: Python Tool Integration](#a4-python-tool-integration)
+- [A.5: Multi-Agent System Design](#a5-multi-agent-system-design)
+- [A.6: Audit Log System](#a6-audit-log-system)
+- [A.7: Self-Verification System (Self-Lint)](#a7-self-verification-system-self-lint)
+- [A.8: Metaprogramming](#a8-metaprogramming)
+
 ---
 
 ## A.1: System Control via Claude Code Slash Commands
@@ -387,6 +398,22 @@ Set analysis results to {{analysis_report}}.
 - Free choice and combination of libraries
 - Reusability through modularization
 
+#### Type Safety and Data Integrity (Optional Feature)
+
+**As a future extension option**, type safety can be ensured through direct type information description within variables.json. While not required for basic macro operations, it provides enhanced safety for complex Python integrations and scenarios demanding high reliability.
+
+```json
+{
+  "user_name": "John Doe",           // Basic format (recommended)
+  "user_age": {                      // Type specification (optional)
+    "value": 30,
+    "type": "integer"
+  }
+}
+```
+
+Selective implementation for **specific use cases where type mismatches could cause serious issues**, such as numerical computation, large-scale data processing, and external API integration. Basic format is sufficient for daily macro usage. Type safety can be gradually enhanced as needed through natural language specifications like "Set {{user_age}} type to integer".
+
 Python Tool Integration enables natural language macro programming to achieve universal access to the entire Python ecosystem, making possible a wide range of applications from specialized computational processing to business automation.
 
 ## A.5: Multi-Agent System Design
@@ -521,3 +548,115 @@ If {{lint_result}} severity is "warning", request human approval
 Detailed practical examples of self-verification systems:
 
 - **Basic**: [Code Verification System](./examples/self_lint/code_verification.md) - Automated execution of basic security, syntax, and quality checks
+
+## A.8: Metaprogramming
+
+### Background and Concept
+
+In natural language macro programming, **metaprogramming** realizes the concept of "programs that manipulate programs" at the natural language level through advanced techniques. Similar to LISP's "Code as Data" philosophy, macros themselves are treated as data for dynamic generation, verification, and improvement.
+
+By utilizing variables.json as shared metadata storage, a complete metaprogramming cycle from macro generation to execution, evaluation, and improvement can be constructed. This enables intelligent macro systems that self-adapt to situations rather than fixed macros.
+
+### Implementation Patterns
+
+#### 1. Dynamic Macro Generation
+
+**Parameterized template-based** runtime macro construction. Automatically generates appropriate macros based on user requirements or environmental conditions.
+
+```markdown
+## Macro Generation Meta-System
+Analyze {{user_request}} and dynamically generate macros according to the following conditions:
+
+If {{task_type}} is "analysis":
+Generate macro for {{target_data}} based on data_analysis_template.md
+
+If {{task_type}} is "reporting":
+Generate macro for {{output_format}} based on report_generation_template.md
+
+Save generated macro to {{generated_macro}} and execute after verification with A.7 Self-Lint
+```
+
+#### 2. Self-Inspection Integration
+
+**Integration with A.7 Self-Lint** automates quality assurance of generated macros. Meta-verification (macros verifying macros) ensures advanced reliability.
+
+```markdown
+## Meta-Verification Process
+For generated macro {{generated_macro}}:
+
+1. Execute security verification and save to {{security_result}}
+2. Verify syntax consistency and save to {{syntax_result}}  
+3. Execute quality assessment and save to {{quality_result}}
+
+Only when {{security_result}}, {{syntax_result}}, and {{quality_result}} are all "passed":
+Approve macro execution and set {{execution_approved}} to true
+```
+
+#### 3. Execution & Evaluation
+
+**Quantitative performance measurement** of generated and verified macros through actual execution, providing foundational data for the next-stage improvement process.
+
+```markdown
+## Macro Execution & Evaluation System
+Execute generated macro {{generated_macro}} and measure the following evaluation metrics:
+
+Measure execution time and record to {{execution_time}}
+Analyze success/failure status and record to {{success_rate}}
+Score output quality and evaluate in {{output_quality}}
+Record error occurrence patterns to {{error_analysis}}
+Record resource usage to {{resource_usage}}
+
+Integrate all evaluation results and save as {{performance_metrics}}
+```
+
+#### 4. Macro Improvement
+
+**One-shot improvement execution** that analyzes evaluation values obtained from the previous stage and addresses identified issues. Improved macros are re-verified and output as final versions.
+
+```markdown
+## One-Shot Improvement System
+Analyze evaluation values in {{performance_metrics}} and execute the following improvements:
+
+If {{execution_time}} exceeds baseline values:
+Apply algorithmic optimization for processing efficiency to {{improved_macro}}
+
+If {{success_rate}} is below threshold:
+Add error handling enhancements and fallback mechanisms to {{improved_macro}}
+
+If {{output_quality}} is insufficient:
+Implement output generation logic improvements to {{improved_macro}}
+
+For issues identified in {{error_analysis}}:
+Reflect root cause fixes to {{improved_macro}}
+
+Perform final verification of improved macro with A.7 Self-Lint and output as {{final_macro}}
+```
+
+### Practical Example
+
+**Integrated Metaprogramming Workflow**: Complete automation in report generation systems
+
+```markdown
+## Self-Adaptive Report Generation System
+1. Requirement Analysis: Automatically extract report specifications from {{user_requirement}}
+2. Macro Generation: Build optimal report generation macro based on specifications
+3. Quality Verification: Confirm safety of generated macro with A.7 Self-Lint
+4. Execution Monitoring: Automatic measurement of performance indicators and quality evaluation
+5. Learning Integration: Utilize execution results to improve next-generation accuracy
+
+Metadata Recording:
+- Generated macro patterns: {{macro_patterns}}
+- Execution performance: {{performance_metrics}}  
+- Improvement history: {{improvement_history}}
+- Optimization suggestions: {{optimization_suggestions}}
+```
+
+### Advantages
+
+**1. Advanced Automation**: Complete automation of macro design, generation, and optimization processes significantly reduces human workload. Enables rapid response to complex requirements.
+
+**2. Systematic Quality Assurance**: Self-Inspection functionality automatically guarantees safety and reliability of generated macros. Significantly reduces error rates and improves operational stability.
+
+**3. Continuous Learning Capability**: System itself learns and improves from experience through accumulation and analysis of execution history. Self-evolving system that improves in accuracy and efficiency with use.
+
+**4. Extensibility and Maintainability**: Dynamic incorporation of new patterns and templates is possible. Minimizes design changes during system expansion and ensures flexibility in long-term operation.

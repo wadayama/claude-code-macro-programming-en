@@ -139,6 +139,7 @@ Qualitative and ambiguous conditional branches such as "when the score is suffic
    - A.5: Multi-Agent System Design
    - A.6: Audit Log System
    - A.7: Self-Verification System (Self-Lint)
+   - A.8: Metaprogramming
 
 ---
 
@@ -1966,3 +1967,4 @@ For detailed information on advanced system integration and risk management, ple
 - **A.5: Multi-Agent System Design** - Cooperative agent systems using shared blackboard model
 - **A.6: Audit Log System** - Transparency and accountability tracking via variables.json extension
 - **A.7: Self-Verification System (Self-Lint)** - Pre-execution static analysis for security and quality assurance
+- **A.8: Metaprogramming** - Self-adaptive systems through dynamic macro generation, verification, evaluation, and improvement

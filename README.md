@@ -32,6 +32,7 @@ Execute these directly in Claude Code to experience natural language macro progr
 - A.5: Multi-Agent System Design
 - A.6: Audit Log System
 - A.7: Self-Verification System (Self-Lint)
+- A.8: Metaprogramming (Self-adaptive systems through dynamic macro generation, verification, evaluation, and improvement)
 
 **Practical Applications**
 - Haiku generation, blog creation, investment decision support systems
@@ -51,7 +52,8 @@ Even users without programming experience can design agent behaviors using intui
 
 ## 📚 Main Contents
 
-- **[macro.md](./macro.md)** - Complete guide (10 design patterns + appendix)
+- **[macro.md](./macro.md)** - Complete guide (10 design patterns + appendix references)
+- **[Appendix.md](./Appendix.md)** - Detailed appendix (advanced system integration and risk management)
 - **[examples/](./examples/)** - Pattern-specific example collection
 - **[CLAUDE.md](./CLAUDE.md)** - Macro definition file
 - **[debugger.md](./debugger.md)** - Debug mode specification
@@ -116,6 +118,12 @@ Even users without programming experience can design agent behaviors using intui
 - Automated detection of risks, syntax issues, and quality concerns
 - Conditional execution based on verification severity levels
 
+**A.8: Metaprogramming**
+- Self-adaptive systems through dynamic macro generation and improvement
+- Complete metaprogramming cycle: generation, verification, execution, evaluation
+- "Code as Data" philosophy similar to LISP at natural language level
+- Intelligent macro systems that adapt to situations rather than fixed macros
+
 ## ⚠️ Probabilistic Behavior Characteristics
 
 The natural language macro programming techniques presented in this guide are based on the probabilistic operational characteristics of Large Language Models (LLMs):
@@ -156,4 +164,4 @@ This work contributes to the field of human-AI collaboration and natural languag
 
 **Version**: 1.0  
 **Created**: 2025-06-21  
-**Last Updated**: 2025-06-23
+**Last Updated**: 2025-07-04
