@@ -25,7 +25,7 @@ Execute these directly in Claude Code to experience natural language macro progr
 - Basic Processing Patterns (Sequential, Parallel, Conditional, Loop)
 - Advanced Patterns (Problem Solving, Learning from Experience, Environment Understanding, Human Collaboration, Error Handling, Debug)
 
-**Appendix: Implementation Technologies**
+**Appendix: Advanced Technical Elements and Practical Implementation**
 - A.1: System Control via Claude Code Slash Commands
 - A.2: Event-Driven Execution
 - A.3: Risk Mitigation Strategies for Important Tasks
