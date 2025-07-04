@@ -267,7 +267,7 @@ Check past failure patterns and proactively use cached data
 
 Understanding the probabilistic characteristics of natural language macro programming and implementing appropriate risk mitigation measures enables safe and responsible utilization across diverse fields.
 
-### Layer 4: Testing Strategy for Quality Assurance (Research Stage)
+### Layer 4: Testing Strategy for Quality Assurance
 
 In quality assurance for natural language macro programming, selecting appropriate testing methods based on the nature of test targets is crucial.
 
