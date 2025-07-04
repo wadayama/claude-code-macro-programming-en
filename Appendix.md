@@ -281,13 +281,13 @@ In quality assurance for natural language macro programming, selecting appropria
 - Basic conditional branching operations (branch execution under specified conditions)
 - File operation completion verification (success/failure of read, write, delete)
 
-**Probabilistic/Creative Elements** (LLM evaluator validity assessment promising):
+**Probabilistic/Creative Elements** (LLM-based validity assessment test promising):
 - Quality and validity of natural language generation
 - Logical consistency of reasoning processes
 - Appropriateness of complex judgments
 - Evaluation of creative outputs (haiku, articles, etc.)
 
-#### LLM Evaluator Validity Assessment Method
+#### LLM-based Validity Assessment Test
 
 **Technical Background and Necessity**
 
@@ -297,7 +297,7 @@ Traditional testing assumes predictable, deterministic outcomes, but natural lan
 
 **Detailed Explanation of "Independent Context"**
 
-The core innovation of LLM evaluator validity assessment lies in the concept of "independent context" - a deliberate isolation of the evaluator from the execution environment and decision-making process. This approach eliminates evaluator bias by ensuring that assessment is based solely on observable outputs rather than internal processing knowledge.
+The core innovation of LLM-based validity assessment test lies in the concept of "independent context" - a deliberate isolation of the evaluator from the execution environment and decision-making process. This approach eliminates evaluator bias by ensuring that assessment is based solely on observable outputs rather than internal processing knowledge.
 
 Context independence operates through several mechanisms:
 - **Information Isolation**: Evaluators receive only the input request, final output, and execution log, without access to intermediate reasoning steps or system internal states
