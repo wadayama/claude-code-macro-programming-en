@@ -43,6 +43,14 @@
 - [A.7: Self-Verification System (Self-Lint)](./Appendix.md#a7-self-verification-system-self-lint) - Pre-execution static analysis for security and quality assurance
 - [A.8: Metaprogramming](./Appendix.md#a8-metaprogramming) - Self-adaptive systems through dynamic macro generation, verification, evaluation, and improvement
 
+### 📚 Main Contents
+- **[macro.md](./macro.md)** - Complete guide (10 design patterns + appendix references)
+- **[Appendix.md](./Appendix.md)** - Appendix (advanced system integration and risk management)
+- **[examples/](./examples/)** - Pattern-specific example collection
+- **[haiku_direct.md](./haiku_direct.md)** - Practical example (haiku generation system)
+- **[CLAUDE.md](./CLAUDE.md)** - Macro definition file
+- **[debugger.md](./debugger.md)** - Debug mode specification
+
 ---
 
 # Part I: Fundamental Concepts and Theoretical Foundation
