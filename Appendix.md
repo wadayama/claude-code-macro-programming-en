@@ -13,6 +13,7 @@ Detailed information on advanced system integration and risk management for natu
 - [A.7: Self-Verification System (Self-Lint)](#a7-self-verification-system-self-lint)
 - [A.8: Metaprogramming](#a8-metaprogramming)
 - [A.9: Ensemble Execution and Consensus Formation](#a9-ensemble-execution-and-consensus-formation)
+- [A.10: Type Safety and Schema Management](#a10-type-safety-and-schema-management)
 
 ---
 
@@ -502,55 +503,6 @@ Set analysis results to {{analysis_report}}.
 - Free choice and combination of libraries
 - Reusability through modularization
 
-#### Type Safety and Data Integrity (Optional Feature)
-
-**As a future extension option**, type safety can be ensured through direct type information description within variables.json. While not required for basic macro operations, it provides enhanced safety for complex Python integrations and scenarios demanding high reliability.
-
-```json
-{
-  "user_name": "John Doe",           // Basic format (recommended)
-  "user_age": {                      // Type specification (optional)
-    "value": 30,
-    "type": "integer"
-  }
-}
-```
-
-Selective implementation for **specific use cases where type mismatches could cause serious issues**, such as numerical computation, large-scale data processing, and external API integration. Basic format is sufficient for daily macro usage. Type safety can be gradually enhanced as needed through natural language specifications like "Set {{user_age}} type to integer".
-
-#### Schema File-Based Systematic Type Management
-
-**For more advanced type management**, introducing schema files that predefine the structure of variables.json is effective:
-
-```json
-// Example of variables.schema.json
-{
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "properties": {
-    "analysis_config": {
-      "type": "object",
-      "properties": {
-        "precision": {"type": "number", "minimum": 0.1, "maximum": 1.0},
-        "iterations": {"type": "integer", "minimum": 1},
-        "output_format": {"type": "string", "enum": ["json", "csv", "xml"]}
-      },
-      "required": ["precision", "iterations"]
-    }
-  }
-}
-```
-
-**Graduated Introduction Strategy**:
-- **Basic Usage**: No schema file, simple variable management
-- **Intermediate Usage**: Schema definition for important data only, partial type validation
-- **Advanced Usage**: Complete schema-based type management, strict validation
-
-**Implementation Advantages**:
-- Standard compatibility with JSON Schema
-- Automatic type validation on Python side
-- Consistent type management across projects
-- Safe handling of complex data structures
 
 ## A.5: Multi-Agent System Design
 
@@ -849,3 +801,217 @@ Compare {{result_1}}, {{result_2}}, {{result_3}}:
 ### Significance and Positioning
 
 Ensemble execution and consensus formation represent an approach that actively utilizes the characteristics of probabilistic systems as a **foundation for statistical robustness**, rather than avoiding them as "constraints". This methodology ensures practical reliability for important tasks and enables broader applications in natural language macro programming with LLM probabilistic behavioral characteristics.
+
+## A.10: Type Safety and Schema Management
+
+### Background and Importance
+
+As natural language macro programming becomes more complex and Python Tool Integration and critical business applications expand, the importance of **type safety and data integrity** is increasing. While string-based variable management is sufficient for basic macro operations, type mismatches can cause serious issues in numerical computation, large-scale data processing, external API integration, and other advanced use cases.
+
+**Purpose of This Section**:
+- Provide methods for gradual type safety enhancement
+- Realize systematic data management based on schemas
+- Clarify migration strategies from basic to advanced usage
+- Establish best practices for practical type management
+
+### Basic Type Specification Features
+
+#### Direct Type Information Description
+
+**As a future extension option**, type safety can be ensured through direct type information description within variables.json. While not required for basic macro operations, it provides enhanced safety for complex Python integrations and scenarios demanding high reliability.
+
+```json
+{
+  "user_name": "John Doe",           // Basic format (recommended)
+  "user_age": {                      // Type specification (optional)
+    "value": 30,
+    "type": "integer"
+  },
+  "analysis_results": {              // Array type example
+    "value": [1.2, 3.4, 5.6],
+    "type": "array",
+    "element_type": "number"
+  },
+  "config_flag": {                   // Boolean type example
+    "value": true,
+    "type": "boolean"
+  }
+}
+```
+
+#### Natural Language Type Specification
+
+Type safety can be specified intuitively, following the basic philosophy of natural language macros:
+
+```markdown
+## Type-Safe Variable Setting Examples
+
+Set {{user_age}} type to integer
+Set {{success_rate}} type to number
+Set {{feature_enabled}} type to boolean
+
+## Type-Constrained Value Storage
+Save 30 as integer type to {{user_age}}
+Save "enabled" as boolean true to {{status}}
+```
+
+#### Target Applications and Selective Implementation
+
+Selective implementation for **specific use cases where type mismatches could cause serious issues**, such as numerical computation, large-scale data processing, and external API integration. Basic format is sufficient for daily macro usage. Type safety can be gradually enhanced as needed.
+
+### Schema File-Based Systematic Management
+
+#### Pre-defined Schema Files
+
+**For more advanced type management**, introducing schema files that predefine the structure of variables.json is effective:
+
+```json
+// Example of variables.schema.json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "analysis_config": {
+      "type": "object",
+      "properties": {
+        "precision": {"type": "number", "minimum": 0.1, "maximum": 1.0},
+        "iterations": {"type": "integer", "minimum": 1},
+        "output_format": {"type": "string", "enum": ["json", "csv", "xml"]}
+      },
+      "required": ["precision", "iterations"]
+    },
+    "user_profile": {
+      "type": "object",
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "age": {"type": "integer", "minimum": 0, "maximum": 150},
+        "preferences": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        }
+      },
+      "required": ["name", "age"]
+    },
+    "processing_results": {
+      "type": "object",
+      "properties": {
+        "status": {"type": "string", "enum": ["pending", "processing", "completed", "failed"]},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "data": {"type": "array", "items": {"type": "number"}}
+      }
+    }
+  }
+}
+```
+
+#### Schema Validation Integration
+
+Implementation example of schema validation in Python Tool Integration:
+
+```python
+import json
+import jsonschema
+from pathlib import Path
+
+def validate_and_load_variables():
+    """Load variables.json with schema validation"""
+    try:
+        # Load schema file
+        with open("variables.schema.json", 'r', encoding='utf-8') as f:
+            schema = json.load(f)
+        
+        # Load variables.json
+        with open("variables.json", 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        # Schema validation
+        jsonschema.validate(instance=data, schema=schema)
+        
+        print("Schema validation successful")
+        return data
+        
+    except jsonschema.ValidationError as e:
+        print(f"Schema validation error: {e.message}")
+        return None
+    except Exception as e:
+        print(f"File loading error: {e}")
+        return None
+```
+
+### Graduated Introduction Strategy
+
+#### Three Levels of Implementation
+
+**Basic Usage** (recommended starting level):
+- No schema file, simple variable management
+- String-based basic value storage and reference
+- Type errors naturally discovered and corrected at runtime
+
+**Intermediate Usage** (partial implementation for specific use cases):
+- Schema definition for important data only
+- Partial type validation (numerical computation sections, API integration sections, etc.)
+- Basic sections remain as before, type safety ensured only for critical sections
+
+**Advanced Usage** (mission-critical applications):
+- Complete schema-based type management
+- Strict validation and error handling
+- Consistent type management across entire project
+
+#### Practical Migration Strategy Examples
+
+```markdown
+## Practical Migration Examples
+
+### Step 1: Migration from Basic to Intermediate Usage
+Introduce schema definition for important numerical settings only:
+
+Save {{analysis_precision}} as 0.95 (number type, 0.1-1.0 range)
+Save {{iteration_count}} as 100 (integer type, minimum 1)
+
+### Step 2: Migration from Intermediate to Advanced Usage
+Create variables.schema.json and systematic management of all data:
+
+Execute variables.json validation based on schema file
+Report errors and suggest corrections for type constraint violations
+```
+
+### Implementation Advantages and Technical Considerations
+
+#### Compatibility with Standard Technologies
+
+**JSON Schema Standard Compatibility**:
+- Utilization of industry-standard technology compliant with W3C standards
+- Interoperability and integration with existing tools
+- Rich validation features (format, range, pattern, etc.)
+
+**Integration with Python Ecosystem**:
+- Automatic type validation through jsonschema library
+- Type information integration with pandas and NumPy
+- Type-safe information exchange with REST APIs
+
+#### Performance and Maintainability
+
+**Execution Efficiency Optimization**:
+- Selective validation of necessary parts only
+- High-speed validation processing through cache functionality
+- Partial validation strategies for large-scale data
+
+**Long-term Maintainability Assurance**:
+- Consistent type management across projects
+- Safe handling of complex data structures
+- Type specification sharing and quality assurance in team development
+
+#### Future Expansion Support
+
+**Evolving Type Systems**:
+- Preparation for supporting new data types
+- Integration of special data types in AI/ML fields
+- Extension of type management to multimodal data (images, audio, etc.)
+
+**Ecosystem Integration**:
+- Mutual integration with TypeScript and Python type systems
+- Potential for IDE support functionality integration
+- Integration with automatic code generation tools
+
+Type safety and schema management enable natural language macro programming to achieve enterprise-level reliability and maintainability while preserving basic ease of use.
