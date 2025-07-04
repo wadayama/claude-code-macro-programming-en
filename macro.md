@@ -1954,7 +1954,7 @@ Detailed practical examples of Debug & Tracing:
 
 ---
 
-## 📜 Disclaimer
+### 📜 Disclaimer
 
 Please read the following terms carefully before using this "Claude Code Natural Language Macro Programming Guide." By using this guide, you agree to these terms.
 
