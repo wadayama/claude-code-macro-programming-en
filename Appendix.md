@@ -267,6 +267,59 @@ Check past failure patterns and proactively use cached data
 
 Understanding the probabilistic characteristics of natural language macro programming and implementing appropriate risk mitigation measures enables safe and responsible utilization across diverse fields.
 
+### Layer 4: Testing Strategy for Quality Assurance (Research Stage)
+
+In quality assurance for natural language macro programming, selecting appropriate testing methods based on the nature of test targets is crucial.
+
+#### Classification of Test Targets
+
+**Deterministic/Definitive Elements** (traditional unit testing methods applicable):
+- variables.json operations (success/failure of save, load, update)
+- Module execution completion verification (success/failure of `filename.md execution`)
+- Basic conditional branching operations (branch execution under specified conditions)
+- File operation completion verification (success/failure of read, write, delete)
+
+**Probabilistic/Creative Elements** (LLM evaluator validity assessment promising):
+- Quality and validity of natural language generation
+- Logical consistency of reasoning processes
+- Appropriateness of complex judgments
+- Evaluation of creative outputs (haiku, articles, etc.)
+
+#### LLM Evaluator Validity Assessment Method
+
+A method where LLM evaluators with independent contexts objectively assess execution results:
+
+```markdown
+Example instruction to evaluator:
+"Please evaluate the validity of the following execution results:
+
+Input request: {{original_request}}
+Execution output: {{final_result}}
+Execution log: {{debug_output}}
+
+Evaluation criteria:
+1. Task completion rate (0-100%)
+2. Process validity (appropriate/inappropriate)
+3. Output quality assessment (A-D rating)
+4. Logical consistency (consistent/inconsistent)
+
+Please also provide reasoning for your evaluation."
+```
+
+#### Expected Effects and Current Status
+
+**Expected Effects**:
+- Realization of quality assurance in probabilistic systems
+- Automated evaluation of large-scale test cases
+- Construction of continuous quality improvement cycles
+
+**Current Status and Limitations**:
+- Method is at hypothesis stage requiring empirical validation
+- Impact of evaluator LLM bias
+- Computational cost of evaluation processing
+
+**Future Prospects**: Development into an integrated testing framework (A.9 candidate) is expected, enabling construction of multi-layer quality assurance systems with executors, evaluators, and meta-evaluators.
+
 ## A.4: Python Tool Integration
 
 ### Background and Concept
