@@ -1,5 +1,7 @@
 # Claude Code Natural Language Macro Programming Guide
 
+> 🌏 **日本語版も利用可能**: [Japanese documentation is available here](https://github.com/wadayama/claude-code-macro-programming) (日本語ドキュメントはこちら)
+
 A guide to building agent systems using **Claude Code** as a natural language interpreter.
 
 ## ⚡ Quick Start
