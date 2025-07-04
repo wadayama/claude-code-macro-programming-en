@@ -740,7 +740,7 @@ Perform final verification of improved macro with A.7 LLM-based Lint and output 
 ## Self-Adaptive Report Generation System
 1. Requirement Analysis: Automatically extract report specifications from {{user_requirement}}
 2. Macro Generation: Build optimal report generation macro based on specifications
-3. Quality Verification: Confirm safety of generated macro with A.7 Self-Lint
+3. Quality Verification: Confirm safety of generated macro with A.7 LLM-based Verification
 4. Execution Monitoring: Automatic measurement of performance indicators and quality evaluation
 5. Learning Integration: Utilize execution results to improve next-generation accuracy
 
@@ -755,7 +755,7 @@ Metadata Recording:
 
 **1. Advanced Automation**: Complete automation of macro design, generation, and optimization processes significantly reduces human workload. Enables rapid response to complex requirements.
 
-**2. Systematic Quality Assurance**: Self-Inspection functionality automatically guarantees safety and reliability of generated macros. Significantly reduces error rates and improves operational stability.
+**2. Systematic Quality Assurance**: LLM-based inspection functionality automatically guarantees safety and reliability of generated macros. Significantly reduces error rates and improves operational stability.
 
 **3. Continuous Learning Capability**: System itself learns and improves from experience through accumulation and analysis of execution history. Self-evolving system that improves in accuracy and efficiency with use.
 
