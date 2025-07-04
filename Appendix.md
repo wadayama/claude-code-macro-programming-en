@@ -287,38 +287,86 @@ In quality assurance for natural language macro programming, selecting appropria
 
 #### LLM Evaluator Validity Assessment Method
 
-A method where LLM evaluators with independent contexts objectively assess execution results:
+**Technical Background and Necessity**
+
+Natural language macro programming faces unique challenges in quality assurance that traditional testing methods cannot adequately address. While conventional unit testing excels at verifying deterministic operations (file I/O, variable operations, conditional branching), it struggles with the probabilistic and creative aspects inherent in LLM-based systems. The quality of natural language generation, logical consistency of reasoning processes, appropriateness of complex judgments, and evaluation of creative outputs require sophisticated assessment approaches.
+
+Traditional testing assumes predictable, deterministic outcomes, but natural language macros operate in a probabilistic space where "correctness" depends on nuanced factors like semantic appropriateness, contextual relevance, and creative quality. This fundamental mismatch necessitates innovative evaluation methodologies that can assess probabilistic outputs while maintaining objectivity and reproducibility.
+
+**Detailed Explanation of "Independent Context"**
+
+The core innovation of LLM evaluator validity assessment lies in the concept of "independent context" - a deliberate isolation of the evaluator from the execution environment and decision-making process. This approach eliminates evaluator bias by ensuring that assessment is based solely on observable outputs rather than internal processing knowledge.
+
+Context independence operates through several mechanisms:
+- **Information Isolation**: Evaluators receive only the input request, final output, and execution log, without access to intermediate reasoning steps or system internal states
+- **Temporal Separation**: Evaluation occurs after execution completion, preventing real-time influence on the execution process
+- **Perspective Neutrality**: Evaluators maintain objective distance from the original task context, focusing purely on output quality and validity
+
+This meta-cognitive evaluation approach mirrors human peer review processes, where independent reviewers assess work based on presented evidence rather than personal involvement in the creation process.
+
+**Theoretical Foundation**
+
+The methodology rests on three theoretical pillars:
+
+*Multi-perspective Evaluation for Reliability*: Multiple independent evaluators assess the same output, providing statistical confidence through consensus measurement. This approach addresses the inherent variability in LLM responses and enables identification of systematic quality patterns versus random fluctuations.
+
+*Quantitative and Qualitative Assessment Fusion*: The system combines numerical metrics (completion rates, consistency scores) with qualitative judgments (appropriateness ratings, creative quality assessments). This dual approach captures both measurable performance indicators and subjective quality factors that pure quantitative methods miss.
+
+*Reproducibility Assurance*: Standardized evaluation protocols and criteria ensure consistent assessment across different evaluators and time periods. This reproducibility enables meaningful performance tracking and system improvement over time.
+
+**Implementation Patterns**
 
 ```markdown
-Example instruction to evaluator:
-"Please evaluate the validity of the following execution results:
+Enhanced evaluator instruction example:
+"Please evaluate the validity of the following execution results as an independent assessor:
 
 Input request: {{original_request}}
 Execution output: {{final_result}}
 Execution log: {{debug_output}}
 
 Evaluation criteria:
-1. Task completion rate (0-100%)
-2. Process validity (appropriate/inappropriate)
-3. Output quality assessment (A-D rating)
-4. Logical consistency (consistent/inconsistent)
+1. Task completion rate (0-100%) - Degree to which the original request was fulfilled
+2. Process validity (appropriate/inappropriate) - Logical soundness of the execution approach
+3. Output quality assessment (A-D rating) - Overall quality of the final deliverable
+4. Logical consistency (consistent/inconsistent) - Internal coherence of reasoning and outputs
+5. Creative appropriateness (1-5 scale) - Suitability of creative elements to the task context
+6. Error handling effectiveness (excellent/good/poor) - Quality of error management and recovery
 
-Please also provide reasoning for your evaluation."
+For each criterion, provide:
+- Numerical/categorical score
+- Specific reasoning with evidence from the execution log
+- Recommendations for improvement (if applicable)
+
+Maintain objectivity by focusing solely on observable outputs and documented processes."
 ```
 
-#### Expected Effects and Current Status
+**Specific Evaluation Criteria and Methodology**
 
-**Expected Effects**:
-- Realization of quality assurance in probabilistic systems
-- Automated evaluation of large-scale test cases
-- Construction of continuous quality improvement cycles
+The evaluation framework employs a multi-dimensional assessment matrix:
 
-**Current Status and Limitations**:
-- Method is at hypothesis stage requiring empirical validation
-- Impact of evaluator LLM bias
-- Computational cost of evaluation processing
+*Functional Correctness*: Verification that the macro achieved its stated objectives, measured through task completion rates and requirement fulfillment analysis.
 
-**Future Prospects**: Development into an integrated testing framework (A.9 candidate) is expected, enabling construction of multi-layer quality assurance systems with executors, evaluators, and meta-evaluators.
+*Process Quality*: Assessment of the execution methodology, including logical flow, decision-making rationale, and adherence to best practices.
+
+*Output Excellence*: Evaluation of final deliverable quality, considering factors like clarity, completeness, creativity, and appropriateness to context.
+
+*Robustness Analysis*: Assessment of error handling, edge case management, and system resilience during execution.
+
+**Expected Effects and Technical Advantages**
+
+*Quality Assurance Realization*: The system provides objective quality measurement for probabilistic systems, enabling systematic improvement of natural language macro programming effectiveness. This addresses the fundamental challenge of maintaining quality standards in non-deterministic environments.
+
+*Large-scale Automated Testing*: Independent evaluators can assess thousands of macro executions simultaneously, providing comprehensive quality coverage that would be impractical with human evaluation alone. This scalability enables continuous integration and deployment practices for natural language macro systems.
+
+*Continuous Improvement Cycles*: Evaluation results feed back into macro development, creating self-improving systems that learn from performance patterns and user feedback. This iterative enhancement mechanism enables natural language macro programming to achieve increasing sophistication over time.
+
+**Current Status and Limitations**
+
+*Technical Challenges*: The methodology faces several implementation hurdles including evaluator consistency calibration, computational resource requirements for large-scale assessment, and the need for robust evaluation prompt engineering to ensure reliable results.
+
+*Research Development Directions*: Current research focuses on developing standardized evaluation frameworks, creating benchmarks for different types of natural language tasks, and investigating methods to minimize evaluator bias while maintaining assessment quality.
+
+*Future Prospects*: The approach shows promise for development into an integrated testing framework (A.9 candidate) that would enable construction of multi-layer quality assurance systems with executors, evaluators, and meta-evaluators. This evolution could establish natural language macro programming as a reliable foundation for critical business applications, expanding its applicability beyond experimental contexts to production environments requiring high reliability and accountability.
 
 ## A.4: Python Tool Integration
 
