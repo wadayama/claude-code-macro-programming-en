@@ -631,6 +631,18 @@ If {{lint_result}} severity is "warning", request human approval
 **Development Efficiency**: Time savings and quality improvement through early problem detection
 **Learning Support**: Real-time guidance and best practice recommendations for beginners
 
+### Enhancing Verification Reliability
+
+**Applying Context Independence**
+
+While not mandatory, static checks by context-independent LLMs are desirable. Applying the "context independence" concept detailed in A.3 enables more objective and reliable verification:
+
+- **Information Isolation**: Verification LLMs refer only to the macro code itself, performing evaluations independent from execution context or intent
+- **Temporal Separation**: Independent verification before execution avoids interference with the execution process
+- **Perspective Neutrality**: Objective security and quality assessment maintaining distance from original task objectives
+
+This independence provides verification results with reduced bias and more robust static check functionality.
+
 ### 📁 Practical Samples
 
 Detailed practical examples of self-verification systems:
