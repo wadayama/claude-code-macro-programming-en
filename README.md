@@ -151,7 +151,6 @@ MIT License - see [LICENSE](./LICENSE) for details.
 ## 👥 Authors
 
 - **Tadashi Wadayama** - Project design and documentation
-- **Claude Code (Anthropic Inc.)** - Technical implementation and verification
 
 ## 🤝 Contributing
 
@@ -163,6 +162,6 @@ This work contributes to the field of human-AI collaboration and natural languag
 
 ---
 
-**Version**: 1.0  
-**Created**: 2025-06-21  
-**Last Updated**: 2025-07-04
+**Last Updated**: 2025-07-04  
+**Author**: Tadashi Wadayama (with assistance from Claude Code)  
+**License**: MIT License (2025)

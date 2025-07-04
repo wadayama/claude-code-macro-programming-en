@@ -2,6 +2,16 @@
 
 **Claude Code** is a specialized coding environment that extends Anthropic's AI assistant Claude ([Official Documentation](https://docs.anthropic.com/en/docs/claude-code)). It integrates powerful tool suites including file operations, Bash execution, and web search, supporting a wide range of tasks from programming to document creation. This guide presents methods and design patterns for utilizing Claude Code not merely as a coding tool, but as an agent execution environment programmable through natural language.
 
+*The macro syntax used in this guide operates based on the grammar defined in CLAUDE.md. Users write macros in natural language, and Claude executes them according to the grammar rules defined in CLAUDE.md.* **Before actual execution, the CLAUDE.md file must be loaded into Claude Code.**
+
+---
+
+**Last Updated**: 2025-07-04  
+**Author**: Tadashi Wadayama (with assistance from Claude Code)  
+**License**: MIT License (2025)
+
+---
+
 ## 🎯 Table of Contents
 
 ### Part I: Fundamental Concepts and Theoretical Foundation
