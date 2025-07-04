@@ -373,6 +373,8 @@ The evaluation framework employs a multi-dimensional assessment matrix:
 
 ### Background and Concept
 
+Python Tool Integration enables natural language macro programming to achieve universal access to the entire Python ecosystem, making possible a wide range of applications from specialized computational processing to business automation.
+
 In natural language macro programming, information exchange between macros and Python programs through the variables.json file enables utilization of Python's rich library ecosystem. This integration approach makes it possible to infinitely extend the functionality of macro systems.
 
 ### Basic Integration Pattern
@@ -549,8 +551,6 @@ Selective implementation for **specific use cases where type mismatches could ca
 - Automatic type validation on Python side
 - Consistent type management across projects
 - Safe handling of complex data structures
-
-Python Tool Integration enables natural language macro programming to achieve universal access to the entire Python ecosystem, making possible a wide range of applications from specialized computational processing to business automation.
 
 ## A.5: Multi-Agent System Design
 
