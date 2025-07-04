@@ -37,3 +37,6 @@ variables.json
 # Backup files and research summaries
 CLAUDE_backup_*.md
 *research_summary.md
+
+# Experiments directory (development use only, not for end users)
+experiments/
