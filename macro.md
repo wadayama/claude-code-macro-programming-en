@@ -4,36 +4,40 @@
 
 ## 🎯 Table of Contents
 
-1. **Fundamental Concepts of Natural Language Macro Programming**
-   - Information management and result passing
-   - Implementation of conditional branching and multitask processing
+### Part I: Fundamental Concepts and Theoretical Foundation
+- [🤖 Core Concept: Agent Programming Using Claude Code as Interpreter](#core-concept-agent-programming-using-claude-code-as-interpreter)
+- [🌍 Framework Generality and Design Philosophy](#framework-generality-and-design-philosophy)
+- [🔗 Complementary Relationship with Existing Prompt Techniques](#complementary-relationship-with-existing-prompt-techniques)
+- [🔍 High Explainability and Contribution to Responsible AI Development](#high-explainability-and-contribution-to-responsible-ai-development)
+- [⚠️ Probabilistic Behavior Characteristics](#probabilistic-behavior-characteristics)
 
-2. **10 Design Patterns**
-   - [Pattern 1: Sequential Pipeline](#pattern-1-sequential-pipeline)
-   - [Pattern 2: Parallel Processing](#pattern-2-parallel-processing)
-   - [Pattern 3: Conditional Execution](#pattern-3-conditional-execution)
-   - [Pattern 4: Loop & Modular Programming](#pattern-4-loop--modular-programming)
-   - [Pattern 5: Problem Solving & Recursion](#pattern-5-problem-solving--recursion)
-   - [Pattern 6: Learning from Experience](#pattern-6-learning-from-experience)
-   - [Pattern 7: Environment Sensing, Knowledge-base and Environment Model](#pattern-7-environment-sensing-knowledge-base-and-environment-model)
-   - [Pattern 8: Human-in-the-Loop](#pattern-8-human-in-the-loop-hitl)
-   - [Pattern 9: Error Handling](#pattern-9-error-handling)
-   - [Pattern 10: Debug & Tracing](#pattern-10-debug--tracing)
+### Part II: 10 Design Patterns
+- [Pattern 1: Sequential Pipeline](#pattern-1-sequential-pipeline)
+- [Pattern 2: Parallel Processing](#pattern-2-parallel-processing)
+- [Pattern 3: Conditional Execution](#pattern-3-conditional-execution)
+- [Pattern 4: Loop & Modular Programming](#pattern-4-loop--modular-programming)
+- [Pattern 5: Problem Solving & Recursion](#pattern-5-problem-solving--recursion)
+- [Pattern 6: Learning from Experience](#pattern-6-learning-from-experience)
+- [Pattern 7: Environment Sensing, Knowledge-base and Environment Model](#pattern-7-environment-sensing-knowledge-base-and-environment-model)
+- [Pattern 8: Human-in-the-Loop](#pattern-8-human-in-the-loop-hitl)
+- [Pattern 9: Error Handling](#pattern-9-error-handling)
+- [Pattern 10: Debug & Tracing](#pattern-10-debug--tracing)
 
-3. **Practical System Construction Capabilities**
-   - Hands-on practice with graduated samples
-   - Application examples including haiku generation systems
-   - Methods for business process automation
+### Part III: Practice and Applications
+- Practical System Construction Capabilities
+- Hands-on practice with graduated samples
+- Application examples including haiku generation systems
+- Methods for business process automation
 
-4. **Appendix** - [Appendix.md](./Appendix.md)
-   - [A.1: System Control via Claude Code Slash Commands](./Appendix.md#a1-system-control-via-claude-code-slash-commands)
-   - [A.2: Event-Driven Execution and System Integration](./Appendix.md#a2-event-driven-execution-and-system-integration)
-   - [A.3: Risk Mitigation Strategies for Important Tasks](./Appendix.md#a3-risk-mitigation-strategies-for-important-tasks)
-   - [A.4: Python Tool Integration](./Appendix.md#a4-python-tool-integration)
-   - [A.5: Multi-Agent System Design](./Appendix.md#a5-multi-agent-system-design)
-   - [A.6: Audit Log System](./Appendix.md#a6-audit-log-system)
-   - [A.7: Self-Verification System (Self-Lint)](./Appendix.md#a7-self-verification-system-self-lint)
-   - [A.8: Metaprogramming](./Appendix.md#a8-metaprogramming)
+### Part IV: Appendix (Advanced Technologies) - [Appendix.md](./Appendix.md)
+- [A.1: System Control via Claude Code Slash Commands](./Appendix.md#a1-system-control-via-claude-code-slash-commands)
+- [A.2: Event-Driven Execution and System Integration](./Appendix.md#a2-event-driven-execution-and-system-integration)
+- [A.3: Risk Mitigation Strategies for Important Tasks](./Appendix.md#a3-risk-mitigation-strategies-for-important-tasks)
+- [A.4: Python Tool Integration](./Appendix.md#a4-python-tool-integration)
+- [A.5: Multi-Agent System Design](./Appendix.md#a5-multi-agent-system-design)
+- [A.6: Audit Log System](./Appendix.md#a6-audit-log-system)
+- [A.7: Self-Verification System (Self-Lint)](./Appendix.md#a7-self-verification-system-self-lint)
+- [A.8: Metaprogramming](./Appendix.md#a8-metaprogramming)
 
 ---
 
