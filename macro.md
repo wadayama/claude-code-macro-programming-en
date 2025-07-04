@@ -34,14 +34,14 @@
 - [Pattern 10: Debug & Tracing](#pattern-10-debug--tracing)
 
 ### Appendix (Advanced Technologies) - [Appendix.md](./Appendix.md)
-- [A.1: System Control via Claude Code Slash Commands](./Appendix.md#a1-system-control-via-claude-code-slash-commands)
-- [A.2: Event-Driven Execution and System Integration](./Appendix.md#a2-event-driven-execution-and-system-integration)
-- [A.3: Risk Mitigation Strategies for Important Tasks](./Appendix.md#a3-risk-mitigation-strategies-for-important-tasks)
-- [A.4: Python Tool Integration](./Appendix.md#a4-python-tool-integration)
-- [A.5: Multi-Agent System Design](./Appendix.md#a5-multi-agent-system-design)
-- [A.6: Audit Log System](./Appendix.md#a6-audit-log-system)
-- [A.7: Self-Verification System (Self-Lint)](./Appendix.md#a7-self-verification-system-self-lint)
-- [A.8: Metaprogramming](./Appendix.md#a8-metaprogramming)
+- [A.1: System Control via Claude Code Slash Commands](./Appendix.md#a1-system-control-via-claude-code-slash-commands) - Real-time system information retrieval and dynamic environment control
+- [A.2: Event-Driven Execution and System Integration](./Appendix.md#a2-event-driven-execution-and-system-integration) - Asynchronous processing and real-time response systems
+- [A.3: Risk Mitigation Strategies for Important Tasks](./Appendix.md#a3-risk-mitigation-strategies-for-important-tasks) - Three-layer defense strategies for reliable operations
+- [A.4: Python Tool Integration](./Appendix.md#a4-python-tool-integration) - Python ecosystem utilization via variables.json integration
+- [A.5: Multi-Agent System Design](./Appendix.md#a5-multi-agent-system-design) - Collaborative agent systems with shared blackboard model
+- [A.6: Audit Log System](./Appendix.md#a6-audit-log-system) - Transparency and accountability tracking via variables.json extension
+- [A.7: Self-Verification System (Self-Lint)](./Appendix.md#a7-self-verification-system-self-lint) - Pre-execution static analysis for security and quality assurance
+- [A.8: Metaprogramming](./Appendix.md#a8-metaprogramming) - Self-adaptive systems through dynamic macro generation, verification, evaluation, and improvement
 
 ---
 
