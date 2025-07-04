@@ -5,7 +5,7 @@ A systematic compilation of advanced technical elements for the practical implem
 ## Table of Contents
 
 - [A.1: System Control via Claude Code Slash Commands](#a1-system-control-via-claude-code-slash-commands)
-- [A.2: Event-Driven Execution and System Integration](#a2-event-driven-execution-and-system-integration)
+- [A.2: Event-Driven Execution](#a2-event-driven-execution)
 - [A.3: Risk Mitigation Strategies for Important Tasks](#a3-risk-mitigation-strategies-for-important-tasks)
 - [A.4: Python Tool Integration](#a4-python-tool-integration)
 - [A.5: Multi-Agent System Design](#a5-multi-agent-system-design)
@@ -55,7 +55,7 @@ Claude Code provides the following built-in slash commands:
 
 The use of slash commands enables practical agent design that leverages Claude Code's system capabilities.
 
-## A.2: Event-Driven Execution and System Integration
+## A.2: Event-Driven Execution
 
 Many processes in the real world occur asynchronously. Systems that can immediately respond to external stimuli such as file creation, email reception, and sensor value changes are required to have high responsiveness. Event-Driven execution is a primitive that asynchronously listens for specific events and executes corresponding tasks when detected.
 

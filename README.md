@@ -27,7 +27,7 @@ Execute these directly in Claude Code to experience natural language macro progr
 
 **Appendix: Implementation Technologies**
 - A.1: System Control via Claude Code Slash Commands
-- A.2: Event-Driven Execution and System Integration
+- A.2: Event-Driven Execution
 - A.3: Risk Mitigation Strategies for Important Tasks
 - A.4: Python Tool Integration
 - A.5: Multi-Agent System Design (variables.json blackboard model)

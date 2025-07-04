@@ -35,7 +35,7 @@
 
 ### Appendix (Advanced Technologies) - [Appendix.md](./Appendix.md)
 - [A.1: System Control via Claude Code Slash Commands](./Appendix.md#a1-system-control-via-claude-code-slash-commands) - Real-time system information retrieval and dynamic environment control
-- [A.2: Event-Driven Execution and System Integration](./Appendix.md#a2-event-driven-execution-and-system-integration) - Asynchronous processing and real-time response systems
+- [A.2: Event-Driven Execution](./Appendix.md#a2-event-driven-execution) - Asynchronous processing and real-time response systems
 - [A.3: Risk Mitigation Strategies for Important Tasks](./Appendix.md#a3-risk-mitigation-strategies-for-important-tasks) - Four-layer defense strategies for reliable operations
 - [A.4: Python Tool Integration](./Appendix.md#a4-python-tool-integration) - Python ecosystem utilization via variables.json integration
 - [A.5: Multi-Agent System Design](./Appendix.md#a5-multi-agent-system-design) - Collaborative agent systems with shared blackboard model
