@@ -994,7 +994,7 @@ After all task completion, integrate results and present as complete recipe
 
 Detailed practical examples of Problem Solving & Recursion:
 
-- **Beginner**: [Task Decomposition System](./examples/problem_recursion/task_decomposition.md) - Recursive division practice through curry recipe creation (Execution time: 3-5 minutes)
+- **Beginner**: [Task Decomposition System](./examples/problem_recursion/task_decomposition.md) - Recursive division practice through curry recipe creation
 
 ---
 
@@ -1138,8 +1138,8 @@ For next execution, delete game_history.json file.
 
 Detailed practical examples of Learning from Experience:
 
-- **Beginner**: [Writing Style Analysis & Improvement System](./examples/learning_experience/writing_style_learning.md) - Writing experience recording, accumulation, and utilization through JSON persistence (Execution time: 5-8 minutes)
-- **Intermediate**: [Prompt Continuous Improvement System](./examples/learning_experience/prompt_improvement_learning.md) - Gradual prompt optimization learning through Loop Pattern integration (Execution time: 8-12 minutes)
+- **Beginner**: [Writing Style Analysis & Improvement System](./examples/learning_experience/writing_style_learning.md) - Writing experience recording, accumulation, and utilization through JSON persistence
+- **Intermediate**: [Prompt Continuous Improvement System](./examples/learning_experience/prompt_improvement_learning.md) - Gradual prompt optimization learning through Loop Pattern integration
 
 ---
 
