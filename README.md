@@ -53,8 +53,9 @@ Even users without programming experience can design agent behaviors using intui
 ## 📚 Main Contents
 
 - **[macro.md](./macro.md)** - Complete guide (10 design patterns + appendix references)
-- **[Appendix.md](./Appendix.md)** - Detailed appendix (advanced system integration and risk management)
+- **[Appendix.md](./Appendix.md)** - Appendix (advanced system integration and risk management)
 - **[examples/](./examples/)** - Pattern-specific example collection
+- **[haiku_direct.md](./haiku_direct.md)** - Practical example (haiku generation system)
 - **[CLAUDE.md](./CLAUDE.md)** - Macro definition file
 - **[debugger.md](./debugger.md)** - Debug mode specification
 
