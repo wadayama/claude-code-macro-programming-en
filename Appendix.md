@@ -118,7 +118,7 @@ Natural Language Macro Programming is expected to be utilized across diverse fie
 - Clarification of application scope and recognition of limitations
 
 **Purpose of This Section**:
-Assuming the nature of probabilistic systems, to achieve safe and responsible utilization of natural language macro programming for important business tasks through a three-layer defense strategy (proactive design prevention, runtime error handling, auditing and continuous improvement).
+Assuming the nature of probabilistic systems, to achieve safe and responsible utilization of natural language macro programming for important business tasks through a four-layer defense strategy (proactive design prevention, runtime error handling, auditing and continuous improvement, quality assurance testing).
 
 ### Layer 1: Proactive Design Measures (Proactive Design)
 
