@@ -931,6 +931,17 @@ Detailed practical examples of TODO-list Based Loop Processing:
 - **Execution**: Concrete completion of non-decomposable tasks
 - **Integration**: Systematic combination of distributed results
 
+### Safe Recursive Computation with TODO Lists
+
+**Technical Possibility**: The state management capabilities of the TODO list system enable relatively safe implementation of recursive computations that were traditionally challenging.
+
+**Key Benefits**:
+- **Stack Management**: TODO lists serve as recursive call stacks, enabling depth control
+- **State Persistence**: Intermediate state preservation via variables.json supports interruption and resumption
+- **Loop Alternative**: Complex nested loop processing can be replaced with recursive decomposition for more understandable structures
+
+**Applications**: Expected applications in areas where recursive approaches are effective in traditional programming, such as hierarchical data processing, tree structure traversal, and dynamic programming-style problem decomposition.
+
 ### 🎯 3-Step Gradual Development
 
 #### Step 1: TODO Tool Basic Operations
