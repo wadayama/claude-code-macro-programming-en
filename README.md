@@ -33,6 +33,7 @@ Execute these directly in Claude Code to experience natural language macro progr
 - A.6: Audit Log System
 - A.7: Self-Verification System (Self-Lint)
 - A.8: Metaprogramming (Self-adaptive systems through dynamic macro generation, verification, evaluation, and improvement)
+- A.9: Ensemble Execution and Consensus Formation (Statistical countermeasures for probabilistic behavior)
 
 **Practical Applications**
 - Haiku generation, blog creation, investment decision support systems
@@ -124,6 +125,12 @@ Even users without programming experience can design agent behaviors using intui
 - Complete metaprogramming cycle: generation, verification, execution, evaluation
 - "Code as Data" philosophy similar to LISP at natural language level
 - Intelligent macro systems that adapt to situations rather than fixed macros
+
+**A.9: Ensemble Execution and Consensus Formation**
+- Statistical countermeasures for probabilistic behavior
+- Multiple execution parallel processing and result integration
+- Consensus formation through majority voting and confidence weighting
+- Quality assurance through ensemble redundancy
 
 ## ⚠️ Probabilistic Behavior Characteristics
 

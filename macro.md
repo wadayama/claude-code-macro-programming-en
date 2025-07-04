@@ -42,6 +42,7 @@
 - [A.6: Audit Log System](./Appendix.md#a6-audit-log-system) - Transparency and accountability tracking via variables.json extension
 - [A.7: Self-Verification System (Self-Lint)](./Appendix.md#a7-self-verification-system-self-lint) - Pre-execution static analysis for security and quality assurance
 - [A.8: Metaprogramming](./Appendix.md#a8-metaprogramming) - Self-adaptive systems through dynamic macro generation, verification, evaluation, and improvement
+- [A.9: Ensemble Execution and Consensus Formation](./Appendix.md#a9-ensemble-execution-and-consensus-formation) - Statistical countermeasures for probabilistic behavior
 
 ### 📚 Main Contents
 - **[macro.md](./macro.md)** - Complete guide (10 design patterns + appendix references)
@@ -1988,3 +1989,4 @@ For detailed information on advanced system integration and risk management, ple
 - **A.6: Audit Log System** - Transparency and accountability tracking via variables.json extension
 - **A.7: Self-Verification System (Self-Lint)** - Pre-execution static analysis for security and quality assurance
 - **A.8: Metaprogramming** - Self-adaptive systems through dynamic macro generation, verification, evaluation, and improvement
+- **A.9: Ensemble Execution and Consensus Formation** - Statistical countermeasures for probabilistic behavior
