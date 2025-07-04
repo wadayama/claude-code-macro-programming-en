@@ -809,16 +809,16 @@ Ensemble execution and consensus formation represent an approach that actively u
 As natural language macro programming becomes more complex and Python Tool Integration and critical business applications expand, the importance of **type safety and data integrity** is increasing. While string-based variable management is sufficient for basic macro operations, type mismatches can cause serious issues in numerical computation, large-scale data processing, external API integration, and other advanced use cases.
 
 **Purpose of This Section**:
-- Provide methods for gradual type safety enhancement
-- Realize systematic data management based on schemas
-- Clarify migration strategies from basic to advanced usage
-- Establish best practices for practical type management
+- Present methods for gradual type safety enhancement
+- Describe systematic data management approaches based on schemas
+- Outline migration strategies from basic to advanced usage
+- Systematize practical type management methods
 
 ### Basic Type Specification Features
 
 #### Direct Type Information Description
 
-**As a future extension option**, type safety can be ensured through direct type information description within variables.json. While not required for basic macro operations, it provides enhanced safety for complex Python integrations and scenarios demanding high reliability.
+**As a future extension option**, type safety can be ensured through direct type information description within variables.json. While not required for basic macro operations, it contributes to enhanced safety for complex Python integrations and scenarios demanding high reliability.
 
 ```json
 {
@@ -857,7 +857,7 @@ Save "enabled" as boolean true to {{status}}
 
 #### Target Applications and Selective Implementation
 
-Selective implementation for **specific use cases where type mismatches could cause serious issues**, such as numerical computation, large-scale data processing, and external API integration. Basic format is sufficient for daily macro usage. Type safety can be gradually enhanced as needed.
+Selective implementation for **specific use cases where type mismatches could cause serious issues**, such as numerical computation, large-scale data processing, and external API integration. Basic format is sufficient for daily macro usage. Gradual introduction of type safety features is possible as needed.
 
 ### Schema File-Based Systematic Management
 
@@ -1014,4 +1014,4 @@ Report errors and suggest corrections for type constraint violations
 - Potential for IDE support functionality integration
 - Integration with automatic code generation tools
 
-Type safety and schema management enable natural language macro programming to achieve enterprise-level reliability and maintainability while preserving basic ease of use.
+Type safety and schema management provide methods for natural language macro programming to maintain basic ease of use while offering enhanced reliability and maintainability.
