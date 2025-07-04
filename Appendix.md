@@ -516,6 +516,40 @@ Set analysis results to {{analysis_report}}.
 
 Selective implementation for **specific use cases where type mismatches could cause serious issues**, such as numerical computation, large-scale data processing, and external API integration. Basic format is sufficient for daily macro usage. Type safety can be gradually enhanced as needed through natural language specifications like "Set {{user_age}} type to integer".
 
+#### Schema File-Based Systematic Type Management
+
+**For more advanced type management**, introducing schema files that predefine the structure of variables.json is effective:
+
+```json
+// Example of variables.schema.json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "analysis_config": {
+      "type": "object",
+      "properties": {
+        "precision": {"type": "number", "minimum": 0.1, "maximum": 1.0},
+        "iterations": {"type": "integer", "minimum": 1},
+        "output_format": {"type": "string", "enum": ["json", "csv", "xml"]}
+      },
+      "required": ["precision", "iterations"]
+    }
+  }
+}
+```
+
+**Graduated Introduction Strategy**:
+- **Basic Usage**: No schema file, simple variable management
+- **Intermediate Usage**: Schema definition for important data only, partial type validation
+- **Advanced Usage**: Complete schema-based type management, strict validation
+
+**Implementation Advantages**:
+- Standard compatibility with JSON Schema
+- Automatic type validation on Python side
+- Consistent type management across projects
+- Safe handling of complex data structures
+
 Python Tool Integration enables natural language macro programming to achieve universal access to the entire Python ecosystem, making possible a wide range of applications from specialized computational processing to business automation.
 
 ## A.5: Multi-Agent System Design
