@@ -45,6 +45,8 @@
 
 ---
 
+# Part I: Fundamental Concepts and Theoretical Foundation
+
 ## 🤖 Core Concept: Agent Programming Using Claude Code as Interpreter
 
 This guide presents a **Natural Language Macro Programming** approach that **executes structured tasks using natural language as macro code, with LLM as interpreter**. This guide uses Claude Code as an execution environment.
@@ -370,7 +372,7 @@ Save final report to ai_market_report.json.
 
 ---
 
-## 🔄 Basic Design Patterns
+# Part II: 10 Design Patterns
 
 ### Pattern 1: Sequential Pipeline
 
