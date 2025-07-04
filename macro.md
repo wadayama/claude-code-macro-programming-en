@@ -5,11 +5,11 @@
 ## 🎯 Table of Contents
 
 ### Part I: Fundamental Concepts and Theoretical Foundation
-- [🤖 Core Concept: Agent Programming Using Claude Code as Interpreter](#core-concept-agent-programming-using-claude-code-as-interpreter)
-- [🌍 Framework Generality and Design Philosophy](#framework-generality-and-design-philosophy)
-- [🔗 Complementary Relationship with Existing Prompt Techniques](#complementary-relationship-with-existing-prompt-techniques)
-- [🔍 High Explainability and Contribution to Responsible AI Development](#high-explainability-and-contribution-to-responsible-ai-development)
-- [⚠️ Probabilistic Behavior Characteristics](#probabilistic-behavior-characteristics)
+- [🤖 Core Concept: Agent Programming Using Claude Code as Interpreter](#-core-concept-agent-programming-using-claude-code-as-interpreter)
+- [🌍 Framework Generality and Design Philosophy](#-framework-generality-and-design-philosophy)
+- [🔗 Complementary Relationship with Existing Prompt Techniques](#-complementary-relationship-with-existing-prompt-techniques)
+- [🔍 High Explainability and Contribution to Responsible AI Development](#-high-explainability-and-contribution-to-responsible-ai-development)
+- [⚠️ Probabilistic Behavior Characteristics](#️-probabilistic-behavior-characteristics)
 
 ### Part II: 10 Design Patterns
 - [Pattern 1: Sequential Pipeline](#pattern-1-sequential-pipeline)
@@ -23,13 +23,7 @@
 - [Pattern 9: Error Handling](#pattern-9-error-handling)
 - [Pattern 10: Debug & Tracing](#pattern-10-debug--tracing)
 
-### Part III: Practice and Applications
-- Practical System Construction Capabilities
-- Hands-on practice with graduated samples
-- Application examples including haiku generation systems
-- Methods for business process automation
-
-### Part IV: Appendix (Advanced Technologies) - [Appendix.md](./Appendix.md)
+### Appendix (Advanced Technologies) - [Appendix.md](./Appendix.md)
 - [A.1: System Control via Claude Code Slash Commands](./Appendix.md#a1-system-control-via-claude-code-slash-commands)
 - [A.2: Event-Driven Execution and System Integration](./Appendix.md#a2-event-driven-execution-and-system-integration)
 - [A.3: Risk Mitigation Strategies for Important Tasks](./Appendix.md#a3-risk-mitigation-strategies-for-important-tasks)
