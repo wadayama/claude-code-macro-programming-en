@@ -35,6 +35,7 @@ Execute these directly in Claude Code to experience natural language macro progr
 - A.7: Self-Verification System (pre-execution static analysis for security)
 - A.8: Metaprogramming (dynamic macro generation, verification, evaluation, and improvement)
 - A.9: Ensemble Execution and Consensus Formation (statistical countermeasures for probabilistic behavior)
+- A.10: Type Safety and Schema Management (gradual type safety enhancement and schema-based systematic data management)
 
 **Practical Applications**
 - Haiku generation, blog creation, investment decision support systems
