@@ -32,7 +32,7 @@ Execute these directly in Claude Code to experience natural language macro progr
 - A.4: Python Tool Integration
 - A.5: Multi-Agent System Design (variables.json blackboard model)
 - A.6: Audit Log System (transparency and accountability tracking)
-- A.7: Self-Verification System (pre-execution static analysis for security)
+- A.7: LLM-based Verification System (LLM-powered pre-execution static analysis for security)
 - A.8: Metaprogramming (dynamic macro generation, verification, evaluation, and improvement)
 - A.9: Ensemble Execution and Consensus Formation (statistical countermeasures for probabilistic behavior)
 - A.10: Type Safety and Schema Management (gradual type safety enhancement and schema-based systematic data management)

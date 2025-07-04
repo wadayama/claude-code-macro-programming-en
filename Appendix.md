@@ -10,7 +10,7 @@ A systematic compilation of advanced technical elements for the practical implem
 - [A.4: Python Tool Integration](#a4-python-tool-integration)
 - [A.5: Multi-Agent System Design](#a5-multi-agent-system-design)
 - [A.6: Audit Log System](#a6-audit-log-system)
-- [A.7: Self-Verification System (Self-Lint)](#a7-self-verification-system-self-lint)
+- [A.7: LLM-based Verification System (LLM-based Lint)](#a7-llm-based-verification-system-llm-based-lint)
 - [A.8: Metaprogramming](#a8-metaprogramming)
 - [A.9: Ensemble Execution and Consensus Formation](#a9-ensemble-execution-and-consensus-formation)
 - [A.10: Type Safety and Schema Management](#a10-type-safety-and-schema-management)
@@ -597,11 +597,11 @@ Add "Awaiting approval: {{approval_request}}" to audit_log
 **Learning Capability**: Continuous improvement through analysis of success and failure patterns
 **Reliability**: Compliance with research ethics reviews and business audit requirements
 
-## A.7: Self-Verification System (Self-Lint)
+## A.7: LLM-based Verification System (LLM-based Lint)
 
 ### Basic Architecture
 
-In natural language macro programming, a self-verification system can be constructed where AI performs static analysis of macros before execution. This represents a form of metaprogramming as "code that reads code," managing verification results through variables.json and ensuring safety through conditional branching.
+In natural language macro programming, an LLM-based verification system can be constructed where LLM performs static analysis of macros before execution. This represents a form of metaprogramming as "code that reads code," managing verification results through variables.json and ensuring safety through conditional branching.
 
 ### Key Verification Items
 
@@ -661,12 +661,12 @@ Generate macro for {{target_data}} based on data_analysis_template.md
 If {{task_type}} is "reporting":
 Generate macro for {{output_format}} based on report_generation_template.md
 
-Save generated macro to {{generated_macro}} and execute after verification with A.7 Self-Lint
+Save generated macro to {{generated_macro}} and execute after verification with A.7 LLM-based Lint
 ```
 
-#### 2. Self-Inspection Integration
+#### 2. LLM-based Verification Integration
 
-**Integration with A.7 Self-Lint** automates quality assurance of generated macros. Meta-verification (macros verifying macros) ensures advanced reliability.
+**Integration with A.7 LLM-based Lint** automates quality assurance of generated macros. Meta-verification (macros verifying macros) ensures advanced reliability.
 
 ```markdown
 ## Meta-Verification Process
@@ -717,7 +717,7 @@ Implement output generation logic improvements to {{improved_macro}}
 For issues identified in {{error_analysis}}:
 Reflect root cause fixes to {{improved_macro}}
 
-Perform final verification of improved macro with A.7 Self-Lint and output as {{final_macro}}
+Perform final verification of improved macro with A.7 LLM-based Lint and output as {{final_macro}}
 ```
 
 ### Practical Example
