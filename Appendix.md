@@ -12,6 +12,7 @@ Detailed information on advanced system integration and risk management for natu
 - [A.6: Audit Log System](#a6-audit-log-system)
 - [A.7: Self-Verification System (Self-Lint)](#a7-self-verification-system-self-lint)
 - [A.8: Metaprogramming](#a8-metaprogramming)
+- [A.9: Ensemble Execution and Consensus Formation](#a9-ensemble-execution-and-consensus-formation)
 
 ---
 
@@ -761,3 +762,56 @@ Metadata Recording:
 **3. Continuous Learning Capability**: System itself learns and improves from experience through accumulation and analysis of execution history. Self-evolving system that improves in accuracy and efficiency with use.
 
 **4. Extensibility and Maintainability**: Dynamic incorporation of new patterns and templates is possible. Minimizes design changes during system expansion and ensures flexibility in long-term operation.
+
+## A.9: Ensemble Execution and Consensus Formation
+
+### Background and Basic Concepts
+
+The probabilistic behavioral characteristics of LLMs (Large Language Models) in natural language macro programming create the potential for different outputs to be generated for identical inputs. Ensemble execution and consensus formation provide established reliability enhancement techniques as a **classical yet powerful approach** to address this **single probabilistic failure risk**.
+
+**Challenges in Probabilistic Behavior**:
+- **Output Uncertainty**: Potential for different results to be generated for each execution in critical decisions
+- **Single Execution Dependency Risk**: The danger of decision-making based on results from a single execution
+- **Quality Assurance Difficulties**: Establishing consistent quality standards in probabilistic systems
+
+### Concept
+
+Ensemble execution is a method that improves reliability by having **independent multiple AI instances** simultaneously execute important processing steps, then taking a majority vote or consensus of the results.
+
+**Basic Mechanism**:
+1. **Ensuring Independence**: Each execution runs in completely independent contexts unaffected by other execution results
+2. **Result Comparison**: Systematic comparison and evaluation of multiple output results
+3. **Consensus Formation**: When two or more results match, that result is considered "correct" and processing proceeds to the next step
+4. **Error Handling**: When all results differ, the issue is escalated to human judgment
+
+### Implementation Pattern
+
+```markdown
+## Basic Ensemble Execution Pattern
+Three independent executions for important sentiment analysis:
+
+Analyze the sentiment of customer review X and save to {{result_1}}
+Analyze the sentiment of customer review X and save to {{result_2}}
+Analyze the sentiment of customer review X and save to {{result_3}}
+
+## Consensus Formation
+Compare {{result_1}}, {{result_2}}, {{result_3}}:
+- If two or more results match: Save that result to {{final_sentiment}}
+- If all results differ: Output "Consensus formation failed. Manual verification required" and halt processing
+```
+
+### Technical Value
+
+**Statistical Reliability Enhancement**:
+- **Probabilistic Correction**: Statistical correction of incidental bias through multiple executions
+- **Quality Floor Guarantee**: Maintenance of certain quality standards even in worst-case scenarios
+- **Transparency**: Complete visualization of the consensus formation process
+
+**Risk Distribution Effects**:
+- **Elimination of Single Points of Failure**: Minimization of the impact that one execution failure has on the overall system
+- **Objective Determination**: Automatic adoption or rejection of results based on clear criteria
+- **Human Escalation**: Appropriate transition to higher-level judgment when consensus formation fails
+
+### Significance and Positioning
+
+Ensemble execution and consensus formation represent an approach that actively utilizes the characteristics of probabilistic systems as a **foundation for statistical robustness**, rather than avoiding them as "constraints". This methodology enables practical reliability for critical business applications in natural language macro programming with LLM probabilistic behavioral characteristics, making possible broader industrial applications.
