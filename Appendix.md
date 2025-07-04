@@ -806,7 +806,7 @@ Ensemble execution and consensus formation represent an approach that actively u
 
 ### Background and Importance
 
-As natural language macro programming becomes more complex and Python Tool Integration and critical business applications expand, the importance of **type safety and data integrity** is increasing. While string-based variable management is sufficient for basic macro operations, type mismatches can cause serious issues in numerical computation, large-scale data processing, external API integration, and other advanced use cases.
+Natural language macro programming is fundamentally designed with string-based variable management as its foundation. However, when considering advanced features such as the Python Tool Integration proposed in this guide, along with applications in numerical computation, large-scale data processing, and external API integration, **type safety and data integrity** become important considerations. In these domains, type mismatches may lead to runtime errors or unexpected results.
 
 **Purpose of This Section**:
 - Present methods for gradual type safety enhancement
