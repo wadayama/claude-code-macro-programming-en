@@ -90,7 +90,7 @@ Natural Language Macro Programming possesses **high explainability**, an extreme
 
 The natural language macro programming techniques presented in this guide are based on the probabilistic operational characteristics of Large Language Models (LLMs):
 
-- **High-probability operations**: Variable management (`{{variable_name}}`), external module execution (`filename.md execution`), etc., in the case of sufficiently excellent LLMs, operate with very high probability as expected. Variable management is not true programming variables but probabilistic emulation based on pattern recognition within LLM context
+- **High-probability operations**: Variable management using variables.json file (`{{variable_name}}`), external module execution (`filename.md execution`), etc., in the case of sufficiently excellent LLMs, operate with very high probability as expected. Variable value persistence is guaranteed through automatic variables.json management
 - **Non-deterministic nature**: 100% deterministic operation cannot be expected due to LLM characteristics
 - **Practical reliability**: Operates at a level with sufficient reliability for actual use
 - **Error handling capabilities**: Continues to provide partial value through graceful degradation and systematic error recovery
