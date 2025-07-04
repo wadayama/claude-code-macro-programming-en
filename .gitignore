@@ -32,3 +32,8 @@ hitl_log.json
 research_theme.json
 study_log.json
 target_companies.json
+variables.json
+
+# Backup files and research summaries
+CLAUDE_backup_*.md
+*research_summary.md
