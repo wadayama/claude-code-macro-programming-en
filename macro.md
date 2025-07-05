@@ -1309,6 +1309,9 @@ A: Usually 3-5 business days, express delivery next day
 }
 ```
 
+#### RAG System Integration
+Integration with Retrieval-Augmented Generation (RAG) systems enables dynamic search and utilization from large-scale knowledge bases. In Claude Code environments, you can build document search → summarization → decision pipelines through integration with external vector databases or RAG services. Particularly effective for business agents utilizing large volumes of technical documents, regulations, and past cases.
+
 **Usage Example: Knowledge Base Reference System**
 ```markdown
 ## Customer Inquiry Response
