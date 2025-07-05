@@ -46,7 +46,7 @@ Execute these directly in Claude Code to experience natural language macro progr
 ## 📚 Main Contents
 
 - **[macro.md](./macro.md)** - Main guide (10 design patterns + appendix references)
-- **[Appendix.md](./Appendix.md)** - Appendix (advanced system integration and risk management)
+- **[Appendix.md](./Appendix.md)** - Appendix (advanced technical elements and methodologies)
 - **[examples/](./examples/)** - Pattern-specific example collection
 - **[haiku_direct.md](./haiku_direct.md)** - Practical example (haiku generation system)
 - **[CLAUDE.md](./CLAUDE.md)** - Macro definition file
