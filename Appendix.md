@@ -291,32 +291,7 @@ In quality assurance for natural language macro programming, selecting appropria
 
 #### LLM-based Validity Assessment Test
 
-**Technical Background and Necessity**
-
-Natural language macro programming faces unique challenges in quality assurance that traditional testing methods cannot adequately address. While conventional unit testing excels at verifying deterministic operations (file I/O, variable operations, conditional branching), it struggles with the probabilistic and creative aspects inherent in LLM-based systems. The quality of natural language generation, logical consistency of reasoning processes, appropriateness of complex judgments, and evaluation of creative outputs require sophisticated assessment approaches.
-
-Traditional testing assumes predictable, deterministic outcomes, but natural language macros operate in a probabilistic space where "correctness" depends on nuanced factors like semantic appropriateness, contextual relevance, and creative quality. This fundamental mismatch necessitates innovative evaluation methodologies that can assess probabilistic outputs while maintaining objectivity and reproducibility.
-
-**Detailed Explanation of "Independent Context"**
-
-The core innovation of LLM-based validity assessment test lies in the concept of "independent context" - a deliberate isolation of the evaluator from the execution environment and decision-making process. This approach eliminates evaluator bias by ensuring that assessment is based solely on observable outputs rather than internal processing knowledge.
-
-Context independence operates through several mechanisms:
-- **Information Isolation**: Evaluators receive only the input request, final output, and execution log, without access to intermediate reasoning steps or system internal states
-- **Temporal Separation**: Evaluation occurs after execution completion, preventing real-time influence on the execution process
-- **Perspective Neutrality**: Evaluators maintain objective distance from the original task context, focusing purely on output quality and validity
-
-This meta-cognitive evaluation approach mirrors human peer review processes, where independent reviewers assess work based on presented evidence rather than personal involvement in the creation process.
-
-**Theoretical Foundation**
-
-The methodology rests on three theoretical pillars:
-
-*Multi-perspective Evaluation for Reliability*: Multiple independent evaluators assess the same output, providing statistical confidence through consensus measurement. This approach addresses the inherent variability in LLM responses and enables identification of systematic quality patterns versus random fluctuations.
-
-*Quantitative and Qualitative Assessment Fusion*: The system combines numerical metrics (completion rates, consistency scores) with qualitative judgments (appropriateness ratings, creative quality assessments). This dual approach captures both measurable performance indicators and subjective quality factors that pure quantitative methods miss.
-
-*Reproducibility Assurance*: Standardized evaluation protocols and criteria ensure consistent assessment across different evaluators and time periods. This reproducibility enables meaningful performance tracking and system improvement over time.
+For probabilistic and creative elements, objective quality assessment methods using LLM evaluators with independent contexts are effective. This approach maintains context independence and enables validity judgments from perspectives different from the executor.
 
 **Implementation Patterns**
 
