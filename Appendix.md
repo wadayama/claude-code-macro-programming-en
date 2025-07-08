@@ -1631,6 +1631,6 @@ The combination of single evaluator (A.12) and consensus formation by multiple e
 
 Implementation of meta-evaluation systems that monitor the evaluation accuracy of evaluators themselves and realize continuous improvement can further enhance the reliability of LLM-based evaluation testing.
 
-LLM-based Evaluation Testing provides a new paradigm for quality assurance in probabilistic systems and serves as an important foundational technology supporting the practical implementation and industrial application of natural language macro programming.
+LLM-based Evaluation Testing represents one approach to quality assurance in probabilistic systems and may contribute to improving the reliability of natural language macro programming.
 
 ---
