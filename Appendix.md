@@ -509,7 +509,7 @@ Set analysis results to {{analysis_report}}.
 
 ### Basic Architecture
 
-In natural language macro programming, a multi-agent system where multiple agents cooperate can be constructed by utilizing variables.json as a shared blackboard (Blackboard Model). Each agent detects changes to variables.json through file monitoring systems like watchdog and performs event-driven asynchronous execution.
+In natural language macro programming, a multi-agent system where multiple agents cooperate can be constructed by utilizing variables.json as a shared blackboard (Blackboard Model). Each agent shares data through variables.json and achieves cooperative execution through various methods suited to their purpose, such as file monitoring, polling, or direct execution control.
 
 All inter-agent communication occurs via variables.json, resulting in a loosely coupled design where agents have no direct dependencies on each other. This design facilitates dynamic addition, removal, and modification of agents while ensuring system-wide transparency.
 
