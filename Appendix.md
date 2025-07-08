@@ -731,6 +731,8 @@ This implementation example demonstrates the practicality and technical depth of
 
 ## A.6: Audit Log System
 
+**Relationship to 4-Layer Defense Strategy**: This system specifically implements Layer 3 "Auditing and Continuous Improvement" from [A.3](#a3-risk-mitigation-strategies-for-important-tasks). It records all system actions and utilizes them for future risk reduction and quality improvement.
+
 ### Basic Architecture
 
 In natural language macro programming, an audit log system that extends variables.json enables recording of all important processing steps and decisions in chronological order. Complete integration with existing macro syntax ensures transparency and accountability tracking.
@@ -780,6 +782,8 @@ Add "Awaiting approval: {{approval_request}}" to audit_log
 **Reliability**: Compliance with research ethics reviews and business audit requirements
 
 ## A.7: LLM-based Verification System (LLM-based Lint)
+
+**Relationship to 4-Layer Defense Strategy**: This system automates Layer 1 "Proactive Design" and Layer 4 "Quality Assurance Testing" from [A.3](#a3-risk-mitigation-strategies-for-important-tasks). It detects and avoids risks in advance through pre-execution static verification.
 
 ### Basic Architecture
 
