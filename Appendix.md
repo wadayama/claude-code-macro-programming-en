@@ -982,6 +982,15 @@ Evaluate {{generated_code}} from multiple perspectives and create {{review_repor
 - **Separation of Expertise**: Independent agents for creation and evaluation specialization
 - **Repeatability**: Learning effects through repeated execution with different themes
 
+#### Advantages of Context Separation
+
+By having the code creation agent and review agent operate in **independent contexts**:
+
+- **Objective Evaluation**: Review agent evaluates code from a neutral perspective uninfluenced by the creation process
+- **Bias Elimination**: Pure quality assessment without attachment or assumptions about "self-written code"
+- **Multi-perspective Approach**: Well-balanced output optimized from different viewpoints (creation efficiency vs maintainability)
+- **Scalability**: Easy to add parallel evaluation by multiple review agents or agents with different specializations
+
 ### Advantages
 
 **1. Advanced Automation**: Complete automation of macro design, generation, and optimization processes reduces human workload. Enables rapid response to complex requirements.
