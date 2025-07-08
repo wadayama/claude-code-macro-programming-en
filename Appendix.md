@@ -1318,25 +1318,7 @@ def load_variable(key):
 
 #### Application to CLAUDE.md Variable Writing Rules
 
-**When utilizing optimistic locking functionality**, safer concurrent processing can be achieved by extending CLAUDE.md variable saving rules as follows:
-
-```markdown
-## Extended Variable Saving Rules (Optimistic Locking Support)
-
-When receiving variable saving instructions:
-
-1. **Optimistic Lock Function Call**
-   - Use save_variable(key, value) function
-   - Automatic version management and conflict avoidance
-
-2. **Success/Failure Verification**
-   - If return value is "Success": Report save completion
-   - If return value is error: Report error details and retry if necessary
-
-3. **Compatibility with Existing Specifications**
-   - Basic variable save/reference operations remain unchanged
-   - Concurrent access control executed transparently
-```
+Safer concurrent processing can be achieved by integrating optimistic locking functionality into CLAUDE.md. For detailed implementation, refer to the practical example section below.
 
 #### Implementation Benefits
 
@@ -1382,5 +1364,82 @@ When receiving variable saving instructions:
 **Maintainability**:
 - Easy understanding through simple implementation
 - Ability to leverage existing knowledge through adoption of standard optimistic locking methods
+
+### Practical Example: Optimistic Locking-Compatible CLAUDE.md Rules
+
+The following shows the actual CLAUDE.md rules for optimistic locking compatibility implemented and verified in **test_proj14**. This example provides concrete specifications for operating the optimistic locking mechanism explained in the theoretical background within an actual natural language macro programming environment.
+
+#### Optimistic Locking-Compatible Variable Save Rules
+
+**Important**: Agent code is written using conventional natural language notation. Optimistic locking processing is executed transparently.
+
+```markdown
+### 🚨 Absolute Compliance Rule: Variable Save (Optimistic Locking Compatible)
+
+When receiving variable save instructions "Save VALUE to {{variable_name}}" or "Store VALUE in {{variable_name}}":
+
+1. **Automatically execute optimistic locking save via optimistic_lock.py**
+   - Agent writes conventionally "Save to {{variable_name}}"
+   - Internally uses optimistic locking library for safe storage
+   - Automatically prevents data conflicts between parallel processes
+
+2. **Internal Processing (Transparent to Agent)**
+   ```python
+   # The following processing is automatically executed (no need to write in agent code)
+   from optimistic_lock import save_variable
+   result = save_variable("variable_name", "VALUE")
+   ```
+
+3. **Automatic Save Result Reporting**
+   - On success: "Saved 'VALUE' to {{variable_name}}"
+   - On conflict resolution: "Saved 'VALUE' to {{variable_name}}" (conflict resolved internally)
+   - On failure: Report failure with error details
+
+4. **Automatic Safety Guarantee in Parallel Execution Environment**
+   - Automatically maintain data consistency even with simultaneous execution of multiple agents
+   - Conflict resolution through version management and automatic retry
+   - No changes required to agent code
+```
+
+#### Execution Example: Transparent Conflict Resolution
+
+```markdown
+# Variable save example (optimistic locking compatible - agent side uses conventional notation)
+Agent Code: "Save Tanaka Taro to {{user_name}}"
+AI Execution:
+1. Automatically execute optimistic_lock.py according to CLAUDE.md rules
+2. Safe save with optimistic locking: save_variable("user_name", "Tanaka Taro")
+3. Conflict detection and retry processing (executed transparently)
+4. Display: "Saved 'Tanaka Taro' to {{user_name}}"
+
+# Transparent conflict resolution during parallel execution
+When multiple agents simultaneously update variables:
+1. Agent1: "Save haiku to {{agent_1_haiku}}"
+2. Agent2: "Save haiku to {{agent_2_haiku}}"  
+3. Optimistic locking automatically detects and resolves conflicts
+4. Both agents complete saving normally
+5. Agent code remains in conventional natural language notation
+6. Data consistency is transparently guaranteed
+```
+
+#### Implementation Transparency
+
+The most important feature of this example is **minimizing the burden on agent developers**:
+
+**1. Simplicity of Description**:
+- Agents write conventionally "Save to {{variable_name}}"
+- Hide complexity of concurrent control while maintaining natural language-like description
+
+**2. Automated Safety**:
+- Optimistic locking conflict detection and resolution executed transparently
+- No need for agent side to be aware of concurrent control
+
+**3. Complete Compatibility with Existing Code**:
+- No changes required to existing agent code even when enabling optimistic locking functionality
+- Gradual migration is possible
+
+This example represents a proven method for operating theoretical optimistic locking implementation in actual natural language macro programming environments, enabling construction of systems with production-level reliability through integration with **A.5 Multi-Agent Systems** and **Pattern 2 Parallel Processing**.
+
+---
 
 Concurrent access control and optimistic locking are fundamental technologies for utilizing natural language macro programming in full-scale concurrent processing environments, significantly improving system reliability and scalability as crucial implementation elements.
