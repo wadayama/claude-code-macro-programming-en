@@ -1509,9 +1509,11 @@ This example represents a proven method for operating theoretical optimistic loc
 
 **Relationship to 4-Layer Defense Strategy**: This system addresses evaluation challenges specific to probabilistic systems in Layer 4 "Quality Assurance Testing" of [A.3](#a3-risk-mitigation-strategies-for-important-tasks). It objectively realizes evaluation of creativity, logic, and appropriateness that are difficult to achieve with conventional software testing.
 
+**Distinction from Pre-execution Evaluation**: While [A.7 LLM-based Verification System](#a7-llm-based-verification-system-llm-based-lint) handles pre-execution evaluation through static analysis, this section focuses on post-execution evaluation that includes actual output results.
+
 ### Basic Concepts
 
-Natural language macro programming has probabilistic behavioral characteristics, making quality assurance difficult with conventional deterministic testing methods. **LLM-based Evaluation Testing** is an innovative method that solves this challenge through objective quality evaluation by LLM evaluators with independent contexts.
+Natural language macro programming has probabilistic behavioral characteristics, making quality assurance difficult with conventional deterministic testing methods. **LLM-based Evaluation Testing** addresses this challenge through objective quality evaluation by LLM evaluators with independent contexts.
 
 #### Evaluation Challenges in Probabilistic Systems
 
