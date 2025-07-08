@@ -513,6 +513,10 @@ In natural language macro programming, a multi-agent system where multiple agent
 
 All inter-agent communication occurs via variables.json, resulting in a loosely coupled design where agents have no direct dependencies on each other. This design facilitates dynamic addition, removal, and modification of agents while ensuring system-wide transparency.
 
+#### Schema-Based Communication Protocol
+
+In inter-agent data exchange, schema validation enables standardization of communication protocols and integrity assurance. Sending agents output data in specified formats, while receiving agents safely retrieve data through schema validation. This enables compatibility verification when adding agents, impact scope identification during protocol changes, and improved debugging efficiency (see [A.10: Type Safety and Schema Management](#a10-type-safety-and-schema-management) for details).
+
 ### Implementation Patterns
 
 **Parallel Processing Pattern**: Multiple agents execute independent tasks simultaneously, saving results to different keys in variables.json. Agent progress status is shared, and overall processing flow is cooperatively controlled.
@@ -1147,6 +1151,10 @@ Retrieve {{project_settings}} value with schema validation, and continue process
 # Type-safe processing of numerical data
 Verify {{calculation_params}} with schema validation, and execute calculations only if all values are numeric types
 ```
+
+#### Application in Inter-Agent Communication
+
+In multi-agent environments, schema validation is utilized as an inter-agent communication protocol. Each agent writes data to variables.json following a common schema, providing a mechanism for other agents to safely read the data. This enables early detection of communication errors, prevention of invalid data injection, and improved overall system robustness (see [A.5: Multi-Agent System Design](#a5-multi-agent-system-design) for details).
 
 ### Graduated Introduction Strategy
 
