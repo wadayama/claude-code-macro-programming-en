@@ -783,7 +783,7 @@ Add "Awaiting approval: {{approval_request}}" to audit_log
 
 ## A.7: LLM-based Verification System (LLM-based Lint)
 
-**Relationship to 4-Layer Defense Strategy**: This system automates Layer 1 "Proactive Design" and Layer 4 "Quality Assurance Testing" from [A.3](#a3-risk-mitigation-strategies-for-important-tasks). It detects and avoids risks in advance through pre-execution static verification.
+**Relationship to 4-Layer Defense Strategy**: This system automates Layer 1 "Proactive Design" and Layer 4 "Quality Assurance Testing" from [A.3](#a3-risk-mitigation-strategies-for-important-tasks). Through pre-execution static verification, it proactively detects and avoids risks that are difficult to discover through post-execution testing.
 
 ### Basic Architecture
 
