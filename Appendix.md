@@ -1634,5 +1634,3 @@ Implementation of meta-evaluation systems that monitor the evaluation accuracy o
 LLM-based Evaluation Testing provides a new paradigm for quality assurance in probabilistic systems and serves as an important foundational technology supporting the practical implementation and industrial application of natural language macro programming.
 
 ---
-
-Concurrent access control and optimistic locking are fundamental technologies for utilizing natural language macro programming in full-scale concurrent processing environments, improving system reliability and scalability as crucial implementation elements.
