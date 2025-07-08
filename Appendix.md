@@ -1354,8 +1354,8 @@ Safer concurrent processing can be achieved by integrating optimistic locking fu
 ### Implementation Evaluation
 
 **Stability**:
-- Stable operation confirmed in multiple test projects (test_proj13-17)
 - Long-term operation testing in concurrent access environments confirmed no data corruption or lock conflicts
+- Stable operation confirmed in multiple implementation environments
 
 **Scalability**:
 - Easy addition of more advanced concurrent control features based on basic optimistic locking functionality
@@ -1367,7 +1367,7 @@ Safer concurrent processing can be achieved by integrating optimistic locking fu
 
 ### Practical Example: Optimistic Locking-Compatible CLAUDE.md Rules
 
-The following shows the actual CLAUDE.md rules for optimistic locking compatibility implemented and verified in **test_proj14**. This example provides concrete specifications for operating the optimistic locking mechanism explained in the theoretical background within an actual natural language macro programming environment.
+The following shows the actual CLAUDE.md rules for optimistic locking compatibility that have been implemented and verified. This example provides concrete specifications for operating the optimistic locking mechanism explained in the theoretical background within an actual natural language macro programming environment.
 
 #### Optimistic Locking-Compatible Variable Save Rules
 
