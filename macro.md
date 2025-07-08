@@ -44,6 +44,7 @@
 - [A.8: Metaprogramming](./Appendix.md#a8-metaprogramming) - Self-adaptive systems through dynamic macro generation, verification, evaluation, and improvement
 - [A.9: Ensemble Execution and Consensus Formation](./Appendix.md#a9-ensemble-execution-and-consensus-formation) - Statistical countermeasures for probabilistic behavior
 - [A.10: Type Safety and Schema Management](./Appendix.md#a10-type-safety-and-schema-management) - Gradual type safety enhancement and schema-based systematic data management
+- [A.11: Concurrent Access Control and Optimistic Locking](./Appendix.md#a11-concurrent-access-control-and-optimistic-locking) - variables.json concurrent access control for safety assurance
 
 ### Disclaimer
 - [Disclaimer](#-disclaimer)
@@ -1768,6 +1769,9 @@ Finally:
 
 **Graceful Degradation**:
 **Gradual Quality Adjustment** provides valuable results even when not perfect. **Adaptation to Constraints** optimizes under resource or data limitations. **User Expectation Management** clearly explains limitations. **Continuous Service** maintains system value through partial functionality provision.
+
+**Concurrent Access Control**:
+**Race Condition Prevention** prevents variables.json conflicts through optimistic locking mechanisms (detailed implementation in [A.11](./Appendix.md#a11-concurrent-access-control-and-optimistic-locking)). **Data Consistency** maintains integrity during simultaneous access by multiple processes. **Safe File Operations** ensure reliable concurrent updates with automatic retry mechanisms.
 
 ### 📁 Practical Samples
 

@@ -38,6 +38,7 @@ Execute these directly in Claude Code to experience natural language macro progr
 - A.8: Metaprogramming (dynamic macro generation, verification, evaluation, and improvement)
 - A.9: Ensemble Execution and Consensus Formation (statistical countermeasures for probabilistic behavior)
 - A.10: Type Safety and Schema Management (gradual type safety enhancement and schema-based systematic data management)
+- A.11: Concurrent Access Control and Optimistic Locking (variables.json concurrent access control for safety assurance)
 
 **Practical Applications**
 - Haiku generation, blog creation, investment decision support systems

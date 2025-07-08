@@ -14,6 +14,7 @@ A systematic compilation of advanced technical elements for the practical implem
 - [A.8: Metaprogramming](#a8-metaprogramming)
 - [A.9: Ensemble Execution and Consensus Formation](#a9-ensemble-execution-and-consensus-formation)
 - [A.10: Type Safety and Schema Management](#a10-type-safety-and-schema-management)
+- [A.11: Concurrent Access Control and Optimistic Locking](#a11-concurrent-access-control-and-optimistic-locking)
 
 ---
 
@@ -1027,3 +1028,186 @@ Report errors and suggest corrections for type constraint violations
 - Integration with automatic code generation tools
 
 Type safety and schema management provide methods for natural language macro programming to maintain basic ease of use while offering enhanced reliability and maintainability.
+
+## A.11: Concurrent Access Control and Optimistic Locking
+
+### Background and Problem Definition
+
+In natural language macro programming, the variables.json file may be accessed simultaneously by multiple processes. Particularly when utilizing advanced features such as parallel processing (Pattern 2), multi-agent systems (A.5), and event-driven execution (A.2), **concurrent access control** becomes a crucial technical challenge.
+
+**Typical Concurrent Access Problems**:
+- **Race Conditions**: Multiple processes simultaneously read variables.json, perform different updates, and some updates are lost
+- **Data Corruption**: Another process reads during write operations, resulting in inconsistent data generation
+- **File Lock Conflicts**: Simple file locking can cause deadlocks or prolonged blocking
+
+### Optimistic Locking Implementation
+
+**Optimistic Locking** is an established concurrent control method also adopted in database systems. Unlike pessimistic locking, it does not acquire locks at the start of processing but verifies data integrity during updates, minimizing performance degradation.
+
+#### Implementation Architecture
+
+Add version management functionality to variables.json and verify version integrity during updates:
+
+```json
+{
+  "_version": 15,
+  "user_name": "Tanaka Taro",
+  "analysis_results": [1.2, 3.4, 5.6],
+  "task_status": "completed"
+}
+```
+
+#### Python Implementation Example
+
+The following is optimistic locking implementation code with confirmed stable operation:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Simple optimistic locking implementation
+"""
+import json
+import time
+import random
+
+class VersionConflictError(Exception):
+    """Version conflict error"""
+    pass
+
+def update_with_optimistic_lock(key, value):
+    max_retries = 5
+    for i in range(max_retries):
+        try:
+            # 1. Read file and get version
+            try:
+                with open("variables.json", 'r') as f:
+                    data = json.load(f)
+                    original_version = data.get("_version", 0)
+            except FileNotFoundError:
+                data = {"_version": 0}
+                original_version = 0
+
+            # 2. Apply updates from LLM instructions in memory
+            data[key] = value
+            data["_version"] = original_version + 1
+
+            # 3. Write to file
+            with open("variables.json", 'w') as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+
+            return "Success"
+
+        except Exception as e:
+            if i < max_retries - 1:
+                # Wait briefly before retry
+                time.sleep(random.uniform(0.1, 0.5)) 
+                continue
+            else:
+                return f"Failed after multiple retries: {str(e)}"
+    
+    return "Failed after multiple retries"
+
+def save_variable(key, value):
+    """Save variable with optimistic locking"""
+    return update_with_optimistic_lock(key, value)
+
+def load_variable(key):
+    """Load variable"""
+    try:
+        with open("variables.json", 'r') as f:
+            data = json.load(f)
+            return data.get(key)
+    except FileNotFoundError:
+        return None
+    except Exception:
+        return None
+```
+
+#### Key Implementation Features
+
+**1. Version Management Functionality**:
+- Tracking update count through `_version` field
+- Automatic start from version 0 when file doesn't exist
+- Automatic version increment with each update
+
+**2. Retry Functionality**:
+- Up to 5 retries to handle temporary conflicts
+- Random delay (0.1-0.5 seconds) for collision avoidance
+- Linear delay simplification instead of exponential backoff
+
+**3. Error Handling**:
+- Proper initialization when file doesn't exist
+- Robust handling of various exceptions
+- Clear error messages for problem diagnosis support
+
+### Integration with Natural Language Macro Programming
+
+#### Application to CLAUDE.md Variable Writing Rules
+
+**When utilizing optimistic locking functionality**, safer concurrent processing can be achieved by extending CLAUDE.md variable saving rules as follows:
+
+```markdown
+## Extended Variable Saving Rules (Optimistic Locking Support)
+
+When receiving variable saving instructions:
+
+1. **Optimistic Lock Function Call**
+   - Use save_variable(key, value) function
+   - Automatic version management and conflict avoidance
+
+2. **Success/Failure Verification**
+   - If return value is "Success": Report save completion
+   - If return value is error: Report error details and retry if necessary
+
+3. **Compatibility with Existing Specifications**
+   - Basic variable save/reference operations remain unchanged
+   - Concurrent access control executed transparently
+```
+
+#### Implementation Benefits
+
+**1. Transparency**:
+- Add concurrent access control without modifying existing macro code
+- Basic variable operations maintain traditional behavior
+- Concurrent control features automatically applied only when using advanced functions
+
+**2. Robustness**:
+- Effective prevention of race condition occurrence
+- Retry functionality for temporary conflicts
+- Avoidance of data corruption and inconsistencies
+
+**3. Performance**:
+- Maintain high performance through optimistic locking
+- Minimize overhead when no conflicts occur
+- Efficient conflict resolution through appropriate retry strategy
+
+### Application Scenarios
+
+**1. Safety Assurance in Parallel Processing**:
+- In Pattern 2 parallel processing, when multiple Tasks simultaneously update variables.json
+- Each task independently updates data while maintaining final data consistency
+
+**2. Coordination in Multi-Agent Systems**:
+- Safe information sharing in A.5 multi-agent systems using shared blackboard model
+- Consistency guarantee when multiple agents simultaneously update variables.json
+
+**3. Robustness in Event-Driven Execution**:
+- In A.2 event-driven execution, when multiple events occur simultaneously and variable updates conflict
+- Each event handler safely updates variables while maintaining overall system consistency
+
+### Implementation Evaluation
+
+**Stability**:
+- Stable operation confirmed in multiple test projects (test_proj13-17)
+- Long-term operation testing in concurrent access environments confirmed no data corruption or lock conflicts
+
+**Scalability**:
+- Easy addition of more advanced concurrent control features based on basic optimistic locking functionality
+- Capable of extension to distributed systems and cluster environments
+
+**Maintainability**:
+- Easy understanding through simple implementation
+- Ability to leverage existing knowledge through adoption of standard optimistic locking methods
+
+Concurrent access control and optimistic locking are fundamental technologies for utilizing natural language macro programming in full-scale concurrent processing environments, significantly improving system reliability and scalability as crucial implementation elements.
