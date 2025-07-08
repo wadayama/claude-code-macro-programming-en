@@ -867,18 +867,57 @@ For each conditional termination task:
 
 ### 🔄 Loop Method Comparison Analysis
 
-| Feature | TODO-List Based | Counter-Based |
-|---------|----------------|---------------|
-| **Implementation Simplicity** | ◎ No counter management needed | △ Counter variable management required |
-| **Progress Visibility** | ◎ Complete visibility through TODO list | ◎ Clear numerical progress display |
-| **Safety** | ◎ Reliable termination via dynamic task deletion | ◎ Infinite loop prevention via upper limits |
-| **Resource Management** | △ Indirect control | ◎ Direct count/cost limitations |
-| **Debug Ease** | ◎ All states visible through TODO list | ○ State understanding via counter values |
-| **Use Cases** | Goal-achievement, quality improvement | Progress management, resource constraints |
+| Feature | TODO-List Based | Counter-Based | Few-shot Pattern |
+|---------|----------------|---------------|------------------|
+| **Implementation Simplicity** | ◎ No counter management needed | △ Counter variable management required | ◎ No management structure needed |
+| **Progress Visibility** | ◎ Complete visibility through TODO list | ◎ Clear numerical progress display | △ Indirect understanding via pattern inference |
+| **Safety** | ◎ Reliable termination via dynamic task deletion | ◎ Infinite loop prevention via upper limits | ◎ Natural termination with finite patterns |
+| **Resource Management** | △ Indirect control | ◎ Direct count/cost limitations | ○ Limitation through pattern scope |
+| **Debug Ease** | ◎ All states visible through TODO list | ○ State understanding via counter values | ○ State estimation through pattern execution |
+| **Learning Effect** | ○ TODO list understanding required | ○ Counter concept understanding required | ◎ Immediate understanding through natural language intuition |
+| **Use Cases** | Goal-achievement, quality improvement | Progress management, resource constraints | Pattern-based, dynamic variable naming |
 
 **Recommended Usage**：
 - **TODO-List Based**: Processing that continues until conditions are met (quality improvement, learning progress)
 - **Counter-Based**: Processing with clear iteration limits (evaluation counts, improvement cycles)
+- **Few-shot Pattern**: Clear pattern-based repetitive processing (array operations, dynamic variable generation, parallel agent execution)
+
+### 🔄 Loop Pattern Types
+
+#### 5. Few-shot Pattern Loop
+```markdown
+Examples:
+- Save the 1st element to {{item_1}}
+- Save the 2nd element to {{item_2}}
+
+Generalization: For 3rd and beyond, use {{item_N}} format (N is number 3,4,5...) continuing up to {{total_count}}
+```
+- **Use Cases**: Clear pattern-based repetitive processing, dynamic variable name generation, array-like data processing
+- **Features**: AI inference capability utilization, no TODO list creation needed, natural language description, intuitive understanding
+- **Practical Example**: [A.5 Haiku Generation Multi-Agent System](./Appendix.md#practical-sample-haiku-generation-multi-agent-system) for theme distribution and agent execution
+
+**Few-shot Pattern Practical Example (from Haiku Generation System)**:
+```markdown
+## Theme Distribution
+Examples:
+- Save the 1st theme to {{agent_1_theme}}
+- Save the 2nd theme to {{agent_2_theme}}
+
+Generalization: For 3rd and beyond, use {{agent_N_theme}} format (N is number 3,4,5...) continuing up to {{agent_count}}
+
+## Parallel Agent Execution
+Examples:
+### Task 1: Agent 1 Execution
+### Task 2: Agent 2 Execution
+
+Generalization: Tasks 3 and beyond follow the same pattern, executing {{agent_count}} tasks in parallel
+```
+
+**Technical Advantages**:
+- **Learning Effect**: Maximum utilization of AI's ability to infer general patterns from specific examples
+- **Conciseness**: No need for TODO list creation or explicit counter management
+- **Flexibility**: Natural description of complex index operations and conditional branching
+- **Stability**: Confirmed stable operation in actual A.5 implementation
 
 **Alternative: Counter-Based Loops**
 For cases requiring explicit progress tracking or resource limits:
