@@ -38,7 +38,7 @@
 - [A.2: Event-Driven Execution](./Appendix.md#a2-event-driven-execution) - Asynchronous processing and real-time response systems
 - [A.3: Risk Mitigation Strategies for Important Tasks](./Appendix.md#a3-risk-mitigation-strategies-for-important-tasks) - Four-layer defense strategies for reliable operations
 - [A.4: Python Tool Integration](./Appendix.md#a4-python-tool-integration) - Python ecosystem utilization via variables.json integration
-- [A.5: Multi-Agent System Design](./Appendix.md#a5-multi-agent-system-design) - Collaborative agent systems with shared blackboard model
+- [A.5: Multi-Agent System Design](./Appendix.md#a5-multi-agent-system-design) - Collaborative agent systems with shared blackboard model (includes haiku generation multi-agent implementation example)
 - [A.6: Audit Log System](./Appendix.md#a6-audit-log-system) - Transparency and accountability tracking via variables.json extension
 - [A.7: LLM-based Verification System (LLM-based Lint)](./Appendix.md#a7-llm-based-verification-system-llm-based-lint) - LLM-powered pre-execution static analysis for security and quality assurance
 - [A.8: Metaprogramming](./Appendix.md#a8-metaprogramming) - Self-adaptive systems through dynamic macro generation, verification, evaluation, and improvement

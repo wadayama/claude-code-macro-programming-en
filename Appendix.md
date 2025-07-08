@@ -548,6 +548,179 @@ All inter-agent communication occurs via variables.json, resulting in a loosely 
 
 **Seamless Description**: Inter-agent message communication can also be described using the same methods as variable management (`save to {{message_key}}`, `check {{status_key}}`). No need to learn new communication protocols, as existing natural language macro syntax can be used directly.
 
+### Practical Sample: Haiku Generation Multi-Agent System
+
+The following is a complete implementation example of multi-agent collaboration using the shared blackboard model. This demonstrates a collaborative system where multiple agents independently generate haiku poems and ultimately select the best work.
+
+#### Technical Requirements
+
+**⚠️ Concurrent Access Control**: This multi-agent system is designed based on the optimistic locking mechanism detailed in [A.11 Concurrent Access Control and Optimistic Locking](#a11-concurrent-access-control-and-optimistic-locking). Safe concurrent writing to variables.json is ensured through optimistic locking implementation (optimistic_lock.py). Race conditions may occur with standard variables.json operations.
+
+#### Main System (haiku-agent.md)
+
+The following defines the control logic for the multi-agent system:
+
+```markdown
+# 🎌 Haiku Generation Multi-Agent System
+
+## Complete Initialization (Clean Start)
+
+Delete variables.json if it exists
+Delete all files in the agents/ folder
+Clear all TODO lists
+
+## System Configuration
+
+Set {{agent_count}} to 5.
+
+Display "=== Haiku Generation Multi-Agent System Started ==="
+
+## Theme Generation
+
+Generate {{agent_count}} creative and unusual haiku themes. Focus on unique and interesting concepts rather than seasonal or natural elements.
+
+Output each theme in the following format:
+1. [Theme 1]
+2. [Theme 2]
+(Continue up to {{agent_count}} themes)
+
+Output themes only, no additional explanations needed.
+
+## Theme Distribution
+
+Distribute the generated themes to each agent:
+
+Examples:
+- Save the 1st theme to {{agent_1_theme}}
+- Save the 2nd theme to {{agent_2_theme}}
+
+Generalization: For 3rd and beyond, use {{agent_N_theme}} format (N is number 3,4,5...) continuing up to {{agent_count}}
+
+Save all themes to {{themes}}.
+
+## Multi-Agent Haiku Generation
+
+**⚠️ Important Notice**: The agent.md file is read-only. You can read its contents, but never modify or overwrite it. Always save to new files in the agents/ folder.
+
+**Launch {{agent_count}} agent processes in parallel using the Task tool:**
+
+Execute {{agent_count}} Tasks in parallel following this pattern:
+
+Examples:
+### Task 1: Agent 1 Execution
+1. Read agent.md content as read-only, replace all <<ID>> with "1" and save to agents/agent_1.md
+2. Then execute the following command:
+   cat agents/agent_1.md | claude -p --dangerously-skip-permissions 
+
+### Task 2: Agent 2 Execution
+1. Read agent.md content as read-only, replace all <<ID>> with "2" and save to agents/agent_2.md
+2. Then execute the following command:
+   cat agents/agent_2.md | claude -p --dangerously-skip-permissions 
+
+Generalization: Tasks 3 and beyond follow the same pattern, replacing <<ID>> with corresponding numbers, executing {{agent_count}} tasks in parallel.
+
+Display "{{agent_count}} agent processes completed in parallel."
+
+## Haiku Evaluation and Selection
+
+Evaluate the collected haiku and select the most unusual and impressive one:
+
+**Generated Themes**: {{themes}}
+
+**Haiku Candidates**:
+Evaluate {{agent_count}} haiku following this pattern:
+
+Examples:
+1. {{agent_1_haiku}}
+2. {{agent_2_haiku}}
+
+Generalization: For 3rd and beyond, use {{agent_N_haiku}} format (N is number 3,4,5...) continuing up to {{agent_count}}.
+
+Evaluation Criteria:
+- Originality and unusualness
+- Poetic expression beauty
+- Impact strength
+
+Exclude empty results from evaluation.
+
+Select the most excellent haiku and display the evaluation results in the following format:
+**Best Haiku**: [Display selected haiku as-is]
+**Selection**: Haiku [number]
+**Reason**: [Specific reason in 1-2 sentences]
+
+Save this evaluation result (all three items: best haiku, selection, reason) to {{best_selection}}.
+
+Display "=== Haiku Generation Multi-Agent System Completed ==="
+```
+
+#### Agent Template (agent.md)
+
+Template file defining individual agent behavior. The `<<ID>>` placeholder is replaced with specific numbers at runtime:
+
+```markdown
+# 🤖 Haiku Generation Agent<<ID>>
+
+## Agent Initialization
+
+Display "=== Haiku Generation Agent<<ID>> Started ==="
+
+## Theme Retrieval
+
+Display "Assigned Theme: {{agent_<<ID>>_theme}}"
+
+## Haiku Creation
+
+Create a haiku based on {{agent_<<ID>>_theme}}.
+
+Requirements:
+- Follow 5-7-5 syllable structure
+- Express the theme's unusualness and uniqueness
+- Use poetic and impressive words
+- Emphasize creativity and impact
+
+Output only the haiku, no additional explanations needed.
+
+Save the created haiku to {{agent_<<ID>>_haiku}}.
+
+## Completion Report
+
+Display "Agent<<ID>> completed: {{agent_<<ID>>_haiku}}"
+
+Display "=== Haiku Generation Agent<<ID>> Ended ==="
+```
+
+#### Systematic Analysis of Key Ideas
+
+**1. Dynamic Agent Generation Pattern**:
+Template-based design using `<<ID>>` placeholders. Automatically generates any number of agent instances from a single agent.md file. This achieves both dynamic control of agent count (via `{{agent_count}}` setting) and implementation consistency.
+
+**2. Parallel Execution Management**:
+True parallel processing utilizing the Task tool. Each agent runs as an independent Claude Code process, concurrently saving results to variables.json. Parallelism is flexibly controlled by `{{agent_count}}`.
+
+**3. Shared Blackboard Model Implementation**:
+variables.json functions as the central information sharing platform. Theme distribution (`{{agent_N_theme}}`), result collection (`{{agent_N_haiku}}`), and final evaluation (`{{best_selection}}`) are all realized through unified variable management methods.
+
+**4. Scalability Design**:
+Dynamic scale control via `{{agent_count}}`. Agent count can be arbitrarily set from 2 to 10, requiring no system architecture changes. Extension to large-scale systems requires only variable value changes.
+
+**5. Concurrent Safety Assurance**:
+Prevention of race conditions through A.11 optimistic locking mechanism. Ensures data integrity when multiple agents simultaneously update variables.json. Achieves high reliability through version management and retry functionality.
+
+#### Technical Features
+
+**Collaborative Problem-Solving Pattern Implementation**:
+- **Division of Labor**: Each agent works independently on different themes
+- **Collaboration**: Information exchange through shared blackboard (variables.json)
+- **Integration**: Centralized evaluation and selection process
+
+**Event-Driven Integration**:
+Automatic evaluation initiation after multi-agent execution completion. Agent synchronization realized through shared state monitoring.
+
+**High Visibility**:
+All agent states (themes, progress, results) are centrally managed in variables.json, enabling real-time monitoring.
+
+This implementation example demonstrates the practicality and technical depth of multi-agent systems through natural language macro programming, providing industrial-level reliability through integration with [A.11 Concurrent Access Control](#a11-concurrent-access-control-and-optimistic-locking).
+
 ## A.6: Audit Log System
 
 ### Basic Architecture

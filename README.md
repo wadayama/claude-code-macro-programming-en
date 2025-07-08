@@ -32,7 +32,7 @@ Execute these directly in Claude Code to experience natural language macro progr
 - A.2: Event-Driven Execution
 - A.3: Risk Mitigation Strategies for Important Tasks
 - A.4: Python Tool Integration
-- A.5: Multi-Agent System Design (variables.json blackboard model)
+- A.5: Multi-Agent System Design (variables.json blackboard model, haiku generation multi-agent implementation example)
 - A.6: Audit Log System (transparency and accountability tracking)
 - A.7: LLM-based Verification System (LLM-powered pre-execution static analysis for security)
 - A.8: Metaprogramming (dynamic macro generation, verification, evaluation, and improvement)
@@ -41,8 +41,8 @@ Execute these directly in Claude Code to experience natural language macro progr
 - A.11: Concurrent Access Control and Optimistic Locking (variables.json concurrent access control for safety assurance)
 
 **Practical Applications**
-- Haiku generation, blog creation, investment decision support systems
-- Business automation methodologies
+- Haiku generation multi-agent systems, blog creation, investment decision support systems
+- Business automation and concurrent processing control methodologies
 
 ## 📚 Main Contents
 
