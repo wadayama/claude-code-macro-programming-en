@@ -15,6 +15,7 @@ A systematic compilation of advanced technical elements for the practical implem
 - [A.9: Ensemble Execution and Consensus Formation](#a9-ensemble-execution-and-consensus-formation)
 - [A.10: Type Safety and Schema Management](#a10-type-safety-and-schema-management)
 - [A.11: Concurrent Access Control and Optimistic Locking](#a11-concurrent-access-control-and-optimistic-locking)
+- [A.12: LLM-based Evaluation Testing](#a12-llm-based-evaluation-testing)
 
 ---
 
@@ -1503,6 +1504,132 @@ The most important feature of this example is **minimizing the burden on agent d
 - Gradual migration is possible
 
 This example represents a proven method for operating theoretical optimistic locking implementation in actual natural language macro programming environments, enabling construction of systems with high-level reliability through integration with **A.5 Multi-Agent Systems** and **Pattern 2 Parallel Processing**.
+
+## A.12: LLM-based Evaluation Testing
+
+**Relationship to 4-Layer Defense Strategy**: This system addresses evaluation challenges specific to probabilistic systems in Layer 4 "Quality Assurance Testing" of [A.3](#a3-risk-mitigation-strategies-for-important-tasks). It objectively realizes evaluation of creativity, logic, and appropriateness that are difficult to achieve with conventional software testing.
+
+### Basic Concepts
+
+Natural language macro programming has probabilistic behavioral characteristics, making quality assurance difficult with conventional deterministic testing methods. **LLM-based Evaluation Testing** is an innovative method that solves this challenge through objective quality evaluation by LLM evaluators with independent contexts.
+
+#### Evaluation Challenges in Probabilistic Systems
+
+**Limitations of Conventional Testing**:
+- **Static Analysis**: Pre-execution syntax checking is possible, but runtime logical consistency and creativity cannot be evaluated
+- **Unit Testing**: Difficult to apply due to unpredictable input-output relationships
+- **Human Evaluation**: High cost and unsuitable for large-scale automated testing
+
+#### Importance of Context Independence
+
+**Evaluator Bias Elimination**: Realizes pure evaluation uninfluenced by the executor LLM's thought processes or assumptions.
+
+**Meta-cognitive Evaluation**: Prevents logical contradictions from "self-evaluation" through objective validity judgment from a perspective different from the executor.
+
+### Systematization of Evaluation Axes
+
+#### 1. Quality Evaluation
+- **Output Completeness**: Conformity to task requirements
+- **Utility**: Actual practical value
+- **Accuracy**: Factual accuracy and logical consistency
+
+#### 2. Creativity Evaluation
+- **Originality**: Novelty and innovation
+- **Diversity**: Breadth of approaches
+- **Insight**: Ideas based on deep understanding
+
+#### 3. Logic Evaluation
+- **Reasoning Validity**: Accuracy of logical steps
+- **Consistency**: Alignment between conclusions and evidence
+- **Completeness**: Comprehensiveness of argumentation
+
+#### 4. Appropriateness Evaluation
+- **Context Understanding**: Appropriate response according to situation
+- **Ethical Consideration**: Socially responsible content
+- **Risk Assessment**: Recognition of potential problems
+
+### Implementation Patterns
+
+#### Independent Evaluator Design
+
+```markdown
+Example Instructions for Evaluator:
+"You are an independent quality evaluator. Please objectively evaluate the following execution results:
+
+【Execution Content】
+Input Request: {{original_request}}
+Execution Output: {{final_result}}
+Execution Log: {{debug_output}}
+
+【Evaluation Criteria】
+1. Quality Evaluation (A-D): Completeness, utility, accuracy
+2. Creativity Evaluation (1-10): Originality, diversity, insight
+3. Logic Evaluation (Appropriate/Inappropriate): Reasoning validity, consistency
+4. Appropriateness Evaluation (Appropriate/Needs Improvement): Context understanding, ethical consideration
+
+【Important】
+- Evaluate purely based on results without considering executor's intentions or background
+- Provide specific rationale for each evaluation item
+- Include improvement suggestions if available
+
+Save evaluation results to {{evaluation_result}}"
+```
+
+#### Bias Elimination Methods
+
+**Consensus by Multiple Evaluators**:
+```markdown
+Integrate three independent evaluations {{evaluation_result_1}}, {{evaluation_result_2}}, {{evaluation_result_3}} and save final quality assessment to {{final_assessment}}.
+
+If there are significant differences between evaluators, analyze the reasons and record in {{discrepancy_analysis}}.
+```
+
+### Technical Challenges and Solutions
+
+#### 1. Ensuring Evaluator Consistency
+
+**Challenge**: Possibility of different evaluations by the same evaluator at different times
+
+**Solutions**: 
+- Explicit documentation of evaluation criteria with concrete examples
+- Specialization of evaluators (writing evaluation, logic evaluation, creativity evaluation, etc.)
+- Regular monitoring and adjustment of evaluation accuracy
+
+#### 2. Ensuring Scalability
+
+**Challenge**: Evaluation time and cost in large-scale testing
+
+**Solutions**:
+- Construction of parallel evaluation systems
+- Adjustment of evaluation depth according to importance
+- Integration with continuous integration
+
+#### 3. Optimization of Computational Costs
+
+**Challenge**: Increased costs due to multiple evaluator evaluation
+
+**Solutions**:
+- Staged evaluation (screening → detailed evaluation)
+- Prioritization of evaluation targets
+- Caching of evaluation results
+
+### Future Prospects
+
+#### Integration with A.9 Ensemble Systems
+
+The combination of single evaluator (A.12) and consensus formation by multiple evaluators (A.9) is expected to enable construction of evaluation systems with higher reliability.
+
+#### Development of Specialized Evaluators
+
+**Writing Evaluation Specialist**: Specialized in style, expressiveness, readability
+**Logic Evaluation Specialist**: Specialized in reasoning, argumentation, consistency  
+**Creativity Evaluation Specialist**: Specialized in originality, artistry, innovation
+
+#### Quality Monitoring by Meta-evaluators
+
+Implementation of meta-evaluation systems that monitor the evaluation accuracy of evaluators themselves and realize continuous improvement can further enhance the reliability of LLM-based evaluation testing.
+
+LLM-based Evaluation Testing provides a new paradigm for quality assurance in probabilistic systems and serves as an important foundational technology supporting the practical implementation and industrial application of natural language macro programming.
 
 ---
 
