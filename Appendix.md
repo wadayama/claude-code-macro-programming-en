@@ -521,7 +521,7 @@ In inter-agent data exchange, schema validation enables standardization of commu
 
 **Parallel Processing Pattern**: Multiple agents execute independent tasks simultaneously, saving results to different keys in variables.json. Agent progress status is shared, and overall processing flow is cooperatively controlled.
 
-**Collaborative Problem-Solving Pattern**: Complex problems are divided among multiple agents, with intermediate results shared for step-by-step resolution. Information integration and decision-making are executed jointly between agents.
+**Collaborative Problem-Solving Pattern**: Complex problems are divided among multiple agents, with intermediate results shared for step-by-step resolution. Information integration and decision-making are executed jointly between agents. For code collaboration examples, see [A.8: Metaprogramming](#a8-metaprogramming).
 
 **Autonomous Learning Pattern**: A monitoring agent for system performance, an optimization proposal agent, and an improvement implementation agent cooperate to achieve continuous system improvement.
 
@@ -928,6 +928,59 @@ Metadata Recording:
 - Improvement history: {{improvement_history}}
 - Optimization suggestions: {{optimization_suggestions}}
 ```
+
+### Code Collaboration Metaprogramming Example
+
+**Python Code Generation System through Specialized Agent Cooperation**
+
+A practical metaprogramming example where Python code creation and review are cooperatively processed by two specialized agents. Combined with multi-agent systems ([A.5](#a5-multi-agent-system-design)), this achieves advanced implementation of code that generates code.
+
+#### System Configuration
+
+**1. Orchestrator (code_collaboration.md)**
+```markdown
+# System initialization
+Set {{task_theme}} to "String processing utility functions"
+
+# Sequential execution of specialized agents
+cat agents/code_writer.md | claude -p --dangerously-skip-permissions
+cat agents/code_reviewer.md | claude -p --dangerously-skip-permissions
+
+# Integrated result display
+Output {{generated_code}} and {{review_report}} in integrated report format
+```
+
+**2. Code Creation Agent (agents/code_writer.md)**
+```markdown
+# Specialization: Python code creation
+Create practical Python code in {{generated_code}} based on {{task_theme}}:
+- Clear function names and appropriate comments
+- Basic error handling
+- Executability and usage examples
+```
+
+**3. Code Review Agent (agents/code_reviewer.md)**
+```markdown
+# Specialization: Code quality evaluation
+Evaluate {{generated_code}} from multiple perspectives and create {{review_report}}:
+- Accuracy, readability, maintainability
+- Pythonic style, error handling
+- Specific improvement suggestions
+```
+
+#### Execution Flow
+
+1. **Theme Setting**: Save task content to variables.json
+2. **Code Generation**: Specialized agent creates Python code
+3. **Quality Evaluation**: Another specialized agent performs detailed review
+4. **Result Integration**: Integrated output of generated code and review report
+
+#### Metaprogramming Characteristics
+
+- **Code Generation through Natural Language**: Direct code generation from requirement specifications
+- **Automated Quality Assurance**: Automatic review functionality for generated code
+- **Separation of Expertise**: Independent agents for creation and evaluation specialization
+- **Repeatability**: Learning effects through repeated execution with different themes
 
 ### Advantages
 
