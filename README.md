@@ -23,9 +23,49 @@ Execute these directly in Claude Code to experience natural language macro progr
 
 ## 🎯 Overview
 
-**10 Design Patterns**
-- Basic Processing Patterns (Sequential, Parallel, Conditional, Loop)
-- Advanced Patterns (Problem Solving, Learning from Experience, Environment Understanding, Human Collaboration, Error Handling, Debug)
+## 🎯 10 Design Patterns
+
+The core of natural language macro programming consists of 10 design patterns, systematically organized into **4 Basic Patterns** and **6 Advanced Patterns**.
+
+### 📋 Basic 4 Patterns
+
+#### Pattern 1: Sequential Pipeline
+Basic execution pattern that processes tasks sequentially, passing results from one stage to the next
+
+#### Pattern 2: Parallel Processing
+Parallel execution pattern that runs multiple tasks simultaneously for efficient processing
+
+#### Pattern 3: Conditional Execution
+Conditional branching pattern that selects different processing paths based on situations
+
+#### Pattern 4: Loop & Modular Programming
+Efficient repetitive control through TODO-list based iteration and Few-shot Pattern Loop
+
+### 🚀 Advanced 6 Patterns
+
+#### Pattern 5: Problem Solving & Recursion
+Recursive approach that breaks down complex problems step by step and solves them through TODO management
+
+#### Pattern 6: Learning from Experience
+Experience learning pattern that learns from past execution results and generates improvement suggestions
+
+#### Pattern 7: Environment Sensing
+Acquires external environment information and executes adaptive processing according to situations
+
+#### Pattern 8: Human-in-the-Loop
+Collaborative execution pattern that incorporates human judgment at appropriate timings
+
+#### Pattern 9: Error Handling
+Robustness improvement pattern that predicts errors and executes appropriate recovery processing
+
+#### Pattern 10: Debug & Tracing
+Development support pattern that visualizes execution status and assists in problem identification and resolution
+
+### 🔧 Pattern Utilization and Integration
+
+**Structure**: Combine Pattern 1-4 (Basic Patterns) and Pattern 5-10 (Advanced Patterns), along with Appendix (Specialized Technologies) to build practical systems.
+
+**Integration Effects**: By combining multiple patterns, sophisticated and practical systems like the **A.5 Haiku Generation Multi-Agent** can be constructed.
 
 **Appendix: Advanced Technical Elements and Practical Implementation**
 - A.1: System Control via Claude Code Slash Commands
