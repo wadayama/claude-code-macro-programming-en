@@ -548,7 +548,7 @@ In inter-agent data exchange, schema validation enables standardization of commu
 
 ### Advantages
 
-**Rapid Prototyping**: Multi-agent systems can be constructed with minimal code (watchdog monitoring script + natural language macros). Learning costs are low due to leveraging existing variables.json knowledge.
+**Rapid Prototyping**: Multi-agent systems can be constructed with minimal code. Learning costs are low due to leveraging existing variables.json knowledge.
 
 **High Visibility**: The entire system state is centrally visualized through variables.json, making debugging, monitoring, and troubleshooting easy. All inter-agent information exchange is also fully traceable.
 
