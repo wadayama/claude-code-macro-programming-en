@@ -1758,9 +1758,41 @@ Change logs from the variable server integrate with existing audit systems, prov
 
 #### Advanced Features
 
-- Real-time change notifications
-- Conditional watch functionality
+**Notification System and Event-Driven Execution**
+
+The variable server provides powerful notification capabilities by integrating with A.2 Event-Driven execution:
+
+**Basic Notification Features**:
+- **Variable Change Events**: Immediate notifications when specific variables are modified
+- **Condition-Based Events**: Notifications when variable values meet specific conditions
+- **Composite Events**: Notifications based on combinations of multiple variable states
+
+**Technical Implementation**:
+- **WebSocket Connections**: Real-time bidirectional communication for event notifications
+- **Server-Sent Events**: Lightweight unidirectional notification system
+- **HTTP Webhooks**: Notification delivery to external systems
+
+**Practical Use Cases**:
+
+```
+# Multi-Agent Collaboration
+Agent A: "Set data collection completion to {{data_ready}}"
+Agent B: "Automatically start analysis processing when {{data_ready}} becomes true"
+
+# Condition Monitoring System
+Monitor Agent: "Execute alert processing when {{cpu_usage}} exceeds 80%"
+Response Agent: "Start emergency response when {{alert_level}} becomes 'critical'"
+```
+
+**Integration Benefits with A.2 Event-Driven Execution**:
+- Improved responsiveness through internal state-based event processing
+- Automation of inter-agent collaborative operations
+- Reduced polling load from condition monitoring
+
+**Other Advanced Features**:
 - Atomic operations on composite variables
+- Detailed change history tracking
+- Conditional watch functionality
 
 #### Distribution Possibilities
 
