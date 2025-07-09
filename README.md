@@ -49,8 +49,8 @@ Recursive approach that breaks down complex problems step by step and solves the
 #### Pattern 6: Learning from Experience
 Experience learning pattern that learns from past execution results and generates improvement suggestions
 
-#### Pattern 7: Environment Sensing
-Acquires external environment information and executes adaptive processing according to situations
+#### Pattern 7: Environment Sensing, Knowledge-base & Environment Model
+Acquires external environment information, builds knowledge systems, and executes adaptive processing according to situations
 
 #### Pattern 8: Human-in-the-Loop
 Collaborative execution pattern that incorporates human judgment at appropriate timings
