@@ -65,7 +65,7 @@ Development support pattern that visualizes execution status and assists in prob
 
 **Structure**: Combine Pattern 1-4 (Basic Patterns) and Pattern 5-10 (Advanced Patterns), along with Appendix (Specialized Technologies) to build practical systems.
 
-**Integration Effects**: By combining multiple patterns, sophisticated and practical systems like the **A.5 Haiku Generation Multi-Agent** can be constructed.
+**Integration Effects**: By combining multiple patterns, collaborative systems like the **A.5 Haiku Generation Multi-Agent** can be constructed.
 
 **Appendix: Advanced Technical Elements and Practical Implementation**
 - A.1: System Control via Claude Code Slash Commands
