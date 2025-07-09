@@ -591,6 +591,8 @@ Save all themes to {{themes}}.
 
 Execute {{agent_count}} Tasks in parallel following this pattern:
 
+**⚠️ Security Warning**: The `--dangerously-skip-permissions` option bypasses permission checks and poses security risks. Use only with trusted code and avoid execution in environments containing important data.
+
 Examples:
 ### Task 1: Agent 1 Execution
 1. Read agent.md content as read-only, replace all <<ID>> with "1" and save to agents/agent_1.md
@@ -744,6 +746,10 @@ In natural language macro programming, an audit log system that extends variable
 Record "Process started: {{task_description}}" to audit_log
 Add "Awaiting approval: {{approval_request}}" to audit_log
 ```
+
+### Automatic Variable Change Logging
+
+By utilizing the optimistic locking mechanism, it is possible to automatically record changes to variables.json in the audit log. This logs change content for each variable update operation, enhancing system transparency. For detailed implementation, refer to [A.13 Variable Server](#a13-variable-server).
 
 ### Key Recording Targets
 
@@ -1737,6 +1743,8 @@ By making the variables.json blackboard model available over the network, multi-
 Single file-based optimistic locking evolves into HTTP server-based optimistic locking mechanisms, enabling safer collaborative operations.
 
 #### Natural Integration with A.6 Audit Log System
+
+Change logs from the variable server integrate completely with [A.6 Audit Log System](#a6-audit-log-system). In particular, the automatic variable change logging mentioned in A.6 is naturally implemented in the server environment.
 
 Change logs from the variable server integrate with existing audit systems, providing comprehensive transparency and accountability tracking.
 
