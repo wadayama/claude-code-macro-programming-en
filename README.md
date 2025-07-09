@@ -80,7 +80,7 @@ Development support pattern that visualizes execution status and assists in prob
 - A.10: Type Safety and Schema Management (gradual type safety enhancement and schema-based systematic data management)
 - A.11: Concurrent Access Control and Optimistic Locking (variables.json concurrent access control for safety assurance)
 - A.12: LLM-based Evaluation Testing (quality, creativity, and logic evaluation for probabilistic systems)
-- A.13: Distributed Variable Server (multi-machine collaborative operations via variables.json distributed system)
+- A.13: Variable Server (multi-machine access via variables.json server)
 
 **Practical Applications**
 - Haiku generation multi-agent systems, blog creation, investment decision support systems
