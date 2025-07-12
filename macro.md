@@ -46,7 +46,7 @@
 - [A.10: Type Safety and Schema Management](./Appendix.md#a10-type-safety-and-schema-management) - Gradual type safety enhancement and schema-based systematic data management
 - [A.11: Concurrent Access Control and Optimistic Locking](./Appendix.md#a11-concurrent-access-control-and-optimistic-locking) - variables.json concurrent access control for safety assurance
 - [A.12: LLM-based Evaluation Testing](./Appendix.md#a12-llm-based-evaluation-testing) - Quality, creativity, and logic evaluation for probabilistic systems
-- [A.13: Variable Server](./Appendix.md#a13-variable-server) - Multi-machine access via variables.json server
+- [A.13: Variable Management Persistence and Scaling](./Appendix.md#a13-variable-management-persistence-and-scaling-database-utilization) - Robust state management via databases
 
 ### Disclaimer
 - [Disclaimer](#-disclaimer)

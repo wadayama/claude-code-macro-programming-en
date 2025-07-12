@@ -16,7 +16,7 @@ A systematic compilation of advanced technical elements for the practical implem
 - [A.10: Type Safety and Schema Management](#a10-type-safety-and-schema-management)
 - [A.11: Concurrent Access Control and Optimistic Locking](#a11-concurrent-access-control-and-optimistic-locking)
 - [A.12: LLM-based Evaluation Testing](#a12-llm-based-evaluation-testing)
-- [A.13: Variable Server](#a13-variable-server)
+- [A.13: Variable Management Persistence and Scaling: Database Utilization](#a13-variable-management-persistence-and-scaling-database-utilization)
 
 ---
 
@@ -1617,197 +1617,276 @@ LLM-based Evaluation Testing represents one approach to quality assurance in pro
 
 ---
 
-## A.13: Variable Server
+## A.13: Variable Management Persistence and Scaling: Database Utilization
 
-### Overview and Purpose
+### Background and Purpose
 
-By extending the current variables.json file-based variable management system to an HTTP server system accessible over the network, we can enable variable access from multiple machines. This extension allows multiple agents to collaborate through a single variable server.
+This guide's basic blackboard model prioritizes prototyping speed and readability by aggregating state in a single file called variables.json. However, as the number of agents increases and systems operate for extended periods with high frequency, file I/O contention, performance, and data reliability become significant challenges.
 
-### Core Values
+This section explains database-powered state management architecture for scaling the blackboard model from experimental prototypes to robust production systems.
 
-#### 1. Transparency Implementation
+### Key Benefits of Database Implementation
 
-**Complete Macro Syntax Compatibility**
+Replacing variables.json with databases (such as SQLite, MongoDB, Redis, etc.) provides systems with the following powerful advantages.
 
-The existing `{{variable_name}}` notation requires no changes whatsoever. Users can leverage their current knowledge and skills without modification.
+#### Robust Concurrent Access Control
 
-```
-# Traditional usage remains unchanged
-"Check {{project_status}}"
-"Save new progress data to {{project_status}}"
-```
+Databases safely handle simultaneous write requests from multiple agents through transactions and locking mechanisms. This enables more reliable implementation of features like "optimistic locking" and definitively prevents "lost update problems."
 
-**Gradual Migration Path**
+#### Performance and Scalability
 
-Migration from local files to server-based systems can be implemented gradually:
+Instead of reading and writing entire files, systems can efficiently update and query only necessary data. Index functionality enables high-speed retrieval of specific states even from large datasets.
 
-1. **Phase 1**: Verify operation with local variables.json
-2. **Phase 2**: Validate operation with local server
-3. **Phase 3**: Full-scale operation with distributed server
+#### Snapshots and Rollback
 
-**Protection of Existing Learning Investment**
+Database standard features facilitate creating snapshots (backups) of system state at arbitrary points in time and safe rollback of entire processes when errors occur. This is essential for ensuring reliability in long-running tasks.
 
-Knowledge of natural language macro programming already acquired by developers and users is completely preserved. No new syntax or concepts need to be learned.
+#### Automatic Audit Logging (Traceability)
 
-#### 2. Change Log System
+Database trigger functionality automatically logs which agent changed which variable when and how on the server side. This achieves complete traceability and audit capabilities without polluting agent-side implementations.
 
-**Complete Change Tracking**
+### Database Selection by Use Case
 
-All variable changes are recorded with the following information:
+#### SQLite: Server-free File-based Database
 
-```json
-{
-  "timestamp": "2025-07-09T10:30:00Z",
-  "agent_id": "haiku_generator_001",
-  "variable_name": "best_haiku",
-  "old_value": "Spring breeze...",
-  "new_value": "Cherry blossoms fall...",
-  "operation": "update",
-  "source_ip": "192.168.1.100"
-}
-```
+Optimal as the first step for introducing database robustness like transactions and schema definitions while maintaining the convenience of variables.json.
 
-**Debug and Audit Support**
+**Features:**
+- File-based with no server required
+- Standard SQL support
+- Transaction support
+- Lightweight and fast
 
-- Root cause identification during problems: Which agent changed variables when
-- Accountability tracking: Transparency through change history
-- Collaboration visualization: Understanding inter-agent interactions
+**Implementation Example:**
+```python
+import sqlite3
+import json
 
-**Integration with A.6 Audit Log System**
+# Variable retrieval
+def get_variable(name):
+    conn = sqlite3.connect('variables.db')
+    cursor = conn.execute('SELECT value FROM variables WHERE name = ?', (name,))
+    result = cursor.fetchone()
+    conn.close()
+    return json.loads(result[0]) if result else None
 
-Natural integration with existing audit log systems provides comprehensive audit trails.
-
-#### 3. Optimistic Locking
-
-**Evolution from A.11**
-
-Extending single file-based optimistic locking to HTTP server environment:
-
-```
-# Optimistic locking in server environment
-GET /variables/user_preference?version=true
-→ {"value": "dark_mode", "version": 42}
-
-PUT /variables/user_preference
-{
-  "value": "light_mode",
-  "expected_version": 42
-}
-→ Success or conflict error
+# Variable storage
+def set_variable(name, value):
+    conn = sqlite3.connect('variables.db')
+    conn.execute('INSERT OR REPLACE INTO variables (name, value, updated_at) VALUES (?, ?, datetime("now"))', 
+                 (name, json.dumps(value)))
+    conn.commit()
+    conn.close()
 ```
 
-**Version Management and Conflict Detection**
+#### MongoDB (Document-oriented DB)
 
-- Version numbering for each variable
-- Conflict detection when multiple agents modify simultaneously
-- Appropriate conflict resolution mechanisms
+Since it handles data in the same JSON format as variables.json, systems can benefit from powerful database features (querying, indexing, concurrent access control) while maintaining schema flexibility. This offers one of the best balances between flexibility and reliability.
 
-### Implementation Architecture
+**Features:**
+- Natural data representation in JSON/BSON format
+- Complex queries and indexing
+- Replication and sharding
+- Schema-less flexibility
 
-#### RESTful API Design
+**Implementation Example:**
+```python
+from pymongo import MongoClient
+
+client = MongoClient('mongodb://localhost:27017/')
+db = client.macro_variables
+
+# Variable retrieval
+def get_variable(name):
+    doc = db.variables.find_one({'name': name})
+    return doc['value'] if doc else None
+
+# Variable storage
+def set_variable(name, value):
+    db.variables.replace_one(
+        {'name': name}, 
+        {'name': name, 'value': value, 'updated_at': datetime.utcnow()},
+        upsert=True
+    )
+```
+
+#### Redis (Key-Value DB)
+
+Suitable for managing highly volatile states (e.g., current agent activities) requiring ultra-high-speed read/write operations.
+
+**Features:**
+- In-memory high-speed processing
+- Atomic operations and publish/subscribe
+- Data expiration settings
+- Clustering support
+
+### Gradual Migration Strategy
+
+The most practical approach involves gradual migration according to system maturity.
+
+#### Prototyping Phase: Use variables.json for rapid idea validation
 
 ```
-# Basic variable operations
-GET    /variables/{name}        # Variable retrieval
-PUT    /variables/{name}        # Variable update
-POST   /variables/{name}/lock   # Optimistic lock acquisition
-DELETE /variables/{name}/lock   # Lock release
-
-# Change logs
-GET    /variables/{name}/history # Change history retrieval
-GET    /audit/changes           # All change logs retrieval
+Phase 1: variables.json
+↓
+Idea validation and feature verification
 ```
 
-#### Gradual Implementation Strategy
+#### Stable Operations Phase: Replace blackboard implementation with SQLite or MongoDB after system data structures stabilize
 
-**Step 1: Local HTTP Server**
-- Provide existing variables.json via HTTP API
-- Verify operation on single machine
+```
+Phase 2: Database migration
+↓
+- SQLite: Easy introduction, transaction support
+- MongoDB: JSON compatibility, advanced querying
+- Redis: High-speed access, event notifications
+```
 
-**Step 2: Multi-Machine Access**
-- Support access from multiple machines to single server
-- Implement optimistic locking
+The advantage of this migration is that only the internal implementation of tools used by LLM agents needs replacement. Agent-side macros (`{{variable}}` read/write instructions) require no changes, enabling smooth strengthening of the system's core as it grows.
 
-**Step 3: Operational Optimization**
-- Implement authentication and authorization
-- Performance optimization
+### Implementation Examples and Best Practices
+
+#### Database Implementation of Optimistic Locking
+
+**SQLite Implementation Example:**
+```sql
+-- Variables table with version management
+CREATE TABLE variables (
+    name TEXT PRIMARY KEY,
+    value TEXT NOT NULL,
+    version INTEGER DEFAULT 1,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Optimistic lock update
+UPDATE variables 
+SET value = ?, version = version + 1, updated_at = CURRENT_TIMESTAMP
+WHERE name = ? AND version = ?;
+```
+
+**MongoDB Implementation Example:**
+```javascript
+// Optimistic lock update
+db.variables.findAndModify({
+    query: { name: "user_preference", version: 42 },
+    update: { 
+        $set: { value: "light_mode" },
+        $inc: { version: 1 },
+        $currentDate: { updated_at: true }
+    }
+});
+```
+
+#### Automatic Audit Log System
+
+**Change Logging via Database Triggers:**
+```sql
+-- Change log table
+CREATE TABLE variable_changes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    variable_name TEXT NOT NULL,
+    old_value TEXT,
+    new_value TEXT,
+    changed_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    agent_id TEXT
+);
+
+-- Automatic log recording trigger
+CREATE TRIGGER log_variable_changes 
+AFTER UPDATE ON variables
+BEGIN
+    INSERT INTO variable_changes (variable_name, old_value, new_value, agent_id)
+    VALUES (NEW.name, OLD.value, NEW.value, 'current_agent_id');
+END;
+```
 
 ### Integration with Existing Technologies
 
-#### Extension of A.5 Multi-Agent Systems
+#### Integration with A.5 Multi-Agent Systems
 
-By making the variables.json blackboard model available over the network, multi-agent collaboration across multiple machines becomes possible.
-
-#### Extension of A.11 Concurrent Access Control
-
-Single file-based optimistic locking evolves into HTTP server-based optimistic locking mechanisms, enabling safer collaborative operations.
+Database implementation enables collaborative operations among multiple agents mentioned in [A.5 Multi-Agent Systems](#a5-multi-agent-system-design) on more robust and reliable foundations.
 
 #### Natural Integration with A.6 Audit Log System
 
-Change logs from the variable server integrate completely with [A.6 Audit Log System](#a6-audit-log-system). In particular, the automatic variable change logging mentioned in A.6 is naturally implemented in the server environment.
+Database change log functionality integrates completely with [A.6 Audit Log System](#a6-audit-log-system). In particular, automatic variable change logging mentioned in A.6 is naturally implemented in database environments.
 
-Change logs from the variable server integrate with existing audit systems, providing comprehensive transparency and accountability tracking.
+#### Extension of A.11 Concurrent Access Control
+
+Optimistic locking described in [A.11 Concurrent Access Control](#a11-concurrent-access-control-and-optimistic-locking) is implemented more reliably at the database level, supporting safe collaborative operations among multiple agents.
+
+### Integration with Event-Driven Execution
+
+Database systems provide powerful event notification capabilities by integrating with [A.2 Event-Driven Execution](#a2-event-driven-execution):
+
+#### Automatic Variable Change Event Notifications
+
+**Database Triggers and Event Notifications:**
+```python
+# Event notifications using Redis Pub/Sub
+import redis
+
+r = redis.Redis()
+
+def set_variable_with_notification(name, value):
+    # Variable update
+    old_value = get_variable(name)
+    set_variable(name, value)
+    
+    # Event notification
+    r.publish(f'variable_changed:{name}', json.dumps({
+        'name': name,
+        'old_value': old_value,
+        'new_value': value,
+        'timestamp': datetime.utcnow().isoformat()
+    }))
+
+# Event subscription in agents
+def listen_for_changes():
+    pubsub = r.pubsub()
+    pubsub.subscribe('variable_changed:*')
+    
+    for message in pubsub.listen():
+        if message['type'] == 'message':
+            # Execute processing in response to variable changes
+            handle_variable_change(json.loads(message['data']))
+```
+
+#### Practical Use Cases
+
+```
+# Multi-Agent Collaboration
+Agent A: "Set data collection completion to {{data_ready}}"
+Agent B: "Monitor {{data_ready}} change events and automatically start analysis processing when true"
+
+# Condition Monitoring System
+Monitor Agent: "Execute alert processing when {{cpu_usage}} exceeds 80%"
+Response Agent: "Monitor {{alert_level}} change events and start emergency response when 'critical'"
+```
 
 ### Technical Considerations
 
 #### Security
 
-- Authentication and authorization mechanism implementation
-- Mandatory HTTPS communication
-- Access control and privacy protection
+- **Access Control**: Database-level authentication and authorization
+- **Encryption**: Data encryption at rest and in transit
+- **Connection Security**: Mandatory SSL/TLS communication
 
 #### Reliability
 
-- Response to temporary network failures
-- Data consistency guarantees
-- Backup and recovery mechanisms
-
-### Future Prospects
-
-#### Advanced Features
-
-**Notification System and Event-Driven Execution**
-
-The variable server provides powerful notification capabilities by integrating with A.2 Event-Driven execution:
-
-**Basic Notification Features**:
-- **Variable Change Events**: Immediate notifications when specific variables are modified
-- **Condition-Based Events**: Notifications when variable values meet specific conditions
-- **Composite Events**: Notifications based on combinations of multiple variable states
-
-**Technical Implementation**:
-- **WebSocket Connections**: Real-time bidirectional communication for event notifications
-- **Server-Sent Events**: Lightweight unidirectional notification system
-- **HTTP Webhooks**: Notification delivery to external systems
-
-**Practical Use Cases**:
-
-```
-# Multi-Agent Collaboration
-Agent A: "Set data collection completion to {{data_ready}}"
-Agent B: "Automatically start analysis processing when {{data_ready}} becomes true"
-
-# Condition Monitoring System
-Monitor Agent: "Execute alert processing when {{cpu_usage}} exceeds 80%"
-Response Agent: "Start emergency response when {{alert_level}} becomes 'critical'"
-```
-
-**Integration Benefits with A.2 Event-Driven Execution**:
-- Improved responsiveness through internal state-based event processing
-- Automation of inter-agent collaborative operations
-- Reduced polling load from condition monitoring
-
-**Other Advanced Features**:
-- Atomic operations on composite variables
-- Detailed change history tracking
-- Conditional watch functionality
-
-#### Distribution Possibilities
-
-When needed, extension to distributed systems with multiple coordinated variable servers is possible. However, for most use cases, a single server provides sufficient performance and functionality.
+- **Backup Strategy**: Regular automated backups
+- **Replication**: Data replication for high availability
+- **Failure Recovery**: Response mechanisms for temporary connection failures
 
 ### Practical Value
 
-Implementation of the variable server liberates natural language macro programming from single-machine constraints, enabling agent collaboration across multiple machines. This extension significantly expands system possibilities without wasting any existing learning investment, making it a crucial technical component.
+Database utilization provides natural language macro programming with the following benefits:
+
+1. **Scalability**: Support for large numbers of agents and data
+2. **Reliability**: Consistency guarantees through ACID properties
+3. **Performance**: Index and query optimization
+4. **Operability**: Leverage existing database management tools
+5. **Transparency**: Complete compatibility with existing `{{variable}}` syntax
+
+This extension significantly expands system possibilities without wasting any existing learning investment, making it a crucial technical component.
 
 ---
