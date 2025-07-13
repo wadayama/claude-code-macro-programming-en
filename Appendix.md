@@ -58,7 +58,12 @@ Claude Code provides the following built-in slash commands:
 - Determining next actions based on execution results
 - Practical workflow automation
 
-The use of slash commands enables practical agent design that leverages Claude Code's system capabilities.
+**4. Economic Rationality-based Resource Management**
+- Cost prediction before task execution and outcome maximization within budget constraints
+- Dynamic model selection based on task importance (`/model` strategic switching)
+- Continuous budget monitoring and automatic throttling when exceeding risk occurs
+
+The use of slash commands enables economically rational agent design that considers resource constraints.
 
 ## A.2: Event-Driven Execution
 
