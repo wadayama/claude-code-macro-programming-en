@@ -68,7 +68,7 @@ Development support pattern that visualizes execution status and assists in prob
 **Integration Effects**: By combining multiple patterns, collaborative systems like the **A.5 Haiku Generation Multi-Agent** can be constructed.
 
 **Appendix: Advanced Technical Elements and Practical Implementation**
-- A.1: System Control via Claude Code Slash Commands
+- A.1: System Control and Resource Management
 - A.2: Event-Driven Execution
 - A.3: Risk Mitigation Strategies for Important Tasks
 - A.4: Python Tool Integration

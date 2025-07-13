@@ -34,7 +34,7 @@
 - [Pattern 10: Debug & Tracing](#pattern-10-debug--tracing)
 
 ### Appendix (Advanced Technologies) - [Appendix.md](./Appendix.md)
-- [A.1: System Control via Claude Code Slash Commands](./Appendix.md#a1-system-control-via-claude-code-slash-commands) - Real-time system information retrieval and dynamic environment control
+- [A.1: System Control and Resource Management](./Appendix.md#a1-system-control-and-resource-management) - Real-time system control and economically rational resource management
 - [A.2: Event-Driven Execution](./Appendix.md#a2-event-driven-execution) - Asynchronous processing and real-time response systems
 - [A.3: Risk Mitigation Strategies for Important Tasks](./Appendix.md#a3-risk-mitigation-strategies-for-important-tasks) - Four-layer defense strategies for reliable operations
 - [A.4: Python Tool Integration](./Appendix.md#a4-python-tool-integration) - Python ecosystem utilization via variables.json integration

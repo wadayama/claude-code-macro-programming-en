@@ -4,7 +4,7 @@ A systematic compilation of advanced technical elements for the practical implem
 
 ## Table of Contents
 
-- [A.1: System Control via Claude Code Slash Commands](#a1-system-control-via-claude-code-slash-commands)
+- [A.1: System Control and Resource Management](#a1-system-control-and-resource-management)
 - [A.2: Event-Driven Execution](#a2-event-driven-execution)
 - [A.3: Risk Mitigation Strategies for Important Tasks](#a3-risk-mitigation-strategies-for-important-tasks)
 - [A.4: Python Tool Integration](#a4-python-tool-integration)
@@ -22,7 +22,7 @@ A systematic compilation of advanced technical elements for the practical implem
 
 ---
 
-## A.1: System Control via Claude Code Slash Commands
+## A.1: System Control and Resource Management
 
 When agents perform tasks, they need to be mindful of resource constraints (budget, API call limits, time allowances, computational costs, etc.). Real-world agents do not possess infinite resources, and cost-conscious decision-making under resource constraints is essential for practical systems.
 
