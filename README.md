@@ -82,6 +82,7 @@ Development support pattern that visualizes execution status and assists in prob
 - A.12: LLM-based Evaluation Testing (quality, creativity, and logic evaluation for probabilistic systems)
 - A.13: Variable Management Persistence and Scaling (robust state management via databases)
 - A.14: Vector Database and RAG Utilization (dynamic knowledge systems through knowledge bases and experience learning)
+- A.15: Goal-Oriented Architecture and Autonomous Planning (complete autonomous systems via 4-stage flow and PDCA cycle)
 
 **Practical Applications**
 - Haiku generation multi-agent systems, blog creation, investment decision support systems
