@@ -189,6 +189,99 @@ Request manual execution by administrator."
 Pause processing and wait for human intervention
 ```
 
+#### 4. Sandbox-based Execution Environment Isolation
+
+Execute agent-generated and executed code within secure environments completely isolated from the host system. This achieves fundamental security protection based on "Secure by Design" principles.
+
+##### Container-based Sandbox
+
+**Complete Isolation via Docker Containers**:
+
+```markdown
+## Automatic Sandboxing for Dangerous Code Execution
+Please execute the following Python script in an isolated environment:
+
+{{generated_script}}
+
+Sandbox Configuration:
+- Execution Environment: Docker container (python:3.11-alpine)
+- Filesystem: Access only to /sandbox directory
+- Network: External connections blocked (localhost excluded)
+- Resource Limits: 512MB memory, 1 CPU core, 5-minute execution time
+
+Save execution result to {{sandbox_result}},
+Record error details in {{sandbox_error}} if abnormal termination occurs
+```
+
+**Implementation Key Points**:
+- Complete blocking of direct access to host filesystem
+- Mounting only dedicated temporary directory (/sandbox)
+- Runaway prevention through execution time and resource limits
+- Prevention of unintended external access through network isolation
+
+##### Lightweight Sandbox (WebAssembly)
+
+**High-speed Isolation via WASM (WebAssembly)**:
+
+```markdown
+## WASM Sandboxing for High-frequency Execution Code
+Secure execution of numerical computation in WASM environment:
+
+Input Data: {{calculation_data}}
+Processing: Statistical analysis and graph generation
+
+WASM Configuration:
+- Memory Safety: Automatic boundary checking
+- System Calls: Complete blocking
+- Execution Limits: Maximum 30-second execution time
+- Data Exchange: JSON format only
+
+Save result to {{wasm_output}}
+```
+
+**Advantages**:
+- Lighter weight and faster startup than Docker
+- Memory safety guaranteed at language level
+- No direct access to system resources
+- Executable in browser environments
+
+##### Graduated Security Policy Application
+
+**Automatic Isolation Based on Risk Level**:
+
+```markdown
+## Risk Assessment of Execution Content and Sandbox Selection
+
+Automatic judgment based on code analysis results:
+{{code_risk_assessment}}
+
+Execution environment selection by judgment result:
+- Safe (read-only operations): Direct execution in host environment
+- Caution (file creation/modification): WASM sandbox
+- Dangerous (system calls/external communication): Docker complete isolation
+- Extremely dangerous (admin privilege requests): Execution refusal, human intervention required
+
+Selected execution environment: {{selected_sandbox}}
+Approval rationale: {{approval_reason}}
+```
+
+##### Integration Effects with Existing Technologies
+
+**Synergy with Execution Permission Minimization**:
+- Dual protection through permission control + environment isolation
+- Fundamental neutralization of privilege escalation attacks
+- Implementation of zero-trust principles
+
+**Coordination with A.7 LLM-based Verification**:
+- Risk assessment through pre-verification
+- Automatic sandbox level selection based on assessment results
+- Execution of verified code also in isolated environment
+
+**Combination with A.15 Autonomous Planning**:
+- Safe long-term execution of autonomous agents
+- Security risk assessment at planning stage
+- Experimental code execution within sandbox
+
 ### Layer 2: Runtime Error Handling
 
 Prevent the system from falling into catastrophic states when unexpected errors occur.
