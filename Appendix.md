@@ -219,32 +219,6 @@ Record error details in {{sandbox_error}} if abnormal termination occurs
 - Runaway prevention through execution time and resource limits
 - Prevention of unintended external access through network isolation
 
-##### Lightweight Sandbox (WebAssembly)
-
-**High-speed Isolation via WASM (WebAssembly)**:
-
-```markdown
-## WASM Sandboxing for High-frequency Execution Code
-Secure execution of numerical computation in WASM environment:
-
-Input Data: {{calculation_data}}
-Processing: Statistical analysis and graph generation
-
-WASM Configuration:
-- Memory Safety: Automatic boundary checking
-- System Calls: Complete blocking
-- Execution Limits: Maximum 30-second execution time
-- Data Exchange: JSON format only
-
-Save result to {{wasm_output}}
-```
-
-**Advantages**:
-- Lighter weight and faster startup than Docker
-- Memory safety guaranteed at language level
-- No direct access to system resources
-- Executable in browser environments
-
 ##### Graduated Security Policy Application
 
 **Automatic Isolation Based on Risk Level**:
@@ -257,8 +231,8 @@ Automatic judgment based on code analysis results:
 
 Execution environment selection by judgment result:
 - Safe (read-only operations): Direct execution in host environment
-- Caution (file creation/modification): WASM sandbox
-- Dangerous (system calls/external communication): Docker complete isolation
+- Caution (file creation/modification): Restricted host environment
+- Dangerous (system calls/external communication): Docker sandbox
 - Extremely dangerous (admin privilege requests): Execution refusal, human intervention required
 
 Selected execution environment: {{selected_sandbox}}
