@@ -49,6 +49,7 @@
 - [A.13: Variable Management Persistence and Scaling](./Appendix.md#a13-variable-management-persistence-and-scaling-database-utilization) - Robust state management via databases
 - [A.14: Vector Database and RAG Utilization](./Appendix.md#a14-vector-database-and-rag-utilization) - Dynamic knowledge systems through knowledge bases and experience learning
 - [A.15: Goal-Oriented Architecture and Autonomous Planning](./Appendix.md#a15-goal-oriented-architecture-and-autonomous-planning) - Complete autonomous systems via 4-stage flow and PDCA cycle
+- [A.16: Hybrid Approaches for High-Speed Processing](./Appendix.md#a16-hybrid-approaches-for-high-speed-processing) - Integration with structured frameworks like LangGraph
 
 ### Disclaimer
 - [Disclaimer](#-disclaimer)
