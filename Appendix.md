@@ -2296,6 +2296,8 @@ This integrated architecture enables users to delegate long-term, strategic goal
 
 Systematizes design principles and integration concepts for hybrid approaches that improve processing performance while maintaining the flexibility of natural language macro programming in use cases requiring high-speed operation.
 
+**What is LangGraph**: LangGraph is a graph-based agent construction framework developed by LangChain. It specializes in state management, workflow control, and streaming processing, enabling the construction of high-performance multi-agent systems designed for enterprise-level operations (adopted by Replit, Uber, LinkedIn, etc.). It provides reliability for long-running tasks through automatic state management and persistent context functionality.
+
 ### Basic Concepts of Hybrid Architecture
 
 #### Balance Design Between Processing Speed and Flexibility
