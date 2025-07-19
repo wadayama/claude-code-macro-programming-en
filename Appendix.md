@@ -1765,6 +1765,9 @@ Since it handles data in the same JSON format as variables.json, systems can ben
 - Replication and sharding
 - Schema-less flexibility
 
+**Advantages for Multi-Machine Multi-Agent Systems:**
+MongoDB's replication capabilities enable distributed deployment of agents across multiple physical machines while maintaining unified shared state. This enables horizontal scaling of computational resources, elimination of single points of failure, geographically distributed deployment, and construction of large-scale multi-agent systems.
+
 
 #### Redis (Key-Value DB)
 
