@@ -2250,6 +2250,9 @@ Systematizes a hybrid approach that combines Python orchestration with natural l
 - Human collaboration and exceptional situation handling
 - High-dimensional decision making
 
+**Seamless Integration via SQLite**:
+SQLite database (see A.17) functions as an efficient interface between Python orchestrator and natural language macros. Python rapidly sets data, natural language macros read and process it, then write results back to SQLite, creating an integrated system that maximizes the advantages of both components.
+
 #### Efficiency Pursuit
 
 **Token Usage Optimization**:
