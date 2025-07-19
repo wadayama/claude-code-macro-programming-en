@@ -571,9 +571,11 @@ Set analysis results to {{analysis_report}}.
 
 ### Basic Architecture
 
-In natural language macro programming, a multi-agent system where multiple agents cooperate can be constructed by utilizing variables.json as a shared blackboard (Blackboard Model). Each agent shares data through variables.json and achieves cooperative execution through various methods suited to their purpose, such as file monitoring, polling, or direct execution control.
+In natural language macro programming, a multi-agent system where multiple agents cooperate can be constructed by utilizing variables.json or SQLite database (see A.17) as a shared blackboard (Blackboard Model). Each agent shares data through the shared state and achieves cooperative execution through various methods suited to their purpose, such as file monitoring, polling, or direct execution control.
 
-All inter-agent communication occurs via variables.json, resulting in a loosely coupled design where agents have no direct dependencies on each other. This design facilitates dynamic addition, removal, and modification of agents while ensuring system-wide transparency.
+**Important**: In multi-agent environments where concurrent access occurs frequently, SQLite-based variable management (A.17) is recommended. SQLite provides concurrent access control, transaction management, and data integrity, enabling more robust multi-agent cooperation than variables.json.
+
+All inter-agent communication occurs via the shared state, resulting in a loosely coupled design where agents have no direct dependencies on each other. This design facilitates dynamic addition, removal, and modification of agents while ensuring system-wide transparency.
 
 #### Schema-Based Communication Protocol (Optional)
 
