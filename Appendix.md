@@ -1342,6 +1342,8 @@ Type safety and schema management provide methods for natural language macro pro
 
 In natural language macro programming, the variables.json file may be accessed simultaneously by multiple processes. Particularly when utilizing advanced features such as parallel processing (Pattern 2), multi-agent systems (A.5), and event-driven execution (A.2), **concurrent access control** becomes a crucial technical challenge.
 
+**Note**: When using variables.json, the optimistic locking mechanisms described in this section are necessary. Alternatively, SQLite-based variable management (see A.17) automatically resolves these issues through database-native concurrent control features.
+
 **Typical Concurrent Access Problems**:
 - **Race Conditions**: Multiple processes simultaneously read variables.json, perform different updates, and some updates are lost
 - **Data Corruption**: Another process reads during write operations, resulting in inconsistent data generation
