@@ -2516,13 +2516,13 @@ Based on the current implementation, extensions to more advanced features such a
 
 ### Performance Characteristics
 
-#### Benchmark Results Example
+#### Performance Expectations
 
-**variables.json vs SQLite Comparison:**
-- **Small scale (10 variables)**: Equivalent performance
-- **Medium scale (100 variables)**: SQLite 2-3x faster
-- **Large scale (1000 variables)**: SQLite 5-10x faster
-- **Concurrent access**: SQLite overwhelmingly superior (JSON suffers from file lock contention)
+**variables.json vs SQLite Theoretical Comparison:**
+- **Small scale (10 variables)**: Equivalent performance expected
+- **Medium scale (100 variables)**: SQLite advantages anticipated
+- **Large scale (1000 variables)**: Significant SQLite performance improvements expected
+- **Concurrent access**: SQLite theoretically superior (JSON risks file lock contention)
 
 #### Optimization Points
 
