@@ -1197,7 +1197,10 @@ Selective implementation for **specific use cases where type mismatches could ca
 
 #### Pre-defined Schema Files
 
-**For more advanced type management**, introducing schema files that predefine the structure of variables.json is effective:
+**For more advanced type management**, the following schema pre-definitions are effective:
+
+**For variables.json**: JSON schema files for structure definition
+**For SQLite**: DDL (Data Definition Language) table definitions and schema design (more powerful type constraints, foreign keys, CHECK constraints, etc. are available)
 
 ```json
 // Example of variables.schema.json
