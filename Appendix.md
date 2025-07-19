@@ -98,6 +98,8 @@ The most practical and robust approach is a hybrid design that delegates event m
 
 Typical integration example: "Continuously monitor directory `/orders`, and when a new file (e.g., `order123.json`) is created, evaluate `order_processing.md` with that file path as an argument" by running a resident script.
 
+**Variable Change Monitoring**: Variable changes within SQLite databases can also be utilized as event sources. Through polling monitoring with `watch_variables.py`, patterns such as "execute the next macro when {{status}} changes to completed" become feasible (see A.17 for detailed implementation).
+
 ### Key Points
 
 **1. Asynchronous Processing Implementation**
