@@ -435,7 +435,7 @@ For planning-stage risk analysis and preventive quality management through conti
 
 Python Tool Integration enables natural language macro programming to achieve universal access to the entire Python ecosystem, making possible a wide range of applications from specialized computational processing to business automation.
 
-In natural language macro programming, information exchange between macros and Python programs through the variables.json file enables utilization of Python's rich library ecosystem. This integration approach makes it possible to infinitely extend the functionality of macro systems.
+In natural language macro programming, information exchange between macros and Python programs through the variables.json file or SQLite database (see A.17) enables utilization of Python's rich library ecosystem. This integration approach makes it possible to infinitely extend the functionality of macro systems.
 
 ### Basic Integration Pattern
 
