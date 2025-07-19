@@ -301,6 +301,8 @@ Depending on {{data_type}}, execute the following:
 
 ## 📚 Basic Syntax Sample Collection
 
+> **📝 About Variable Management**: The examples in this guide are written assuming basic variable management implementation using variables.json files. For more robust and high-performance variable management, please refer to [A.17: SQLite-Based Variable Management Implementation](./Appendix.md#a17-sqlite-based-variable-management-implementation).
+
 ### 1. Sequential Execution: Python Learning Guide Creation
 
 ```markdown
