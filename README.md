@@ -84,7 +84,7 @@ Development support pattern that visualizes execution status and assists in prob
 - A.14: Vector Database and RAG Utilization (dynamic knowledge systems through knowledge bases and experience learning)
 - A.15: Goal-Oriented Architecture and Autonomous Planning (complete autonomous systems via 4-stage flow and PDCA cycle)
 - A.16: Python Orchestration-Based Hybrid Approach (high-speed, cost-efficient systems via Python orchestration + natural language macros)
-- A.17: SQLite-Based Variable Management Implementation (gradual migration from variables.json to SQLite, enterprise-level operations support)
+- A.17: SQLite-Based Variable Management Implementation (gradual migration from variables.json to SQLite, enhanced robustness)
 
 ## 📚 Main Contents
 
