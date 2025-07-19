@@ -571,19 +571,207 @@ Set analysis results to {{analysis_report}}.
 
 ### Basic Architecture
 
-In natural language macro programming, a multi-agent system where multiple agents cooperate can be constructed by utilizing variables.json or SQLite database (see A.17) as a shared blackboard (Blackboard Model). Each agent shares data through the shared state and achieves cooperative execution through various methods suited to their purpose, such as file monitoring, polling, or direct execution control.
+In natural language macro programming, a multi-agent system where multiple agents cooperate can be constructed by utilizing variables.json or SQLite database (see A.17) as a shared blackboard (Blackboard Model).
 
 **Important**: In multi-agent environments where concurrent access occurs frequently, SQLite-based variable management (A.17) is recommended. SQLite provides concurrent access control, transaction management, and data integrity, enabling more robust multi-agent cooperation than variables.json.
 
 All inter-agent communication occurs via the shared state, resulting in a loosely coupled design where agents have no direct dependencies on each other. This design facilitates dynamic addition, removal, and modification of agents while ensuring system-wide transparency.
 
-#### Schema-Based Communication Protocol (Optional)
+### Complete Implementation Example: multi-haiku Haiku Generation System
 
-**Note**: This feature is not required for basic multi-agent systems. Starting with simple data sharing through variables.json or SQLite is recommended.
+This section details the complete implementation of a fully operational multi-agent system located in the **multi-haiku/ folder**. This is a tested system that integrates theory and practice, providing concrete implementation patterns for multi-agent design.
 
-For more advanced use cases or systems where quality assurance is critical, the following schema validation features can be added:
+#### System Overview and File Structure
 
-In inter-agent data exchange, schema validation enables standardization of communication protocols and integrity assurance. Sending agents output data in specified formats, while receiving agents safely retrieve data through schema validation. This enables compatibility verification when adding agents, impact scope identification during protocol changes, and improved debugging efficiency (see [A.10: Type Safety and Schema Management](#a10-type-safety-and-schema-management) for details).
+**multi-haiku/** folder composition:
+- **CLAUDE.md** - SQLite version macro definition file
+- **agent.md** - Individual agent template file
+- **haiku-agent.md** - Multi-agent system main file
+- **variable_db.py** - SQLite variable management system implementation
+- **watch_variables.py** - Variable monitoring and debugging tool
+- **variables.db** - SQLite database file
+
+#### Dynamic Agent Generation Mechanism
+
+**Template-Based Design**:
+Place `<<ID>>` placeholders in the `agent.md` file and dynamically replace them with specific numbers at runtime to generate any number of agent instances from a single template.
+
+```markdown
+# 🤖 Haiku Generation Agent<<ID>>
+
+## Theme Retrieval
+"Assigned theme: {{agent_<<ID>>_theme}}"
+
+## Haiku Creation
+Create a haiku based on {{agent_<<ID>>_theme}} and save it to {{agent_<<ID>>_haiku}}.
+```
+
+**Dynamic Scalability**:
+Dynamic control of agent count via `{{agent_count}}` variable. Arbitrarily configurable from 2 to 10 agents with no system architecture changes required.
+
+#### Parallel Execution Flow and Task Tool Utilization
+
+**True Parallel Processing**:
+Utilize Task tool to simultaneously execute multiple Claude Code processes. Each agent operates as an independent process and saves results to the SQLite database in parallel.
+
+```markdown
+### Task 1: Agent 1 Execution
+1. Read agent.md content, replace <<ID>> with "1" and save to agents/agent_1.md
+2. cat agents/agent_1.md | claude -p --dangerously-skip-permissions
+
+### Task 2: Agent 2 Execution
+1. Read agent.md content, replace <<ID>> with "2" and save to agents/agent_2.md  
+2. cat agents/agent_2.md | claude -p --dangerously-skip-permissions
+```
+
+#### SQLite Variable Management Shared Blackboard Implementation
+
+**Unified Variable Clearing**:
+Demonstrates migration from variables.json-based "Delete variables.json if it exists" to SQLite-based "Clear all variables".
+
+**Concurrent Access Control**:
+SQLite's WAL mode, retry mechanisms, and transaction management safely handle simultaneous variable updates by multiple agents.
+
+**Structured Data Management**:
+- Theme distribution: `{{agent_1_theme}}`, `{{agent_2_theme}}`, etc.
+- Result collection: `{{agent_1_haiku}}`, `{{agent_2_haiku}}`, etc.
+- Final evaluation: `{{best_selection}}`
+
+#### Variable Monitoring Tool Utilization
+
+**Variable state monitoring with watch_variables.py**:
+```bash
+# Real-time monitoring
+python watch_variables.py --continuous
+
+# Specific variable tracking
+python watch_variables.py --watch agent_1_haiku --continuous
+
+# Statistics display
+python watch_variables.py --stats
+```
+
+**Debugging Support Features**:
+- Visual representation of variable changes through color output
+- Flexible output in JSON/table formats
+- Timestamped change history tracking
+
+### Technical Design Principles
+
+Systematize the general-purpose design principles for multi-agent systems extracted from the multi-haiku implementation.
+
+#### 1. Template-Based Dynamic Generation
+
+**Placeholder Design**:
+Use replaceable identifiers like `<<ID>>` and dynamically replace them with specific values at runtime to generate unlimited agent instances from a single template.
+
+**Benefits**:
+- **Code Duplication Elimination**: Manage all agents with a single template
+- **Maintainability Enhancement**: Template modifications immediately reflect across all agents
+- **Extensibility Assurance**: No architecture changes needed when agent count changes
+
+#### 2. Loosely Coupled Agent Design
+
+**Indirect Communication via Shared State**:
+Eliminate direct inter-agent communication and adopt indirect communication mediated by SQLite databases or variable management systems.
+
+**Benefits**:
+- **Independence Assurance**: Easy dynamic addition, removal, and modification of agents
+- **Debug Support**: All communications recorded and traceable in database
+- **Extensibility**: Adding new agent types doesn't affect existing systems
+
+#### 3. Scalability Control Methods
+
+**Dynamic Parameter Control**:
+Runtime control of system scale through variables like `{{agent_count}}`.
+
+**Implementation Patterns**:
+- Variable naming convention: `{{agent_N_variable}}` (N=1,2,3...)
+- Generic loop structure: "Generalization: 3rd and beyond continue with ... up to {{agent_count}}"
+- Dynamic file generation: Template × ID replacement × parallel execution
+
+#### 4. Concurrent Safety Assurance
+
+**Database-Level Control**:
+Concurrent access control through SQLite's WAL mode, transactions, and retry mechanisms. For variables.json-based systems, control through [A.11 Optimistic Locking](#a11-concurrent-access-control-and-optimistic-locking).
+
+### Application Extension Guidelines
+
+Provide guidelines for applying multi-haiku design principles to other domains.
+
+#### Application Patterns to Other Domains
+
+**1. Analysis and Reporting Systems**
+```markdown
+# Agent Configuration Example
+- data_collector_agent.md: Data collection responsibility
+- analyzer_agent.md: Statistical analysis responsibility
+- visualizer_agent.md: Graph generation responsibility
+- reporter_agent.md: Report integration responsibility
+
+# Variable Design Example
+{{data_source_N}}, {{analysis_result_N}}, {{chart_N}}, {{final_report}}
+```
+
+**2. Content Generation Systems**
+```markdown
+# Agent Configuration Example
+- researcher_agent.md: Information gathering responsibility
+- writer_agent.md: Writing responsibility
+- editor_agent.md: Editing responsibility
+- reviewer_agent.md: Quality assurance responsibility
+
+# Variable Design Example
+{{research_topic_N}}, {{draft_content_N}}, {{edited_content_N}}, {{final_content}}
+```
+
+**3. Decision Support Systems**
+```markdown
+# Agent Configuration Example
+- option_generator_agent.md: Option generation responsibility
+- evaluator_agent.md: Evaluation responsibility
+- risk_assessor_agent.md: Risk analysis responsibility
+- decision_agent.md: Final decision responsibility
+
+# Variable Design Example
+{{option_N}}, {{evaluation_N}}, {{risk_assessment_N}}, {{final_decision}}
+```
+
+#### Guidelines for Specialized vs. General-Purpose Design
+
+**When Specialized Design is Appropriate**:
+- Domain-specific expertise required
+- High quality and accuracy requirements
+- Clear professional division of labor between agents
+
+**When General-Purpose Design is Appropriate**:
+- Prioritize flexibility and extensibility
+- Reuse across multiple domains is anticipated
+- Minimize development and maintenance costs
+
+#### Staged Implementation Approach
+
+1. **Prototype Stage**: Basic operation verification with simple variables.json sharing
+2. **Improvement Stage**: SQLite migration for enhanced concurrent access control
+3. **Operations Stage**: Addition of monitoring tools, error handling, and scalability measures
+
+### Implementation Learning Value
+
+The multi-haiku system is an educationally valuable implementation example that integrates the following learning elements:
+
+**Technical Integration Demonstration**:
+- **A.17 SQLite Variable Management**: Robust concurrent access control
+- **A.11 Optimistic Locking**: Race condition prevention in variables.json version
+- **Pattern 2 Parallel Processing**: True parallel execution with Task tool
+- **Natural Language Macro Syntax**: Intuitive system control
+
+**Practical Skill Acquisition**:
+- Template-based design patterns
+- Dynamic file generation and process control
+- Database monitoring and debugging techniques
+- Multi-agent coordination algorithms
+
+**Reference Files**: The complete implementation examples in the multi-haiku/ folder complement theoretical understanding with immediately operational code, providing a learning environment for instant experimentation and improvement.
 
 ### Implementation Patterns
 
