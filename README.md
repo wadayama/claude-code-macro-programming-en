@@ -85,10 +85,6 @@ Development support pattern that visualizes execution status and assists in prob
 - A.15: Goal-Oriented Architecture and Autonomous Planning (complete autonomous systems via 4-stage flow and PDCA cycle)
 - A.16: Python Orchestration-Based Hybrid Approach (high-speed, cost-efficient systems via Python orchestration + natural language macros)
 
-**Practical Applications**
-- Haiku generation multi-agent systems, blog creation, investment decision support systems
-- Business automation and concurrent processing control methodologies
-
 ## 📚 Main Contents
 
 - **[macro.md](./macro.md)** - Main guide (10 design patterns + appendix references)
