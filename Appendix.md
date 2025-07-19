@@ -2421,6 +2421,48 @@ This approach is particularly effective as an implementation methodology that ba
 
 This section provides specific implementation examples utilizing SQLite databases based on the theoretical background described in [A.13: Variable Management Persistence and Scaling](#a13-variable-management-persistence-and-scaling-database-utilization). As a gradual migration path from variables.json, it offers a practical solution that maintains convenience while significantly improving robustness.
 
+**Implementation File Location**: The implementation files described in this section (variable_db.py, watch_variables.py, CLAUDE.md, etc.) are located in the SQLite/ folder of this document.
+
+### Compatibility with variables.json and Migration Notes
+
+When migrating to SQLite-based variable management, there are important compatibility considerations with variables.json-based macros.
+
+#### Variable Clearing Method Change
+
+**variables.json-based (Traditional Method)**:
+```markdown
+Delete variables.json if it exists
+```
+
+**SQLite-based (New Method)**:
+```markdown
+Clear all variables
+```
+
+This is the only incompatible aspect, utilizing the "clear all variables" function defined in SQLite/CLAUDE.md. This change enables safe deletion of all database records and achieves robust clearing processes that do not depend on file system operations.
+
+#### Migration Example
+
+Existing macros can be made compatible with SQLite-based operation by modifying only the variable clearing portion:
+
+```markdown
+# Before (variables.json version)
+Delete variables.json if it exists
+Clear all TODO lists
+
+# After (SQLite version)  
+Clear all variables
+Clear all TODO lists
+```
+
+**Reference Implementation**: `SQLite/haiku_direct.md` provides a complete implementation example of a haiku generation system using this new variable clearing method.
+
+#### Other Compatibility
+
+- **Variable Storage/Retrieval**: Fully compatible (`{{variable_name}}` syntax unchanged)
+- **Conditional Branching/Module Execution**: Fully compatible  
+- **Natural Language Macro Syntax**: 100% compatible except for variable clearing
+
 ### System Architecture
 
 This implementation consists of the following four components:
