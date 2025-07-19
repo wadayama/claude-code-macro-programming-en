@@ -1138,6 +1138,10 @@ Ensemble execution and consensus formation represent an approach that actively u
 
 Natural language macro programming is fundamentally designed with string-based variable management as its foundation. However, when considering advanced features such as the Python Tool Integration proposed in this guide, along with applications in numerical computation, large-scale data processing, and external API integration, **type safety and data integrity** become important considerations. In these domains, type mismatches may lead to runtime errors or unexpected results.
 
+**Type Safety Differences by Variable Management Approach**:
+- **variables.json**: Primarily string-based management, with type safety ensured through JSON schema validation described in this section
+- **SQLite-based (see A.17)**: Database type system (INTEGER, REAL, TEXT, etc.) automatically guarantees type constraints and integrity at the database level
+
 **Purpose of This Section**:
 - Present methods for gradual type safety enhancement
 - Describe systematic data management approaches based on schemas
