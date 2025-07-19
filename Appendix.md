@@ -579,7 +579,7 @@ All inter-agent communication occurs via the shared state, resulting in a loosel
 
 #### Schema-Based Communication Protocol (Optional)
 
-**Note**: This feature is not required for basic multi-agent systems. We recommend starting with simple data sharing through variables.json.
+**Note**: This feature is not required for basic multi-agent systems. Starting with simple data sharing through variables.json or SQLite is recommended.
 
 For more advanced use cases or systems where quality assurance is critical, the following schema validation features can be added:
 
