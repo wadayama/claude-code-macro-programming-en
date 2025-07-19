@@ -577,9 +577,9 @@ In natural language macro programming, a multi-agent system where multiple agent
 
 All inter-agent communication occurs via the shared state, resulting in a loosely coupled design where agents have no direct dependencies on each other. This design facilitates dynamic addition, removal, and modification of agents while ensuring system-wide transparency.
 
-### Complete Implementation Example: multi-haiku Haiku Generation System
+### Complete Implementation Example: multi-haiku Haiku Generation System (SQLite Version)
 
-This section details the complete implementation of a fully operational multi-agent system located in the **multi-haiku/ folder**. This is a tested system that integrates theory and practice, providing concrete implementation patterns for multi-agent design.
+This section details the complete implementation of a fully operational multi-agent system **utilizing SQLite-based variable management** located in the **multi-haiku/ folder**. This is a tested system that integrates theory and practice, providing concrete implementation patterns for multi-agent design leveraging SQLite's concurrent access control capabilities.
 
 #### System Overview and File Structure
 
@@ -630,7 +630,7 @@ Utilize Task tool to simultaneously execute multiple Claude Code processes. Each
 Demonstrates migration from variables.json-based "Delete variables.json if it exists" to SQLite-based "Clear all variables".
 
 **Concurrent Access Control**:
-SQLite's WAL mode, retry mechanisms, and transaction management safely handle simultaneous variable updates by multiple agents.
+SQLite's WAL mode, retry mechanisms, and transaction management safely handle simultaneous variable updates by multiple agents. When using variables.json, implementation of [A.11 Concurrent Access Control and Optimistic Locking](#a11-concurrent-access-control-and-optimistic-locking) is required, but not needed with SQLite version.
 
 **Structured Data Management**:
 - Theme distribution: `{{agent_1_theme}}`, `{{agent_2_theme}}`, etc.
@@ -775,7 +775,7 @@ The multi-haiku system is an educationally valuable implementation example that 
 
 ### Implementation Patterns
 
-**Parallel Processing Pattern**: Multiple agents execute independent tasks simultaneously, saving results to different keys in variables.json. Agent progress status is shared, and overall processing flow is cooperatively controlled.
+**Parallel Processing Pattern**: Multiple agents execute independent tasks simultaneously, saving results to different keys in the shared variable management system (SQLite or variables.json). Agent progress status is shared, and overall processing flow is cooperatively controlled.
 
 **Collaborative Problem-Solving Pattern**: Complex problems are divided among multiple agents, with intermediate results shared for step-by-step resolution. Information integration and decision-making are executed jointly between agents. For code collaboration examples, see [A.8: Metaprogramming](#a8-metaprogramming).
 
