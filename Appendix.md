@@ -90,6 +90,10 @@ The most practical and robust approach is a hybrid design that delegates event m
 - Detection of file creation, modification, and deletion events
 - Continuous monitoring of specified directories with immediate response
 
+**3. Polling**
+- Change detection through periodic state checking
+- Monitoring SQLite databases and API endpoints
+- Simple and reliable implementation with resource usage trade-offs
 
 ### Integration Patterns
 
