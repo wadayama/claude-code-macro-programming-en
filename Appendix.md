@@ -2509,50 +2509,6 @@ BEGIN
 END;
 ```
 
-### Implementation and Migration Steps
-
-#### Step 1: Environment Setup
-
-```bash
-# Install required packages in uv environment
-uv add sqlite3  # Usually unnecessary as it's a standard library
-```
-
-#### Step 2: Migration from Existing variables.json
-
-```python
-# Migration script example
-import json
-from variable_db import VariableDB
-
-def migrate_from_json():
-    """Migration from variables.json to SQLite."""
-    try:
-        with open("variables.json", 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        
-        db = VariableDB()
-        for name, value in data.items():
-            db.save_variable(name, str(value))
-            
-        print(f"Migration completed: {len(data)} variables migrated to SQLite")
-    except FileNotFoundError:
-        print("variables.json not found. Creating new database.")
-```
-
-#### Step 3: Macro Syntax Updates
-
-**Traditional Version (variables.json):**
-```markdown
-"Save Tanaka Taro to {{user_name}}"
-→ Uses Read/Write tools for JSON file operations
-```
-
-**SQLite Version (variables.db):**
-```markdown
-"Save Tanaka Taro to {{user_name}}"
-→ Bash tool: uv run python -c "from variable_db import save_variable; save_variable('user_name', 'Tanaka Taro')"
-```
 
 ### Optimistic Locking Implementation
 
