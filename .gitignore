@@ -42,4 +42,4 @@ CLAUDE_backup_*.md
 experiments/
 
 # Archive directory (development use only, not for end users)
-archive/verification_status.md
+archive/
