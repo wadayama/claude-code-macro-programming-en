@@ -558,6 +558,10 @@ Set analysis results to {{analysis_report}}.
 - Free choice and combination of libraries
 - Reusability through modularization
 
+### Python Quality Guidelines
+
+**Quality Standards**: We recommend applying the Python development guidelines for scientific computing described in [python_dev.md](./python_dev.md).
+
 
 ## A.5: Multi-Agent System Design
 
@@ -2439,6 +2443,34 @@ class EventOrchestrator:
 
 Consider special requirements and urgency indicators in your judgment."
 ```
+
+### Python Implementation Quality Standards
+
+To ensure reliability of the orchestration layer, we strongly recommend adherence to quality standards in Python implementation.
+
+#### Pursuit of Robustness
+
+**Development Guidelines**: Implementation following [python_dev.md](./python_dev.md) ensures the following important characteristics:
+
+- **Type Safety**: Improved safety of variables.json operations through type hints
+- **Error Handling**: Robust exception handling for long-running systems
+- **Testing Strategy**: Comprehensive testing of event processing and asynchronous processing
+- **Reproducibility**: Consistent operation guarantee in production environments
+
+#### AI-Collaborative Implementation
+
+Recommended approach when generating orchestration code with LLM:
+
+```markdown
+"Implement a MongoDB Change Streams integration orchestrator.
+Follow the quality standards in python_dev.md, including:
+- Class design with type hints
+- Exception handling and log output
+- Test code and mock utilization
+- Operation verification in uv environment"
+```
+
+This enables the construction of enterprise-level Python orchestration systems that can withstand operational demands.
 
 ### Summary
 
