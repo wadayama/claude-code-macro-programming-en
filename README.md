@@ -91,6 +91,8 @@ Development support pattern that visualizes execution status and assists in prob
 - **[macro.md](./macro.md)** - Main guide (10 design patterns + appendix references)
 - **[Appendix.md](./Appendix.md)** - Appendix (advanced technical elements and methodologies)
 - **[examples/](./examples/)** - Pattern-specific example collection
+- **[multi-haiku/](./multi-haiku/)** - Multi-agent haiku generation system (SQLite-based implementation example)
+- **[SQLite/](./SQLite/)** - SQLite-based variable management system implementation code and tools
 - **[haiku_direct.md](./haiku_direct.md)** - Practical example (haiku generation system)
 - **[CLAUDE.md](./CLAUDE.md)** - Macro definition file
 - **[debugger.md](./debugger.md)** - Debug mode specification
