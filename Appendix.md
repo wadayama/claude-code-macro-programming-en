@@ -370,7 +370,7 @@ In quality assurance for natural language macro programming, selecting appropria
 #### Classification of Test Targets
 
 **Deterministic/Definitive Elements** (traditional unit testing methods applicable):
-- variables.json operations (success/failure of save, load, update)
+- SQLite variable operations (success/failure of save, load, update)
 - Module execution completion verification (success/failure of `filename.md execution`)
 - Basic conditional branching operations (branch execution under specified conditions)
 - File operation completion verification (success/failure of read, write, delete)
@@ -564,9 +564,9 @@ def calculate_stats():
 
 ### Basic Architecture
 
-In natural language macro programming, a multi-agent system where multiple agents cooperate can be constructed by utilizing variables.json or SQLite database (see A.16) as a shared blackboard (Blackboard Model).
+In natural language macro programming, a multi-agent system where multiple agents cooperate can be constructed by utilizing SQLite database (see A.16) as a shared blackboard (Blackboard Model).
 
-**Important**: In multi-agent environments where concurrent access occurs frequently, SQLite-based variable management (A.16) is recommended. SQLite provides concurrent access control, transaction management, and data integrity, enabling more robust multi-agent cooperation than variables.json.
+**Important**: In multi-agent environments where concurrent access occurs frequently, SQLite-based variable management (A.16) is recommended. SQLite provides concurrent access control, transaction management, and data integrity, enabling robust multi-agent cooperation.
 
 All inter-agent communication occurs via the shared state, resulting in a loosely coupled design where agents have no direct dependencies on each other. This design facilitates dynamic addition, removal, and modification of agents while ensuring system-wide transparency.
 
@@ -620,7 +620,7 @@ Utilize Task tool to simultaneously execute multiple Claude Code processes. Each
 #### SQLite Variable Management Shared Blackboard Implementation
 
 **Unified Variable Clearing**:
-Demonstrates migration from variables.json-based "Delete variables.json if it exists" to SQLite-based "Clear all variables".
+Demonstrates migration from JSON file-based variable management to SQLite-based "Clear all variables" command.
 
 **Concurrent Access Control**:
 SQLite's WAL mode, retry mechanisms, and transaction management safely handle simultaneous variable updates by multiple agents. SQLite-based implementations provide built-in concurrency control through database-native features, ensuring safety without additional implementation requirements.
@@ -734,7 +734,7 @@ Provide guidelines for applying multi-haiku design principles to other domains.
 
 ### Implementation Patterns
 
-**Parallel Processing Pattern**: Multiple agents execute independent tasks simultaneously, saving results to different keys in the shared variable management system (SQLite or variables.json). Agent progress status is shared, and overall processing flow is cooperatively controlled.
+**Parallel Processing Pattern**: Multiple agents execute independent tasks simultaneously, saving results to different keys in the shared SQLite variable management system. Agent progress status is shared, and overall processing flow is cooperatively controlled.
 
 **Collaborative Problem-Solving Pattern**: Complex problems are divided among multiple agents, with intermediate results shared for step-by-step resolution. Information integration and decision-making are executed jointly between agents. For code collaboration examples, see [A.8: Metaprogramming](#a8-metaprogramming).
 
@@ -759,9 +759,9 @@ Provide guidelines for applying multi-haiku design principles to other domains.
 
 ### Advantages
 
-**Rapid Prototyping**: Multi-agent systems can be constructed with minimal code. Learning costs are low due to leveraging existing variables.json knowledge.
+**Rapid Prototyping**: Multi-agent systems can be constructed with minimal code. Learning costs are low due to leveraging existing natural language macro knowledge.
 
-**High Visibility**: The entire system state is centrally visualized through variables.json, making debugging, monitoring, and troubleshooting easy. All inter-agent information exchange is also fully traceable.
+**High Visibility**: The entire system state is centrally visualized through SQLite database, making debugging, monitoring, and troubleshooting easy. All inter-agent information exchange is also fully traceable.
 
 **Flexible Extensibility**: Dynamic addition, modification, and removal of agents is possible, allowing configuration changes without stopping the system. Easy combination of agents with different processing capabilities and specializations.
 
@@ -784,7 +784,7 @@ The following defines the control logic for the multi-agent system:
 
 ## Complete Initialization (Clean Start)
 
-Delete variables.json if it exists
+Clear all variables from SQLite database
 Delete all files in the agents/ folder
 Clear all TODO lists
 
@@ -916,29 +916,29 @@ Display "=== Haiku Generation Agent<<ID>> Ended ==="
 Template-based design using `<<ID>>` placeholders. Automatically generates any number of agent instances from a single agent.md file. This achieves both dynamic control of agent count (via `{{agent_count}}` setting) and implementation consistency.
 
 **2. Parallel Execution Management**:
-True parallel processing utilizing the Task tool. Each agent runs as an independent Claude Code process, concurrently saving results to variables.json. Parallelism is flexibly controlled by `{{agent_count}}`.
+True parallel processing utilizing the Task tool. Each agent runs as an independent Claude Code process, concurrently saving results to SQLite database. Parallelism is flexibly controlled by `{{agent_count}}`.
 
 **3. Shared Blackboard Model Implementation**:
-variables.json functions as the central information sharing platform. Theme distribution (`{{agent_N_theme}}`), result collection (`{{agent_N_haiku}}`), and final evaluation (`{{best_selection}}`) are all realized through unified variable management methods.
+SQLite database functions as the central information sharing platform. Theme distribution (`{{agent_N_theme}}`), result collection (`{{agent_N_haiku}}`), and final evaluation (`{{best_selection}}`) are all realized through unified variable management methods.
 
 **4. Scalability Design**:
 Dynamic scale control via `{{agent_count}}`. Agent count can be arbitrarily set from 2 to 10, requiring no system architecture changes. Extension to large-scale systems requires only variable value changes.
 
 **5. Concurrent Safety Assurance**:
-Prevention of race conditions through A.11 optimistic locking mechanism. Ensures data integrity when multiple agents simultaneously update variables.json. Achieves high reliability through version management and retry functionality.
+Prevention of race conditions through SQLite's built-in concurrency control. Ensures data integrity when multiple agents simultaneously update the database. Achieves high reliability through transaction management and atomic operations.
 
 #### Technical Features
 
 **Collaborative Problem-Solving Pattern Implementation**:
 - **Division of Labor**: Each agent works independently on different themes
-- **Collaboration**: Information exchange through shared blackboard (variables.json)
+- **Collaboration**: Information exchange through shared blackboard (SQLite database)
 - **Integration**: Centralized evaluation and selection process
 
 **Event-Driven Integration**:
 Automatic evaluation initiation after multi-agent execution completion. Agent synchronization realized through shared state monitoring.
 
 **High Visibility**:
-All agent states (themes, progress, results) are centrally managed in variables.json, enabling real-time monitoring.
+All agent states (themes, progress, results) are centrally managed in SQLite database, enabling real-time monitoring.
 
 This implementation example demonstrates the practicality and technical depth of multi-agent systems through natural language macro programming, providing industrial-level reliability through robust database-based variable management.
 
@@ -1005,7 +1005,7 @@ uv run python -c "from audit_logger import log_reasoning; log_reasoning('Learnin
 
 ### Automatic Variable Change Logging
 
-The AuditLogger class extends `VariableDB` and automatically records all variable operations (creation, updates, deletions) to the audit_logs table. Unlike traditional variables.json manual recording, audit trails are transparently generated during variable operations, with operation intent, executor, and timestamps automatically saved.
+The AuditLogger class extends `VariableDB` and automatically records all variable operations (creation, updates, deletions) to the audit_logs table. Unlike traditional JSON file manual recording, audit trails are transparently generated during variable operations, with operation intent, executor, and timestamps automatically saved.
 
 **Automatic Recording Mechanism**:
 ```python
@@ -1097,7 +1097,7 @@ Detailed practical examples of audit log systems:
 
 ### Basic Architecture
 
-In natural language macro programming, an LLM-based verification system can be constructed where LLM performs static analysis of macros before execution. This represents a form of metaprogramming as "code that reads code," managing verification results through variables.json and ensuring safety through conditional branching.
+In natural language macro programming, an LLM-based verification system can be constructed where LLM performs static analysis of macros before execution. This represents a form of metaprogramming as "code that reads code," managing verification results through SQLite database and ensuring safety through conditional branching.
 
 ### Key Verification Items
 
@@ -1309,7 +1309,7 @@ uv run python watch_variables.py --continuous
 
 #### Integration with Other Appendix Sections
 
-**Connection to A.5 (Multi-Agent Systems)**: The code collaboration system demonstrates advanced multi-agent coordination with shared SQLite state management, enabling more sophisticated agent interactions than simple variables.json sharing.
+**Connection to A.5 (Multi-Agent Systems)**: The code collaboration system demonstrates advanced multi-agent coordination with shared SQLite state management, enabling more sophisticated agent interactions than simple JSON file sharing.
 
 **Connection to A.7 (LLM-based Lint)**: Generated code automatically undergoes quality verification through the review agent, implementing practical LLM-based validation as described in A.7.
 
@@ -1796,13 +1796,13 @@ LLM-based Evaluation Testing represents one approach to quality assurance in pro
 
 ### Background and Purpose
 
-This guide's basic blackboard model prioritizes prototyping speed and readability by aggregating state in a single file called variables.json. However, as the number of agents increases and systems operate for extended periods with high frequency, file I/O contention, performance, and data reliability become significant challenges.
+This guide's basic blackboard model prioritizes prototyping speed and readability by aggregating state in a single JSON file. However, as the number of agents increases and systems operate for extended periods with high frequency, file I/O contention, performance, and data reliability become significant challenges.
 
 This section explains database-powered state management architecture for scaling the blackboard model from experimental prototypes to robust production systems.
 
 ### Key Benefits of Database Implementation
 
-Replacing variables.json with databases (such as SQLite, MongoDB, Redis, etc.) provides systems with the following powerful advantages.
+Replacing JSON file-based variable management with databases (such as SQLite, MongoDB, Redis, etc.) provides systems with the following powerful advantages.
 
 #### Robust Concurrent Access Control
 
@@ -1824,7 +1824,7 @@ Database trigger functionality automatically logs which agent changed which vari
 
 #### SQLite: Server-free File-based Database
 
-Optimal as the first step for introducing database robustness like transactions and schema definitions while maintaining the convenience of variables.json.
+Optimal as the first step for introducing database robustness like transactions and schema definitions while maintaining the convenience of file-based storage.
 
 **Features:**
 - File-based with no server required
@@ -1836,7 +1836,7 @@ Optimal as the first step for introducing database robustness like transactions 
 
 #### MongoDB (Document-oriented DB)
 
-Since it handles data in the same JSON format as variables.json, systems can benefit from powerful database features (querying, indexing, concurrent access control) while maintaining schema flexibility. This offers one of the best balances between flexibility and reliability.
+Since it handles data in JSON format, systems can benefit from powerful database features (querying, indexing, concurrent access control) while maintaining schema flexibility. This offers one of the best balances between flexibility and reliability.
 
 **Features:**
 - Natural data representation in JSON/BSON format
@@ -1862,10 +1862,10 @@ Suitable for managing highly volatile states (e.g., current agent activities) re
 
 The most practical approach involves gradual migration according to system maturity.
 
-#### Prototyping Phase: Use variables.json for rapid idea validation
+#### Prototyping Phase: Use simple file-based storage for rapid idea validation
 
 ```
-Phase 1: variables.json
+Phase 1: Simple file storage
 ↓
 Idea validation and feature verification
 ```
@@ -2637,19 +2637,19 @@ This enables construction of reliable systems where Python and macros collaborat
 
 ### Overview and Positioning
 
-This section provides specific implementation examples utilizing SQLite databases based on the theoretical background described in [A.12: Variable Management Persistence and Scaling](#a12-variable-management-persistence-and-scaling-database-utilization). As a gradual migration path from variables.json, it offers a practical solution that maintains convenience while significantly improving robustness.
+This section provides specific implementation examples utilizing SQLite databases based on the theoretical background described in [A.12: Variable Management Persistence and Scaling](#a12-variable-management-persistence-and-scaling-database-utilization). As a gradual migration path from file-based variable management, it offers a practical solution that maintains convenience while significantly improving robustness.
 
 **Implementation File Location**: The implementation files described in this section (variable_db.py, watch_variables.py, CLAUDE.md, etc.) are located in the SQLite/ folder of this document.
 
-### Compatibility with variables.json and Migration Notes
+### Compatibility with File-based Storage and Migration Notes
 
-When migrating to SQLite-based variable management, there are important compatibility considerations with variables.json-based macros.
+When migrating to SQLite-based variable management, there are important compatibility considerations with file-based variable management.
 
 #### Variable Clearing Method Change
 
-**variables.json-based (Traditional Method)**:
+**File-based (Traditional Method)**:
 ```markdown
-Delete variables.json if it exists
+Delete variable files if they exist
 ```
 
 **SQLite-based (New Method)**:
@@ -2664,8 +2664,8 @@ This is the only incompatible aspect, utilizing the "clear all variables" functi
 Existing macros can be made compatible with SQLite-based operation by modifying only the variable clearing portion:
 
 ```markdown
-# Before (variables.json version)
-Delete variables.json if it exists
+# Before (file-based version)
+Delete variable files if they exist
 Clear all TODO lists
 
 # After (SQLite version)  
@@ -2798,7 +2798,7 @@ Based on the current implementation, extensions to more advanced features such a
 
 #### Performance Expectations
 
-**variables.json vs SQLite Theoretical Comparison:**
+**File-based vs SQLite Theoretical Comparison:**
 - **Small scale (10 variables)**: Equivalent performance expected
 - **Medium scale (100 variables)**: SQLite advantages anticipated
 - **Large scale (1000 variables)**: Significant SQLite performance improvements expected
