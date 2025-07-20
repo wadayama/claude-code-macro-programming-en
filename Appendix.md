@@ -2324,44 +2324,6 @@ Save goal to {{project_goal}} and start A.15's 4-stage flow:
 5. Generate explanation materials for team on revision content"
 ```
 
-### Integration Value with Existing Technologies
-
-#### Architecture Integration
-
-**Data Management Layer**:
-- A.13 (Database Utilization): Persistence of structured data
-- A.14 (Vector DB & RAG): Utilization of knowledge and experience
-
-**Execution Control Layer**:
-- Pattern 1-10: Various execution patterns
-- A.11 (Concurrent Control): Safe state management
-
-**Quality Assurance Layer**:
-- A.7 (LLM-based Verification): Pre-verification
-- A.12 (LLM-based Evaluation): Post-evaluation
-
-**Meta-control Layer**:
-- A.15 (This section): Integrated control of the whole
-
-#### Technical Synergy Effects
-
-**1. Improved Prediction Accuracy**:
-- A.14's RAG-based similar case search × A.12's evaluation result accumulation
-- High-precision planning from past success/failure patterns
-
-**2. Dynamic Optimization**:
-- Pattern 7's environment sensing × A.15's continuous monitoring
-- Real-time plan adjustment and optimization
-
-**3. Cumulative Learning**:
-- A.6's audit logs × A.14's experience learning
-- Long-term capability improvement and knowledge accumulation
-
-### Summary
-
-Through A.15, natural language macro programming evolves from a "passive task execution tool" to an "active autonomous agent." The existing 10 patterns and Appendix technologies are organically integrated, realizing a true "intelligent agent system."
-
-This integrated architecture enables users to delegate long-term, strategic goal achievement to agents beyond simple task execution.
 
 ---
 
@@ -2429,7 +2391,11 @@ def process_sales_data():
     send_report_email(analysis)
     
 def call_macro(macro_file):
-    subprocess.run(["claude", "-f", macro_file])
+    with open(macro_file, 'r') as f:
+        subprocess.run(
+            ["claude", "-p", "--dangerously-skip-permissions"],
+            stdin=f, text=True
+        )
 ```
 
 **Macro Side: Judgment and Message Generation**:
