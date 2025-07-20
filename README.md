@@ -70,7 +70,7 @@ Development support pattern that visualizes execution status and assists in prob
 **Appendix: Advanced Technical Elements and Practical Implementation**
 - A.1: System Control and Resource Management
 - A.2: Event-Driven Execution
-- A.3: Risk Mitigation Strategies for Important Tasks
+- A.3: Four-Layer Defense Strategy
 - A.4: Python Tool Integration
 - A.5: Multi-Agent System Design (variables.json blackboard model, haiku generation multi-agent implementation example)
 - A.6: Audit Log System (transparency and accountability tracking)

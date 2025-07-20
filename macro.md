@@ -36,7 +36,7 @@
 ### Appendix (Advanced Technologies) - [Appendix.md](./Appendix.md)
 - [A.1: System Control and Resource Management](./Appendix.md#a1-system-control-and-resource-management) - Real-time system control and economically rational resource management
 - [A.2: Event-Driven Execution](./Appendix.md#a2-event-driven-execution) - Asynchronous processing and real-time response systems
-- [A.3: Risk Mitigation Strategies for Important Tasks](./Appendix.md#a3-risk-mitigation-strategies-for-important-tasks) - Four-layer defense strategies for reliable operations
+- [A.3: Four-Layer Defense Strategy](./Appendix.md#a3-four-layer-defense-strategy) - Four-layer defense strategies for reliable operations
 - [A.4: Python Tool Integration](./Appendix.md#a4-python-tool-integration) - Python ecosystem utilization via variables.json integration
 - [A.5: Multi-Agent System Design](./Appendix.md#a5-multi-agent-system-design) - Collaborative agent systems with shared blackboard model (includes haiku generation multi-agent implementation example)
 - [A.6: Audit Log System](./Appendix.md#a6-audit-log-system) - Transparency and accountability tracking via variables.json extension
