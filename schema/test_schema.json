@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Variable Type Schema Definitions",
+  "description": "Schema definitions for natural language macro programming variable validation",
+  "version": "1.0",
+  "schemas": {
+    "integer": {
+      "type": "integer",
+      "description": "Basic integer type"
+    },
+    "number": {
+      "type": "number", 
+      "description": "Basic number type (integer or float)"
+    },
+    "string": {
+      "type": "string",
+      "description": "Basic string type"
+    },
+    "boolean": {
+      "type": "boolean",
+      "description": "Basic boolean type"
+    },
+    "age": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 150,
+      "description": "Age in years (0-150)"
+    },
+    "percentage": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Percentage value (0-100)"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "completed", "failed"],
+      "description": "Task status enumeration"
+    }
+  }
+}
