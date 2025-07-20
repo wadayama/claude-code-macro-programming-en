@@ -2,6 +2,24 @@
 
 A systematic compilation of advanced technical elements for the practical implementation of natural language macro programming. This appendix provides technical details crucial for real-world operations, including reliability assurance in LLM systems with probabilistic behavioral characteristics, external system integration, type safety, and quality assurance.
 
+## Variable Management System Policy
+
+All technical elements in this appendix are unified around an **SQLite-based variable management system** implementation approach. This represents an evolution from the traditional variables.json method to a robust and scalable database-based management system.
+
+### Implementation Consistency
+- **Core System**: SQLite database variable management (see [A.17](#a17-sqlite-based-variable-management))
+- **Extensions**: Type safety (A.10), audit logs (A.6), vector search (A.14), etc. are integrated with SQLite
+- **Concurrency Control**: Safe concurrent access through WAL mode and optimistic locking (A.11)
+- **Monitoring Tools**: Real-time status monitoring with watch_variables.py
+
+### Importance of A.17
+Implementation details, migration methods, and technical specifications are comprehensively covered in **[A.17: SQLite-Based Variable Management](#a17-sqlite-based-variable-management)**. We recommend understanding the basic architecture in A.17 first before reading other sections.
+
+### Relationship with variables.json
+- **Learning/Prototyping Stage**: variables.json method can still be used
+- **Production Stage**: Migration to SQLite-based management is recommended
+- **Migration Procedures**: Detailed guidelines provided in A.17
+
 ## Table of Contents
 
 - [A.1: System Control and Resource Management](#a1-system-control-and-resource-management)
