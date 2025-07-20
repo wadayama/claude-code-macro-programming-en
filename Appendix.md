@@ -2520,9 +2520,11 @@ Save the created haiku to {{agent_{{AGENT_ID}}_haiku}}.
 #### Performance Characteristics
 
 **Parallel Processing Effects**:
-- Approximately 3x speedup with 3 agents running simultaneously
+- Theoretical processing time reduction through simultaneous multi-agent execution
 - Safe concurrent access through SQLite variable sharing
 - Dynamic scaling support for agent count
+
+**Note**: Actual performance improvements vary depending on execution environment, task characteristics, LLM response times, etc. Specific performance evaluation requires real-world measurements.
 
 **Token Efficiency**:
 - Python control section token usage: 0
@@ -2554,7 +2556,7 @@ To help readers make appropriate technical choices, we provide a systematic comp
 | Evaluation Axis | A.5 Pure Natural Language Macros | A.15 Python Orchestration | Recommended Use Case |
 |------------------|-----------------------------------|----------------------------|---------------------|
 | **Implementation Complexity** | 🟢 Simple (macros only) | 🟡 Moderate (Python + macros) | Rapid development: A.5 |
-| **Execution Speed** | 🟡 Sequential execution (baseline) | 🟢 Parallel execution (3x faster) | High-speed processing: A.15 |
+| **Execution Speed** | 🟡 Sequential execution (baseline) | 🟢 Parallel execution (theoretical speedup) | High-speed processing: A.15 |
 | **Token Cost** | 🟡 LLM usage for all processing | 🟢 Zero cost for control logic | Cost-sensitive: A.15 |
 | **Scalability** | 🔴 Limited agent count | 🟢 Dynamic scaling support | Large-scale: A.15 |
 | **Debugging Ease** | 🔴 Difficult LLM behavior tracking | 🟢 Standard Python tools available | Development efficiency: A.15 |
