@@ -1069,6 +1069,7 @@ python audit_viewer.py --format json --recent 5
 **Continuous Improvement**: Discovery and learning from success and failure patterns through analysis of accumulated audit trails
 **Compliance**: Comprehensive support for research ethics reviews, business audits, and regulatory requirements
 **Debugging Support**: Dramatically improved efficiency in root cause analysis during problem occurrence through variable history tracking and decision trails
+**Multi-Agent Support**: In [A.5 Multi-Agent System](#a5-multi-agent-system-design) environments, identifies concurrent variable operations by multiple agents through `source` and `session_id`, enabling complete chronological tracking of inter-agent interactions and state changes. Streamlines debugging of race conditions and unexpected behaviors
 
 ### 📁 Practical Samples
 
