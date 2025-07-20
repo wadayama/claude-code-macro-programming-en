@@ -435,7 +435,7 @@ For planning-stage risk analysis and preventive quality management through conti
 
 Python Tool Integration enables natural language macro programming to achieve universal access to the entire Python ecosystem, making possible a wide range of applications from specialized computational processing to business automation.
 
-In natural language macro programming, information exchange between macros and Python programs through the variables.json file or SQLite database (see A.17) enables utilization of Python's rich library ecosystem. This integration approach makes it possible to infinitely extend the functionality of macro systems.
+In natural language macro programming, information exchange between macros and Python programs through SQLite database (see A.17) enables utilization of Python's rich library ecosystem. This integration approach makes it possible to infinitely extend the functionality of macro systems.
 
 ### Basic Integration Pattern
 
@@ -444,44 +444,28 @@ In natural language macro programming, information exchange between macros and P
 ```python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import json
-from pathlib import Path
+from variable_db import get_variable, save_variable
 
 def main():
     try:
-        # Read data from variables.json
-        with open("variables.json", 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        # Get input data from SQLite database
+        num1 = float(get_variable('number1') or '0')
+        num2 = float(get_variable('number2') or '0')
         
-        # Get input data
-        input_data = data.get("input_key", "")
+        # Execute calculation processing
+        result = num1 + num2
+        average = result / 2
         
-        # Execute Python processing (e.g., text analysis)
-        result = analyze_data(input_data)
+        # Save results to SQLite database
+        save_variable('sum_result', str(result))
+        save_variable('average_result', str(average))
         
-        # Write results back to variables.json
-        data["output_key"] = result
-        with open("variables.json", 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-        
-        print("Processing completed")
+        print(f"Calculation completed: {num1} + {num2} = {result}, Average: {average}")
         
     except Exception as e:
         # Record error information
-        try:
-            with open("variables.json", 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            data["error"] = {"message": str(e), "status": "failed"}
-            with open("variables.json", 'w', encoding='utf-8') as f:
-                json.dump(data, f, ensure_ascii=False, indent=2)
-        except:
-            pass
+        save_variable('calculation_error', str(e))
         print(f"An error occurred: {e}")
-
-def analyze_data(input_data):
-    """Actual processing logic"""
-    # Implement processing using Python libraries here
-    return {"processed": input_data, "analysis": "result"}
 
 if __name__ == "__main__":
     main()
@@ -490,41 +474,54 @@ if __name__ == "__main__":
 #### Macro Invocation
 
 ```markdown
-## Execute Python Tool
-Execute analysis_tool.py.
+## Execute Numerical Calculation
+Save 15 to {{number1}}
+Save 25 to {{number2}}
 
-Set processing results to {{analysis_result}}.
+Execute calculator.py
+
+Check calculation results:
+- Sum: {{sum_result}}
+- Average: {{average_result}}
 ```
 
-### Practical Example: Haiku Data Analysis Tool
+### Practical Example: Data Processing Tools
 
-As a validated example, we present a tool for detailed haiku analysis:
+Practical data processing examples utilizing SQLite variable management:
 
-#### Processing Content
-- **Structure Analysis**: Evaluation of 5-7-5 syllable structure
-- **Vocabulary Analysis**: Classification and diversity measurement of used words
-- **Creativity Evaluation**: Quantification of poetic techniques and creativity
-- **Statistics Generation**: Automatic generation of overall statistics and recommendations
+#### Processing Pattern Examples
 
-#### Information Exchange Flow
-1. Read haiku data (`haiku_1`~`haiku_4`, `themes`, etc.) from variables.json
-2. Execute detailed text analysis processing using Python
-3. Save structured analysis results as `analysis_report` in variables.json
+**1. Text Processing Tool**
+```python
+from variable_db import get_variable, save_variable
 
-#### Macro Usage
-
-**Prerequisites**: variables.json contains haiku data after executing the haiku generation system (haiku_direct.md)
-
-```markdown
-To analyze the haiku data currently saved in variables.json,
-execute haiku_analyzer_en.py.
-
-Set analysis results to {{analysis_report}}.
+def process_text():
+    text = get_variable('input_text')
+    result = {
+        'length': len(text),
+        'words': len(text.split()),
+        'upper': text.upper()
+    }
+    save_variable('text_analysis', str(result))
 ```
 
-**Execution Example**:
-1. `Execute haiku_direct.md` - Save haiku data to variables.json
-2. `Execute haiku_analyzer_en.py` - Analyze saved haiku data
+**2. List Calculation Tool**
+```python
+from variable_db import get_variable, save_variable
+import json
+
+def calculate_stats():
+    numbers_str = get_variable('number_list')
+    numbers = json.loads(numbers_str)
+    
+    stats = {
+        'sum': sum(numbers),
+        'average': sum(numbers) / len(numbers),
+        'max': max(numbers),
+        'min': min(numbers)
+    }
+    save_variable('statistics', json.dumps(stats))
+```
 
 ### Application Possibilities
 
@@ -545,22 +542,6 @@ Set analysis results to {{analysis_report}}.
 - **openpyxl/xlsxwriter**: Excel automation, report generation
 - **PIL/OpenCV**: Image processing, image analysis
 
-### Design Advantages
-
-#### Transparency and Debuggability
-- All information exchange visualized through variables.json file
-- Processing states before and after can be directly verified
-- Easy diagnosis when errors occur
-
-#### Natural Integration
-- Complete integration with existing macro syntax
-- No complex API design or configuration required
-- Intuitive invocation using natural language
-
-#### Extensibility and Maintainability
-- Implementable with standard Python code
-- Free choice and combination of libraries
-- Reusability through modularization
 
 ### Python Quality Guidelines
 
@@ -737,39 +718,6 @@ Provide guidelines for applying multi-haiku design principles to other domains.
 {{option_N}}, {{evaluation_N}}, {{risk_assessment_N}}, {{final_decision}}
 ```
 
-#### Guidelines for Specialized vs. General-Purpose Design
-
-**When Specialized Design is Appropriate**:
-- Domain-specific expertise required
-- High quality and accuracy requirements
-- Clear professional division of labor between agents
-
-**When General-Purpose Design is Appropriate**:
-- Prioritize flexibility and extensibility
-- Reuse across multiple domains is anticipated
-- Minimize development and maintenance costs
-
-#### Staged Implementation Approach
-
-1. **Prototype Stage**: Basic operation verification with simple variables.json sharing
-2. **Improvement Stage**: SQLite migration for enhanced concurrent access control
-3. **Operations Stage**: Addition of monitoring tools, error handling, and scalability measures
-
-### Implementation Learning Value
-
-The multi-haiku system is an educationally valuable implementation example that integrates the following learning elements:
-
-**Technical Integration Demonstration**:
-- **A.17 SQLite Variable Management**: Robust concurrent access control
-- **A.11 Optimistic Locking**: Race condition prevention in variables.json version
-- **Pattern 2 Parallel Processing**: True parallel execution with Task tool
-- **Natural Language Macro Syntax**: Intuitive system control
-
-**Practical Skill Acquisition**:
-- Template-based design patterns
-- Dynamic file generation and process control
-- Database monitoring and debugging techniques
-- Multi-agent coordination algorithms
 
 
 ### Implementation Patterns
@@ -2419,7 +2367,7 @@ This integrated architecture enables users to delegate long-term, strategic goal
 
 ## A.16: Python Orchestration-Based Hybrid Approach
 
-Systematizes a hybrid approach that combines Python orchestration with natural language macro programming for systems requiring high speed, token efficiency, and event processing capabilities. Provides methodology for building lightweight yet powerful agent systems without relying on external frameworks.
+Systematizes a hybrid approach that combines Python orchestration with natural language macro programming for systems requiring high speed and token efficiency. Provides methodology for building lightweight yet powerful agent systems without relying on external frameworks.
 
 ### Design Concept
 
@@ -2448,159 +2396,128 @@ SQLite database (see A.17) functions as an efficient interface between Python or
 - Efficient post-processing through result structuring
 
 **Processing Speed Improvement**:
-- Immediate response through event-driven architecture
 - Utilization of parallel processing and callback mechanisms
-- High-speed data exchange via lightweight variables.json integration
+- High-speed data exchange via lightweight SQLite integration
+- For event processing, see [A.2: Event-Driven Execution](#a2-event-driven-execution)
 
-### Event-Driven Architecture
+### Basic Integration Pattern
 
-#### File System Monitoring Integration
+#### SQLite-Based Collaborative Processing
 
-**Collaboration with watchdog** (Extended application of A.2):
+**Python Side: High-Speed Data Processing**:
 ```python
-# File monitoring + natural language macro collaboration
-class DocumentProcessor:
-    def on_created(self, event):
-        # Python: High-speed preprocessing
-        file_info = self.extract_metadata(event.src_path)
-        # Natural language macro: Content analysis
-        analysis = self.call_nlmacro("analyze_document.md", file_info)
-        # Python: Automated processing based on results
-        self.route_document(analysis)
-```
+from variable_db import get_variable, save_variable
+import json
 
-#### Database Watch Integration
-
-**Utilizing MongoDB Change Streams** (Integration with A.13):
-```python
-# MongoDB + natural language macro collaboration
-def watch_orders_collection():
-    with client.watch([{"$match": {"operationType": "insert"}}]) as stream:
-        for change in stream:
-            # Python: Order data structuring
-            order_data = extract_order_details(change.fullDocument)
-            # Natural language macro: Order evaluation judgment
-            evaluation = call_nlmacro("evaluate_order.md", order_data)
-            # Python: Automatic routing based on evaluation
-            route_to_fulfillment(evaluation)
-```
-
-**Other Databases**: PostgreSQL LISTEN/NOTIFY, Redis Pub/Sub, etc. can be integrated using similar patterns.
-
-#### Time-Based Triggers
-
-**Cron Scheduler Integration**:
-```python
-# Periodic execution + natural language macro
-def daily_report_generation():
-    # Python: Data collection and preprocessing
-    raw_data = collect_daily_metrics()
-    # Natural language macro: Report generation and insight extraction
-    report = call_nlmacro("generate_daily_report.md", raw_data)
-    # Python: Distribution and archiving
-    distribute_report(report)
-```
-
-### Orchestration Patterns
-
-#### Basic Integration Pattern
-
-**variables.json-centered data exchange**:
-```python
-def call_nlmacro(macro_file, input_data):
-    # Python → Natural language macro
-    update_variables_json(input_data)
+def process_sales_data():
+    # Python: High-speed calculation processing
+    sales_data = calculate_daily_sales()
+    summary = {
+        "total": sum(sales_data),
+        "average": sum(sales_data) / len(sales_data),
+        "target": 10000
+    }
     
-    # Execute natural language macro
-    result = subprocess.run(
-        ["claude", "-f", macro_file], 
-        capture_output=True, text=True
-    )
+    # Save data to SQLite database
+    save_variable('sales_summary', json.dumps(summary))
     
-    # Natural language macro → Python
-    return load_variables_json()
+    # Execute natural language macro for judgment/generation
+    call_macro('analyze_sales.md')
+    
+    # Get results and post-process on Python side
+    analysis = get_variable('sales_analysis')
+    send_report_email(analysis)
+    
+def call_macro(macro_file):
+    subprocess.run(["claude", "-f", macro_file])
 ```
 
-#### Asynchronous Processing and Callbacks
+**Macro Side: Judgment and Message Generation**:
+```markdown
+# analyze_sales.md
+Analyze the data in {{sales_summary}} and make the following judgments:
 
-**Event-driven processing flow**:
+If sales exceed the target:
+- Generate a congratulatory message in {{celebration_message}}
+
+If sales fall short of the target:
+- Generate improvement suggestions in {{improvement_suggestions}}
+
+Save a comprehensive analysis report in {{sales_analysis}}.
+```
+
+### Practical Example: Customer Support Automation
+
+#### Efficiency Through Python + Macro Collaboration
+
+**Processing Flow**:
+1. **Python**: Customer data collection and organization (high-speed processing)
+2. **Macro**: Situation judgment and response generation (flexible judgment)
+3. **Python**: Result distribution and log recording (automated processing)
+
 ```python
-class EventOrchestrator:
-    def __init__(self):
-        self.event_queue = Queue()
-        self.nlmacro_pool = ThreadPoolExecutor(max_workers=3)
+def handle_customer_inquiry(customer_id, inquiry_text):
+    # Python: High-speed customer history search
+    history = get_customer_history(customer_id)
+    context = {
+        "customer_id": customer_id,
+        "inquiry": inquiry_text,
+        "purchase_history": history,
+        "tier": get_customer_tier(customer_id)
+    }
     
-    def process_event_async(self, event_data):
-        # Execute natural language macro asynchronously
-        future = self.nlmacro_pool.submit(
-            self.call_nlmacro, "process_event.md", event_data
-        )
-        future.add_done_callback(self.handle_result)
+    # Save data to SQLite
+    save_variable('customer_context', json.dumps(context))
+    
+    # Generate response with macro
+    call_macro('generate_response.md')
+    
+    # Python: Result processing
+    response = get_variable('customer_response')
+    send_response(customer_id, response)
+    log_interaction(customer_id, inquiry_text, response)
 ```
 
-### Integration Value with Existing Technologies
+**Corresponding Macro**:
+```markdown
+# generate_response.md
+Based on the information in {{customer_context}}, provide appropriate customer service:
 
-#### System Integration Effects
+If customer tier is Premium:
+- Generate special service message in {{premium_response}}
 
-**Evolutionary relationship with A.2 (Event-Driven Execution)**:
-- Continuous orchestration based on A.2's monitoring technologies
-- Extension from single event processing to complex workflow management
+For general inquiries:
+- Generate polite and clear response in {{standard_response}}
+
+Save the final customer response in {{customer_response}}.
+```
+
+### Relationship with Existing Technologies
+
+**Relationship with A.2 (Event-Driven Execution)**:
+- Event monitoring and trigger functionality refer to A.2
+- A.16 focuses on collaborative processing
 
 **Relationship with A.4 (Python Tool Integration)**:
-- Resident-type system utilizing A.4's integration patterns
+- Extends A.4's integration patterns to resident systems
 - Evolution from single tool execution to continuous collaborative processing
 
-**Integration with A.13 (Database Utilization)**:
-- Utilization of database real-time monitoring capabilities
-- Immediate detection and automatic response to persisted state changes
-
-### Practical Example: Order Processing System
-
-```markdown
-# evaluate_order.md
-"Analyze the order content in {{order_data}} and make the following determinations:
-
-1. Set priority level (high/medium/low) in {{priority}}
-2. Set {{special_handling}} to true if special handling is required
-3. Save estimated processing time in {{estimated_time}}
-4. Generate customer notification message in {{customer_message}}
-
-Consider special requirements and urgency indicators in your judgment."
-```
+**Relationship with A.17 (SQLite Variable Management)**:
+- Efficient data exchange based on SQLite
+- Safe collaborative operations through concurrent access control
 
 ### Python Implementation Quality Standards
 
 To ensure reliability of the orchestration layer, we strongly recommend adherence to quality standards in Python implementation.
 
-#### Pursuit of Robustness
-
 **Development Guidelines**: Implementation following [python_dev.md](./python_dev.md) ensures the following important characteristics:
 
-- **Type Safety**: Improved safety of variables.json operations through type hints
+- **Type Safety**: Improved safety of SQLite variable operations through type hints
 - **Error Handling**: Robust exception handling for long-running systems
-- **Testing Strategy**: Comprehensive testing of event processing and asynchronous processing
+- **Testing Strategy**: Comprehensive testing of collaborative processing
 - **Reproducibility**: Consistent operation guarantee in production environments
 
-#### AI-Collaborative Implementation
-
-Recommended approach when generating orchestration code with LLM:
-
-```markdown
-"Implement a MongoDB Change Streams integration orchestrator.
-Follow the quality standards in python_dev.md, including:
-- Class design with type hints
-- Exception handling and log output
-- Test code and mock utilization
-- Operation verification in uv environment"
-```
-
-This enables the construction of enterprise-level Python orchestration systems that can withstand operational demands.
-
-### Summary
-
-Python orchestration-based hybrid approach enables the construction of fast and efficient agent systems without depending on external frameworks. Positioned as a natural evolution of existing A.2, A.4, and A.13 technologies, it provides the foundation for practical business automation systems.
-
-This approach is particularly effective as an implementation methodology that balances cost efficiency and flexibility in enterprise environments where token usage and response speed are critical.
+This enables construction of reliable systems where Python and macros collaborate effectively.
 
 ## A.17: SQLite-Based Variable Management Implementation
 
