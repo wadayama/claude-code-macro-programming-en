@@ -1377,200 +1377,245 @@ In natural language macro programming, **SQLite-based integrated type validation
 - **Typed Storage**: `Save VALUE as TYPE to {{variable}}` → Complete type validation
 - **Bulk Validation**: `Execute type check for all variables` → Accumulated data integrity verification
 
-### Basic Type Specification Features
+### Implementation Patterns
 
-#### Direct Type Information Description
+#### CLAUDE.md Natural Language Syntax for Typed Storage
 
-**As a future extension option**, type safety can be ensured through direct type information description within variables.json. While not required for basic macro operations, it contributes to enhanced safety for complex Python integrations and scenarios demanding high reliability.
+CLAUDE.md defined natural language syntax enables intuitive typed variable storage:
 
-```json
-{
-  "user_name": "John Doe",           // Basic format (recommended)
-  "user_age": {                      // Type specification (optional)
-    "value": 30,
-    "type": "integer"
-  },
-  "analysis_results": {              // Array type example
-    "value": [1.2, 3.4, 5.6],
-    "type": "array",
-    "element_type": "number"
-  },
-  "config_flag": {                   // Boolean type example
-    "value": true,
-    "type": "boolean"
-  }
-}
+```bash
+# Basic type typed storage examples
+uv run python -c "from variable_db import save_variable; save_variable('user_age', '25', 'integer'); print('Saved \"25\" as integer type to {{user_age}}')"
+
+# Constrained type typed storage examples  
+uv run python -c "from variable_db import save_variable; save_variable('current_age', '30', 'age'); print('Saved \"30\" as age type to {{current_age}}')"
+
+# Enumeration type typed storage examples
+uv run python -c "from variable_db import save_variable; save_variable('task_status', 'completed', 'status'); print('Saved \"completed\" as status type to {{task_status}}')"
 ```
 
-#### Natural Language Type Specification
-
-Type safety can be specified intuitively, following the basic philosophy of natural language macros:
-
+**Natural Language Macro Usage Examples**:
 ```markdown
-## Type-Safe Variable Setting Examples
+# Typed variable storage
+Save 25 as integer type to {{user_age}}
+Save 3.14 as number type to {{pi_value}}
+Save true as boolean type to {{is_enabled}}
 
-Set {{user_age}} type to integer
-Set {{success_rate}} type to number
-Set {{feature_enabled}} type to boolean
-
-## Type-Constrained Value Storage
-Save 30 as integer type to {{user_age}}
-Save "enabled" as boolean true to {{status}}
+# Constrained type storage
+Save 30 as age type to {{current_age}}
+Save 75 as percentage type to {{completion}}
+Save completed as status type to {{task_status}}
 ```
 
-#### Target Applications and Selective Implementation
+#### Type Validation and Automatic Error Handling
 
-Selective implementation for **specific use cases where type mismatches could cause serious issues**, such as numerical computation, large-scale data processing, and external API integration. Basic format is sufficient for daily macro usage. Gradual introduction of type safety features is possible as needed.
+When type constraints are violated, `SchemaValidationError` is automatically raised with specific error messages indicating the problem:
 
-### Schema File-Based Systematic Management
+```python
+# Range constraint violation example
+try:
+    save_variable('invalid_age', '-5', 'age')
+except SchemaValidationError as e:
+    print(f"Error: {e}")  # "Value -5 is below minimum 0 for type age"
 
-#### Pre-defined Schema Files
+# Enumeration constraint violation example  
+try:
+    save_variable('invalid_status', 'unknown', 'status')
+except SchemaValidationError as e:
+    print(f"Error: {e}")  # "Value 'unknown' not in allowed values ['pending', 'completed', 'failed']"
+```
 
-**For more advanced type management**, the following schema pre-definitions are effective:
+### Schema Definition System
 
-**For variables.json**: JSON schema files for structure definition
-**For SQLite**: DDL (Data Definition Language) table definitions and schema design (more powerful type constraints, foreign keys, CHECK constraints, etc. are available)
+#### External JSON Schema Implementation (`test_schema.json`)
+
+The schema/ implementation uses external JSON Schema definitions for flexible type management:
 
 ```json
-// Example of variables.schema.json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "properties": {
-    "analysis_config": {
-      "type": "object",
-      "properties": {
-        "precision": {"type": "number", "minimum": 0.1, "maximum": 1.0},
-        "iterations": {"type": "integer", "minimum": 1},
-        "output_format": {"type": "string", "enum": ["json", "csv", "xml"]}
-      },
-      "required": ["precision", "iterations"]
+  "description": "Schema definitions for natural language macro variables",
+  "schemas": {
+    "integer": {"type": "integer"},
+    "number": {"type": "number"},
+    "string": {"type": "string"},
+    "boolean": {"type": "boolean"},
+    "age": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 150
     },
-    "user_profile": {
-      "type": "object",
-      "properties": {
-        "name": {"type": "string", "minLength": 1},
-        "age": {"type": "integer", "minimum": 0, "maximum": 150},
-        "preferences": {
-          "type": "array",
-          "items": {"type": "string"},
-          "uniqueItems": true
-        }
-      },
-      "required": ["name", "age"]
+    "percentage": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
     },
-    "processing_results": {
-      "type": "object",
-      "properties": {
-        "status": {"type": "string", "enum": ["pending", "processing", "completed", "failed"]},
-        "timestamp": {"type": "string", "format": "date-time"},
-        "data": {"type": "array", "items": {"type": "number"}}
-      }
+    "status": {
+      "type": "string",
+      "enum": ["pending", "completed", "failed"]
     }
   }
 }
 ```
 
+**Schema Loading with Fallback**:
+- External JSON file is loaded automatically by `variable_db.py`
+- If file loading fails, fallback to internal schema definitions
+- No disruption to system operation even with schema file issues
+
 #### Schema Validation Integration
 
-Implementation example of schema validation in Python Tool Integration:
+Direct implementation example from `schema/variable_db.py`:
 
 ```python
-import json
-import jsonschema
-from pathlib import Path
+def _convert_json_schema(self, json_schema: dict) -> dict:
+    """Convert JSON Schema format to internal schema format."""
+    converted = {"type": json_schema["type"]}
+    
+    # Handle range constraints
+    if "minimum" in json_schema:
+        converted["min"] = json_schema["minimum"]
+    if "maximum" in json_schema:
+        converted["max"] = json_schema["maximum"]
+        
+    # Handle enumeration constraints
+    if "enum" in json_schema:
+        converted["enum"] = json_schema["enum"]
+        
+    return converted
 
-def validate_and_load_variables():
-    """Load variables.json with schema validation"""
-    try:
-        # Load schema file
-        with open("variables.schema.json", 'r', encoding='utf-8') as f:
-            schema = json.load(f)
-        
-        # Load variables.json
-        with open("variables.json", 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        
-        # Schema validation
-        jsonschema.validate(instance=data, schema=schema)
-        
-        print("Schema validation successful")
-        return data
-        
-    except jsonschema.ValidationError as e:
-        print(f"Schema validation error: {e.message}")
-        return None
-    except Exception as e:
-        print(f"File loading error: {e}")
-        return None
+def _validate_value(self, value: str, type_name: str) -> Any:
+    """Validate value against schema and return converted value."""
+    if type_name not in self.schemas:
+        raise SchemaValidationError(f"Unknown type: {type_name}")
+    
+    schema = self.schemas[type_name]
+    # Type conversion, range validation, enumeration validation...
 ```
 
-#### Usage and Practical Examples
+#### Inter-Agent Type Safety Communication
 
-**Basic Usage**:
+In multi-agent environments, typed variables provide structured communication protocol:
+
+```bash
+# Agent 1 saves typed data
+uv run python -c "from variable_db import save_variable; save_variable('agent_1_progress', '75', 'percentage')"
+
+# Agent 2 reads with type validation
+uv run python -c "from variable_db import get_variable_typed; value, type_name = get_variable_typed('agent_1_progress'); print(f'Progress: {value}% ({type_name})')"
+
+# System monitoring with type information
+python watch_variables.py --validate
+```
+
+### Type Check Tools
+
+#### Variable Monitoring with `watch_variables.py`
+
+Real-time variable monitoring tool with type information visualization:
+
+```bash
+# Real-time monitoring with type information
+python watch_variables.py --continuous
+
+# Single snapshot with schema information
+python watch_variables.py --once --schemas
+
+# Validation status check for all typed variables
+python watch_variables.py --validate
+
+# Database statistics with type distribution
+python watch_variables.py --stats
+```
+
+**Key Features**:
+- **Color-coded output**: Green for valid, red for invalid, yellow for untyped
+- **Type information display**: Shows type name and validation status for each variable
+- **Real-time change tracking**: Monitors variable modifications with timestamps
+- **Schema type listing**: Displays available schema types and their constraints
+
+#### Bulk Type Validation System
+
+Comprehensive validation checking for all typed variables:
+
 ```python
-# Load data with schema validation
-data = validate_and_load_variables()
-if data is not None:
-    user_name = data.get("user_name", "anonymous")
-    precision = data.get("analysis_precision", 0.8)
-    print(f"User: {user_name}, Precision: {precision}")
-else:
-    print("Schema validation failed")
+# From variable_db.py implementation
+def validate_all(self) -> dict[str, bool | str]:
+    """Validate all typed variables against their schemas."""
+    results = {}
+    variables_with_types = self.list_variables_with_types()
+    
+    for name, (value, type_name) in variables_with_types.items():
+        if type_name is None:
+            continue  # Skip untyped variables
+        
+        try:
+            self._validate_value(value, type_name)
+            results[name] = True
+        except SchemaValidationError as e:
+            results[name] = str(e)
+    
+    return results
 ```
 
-**Integration with Natural Language Macros**:
+### Multi-Agent Environment
+
+#### Shared Type-Safe Variable Space
+
+SQLite-based variable management provides concurrent-safe typed variable sharing between agents:
+
+```bash
+# Agent coordination with type safety
+# Agent 1: Save progress with percentage validation
+uv run python -c "from variable_db import save_variable; save_variable('task_progress', '50', 'percentage')"
+
+# Agent 2: Read validated progress data
+uv run python -c "from variable_db import get_variable_typed; progress, type_name = get_variable_typed('task_progress'); print(f'Current progress: {progress}% (validated as {type_name})')"
+
+# System: Monitor all agent variables with types
+python watch_variables.py --continuous
+```
+
+**Multi-Agent Benefits**:
+- **Type Contract Enforcement**: Agents cannot save invalid data that breaks schema contracts
+- **Automatic Error Detection**: Invalid data is caught at save time, not during inter-agent communication
+- **Real-time Monitoring**: Administrators can monitor all agent variables with type validation status
+- **Concurrent Safety**: SQLite WAL mode handles multiple agent access automatically
+
+### Practical Samples
+
+#### Complete Type Validation Test (`test_sample.md`)
+
+The schema/ folder includes a comprehensive test suite demonstrating all type validation features:
+
 ```markdown
-# Project settings validation and loading
-Retrieve {{project_settings}} value with schema validation, and continue processing only if settings are correct
+# From test_sample.md
+# Basic type validation
+Save 25 as integer type to {{user_age}}
+Save 3.14 as number type to {{pi_value}}
+Save "Hello, Schema!" as string type to {{message}}
+Save true as boolean type to {{is_enabled}}
 
-# Type-safe processing of numerical data
-Verify {{calculation_params}} with schema validation, and execute calculations only if all values are numeric types
+# Constrained type validation
+Save 30 as age type to {{current_age}}
+Save 75 as percentage type to {{completion}}
+Save completed as status type to {{task_status}}
+
+# Error case testing
+Save -5 as age type to {{invalid_age}}  # Range violation
+Save unknown as status type to {{invalid_status}}  # Enum violation
+
+# Type checking execution
+Execute type check for all variables
 ```
 
-#### Application in Inter-Agent Communication
+**Test Results**:
+- **Valid data**: Stored successfully with type information
+- **Invalid data**: Rejected with specific error messages
+- **Type checking**: Comprehensive validation report for all typed variables
+- **Mixed storage**: Untyped variables coexist with typed variables seamlessly
 
-In multi-agent environments, schema validation is utilized as an inter-agent communication protocol. Each agent writes data to variables.json following a common schema, providing a mechanism for other agents to safely read the data. This enables early detection of communication errors, prevention of invalid data injection, and improved overall system robustness (see [A.5: Multi-Agent System Design](#a5-multi-agent-system-design) for details).
-
-### Graduated Introduction Strategy
-
-#### Three Levels of Implementation
-
-**Basic Usage** (recommended starting level):
-- No schema file, simple variable management
-- String-based basic value storage and reference
-- Type errors naturally discovered and corrected at runtime
-
-**Intermediate Usage** (partial implementation for specific use cases):
-- Schema definition for important data only
-- Partial type validation (numerical computation sections, API integration sections, etc.)
-- Basic sections remain as before, type safety ensured only for critical sections
-
-**Advanced Usage** (mission-critical applications):
-- Complete schema-based type management
-- Strict validation and error handling
-- Consistent type management across entire project
-
-#### Practical Migration Strategy Examples
-
-```markdown
-## Practical Migration Examples
-
-### Step 1: Migration from Basic to Intermediate Usage
-Introduce schema definition for important numerical settings only:
-
-Save {{analysis_precision}} as 0.95 (number type, 0.1-1.0 range)
-Save {{iteration_count}} as 100 (integer type, minimum 1)
-
-### Step 2: Migration from Intermediate to Advanced Usage
-Create variables.schema.json and systematic management of all data:
-
-Execute variables.json validation based on schema file
-Report errors and suggest corrections for type constraint violations
-```
-
-
-Type safety and schema management provide methods for natural language macro programming to maintain basic ease of use while offering enhanced reliability and maintainability.
+The implementation demonstrates practical type safety that maintains the ease of use of natural language macros while providing robust data validation for mission-critical applications.
 
 ## A.11: Concurrent Access Control and Optimistic Locking
 
