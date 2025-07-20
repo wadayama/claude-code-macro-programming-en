@@ -554,6 +554,130 @@ def calculate_stats():
 - **openpyxl/xlsxwriter**: Excel automation, report generation
 - **PIL/OpenCV**: Image processing, image analysis
 
+### Practical Implementation: Data Visualization Integration System
+
+**Complete Implementation Demonstrating Integration Patterns**
+
+The practical system located in the `integration/` folder demonstrates complete integration between natural language macro programming and Python tools through SQLite-based variable management.
+
+#### System Architecture
+
+**File Structure**:
+```
+integration/
+├── CLAUDE.md               # SQLite-based natural language macro syntax definition
+├── data_visualizer.py      # matplotlib data visualization tool
+├── random_generator.py     # Random number generation tool
+├── variable_db.py          # SQLite variable management system
+├── visualization_demo.md   # Integration demonstration
+└── watch_variables.py      # Real-time variable monitoring tool
+```
+
+#### Implemented Python Tools
+
+**1. Random Number Generator Tool (random_generator.py)**:
+```python
+def main():
+    # Get settings from SQLite variables
+    count = int(get_variable("random_count") or "10")
+    min_val = float(get_variable("random_min") or "1.0")
+    max_val = float(get_variable("random_max") or "10.0")
+    
+    # Generate random numbers
+    numbers = [round(random.uniform(min_val, max_val), 1) for _ in range(count)]
+    data_str = ",".join(map(str, numbers))
+    
+    # Save results to SQLite
+    save_variable("data_values", data_str)
+    print(f"Generated {count} random numbers: {data_str}")
+```
+
+**2. Data Visualization Tool (data_visualizer.py)**:
+```python
+def main():
+    # Get data and settings from SQLite variables
+    data_str = get_variable("data_values")
+    title = get_variable("chart_title") or "Data Visualization"
+    x_label = get_variable("x_label") or "Index"
+    y_label = get_variable("y_label") or "Value"
+    output_file = get_variable("output_filename") or "chart.png"
+    
+    # Data analysis and visualization
+    data = [float(x.strip()) for x in data_str.split(",")]
+    plt.figure(figsize=(10, 6))
+    plt.plot(data, marker='o')
+    plt.title(title)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.grid(True)
+    plt.savefig(output_file)
+    
+    # Save results to SQLite
+    save_variable("output_file", output_file)
+    print(f"Chart saved as {output_file}")
+```
+
+#### Natural Language Macro Execution Example
+
+**Complete Executable Workflow** (`visualization_demo.md`):
+```markdown
+# Data Visualization Demo - Natural Language Macro Programming
+
+## Step 1: Random Generation Parameter Setup
+Save "12" to {{random_count}}
+Save "2.5" to {{random_min}}
+Save "15.0" to {{random_max}}
+
+## Step 2: Random Data Generation
+Execute random_generator.py
+
+## Step 3: Visualization Settings
+Save "Custom Random Data Analysis" to {{chart_title}}
+Save "Sample Number" to {{x_label}}
+Save "Measured Score" to {{y_label}}
+Save "custom_analysis.png" to {{output_filename}}
+
+## Step 4: Data Visualization Execution
+Execute data_visualizer.py
+
+## Step 5: Results Confirmation
+Retrieve {{output_file}}
+```
+
+#### Integration Pattern Characteristics
+
+**1. Loosely Coupled Architecture**:
+- Natural language macros and Python tools are completely independent
+- Asynchronous data exchange through SQLite database
+- Individual testing and debugging of each component possible
+
+**2. Configuration-Driven Processing**:
+- Complete control of Python tool behavior through variables
+- Multiple processing patterns with the same tool
+- Flexible application through configuration changes
+
+**3. Real-time Monitoring**:
+```bash
+# Variable state monitoring in separate terminal
+uv run python watch_variables.py --continuous
+```
+
+**4. Execution Demonstration**:
+```bash
+# Execute in integration folder
+cd integration
+cat visualization_demo.md | claude -p --dangerously-skip-permissions
+```
+
+#### Extensibility
+
+**Templates for Other Python Libraries**:
+- **NumPy/SciPy**: Scientific computing processing
+- **pandas**: DataFrame manipulation
+- **scikit-learn**: Machine learning pipelines
+- **requests**: Web API integration
+
+This implementation example demonstrates theoretical integration patterns as a completely executable system, providing a foundation for extension to the entire Python ecosystem.
 
 ### Python Quality Guidelines
 
