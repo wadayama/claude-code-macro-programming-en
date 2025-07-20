@@ -1362,19 +1362,20 @@ Ensemble execution and consensus formation represent an approach that actively u
 
 ## A.10: Type Safety and Schema Management
 
-### Background and Importance
+### Basic Architecture
 
-Natural language macro programming is fundamentally designed with string-based variable management as its foundation. However, when considering advanced features such as the Python Tool Integration proposed in this guide, along with applications in numerical computation, large-scale data processing, and external API integration, **type safety and data integrity** become important considerations. In these domains, type mismatches may lead to runtime errors or unexpected results.
+In natural language macro programming, **SQLite-based integrated type validation system** ensures type safety and data integrity during variable storage. The unified save function in `schema/variable_db.py` provides both traditional string-based storage and typed storage through a single interface, enabling gradual type safety adoption.
 
-**Type Safety Differences by Variable Management Approach**:
-- **variables.json**: Primarily string-based management, with type safety ensured through JSON schema validation described in this section
-- **SQLite-based (see A.17)**: Database type system (INTEGER, REAL, TEXT, etc.) automatically guarantees type constraints and integrity at the database level
+**System Components**:
+- **Unified Save Function**: `save_variable(name, value, type_name=None)` - Behavior switches based on type specification presence
+- **External Schema Definition**: `test_schema.json` - Type constraint definitions in JSON Schema format
+- **Type Validation Engine**: Validation logic supporting basic types, constrained types, and enumeration types
+- **Real-time Monitoring**: `watch_variables.py` - Visualization of variable states with type information
 
-**Purpose of This Section**:
-- Present methods for gradual type safety enhancement
-- Describe systematic data management approaches based on schemas
-- Outline migration strategies from basic to advanced usage
-- Systematize practical type management methods
+**Type Safety Levels**:
+- **Basic Storage**: `Save value to {{variable}}` → No type checking (backward compatibility)
+- **Typed Storage**: `Save VALUE as TYPE to {{variable}}` → Complete type validation
+- **Bulk Validation**: `Execute type check for all variables` → Accumulated data integrity verification
 
 ### Basic Type Specification Features
 
