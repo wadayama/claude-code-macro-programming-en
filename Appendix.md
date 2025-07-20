@@ -2529,6 +2529,65 @@ Save the created haiku to {{agent_{{AGENT_ID}}_haiku}}.
 - LLM resources used only for macro execution
 - Complete migration of routine processing to Python
 
+### A.5 vs A.15: Approach Comparison Analysis
+
+To help readers make appropriate technical choices, we provide a systematic comparison between pure natural language macros (A.5) and Python orchestration-based approach (A.15).
+
+#### Technical Selection Criteria
+
+**When A.5 (Pure Natural Language Macros) is suitable**:
+- Prototype development and proof of concept
+- Small-scale systems (3 agents or fewer)
+- Learning and experimental purposes
+- When Python environment setup is difficult
+- Early development stages with frequent specification changes
+
+**When A.15 (Python Orchestration) is suitable**:
+- Production systems
+- Large-scale parallel processing (4+ agents)
+- Business systems where speed and efficiency are critical
+- Environments requiring long-term stable operation
+- Cases requiring detailed monitoring and debugging
+
+#### Detailed Comparison Matrix
+
+| Evaluation Axis | A.5 Pure Natural Language Macros | A.15 Python Orchestration | Recommended Use Case |
+|------------------|-----------------------------------|----------------------------|---------------------|
+| **Implementation Complexity** | 🟢 Simple (macros only) | 🟡 Moderate (Python + macros) | Rapid development: A.5 |
+| **Execution Speed** | 🟡 Sequential execution (baseline) | 🟢 Parallel execution (3x faster) | High-speed processing: A.15 |
+| **Token Cost** | 🟡 LLM usage for all processing | 🟢 Zero cost for control logic | Cost-sensitive: A.15 |
+| **Scalability** | 🔴 Limited agent count | 🟢 Dynamic scaling support | Large-scale: A.15 |
+| **Debugging Ease** | 🔴 Difficult LLM behavior tracking | 🟢 Standard Python tools available | Development efficiency: A.15 |
+| **Learning Curve** | 🟢 Natural language only | 🟡 Python knowledge required | Non-engineers: A.5 |
+| **Flexibility** | 🟢 Natural language expressiveness | 🟡 Python constraints | Creative processing: A.5 |
+| **Operational Stability** | 🔴 Probabilistic LLM behavior | 🟢 Deterministic Python control | Production use: A.15 |
+
+#### Practical Selection Guidelines
+
+**Recommendations by Project Stage**:
+
+```markdown
+📋 Development Stage
+- Concept validation → A.5 (rapid iteration)
+- Prototyping → A.5 (requirements flexibility)
+- MVP development → A.15 (performance & stability)
+- Production → A.15 (scalability & monitoring)
+
+👥 Team Composition
+- Non-technical focused → A.5 (minimal learning cost)
+- Mixed teams → A.5 (common understanding)
+- Engineer-focused → A.15 (technical optimization)
+- DevOps environment → A.15 (operational tooling)
+
+⚡ Performance Requirements
+- Responsiveness priority → A.15 (parallel processing)
+- Cost priority → A.15 (token efficiency)
+- Flexibility priority → A.5 (natural language expressiveness)
+- Stability priority → A.15 (deterministic control)
+```
+
+**Migration Strategy**: For many practical projects, an effective path is to start with A.5 for proof of concept, then migrate to A.15. The natural language macro design expertise gained from A.5 can be leveraged in A.15 orchestration design, maximizing the benefits of both approaches.
+
 ### Relationship with Existing Technologies
 
 **Relationship with A.2 (Event-Driven Execution)**:
