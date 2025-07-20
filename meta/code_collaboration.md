@@ -1,63 +1,63 @@
-# コード作成・レビュー協調システム（SQLite版オーケストレータ）
+# Code Creation & Review Collaboration System (SQLite Version Orchestrator)
 
-## システム概要
-Pythonコード作成とレビューを2つの専門エージェントがリレー形式で処理する専門家協調システム
-SQLite変数管理システムを活用した高速・安全な変数管理に対応
+## System Overview
+Expert collaboration system where Python code creation and review are processed by two specialized agents in relay format
+Supports high-speed and secure variable management utilizing SQLite variable management system
 
-## 実行フロー
-コード作成 → コードレビュー → 最終評価レポート
+## Execution Flow
+Code Creation → Code Review → Final Evaluation Report
 
-## 初期化
+## Initialization
 
-### システム状態のリセット
-全ての変数をクリアしてください
+### System State Reset
+Please clear all variables
 
-### タスクテーマ設定
-{{task_theme}}に"パスワード強度チェッカー"を保存してください
+### Task Theme Setting
+Save "Password Strength Checker" to {{task_theme}}
 
-「=== SQLite版コード作成・レビュー協調システム開始 ===」と表示してください
-「タスクテーマ：{{task_theme}}」を取得して表示してください
+"=== SQLite Version Code Creation & Review Collaboration System Started ===" display this message
+"Task Theme: {{task_theme}}" retrieve and display this
 
-## 専門エージェント実行フェーズ
+## Specialized Agent Execution Phase
 
-### フェーズ1: コード作成エージェント実行
-「--- フェーズ1: コード作成エージェント実行中 ---」と表示してください
+### Phase 1: Code Creation Agent Execution
+Display "--- Phase 1: Code Creation Agent Running ---"
 
-コード作成エージェントを実行してください：
+Execute the code creation agent:
 ```
 cat agents/code_writer.md | claude -p --dangerously-skip-permissions
 ```
 
-### フェーズ2: コードレビューエージェント実行  
-「--- フェーズ2: コードレビューエージェント実行中 ---」と表示してください
+### Phase 2: Code Review Agent Execution  
+Display "--- Phase 2: Code Review Agent Running ---"
 
-コードレビューエージェントを実行してください：
+Execute the code review agent:
 ```
 cat agents/code_reviewer.md | claude -p --dangerously-skip-permissions
 ```
 
-## 最終結果の表示
+## Final Results Display
 
-### 作成されたコードの表示
-「=== 作成されたPythonコード ===」と表示してください
-{{generated_code}}を取得して表示してください
+### Display Created Code
+Display "=== Created Python Code ==="
+Retrieve and display {{generated_code}}
 
-### レビューレポートの表示
-「=== コードレビューレポート ===」と表示してください
-{{review_report}}を取得して表示してください
+### Display Review Report
+Display "=== Code Review Report ==="
+Retrieve and display {{review_report}}
 
-### システム完了報告
-「=== SQLite版コード作成・レビュー協調システム完了 ===」と表示してください
+### System Completion Report
+Display "=== SQLite Version Code Creation & Review Collaboration System Completed ==="
 
-## 変数監視
-システム実行中の変数状態を監視したい場合は、別ターミナルで以下を実行：
+## Variable Monitoring
+To monitor variable state during system execution, run the following in a separate terminal:
 ```
 uv run python watch_variables.py --continuous
 ```
 
-## エラーハンドリング
+## Error Handling
 
-各フェーズで問題が発生した場合：
-1. エラー内容を{{error_log}}に保存
-2. 可能であれば代替処理を実行
-3. 致命的エラーの場合は処理を停止し、人間の介入を要求
+When problems occur in each phase:
+1. Save error content to {{error_log}}
+2. Execute alternative processing if possible
+3. For critical errors, stop processing and request human intervention
