@@ -936,45 +936,126 @@ This implementation example demonstrates the practicality and technical depth of
 
 ### Basic Architecture
 
-In natural language macro programming, an audit log system that extends variables.json enables recording of all important processing steps and decisions in chronological order. Complete integration with existing macro syntax ensures transparency and accountability tracking.
+In natural language macro programming, a comprehensive audit system is built using **SQLite-based AuditLogger class** that permanently records all variable operations, decisions, and reasoning processes. The AuditLogger in `audit_logger.py` extends `VariableDB` to integrate automatic audit recording with variable management functionality, ensuring complete transparency and explainability.
+
+**Architecture Features**:
+- **Automatic Variable Logging**: All variable creation, updates, and deletions are automatically recorded in the audit_logs table
+- **Decision Recording**: Decision content and rationale are structurally stored in permanent storage
+- **Reasoning Process Recording**: Complete tracking of LLM thought processes as context, reasoning, and results
+- **High-Performance Database**: Concurrent processing support through SQLite WAL mode and optimistic locking mechanisms
 
 ### Implementation Patterns
 
-**Standard Log Structure**: Add audit_log array to variables.json with automatic recording at each processing step
+**SQLite Database Schema**: Comprehensive recording with structured audit log tables
 
-```json
-{
-  "current_data": {"task_status": "processing"},
-  "audit_log": [
-    {
-      "timestamp": "2025-07-01T10:30:00Z",
-      "event_type": "user_input",
-      "content": "Create market analysis report",
-      "source": "human"
-    },
-    {
-      "timestamp": "2025-07-01T10:35:00Z", 
-      "event_type": "human_approval",
-      "content": "Data collection scope approval: Approved",
-      "source": "human"
-    }
-  ]
-}
+```sql
+CREATE TABLE audit_logs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    event_type TEXT NOT NULL,              -- variable_create, decision_made, etc.
+    variable_name TEXT,                    -- Target variable name (if applicable)
+    old_value TEXT,                        -- Previous value
+    new_value TEXT,                        -- New value/decision content
+    reasoning TEXT,                        -- Decision rationale/reasoning process
+    source TEXT DEFAULT 'system',         -- macro, llm, human
+    session_id TEXT,                       -- Session identifier
+    metadata TEXT                          -- Additional information (JSON format)
+);
 ```
 
-**Recording from Macros**: Intuitive log recording using natural language
+**Automatic Variable Operation Logging**: All variable changes are automatically recorded
 
-```markdown
-Record "Process started: {{task_description}}" to audit_log
-Add "Awaiting approval: {{approval_request}}" to audit_log
+```bash
+# Automatic log recording during variable save
+uv run python -c "from audit_logger import save_variable; save_variable('user_name', 'Tanaka Taro'); print('Saved \"Tanaka Taro\" to {{user_name}}')"
+
+# Auto-generated log (variable_create or variable_update)
+# timestamp: 2025-07-01T10:30:00Z
+# event_type: variable_create
+# variable_name: user_name
+# new_value: Tanaka Taro
+# source: macro
+```
+
+**Decision Recording**: Ensuring transparency in decision-making processes
+
+```bash
+# Explicit recording of decision rationale
+uv run python -c "from audit_logger import log_decision; log_decision('Score 85 determined as excellent', 'Meets excellent criteria of 80+ points'); print('Decision rationale logged')"
+```
+
+**Reasoning Process Recording**: Complete tracking of LLM thought processes
+
+```bash
+# Detailed recording of reasoning processes
+uv run python -c "from audit_logger import log_reasoning; log_reasoning('Learning evaluation system', 'Score 85 >= 80 condition met, classified as excellent category', 'Excellent determination'); print('Reasoning process logged')"
 ```
 
 ### Automatic Variable Change Logging
 
-By utilizing the optimistic locking mechanism, it is possible to automatically record changes to variables.json in the audit log. This logs change content for each variable update operation, enhancing system transparency. For detailed implementation, refer to [A.13 Variable Server](#a13-variable-server).
+The AuditLogger class extends `VariableDB` and automatically records all variable operations (creation, updates, deletions) to the audit_logs table. Unlike traditional variables.json manual recording, audit trails are transparently generated during variable operations, with operation intent, executor, and timestamps automatically saved.
+
+**Automatic Recording Mechanism**:
+```python
+# Automatic log recording during save_variable execution
+old_value = self.get_variable(name)
+event_type = EventType.VARIABLE_UPDATE if old_value else EventType.VARIABLE_CREATE
+super().save_variable(name, value)  # Variable storage
+self.log_event(event_type=event_type, variable_name=name, 
+               old_value=old_value, new_value=value, source="macro")
+```
+
+This allows macro executors to have all variable changes automatically saved as audit trails without being conscious of explicit log recording.
+
+### Natural Language Audit Functionality Extensions
+
+Through CLAUDE.md audit log syntax, decision rationale and reasoning processes beyond variable operations can also be recorded in natural language:
+
+**Decision Recording Syntax**:
+```
+"{{score}} is 85 so determined as excellent. Record this decision rationale to log"
+→ log_decision('{{score}}(85) determined as excellent', 'Meets excellent criteria of 80+ points')
+```
+
+**Reasoning Process Recording Syntax**:
+```
+"Record reasoning process in learning evaluation to log"
+→ log_reasoning('Learning evaluation system', 'Score analysis-based classification determination', 'Excellent category')
+```
+
+### Audit Log Analysis and Visualization System
+
+Advanced log analysis and color display functionality through `audit_viewer.py` enables efficient analysis of accumulated audit trails.
+
+**Basic Functionality**:
+```bash
+# Display latest 10 audit logs
+python audit_viewer.py --recent 10
+
+# Display complete history for specific variable
+python audit_viewer.py --variable user_score
+
+# Display only decision and reasoning trails
+python audit_viewer.py --decisions
+
+# Display statistical summary
+python audit_viewer.py --summary
+
+# Output in JSON format
+python audit_viewer.py --format json --recent 5
+```
+
+**Visualization Features**:
+- **Color-coded Display**: Color coding by event type (create=green, update=yellow, delete=red, decision=blue)
+- **Variable History Tracking**: Complete tracking of chronological changes for specific variables
+- **Decision Trail Analysis**: Visualization of decision rationale and reasoning process chains
+- **Statistical Analysis**: Most active variables, session analysis, time range analysis
 
 ### Key Recording Targets
 
+**Variable Operations**: Automatic recording of all variable creation, updates, deletions (old_value → new_value)
+**Decision Making**: Structured recording of decision content and rationale through `log_decision`
+**Reasoning Processes**: Recording LLM thought processes as context, reasoning, and results through `log_reasoning`
 **System Operations**: File operations, external API calls, Python Tool execution
 **Human Interventions**: Human-in-the-Loop approvals, modification instructions, emergency stops  
 **Error Handling**: Exception occurrences, recovery processing, alternative method selection
@@ -982,9 +1063,20 @@ By utilizing the optimistic locking mechanism, it is possible to automatically r
 
 ### Advantages
 
-**Transparency**: Complete visualization of all processing steps and decision-making processes
-**Learning Capability**: Continuous improvement through analysis of success and failure patterns
-**Reliability**: Compliance with research ethics reviews and business audit requirements
+**Complete Transparency**: All processes from variable operations to decision-making are automatically recorded and can be analyzed in detail with `audit_viewer.py`
+**High Performance and Reliability**: Stable audit recording in concurrent processing environments through SQLite WAL mode and optimistic locking mechanisms
+**Explainability**: Complete tracking of LLM thought processes through structured recording of decision rationale and reasoning processes
+**Continuous Improvement**: Discovery and learning from success and failure patterns through analysis of accumulated audit trails
+**Compliance**: Comprehensive support for research ethics reviews, business audits, and regulatory requirements
+**Debugging Support**: Dramatically improved efficiency in root cause analysis during problem occurrence through variable history tracking and decision trails
+
+### 📁 Practical Samples
+
+Detailed practical examples of audit log systems:
+
+- **Basic**: [A.6 Audit Log System Test Macro](./audit/test_macro.md) - Comprehensive verification of variable operations, conditional judgment, and decision rationale recording
+- **Analysis**: `python audit/audit_viewer.py` - Visualization and analysis of accumulated audit logs
+- **System**: [AuditLogger Class](./audit/audit_logger.py) - Detailed implementation of SQLite-based audit system
 
 ## A.7: LLM-based Pre-execution Inspection
 
