@@ -2180,140 +2180,259 @@ This extension significantly expands system possibilities without wasting any ex
 
 ## A.14: Vector Database and RAG Utilization
 
-### Background and Purpose
+This section demonstrates the integration of **ChromaDB-based RAG system** into natural language macro programming, enabling semantic similarity search for knowledge utilization and experience learning. The Chroma/ folder implementation provides dynamic knowledge search and experience utilization capabilities in addition to traditional SQLite variable management.
 
-The evolution from static knowledge bases (existing knowledge_base_patterns) to dynamic knowledge systems significantly expands the capabilities of natural language macro programming. Through the fusion of external knowledge utilization via RAG (Retrieval-Augmented Generation) and experience learning, we aim to realize "knowledge-rich and experience-rich agents."
+### Basic Architecture
 
-### Dual Vector Utilization Architecture
+#### ChromaDB Integrated Implementation System (`Chroma/simple_chroma_rag.py`)
 
-#### 1. RAG Knowledge Base
+**Dual Collection Design** for separate management of knowledge and experience:
 
-**Basic Flow:**
-```
-External documents/knowledge → Chunk splitting → Vectorization → Knowledge DB storage
-Query → Similarity search → Relevant knowledge retrieval → Response generation
-```
-
-**Use Cases:**
-- Knowledge extraction and utilization from specialized documents
-- Real-time information search for response generation
-- Dynamic transformation of existing knowledge_base_patterns
-
-#### 2. Experience Learning System
-
-**Basic Flow:**
-```
-Task completion → Experience summary → Vectorization → Experience DB storage
-New task → Similar experience search → Strategy planning → Execution
-```
-
-**Use Cases:**
-- Evolution of Pattern 6: Semantic experience storage and recall
-- Utilization of success patterns from similar tasks
-- Associative problem-solving support (e.g., "Sea of electrons" → "Fog of data" analogy)
-
-### Technology Choices and Architecture
-
-#### Vector Database Selection
-
-**Chroma**
-- Lightweight and easy to set up
-- Optimal for local development
-- Open source with high extensibility
-
-**Pinecone**
-- Cloud-based high performance
-- Supports large-scale datasets
-- Enterprise-grade reliability and availability
-
-**Weaviate**
-- Specialized in semantic search
-- Graph-based relationship discovery
-- Supports complex queries
-
-#### Embedding Strategy
-
-**Document Splitting Techniques:**
-- Chunk size optimization (512-1024 tokens)
-- Context preservation through overlapping sections
-- Semantic splitting by sections
-
-**Vectorization:**
-- OpenAI Embeddings (text-embedding-3-small/large)
-- Multilingual embedding support
-- Custom fine-tuning
-
-### Major Utilization Patterns
-
-#### RAG Knowledge Base Utilization
-
-**Dynamic Utilization of Specialized Documents:**
-```
-"Based on this technical document, propose the optimal implementation method for {{project_requirements}}"
-→ Search relevant document sections and generate specific proposals according to requirements
+```python
+# Main class structure
+class SimpleChromaRAG:
+    def __init__(self, persist_directory: str = "./chroma_db"):
+        # Persistent vector database
+        self.client = chromadb.PersistentClient(path=str(persist_directory))
+        
+        # Knowledge collection
+        self.knowledge_collection = self.client.get_or_create_collection(
+            name="knowledge_base",
+            metadata={"description": "General knowledge documents"}
+        )
+        
+        # Experience collection
+        self.experience_collection = self.client.get_or_create_collection(
+            name="experience_base", 
+            metadata={"description": "Task execution experiences"}
+        )
 ```
 
-**Real-time Knowledge Search:**
-```
-"Search the knowledge base for solutions to similar problems regarding {{current_issue}}"
-→ Discover and present related solutions through semantic similarity
-```
+**Integration with SQLite Variable System**:
+- `variable_db.py`: Basic variable management (simplified version for Chroma)
+- `simple_chroma_rag.py`: Vector search and knowledge management
+- `watch_integrated.py`: Unified monitoring of both systems
 
-#### Experience Learning Utilization
+**Persistence Design**:
+- Vector database: Automatically saved to `./chroma_db` directory
+- Variable database: Managed in `variables.db` file
+- Cross-session data continuity
 
-**Similar Experience Recall:**
-```
-New task: "Create haiku with theme 'Digital Age'"
-→ Recall past success "Used metaphors for theme 'Sea of electrons' with high evaluation"
-→ Strategy planning applying metaphor techniques to current theme
-```
+### Implementation Patterns
 
-**Continuous Learning:**
-```
-Task completion: "Early prototype creation was the key to success in this project"
-→ Vectorize this lesson and store in experience DB
-→ Automatically reference and utilize in future similar projects
-```
+#### Integrated Operations via CLAUDE.md Natural Language Syntax
 
-### System Integration
+The Chroma system can be operated using **simplified natural language syntax**:
 
-#### Integration with Existing Technologies
-
-**Integration with A.6 Audit Logs:**
-Automatically convert execution history into experience data for learning success and failure patterns.
-
-**A.13 Database Integration:**
-Achieve comprehensive state management through hybrid utilization of structured data (variables.json) and vector data.
-
-**A.5 Multi-Agent:**
-Enable mutual utilization of knowledge and experience among agents through shared knowledge and experience pools.
-
-**Existing knowledge_base_patterns:**
-Provide evolution paths from static patterns to dynamic search, maximizing utilization of existing knowledge assets.
-
-### New Variable Syntax Proposals
-
-#### Basic Search Syntax
-
-```
-{{knowledge:query}} - RAG knowledge search
-"Determine implementation policy referring to {{knowledge:TypeScript optimization techniques}}"
-
-{{memory:query}} - Similar experience search
-"Refer to past success cases of {{memory:user interface improvement}}"
-
-{{learning:summary}} - Experience summary storage
-"Store today's learning '{{learning:importance of early feedback}}' as experience"
+**Knowledge Search (`{{knowledge:query}})**:
+```bash
+# CLAUDE.md syntax: {{knowledge:Python optimization}}
+# Internal execution: 
+uv run python -c "from simple_chroma_rag import search_knowledge_base; print(search_knowledge_base('Python optimization'))"
 ```
 
-#### Integrated Search Syntax
-
+**Experience Search (`{{memory:task}})**:
+```bash
+# CLAUDE.md syntax: {{memory:API development}}
+# Internal execution:
+uv run python -c "from simple_chroma_rag import find_similar_experience; print(find_similar_experience('API development'))"
 ```
-{{hybrid:query}} - Knowledge + experience integrated search
-"Provide proposals for {{hybrid:project management improvement}} from both document knowledge and past experience"
+
+**Knowledge Storage**:
+```bash
+# Natural language instruction: "Save this content to the knowledge base"
+# Internal execution:
+uv run python -c "from simple_chroma_rag import add_knowledge_from_text; print(add_knowledge_from_text('content', 'manual_input'))"
 ```
 
-Through vector database and RAG utilization, natural language macro programming evolves from mere task execution to "intelligent systems with rich knowledge and experience," acquiring more practical and adaptive problem-solving capabilities.
+**Experience Storage**:
+```bash
+# Natural language instruction: "Save this success case as experience"
+# Internal execution:
+uv run python -c "from simple_chroma_rag import save_experience; print(save_experience('task_description', 'outcome_summary', True))"
+```
+
+#### Variable System Integration Patterns
+
+**Dynamic Search via Nested Syntax**:
+```markdown
+# Knowledge search with variable values
+{{knowledge:{{project_type}}}}
+
+# Experience search with variable values  
+{{memory:{{current_task}}}}
+
+# Example execution flow
+1. Get {{project_type}} value: "Python Web API"
+2. Execute knowledge search: search_knowledge_base("Python Web API")
+3. Return related knowledge: FastAPI implementation patterns, etc.
+```
+
+### Integrated Monitoring System
+
+#### Real-time Monitoring with `watch_integrated.py`
+
+**Unified monitoring of SQLite variables and Chroma vector database**:
+
+```bash
+# Display system status overview
+python watch_integrated.py --status
+
+# Continuous monitoring (2-second intervals)
+python watch_integrated.py --watch --interval 2.0
+
+# Integrated search testing
+python watch_integrated.py --search "Python API"
+```
+
+**Example monitoring output**:
+```
+======================================================================
+ Natural Language Macro System Status - 2025-01-20 14:30:15 
+======================================================================
+
+📊 SQLite Variables:
+   Count: 3
+   {{ project_name }} = Python Web API Project
+   {{ skill_level }} = Intermediate
+   {{ research_topic }} = API optimization techniques
+
+🧠 Chroma Vector Database:
+   Knowledge: 5
+   Experience: 3
+   Total Vector Items: 8
+
+📚 Recent Knowledge:
+   1. [a1b2c3d4...] from manual_input
+      Python Web API development with FastAPI framework achieves both high performance and development efficiency...
+
+💡 Recent Experience:
+   1. [x9y8z7w6...] (SUCCESS)
+      Task: Python API development
+      Result: FastAPI + PostgreSQL + Docker configuration completed full REST API in 2 weeks...
+```
+
+#### Change Monitoring Features
+
+**Real-time change tracking**:
+```
+[14:32:15] NEW VARIABLE: {{ user_feedback }} = "UI responsiveness improved"
+[14:32:18] NEW KNOWLEDGE: [def45678...] from manual_input
+         API response time optimization involves database query optimization, caching strategies...
+[14:32:22] NEW EXPERIENCE: [abc12345...] (SUCCESS)
+         Task: Response improvement
+         Result: Redis cache implementation achieved 50% performance improvement...
+         System state: 4 vars, 6 knowledge, 4 experience
+```
+
+### Practical Samples
+
+#### Complete Workflow Example (`test_macro.md`)
+
+**Practical example for Python Web API development project**:
+
+```markdown
+# 1. Project initialization
+Clear all variables
+Save "Python Web API Project" to {{project_name}}
+Save "Intermediate" to {{skill_level}}
+Save "API optimization techniques" to {{research_topic}}
+
+# 2. Knowledge base construction
+Save this content to the knowledge base:
+"Python Web API development with FastAPI framework achieves both high performance and development efficiency. Through automatic API specification generation, type hint utilization, and asynchronous processing support, modern API development is possible. Full-scale web services can be built in combination with PostgreSQL."
+
+Save this content to the knowledge base:
+"API response time optimization effectively involves database query optimization, caching strategies, and asynchronous processing utilization. Particularly, session management and query result caching using Redis can achieve over 50% performance improvement."
+
+# 3. Knowledge search test (simple syntax)
+{{knowledge:FastAPI}}
+{{knowledge:{{project_name}}}}
+{{knowledge:{{research_topic}}}}
+
+# 4. Experience learning and search
+Save this success case as experience:
+"In Python API development, FastAPI + PostgreSQL + Docker configuration completed full REST API in 2 weeks. Through automatic testing introduction, achieved both quality and speed, improving team development efficiency by 40%."
+
+{{memory:Python API development}}
+{{memory:{{project_name}}}}
+{{memory:new web development project}}
+
+# 5. Conditional branching and integrated utilization
+If {{skill_level}} is intermediate, suggest efficiency-focused development methods; if beginner, suggest learning-focused approaches
+```
+
+#### Expected Operational Results
+
+**Automatic execution of simple syntax**:
+- `{{knowledge:FastAPI}}` → Execute vector similarity search, automatically display related knowledge
+- `{{memory:API development}}` → Discover and suggest similar patterns from past successful experiences
+- `{{knowledge:{{project_name}}}}` → Dynamic search with variable values (nested syntax)
+
+**Establishment of learning cycle**:
+1. Knowledge accumulation → Vectorized storage
+2. Experience recording → Success/failure pattern storage  
+3. Automatic recall in similar situations → Related information discovery through semantic search
+4. Strategy formulation utilization → Judgment support based on past insights
+
+### Multi-Agent Environment Utilization
+
+#### Shared Knowledge and Experience Pool Construction
+
+**Integration with A.5 Multi-Agent System**:
+
+```bash
+# Agent 1: Knowledge accumulation
+uv run python -c "from simple_chroma_rag import add_knowledge_from_text; print(add_knowledge_from_text('new optimization techniques', 'agent_1'))"
+
+# Agent 2: Knowledge utilization
+uv run python -c "from simple_chroma_rag import search_knowledge_base; print(search_knowledge_base('optimization'))"
+
+# Agent 3: Experience recording
+uv run python -c "from simple_chroma_rag import save_experience; print(save_experience('UI improvement task', '30% response improvement', True))"
+
+# Agent 4: Experience utilization
+uv run python -c "from simple_chroma_rag import find_similar_experience; print(find_similar_experience('performance improvement'))"
+```
+
+**Benefits of inter-agent knowledge sharing**:
+- **Knowledge concentration**: Automatic sharing of knowledge accumulated by each agent
+- **Experience inheritance**: Organizational learning of success/failure patterns
+- **Cross-utilization of expertise**: Horizontal utilization of insights from different specialized fields
+- **Quality improvement**: Enhanced judgment accuracy through collective intelligence
+
+### Initial Setup and Operations
+
+#### ChromaDB Environment Construction
+
+```bash
+# Install required packages
+uv add chromadb
+
+# Verify system operation
+python -c "from simple_chroma_rag import SimpleChromaRAG; rag = SimpleChromaRAG(); print(rag.get_stats())"
+
+# Start integrated monitoring
+python watch_integrated.py --watch
+```
+
+#### Database Management
+
+**Persistent files**:
+- `./chroma_db/` - Chroma vector database
+- `variables.db` - SQLite variable database
+
+**Backup and maintenance**:
+```bash
+# Check database statistics
+python watch_integrated.py --status
+
+# Backup (copy entire directories)
+cp -r ./chroma_db ./chroma_db_backup_$(date +%Y%m%d)
+cp variables.db variables_backup_$(date +%Y%m%d).db
+```
+
+Through the ChromaDB integrated RAG system, natural language macro programming evolves into an **autonomous system rich in knowledge and experience**, acquiring advanced problem-solving capabilities through semantic similarity search.
 
 ## A.15: Goal-Oriented Architecture and Autonomous Planning
 
