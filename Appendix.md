@@ -1151,7 +1151,7 @@ Detailed practical examples of self-verification systems:
 
 In natural language macro programming, **metaprogramming** realizes the concept of "programs that manipulate programs" at the natural language level through advanced techniques. Similar to LISP's "Code as Data" philosophy, macros themselves are treated as data for dynamic generation, verification, and improvement.
 
-By utilizing variables.json as shared metadata storage, a complete metaprogramming cycle from macro generation to execution, evaluation, and improvement can be constructed. This enables intelligent macro systems that self-adapt to situations rather than fixed macros.
+By utilizing SQLite database as shared metadata storage, a complete metaprogramming cycle from macro generation to execution, evaluation, and improvement can be constructed. This enables intelligent macro systems that self-adapt to situations rather than fixed macros.
 
 ### Implementation Patterns
 
