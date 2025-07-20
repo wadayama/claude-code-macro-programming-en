@@ -182,9 +182,9 @@ class VariableDB:
             elif schema_type == "number":
                 converted_value = float(value)
             elif schema_type == "boolean":
-                if value.lower() in ["true", "1", "yes", "はい", "真"]:
+                if value.lower() in ["true", "1", "yes"]:
                     converted_value = True
-                elif value.lower() in ["false", "0", "no", "いいえ", "偽"]:
+                elif value.lower() in ["false", "0", "no"]:
                     converted_value = False
                 else:
                     raise ValueError(f"Invalid boolean value: {value}")

@@ -205,7 +205,7 @@ def search_knowledge_base(query: str, max_results: int = 3) -> str:
     """Search knowledge base and return formatted results.
     
     This function is designed for natural language macro integration.
-    Usage: "{{topic}}について知識ベースから関連情報を検索してください"
+    Usage: "Search for information related to {{topic}} from the knowledge base"
     """
     results = _default_rag.search_knowledge(query, max_results)
     
@@ -236,7 +236,7 @@ def find_similar_experience(current_task: str, max_results: int = 3) -> str:
     """Find similar past experiences.
     
     This function is designed for natural language macro integration.
-    Usage: "{{current_task}}に類似した過去の成功例を検索してください"
+    Usage: "Search for past successful examples similar to {{current_task}}"
     """
     results = _default_rag.search_similar_experience(current_task, True, max_results)
     
@@ -254,7 +254,7 @@ def add_knowledge_from_text(text: str, source: str = "manual_input") -> str:
     """Add knowledge from text input.
     
     This function is designed for natural language macro integration.
-    Usage: "この文書の内容を知識ベースに保存してください"
+    Usage: "Save the content of this document to the knowledge base"
     """
     doc_id = _default_rag.add_knowledge(text, source)
     return f"Knowledge added to database with ID: {doc_id}"

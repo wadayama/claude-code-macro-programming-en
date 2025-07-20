@@ -101,7 +101,7 @@ class VariableDB:
         """Save or update a variable in the database.
 
         This method replaces the JSON file save operation from CLAUDE.md.
-        When a user requests "{{variable_name}}にVALUEを保存してください",
+        When a user requests "Save VALUE to {{variable_name}}",
         this method handles the storage.
 
         Parameters
@@ -128,7 +128,7 @@ class VariableDB:
         """Retrieve a variable value from the database.
 
         This method replaces the JSON file read operation from CLAUDE.md.
-        When a user requests "{{variable_name}}を取得してください",
+        When a user requests "Get {{variable_name}}",
         this method handles the retrieval.
 
         Parameters
