@@ -2433,51 +2433,101 @@ If sales fall short of the target:
 Save a comprehensive analysis report in {{sales_analysis}}.
 ```
 
-### Practical Example: Customer Support Automation
+### Practical Example: Haiku Generation Multi-Agent System
 
-#### Efficiency Through Python + Macro Collaboration
+A complete implementation example that demonstrates the theories of this section with actual code. Detailed explanation of the practical multi-agent system located in the `hybrid/` folder.
 
-**Processing Flow**:
-1. **Python**: Customer data collection and organization (high-speed processing)
-2. **Macro**: Situation judgment and response generation (flexible judgment)
-3. **Python**: Result distribution and log recording (automated processing)
+**Relationship with A.5**: This implementation is the **Python orchestration version** of the haiku generation system introduced in [A.5: Multi-Agent System Design](#a5-multi-agent-system-design). While A.5 demonstrates pure natural language macro-based collaboration, this example achieves speedup and token efficiency by migrating control flow to Python. Comparing both approaches helps understand the trade-offs between pure macro-based and hybrid approaches.
 
+#### System Architecture
+
+**haiku_orchestrator.py** - Python Orchestrator:
 ```python
-def handle_customer_inquiry(customer_id, inquiry_text):
-    # Python: High-speed customer history search
-    history = get_customer_history(customer_id)
-    context = {
-        "customer_id": customer_id,
-        "inquiry": inquiry_text,
-        "purchase_history": history,
-        "tier": get_customer_tier(customer_id)
-    }
+#!/usr/bin/env python3
+"""
+Haiku Generator Python Orchestrator
+Practical example of A.15 Python Orchestration-Based Hybrid Approach
+"""
+
+import subprocess
+import concurrent.futures
+from variable_db import save_variable, VariableDB
+
+def run_macro(macro_file):
+    """Execute macro file"""
+    with open(macro_file, 'r', encoding='utf-8') as f:
+        subprocess.run(["claude", "-p", "--dangerously-skip-permissions"], stdin=f)
+
+def create_agent_macro(agent_id):
+    """Dynamically generate agent-specific macro"""
+    with open('agent_template.md', 'r', encoding='utf-8') as f:
+        template = f.read()
     
-    # Save data to SQLite
-    save_variable('customer_context', json.dumps(context))
+    content = template.replace('{{AGENT_ID}}', str(agent_id))
+    filename = f'agents/agent_{agent_id}.md'
     
-    # Generate response with macro
-    call_macro('generate_response.md')
+    with open(filename, 'w', encoding='utf-8') as f:
+        f.write(content)
     
-    # Python: Result processing
-    response = get_variable('customer_response')
-    send_response(customer_id, response)
-    log_interaction(customer_id, inquiry_text, response)
+    return filename
+
+def main():
+    print("=== Haiku Generation Multi-Agent System Started ===")
+    
+    # Clear variables and files
+    count = VariableDB().clear_all()
+    print(f"🔄 Cleared {count} variables")
+    
+    # Configuration and theme generation
+    agent_count = 3
+    save_variable('agent_count', str(agent_count))
+    run_macro('generate_themes.md')
+    
+    # Parallel haiku generation (core functionality)
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        list(executor.map(run_agent, range(1, agent_count + 1)))
+    
+    # Evaluation and selection
+    run_macro('evaluate_haiku.md')
 ```
 
-**Corresponding Macro**:
+#### Dynamic Macro Generation Mechanism
+
+**agent_template.md** - Agent Template:
 ```markdown
-# generate_response.md
-Based on the information in {{customer_context}}, provide appropriate customer service:
+# 🤖 Haiku Generation Agent{{AGENT_ID}}
 
-If customer tier is Premium:
-- Generate special service message in {{premium_response}}
+Display "=== Haiku Generation Agent{{AGENT_ID}} Started ===".
 
-For general inquiries:
-- Generate polite and clear response in {{standard_response}}
+Display "Assigned Theme: {{agent_{{AGENT_ID}}_theme}}".
 
-Save the final customer response in {{customer_response}}.
+Create a haiku based on {{agent_{{AGENT_ID}}_theme}}.
+
+Requirements:
+- Follow 5-7-5 syllable structure
+- Express the strangeness and uniqueness of the theme
+- Use poetic and impressive words
+
+Save the created haiku to {{agent_{{AGENT_ID}}_haiku}}.
 ```
+
+#### Macro Collaboration Flow
+
+1. **generate_themes.md** - Theme generation and distribution
+2. **Dynamically generated agent_N.md** - Parallel haiku generation
+3. **evaluate_haiku.md** - Haiku evaluation and selection
+
+#### Performance Characteristics
+
+**Parallel Processing Effects**:
+- Approximately 3x speedup with 3 agents running simultaneously
+- Safe concurrent access through SQLite variable sharing
+- Dynamic scaling support for agent count
+
+**Token Efficiency**:
+- Python control section token usage: 0
+- LLM resources used only for macro execution
+- Complete migration of routine processing to Python
 
 ### Relationship with Existing Technologies
 
