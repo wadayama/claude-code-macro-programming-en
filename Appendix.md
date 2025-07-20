@@ -2375,32 +2375,6 @@ If {{skill_level}} is intermediate, suggest efficiency-focused development metho
 3. Automatic recall in similar situations → Related information discovery through semantic search
 4. Strategy formulation utilization → Judgment support based on past insights
 
-### Multi-Agent Environment Utilization
-
-#### Shared Knowledge and Experience Pool Construction
-
-**Integration with A.5 Multi-Agent System**:
-
-```bash
-# Agent 1: Knowledge accumulation
-uv run python -c "from simple_chroma_rag import add_knowledge_from_text; print(add_knowledge_from_text('new optimization techniques', 'agent_1'))"
-
-# Agent 2: Knowledge utilization
-uv run python -c "from simple_chroma_rag import search_knowledge_base; print(search_knowledge_base('optimization'))"
-
-# Agent 3: Experience recording
-uv run python -c "from simple_chroma_rag import save_experience; print(save_experience('UI improvement task', '30% response improvement', True))"
-
-# Agent 4: Experience utilization
-uv run python -c "from simple_chroma_rag import find_similar_experience; print(find_similar_experience('performance improvement'))"
-```
-
-**Benefits of inter-agent knowledge sharing**:
-- **Knowledge concentration**: Automatic sharing of knowledge accumulated by each agent
-- **Experience inheritance**: Organizational learning of success/failure patterns
-- **Cross-utilization of expertise**: Horizontal utilization of insights from different specialized fields
-- **Quality improvement**: Enhanced judgment accuracy through collective intelligence
-
 ### Initial Setup and Operations
 
 #### ChromaDB Environment Construction
