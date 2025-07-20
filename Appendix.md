@@ -1374,6 +1374,22 @@ Ensemble execution and consensus formation represent an approach that actively u
 
 ## A.10: Type Safety and Schema Management
 
+### Schema and Type Safety Fundamentals
+
+**Schema** is metadata that defines data structure, types, and constraints, clearly specifying "what format of data is acceptable" in databases and APIs. In programming, schemas are crucial elements that prevent runtime errors and significantly improve development efficiency.
+
+**Key Benefits of Type Safety**:
+- **Proactive Runtime Error Prevention**: Detect invalid data types at storage time to prevent processing failures and improve system stability
+- **Enhanced Development Efficiency**: Early detection of bugs caused by ambiguous data formats, significantly reducing debugging time
+- **Improved Maintainability**: Clear data specifications reduce miscommunication in team development and ensure long-term maintenance quality
+- **Automated Validation**: Reduce manual verification and achieve systematic quality assurance
+
+**Significance in Natural Language Macro Programming**:
+Traditional string-based variable storage cannot distinguish whether a stored "25" is a number or string, potentially causing unexpected results in computational processing. Schema-based type management clarifies the intended purpose of variables (age, percentage, status, etc.), ensuring data quality in large-scale macro systems.
+
+**Benefits of Gradual Adoption**:
+The unified save function provides both traditional string storage and typed storage through a single interface, enabling gradual type safety introduction where needed while minimizing impact on existing systems and achieving long-term system improvements.
+
 ### Basic Architecture
 
 In natural language macro programming, **SQLite-based integrated type validation system** ensures type safety and data integrity during variable storage. The unified save function in `schema/variable_db.py` provides both traditional string-based storage and typed storage through a single interface, enabling gradual type safety adoption.
