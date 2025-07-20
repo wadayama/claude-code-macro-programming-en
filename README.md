@@ -78,13 +78,12 @@ Development support pattern that visualizes execution status and assists in prob
 - A.8: Metaprogramming (dynamic macro generation, verification, evaluation, and improvement)
 - A.9: Ensemble Execution and Consensus Formation (statistical countermeasures for probabilistic behavior)
 - A.10: Type Safety and Schema Management (gradual type safety enhancement and schema-based systematic data management)
-- A.11: Concurrent Access Control and Optimistic Locking (variables.json concurrent access control for safety assurance)
-- A.12: LLM-based Post-execution Evaluation (quality, creativity, and logic evaluation for probabilistic systems)
-- A.13: Variable Management Persistence and Scaling (robust state management via databases)
-- A.14: Vector Database and RAG Utilization (dynamic knowledge systems through knowledge bases and experience learning)
-- A.15: Goal-Oriented Architecture and Autonomous Planning (complete autonomous systems via 4-stage flow and PDCA cycle)
-- A.16: Python Orchestration-Based Hybrid Approach (high-speed, cost-efficient systems via Python orchestration + natural language macros)
-- A.17: SQLite-Based Variable Management (gradual migration from variables.json to SQLite, enhanced robustness)
+- A.11: LLM-based Post-execution Evaluation (quality, creativity, and logic evaluation for probabilistic systems)
+- A.12: Variable Management Persistence and Scaling (robust state management via databases)
+- A.13: Vector Database and RAG Utilization (dynamic knowledge systems through knowledge bases and experience learning)
+- A.14: Goal-Oriented Architecture and Autonomous Planning (complete autonomous systems via 4-stage flow and PDCA cycle)
+- A.15: Python Orchestration-Based Hybrid Approach (high-speed, cost-efficient systems via Python orchestration + natural language macros)
+- A.16: SQLite-Based Variable Management (gradual migration from variables.json to SQLite, enhanced robustness)
 
 ## 📚 Main Contents
 

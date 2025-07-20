@@ -7,13 +7,13 @@ A systematic compilation of advanced technical elements for the practical implem
 All technical elements in this appendix are unified around an **SQLite-based variable management system** implementation approach. This represents an evolution from the traditional variables.json method to a robust and scalable database-based management system.
 
 ### Implementation Consistency
-- **Core System**: SQLite database variable management (see [A.17](#a17-sqlite-based-variable-management))
-- **Extensions**: Type safety (A.10), audit logs (A.6), vector search (A.14), etc. are integrated with SQLite
-- **Concurrency Control**: Safe concurrent access through WAL mode and optimistic locking (A.11)
+- **Core System**: SQLite database variable management (see [A.16](#a16-sqlite-based-variable-management))
+- **Extensions**: Type safety (A.10), audit logs (A.6), vector search (A.13), etc. are integrated with SQLite
+- **Concurrency Control**: Safe concurrent access through WAL mode
 - **Monitoring Tools**: Real-time status monitoring with watch_variables.py
 
-### Importance of A.17
-Implementation details, migration methods, and technical specifications are comprehensively covered in **[A.17: SQLite-Based Variable Management](#a17-sqlite-based-variable-management)**. We recommend understanding the basic architecture in A.17 first before reading other sections.
+### Importance of A.16
+Implementation details, migration methods, and technical specifications are comprehensively covered in **[A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management)**. We recommend understanding the basic architecture in A.16 first before reading other sections.
 
 ## Table of Contents
 
@@ -27,13 +27,12 @@ Implementation details, migration methods, and technical specifications are comp
 - [A.8: Metaprogramming](#a8-metaprogramming)
 - [A.9: Ensemble Execution and Consensus Formation](#a9-ensemble-execution-and-consensus-formation)
 - [A.10: Type Safety and Schema Management](#a10-type-safety-and-schema-management)
-- [A.11: Concurrent Access Control and Optimistic Locking](#a11-concurrent-access-control-and-optimistic-locking)
-- [A.12: LLM-based Post-execution Evaluation](#a12-llm-based-post-execution-evaluation)
-- [A.13: Variable Management Persistence and Scaling: Database Utilization](#a13-variable-management-persistence-and-scaling-database-utilization)
-- [A.14: Vector Database and RAG Utilization](#a14-vector-database-and-rag-utilization)
-- [A.15: Goal-Oriented Architecture and Autonomous Planning](#a15-goal-oriented-architecture-and-autonomous-planning)
-- [A.16: Python Orchestration-Based Hybrid Approach](#a16-python-orchestration-based-hybrid-approach)
-- [A.17: SQLite-Based Variable Management](#a17-sqlite-based-variable-management)
+- [A.11: LLM-based Post-execution Evaluation](#a11-llm-based-post-execution-evaluation)
+- [A.12: Variable Management Persistence and Scaling: Database Utilization](#a12-variable-management-persistence-and-scaling-database-utilization)
+- [A.13: Vector Database and RAG Utilization](#a13-vector-database-and-rag-utilization)
+- [A.14: Goal-Oriented Architecture and Autonomous Planning](#a14-goal-oriented-architecture-and-autonomous-planning)
+- [A.15: Python Orchestration-Based Hybrid Approach](#a15-python-orchestration-based-hybrid-approach)
+- [A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management)
 
 ---
 
@@ -112,7 +111,7 @@ The most practical and robust approach is a hybrid design that delegates event m
 
 Typical integration example: "Continuously monitor directory `/orders`, and when a new file (e.g., `order123.json`) is created, evaluate `order_processing.md` with that file path as an argument" by running a resident script.
 
-**Variable Change Monitoring**: Variable changes within SQLite databases can also be utilized as event sources. Through polling monitoring with `watch_variables.py`, patterns such as "execute the next macro when {{status}} changes to completed" become feasible (see A.17 for detailed implementation).
+**Variable Change Monitoring**: Variable changes within SQLite databases can also be utilized as event sources. Through polling monitoring with `watch_variables.py`, patterns such as "execute the next macro when {{status}} changes to completed" become feasible (see A.16 for detailed implementation).
 
 ### Key Points
 
@@ -274,7 +273,7 @@ Approval rationale: {{approval_reason}}
 - Automatic sandbox level selection based on assessment results
 - Execution of verified code also in isolated environment
 
-**Combination with A.15 Autonomous Planning**:
+**Combination with A.14 Autonomous Planning**:
 - Safe long-term execution of autonomous agents
 - Security risk assessment at planning stage
 - Experimental code execution within sandbox
@@ -440,7 +439,7 @@ The evaluation framework employs a multi-dimensional assessment matrix:
 
 *Future Prospects*: The approach shows promise for development into an integrated testing framework (A.9 candidate) that would enable construction of multi-layer quality assurance systems with executors, evaluators, and meta-evaluators. This evolution could establish natural language macro programming as a reliable foundation for critical business applications, expanding its applicability beyond experimental contexts to production environments requiring high reliability and accountability.
 
-For planning-stage risk analysis and preventive quality management through continuous monitoring, see [A.15: Goal-Oriented Architecture and Autonomous Planning](#a15-goal-oriented-architecture-and-autonomous-planning) for detailed coverage.
+For planning-stage risk analysis and preventive quality management through continuous monitoring, see [A.14: Goal-Oriented Architecture and Autonomous Planning](#a14-goal-oriented-architecture-and-autonomous-planning) for detailed coverage.
 
 ## A.4: Python Tool Integration
 
@@ -448,7 +447,7 @@ For planning-stage risk analysis and preventive quality management through conti
 
 Python Tool Integration enables natural language macro programming to achieve universal access to the entire Python ecosystem, making possible a wide range of applications from specialized computational processing to business automation.
 
-In natural language macro programming, information exchange between macros and Python programs through SQLite database (see A.17) enables utilization of Python's rich library ecosystem. This integration approach makes it possible to infinitely extend the functionality of macro systems.
+In natural language macro programming, information exchange between macros and Python programs through SQLite database (see A.16) enables utilization of Python's rich library ecosystem. This integration approach makes it possible to infinitely extend the functionality of macro systems.
 
 ### Basic Integration Pattern
 
@@ -565,9 +564,9 @@ def calculate_stats():
 
 ### Basic Architecture
 
-In natural language macro programming, a multi-agent system where multiple agents cooperate can be constructed by utilizing variables.json or SQLite database (see A.17) as a shared blackboard (Blackboard Model).
+In natural language macro programming, a multi-agent system where multiple agents cooperate can be constructed by utilizing variables.json or SQLite database (see A.16) as a shared blackboard (Blackboard Model).
 
-**Important**: In multi-agent environments where concurrent access occurs frequently, SQLite-based variable management (A.17) is recommended. SQLite provides concurrent access control, transaction management, and data integrity, enabling more robust multi-agent cooperation than variables.json.
+**Important**: In multi-agent environments where concurrent access occurs frequently, SQLite-based variable management (A.16) is recommended. SQLite provides concurrent access control, transaction management, and data integrity, enabling more robust multi-agent cooperation than variables.json.
 
 All inter-agent communication occurs via the shared state, resulting in a loosely coupled design where agents have no direct dependencies on each other. This design facilitates dynamic addition, removal, and modification of agents while ensuring system-wide transparency.
 
@@ -624,7 +623,7 @@ Utilize Task tool to simultaneously execute multiple Claude Code processes. Each
 Demonstrates migration from variables.json-based "Delete variables.json if it exists" to SQLite-based "Clear all variables".
 
 **Concurrent Access Control**:
-SQLite's WAL mode, retry mechanisms, and transaction management safely handle simultaneous variable updates by multiple agents. When using variables.json, implementation of [A.11 Concurrent Access Control and Optimistic Locking](#a11-concurrent-access-control-and-optimistic-locking) is required, but not needed with SQLite version.
+SQLite's WAL mode, retry mechanisms, and transaction management safely handle simultaneous variable updates by multiple agents. SQLite-based implementations provide built-in concurrency control through database-native features, ensuring safety without additional implementation requirements.
 
 **Structured Data Management**:
 - Theme distribution: `{{agent_1_theme}}`, `{{agent_2_theme}}`, etc.
@@ -687,7 +686,7 @@ Runtime control of system scale through variables like `{{agent_count}}`.
 #### 4. Concurrent Safety Assurance
 
 **Database-Level Control**:
-Concurrent access control through SQLite's WAL mode, transactions, and retry mechanisms. For variables.json-based systems, control through [A.11 Optimistic Locking](#a11-concurrent-access-control-and-optimistic-locking).
+Concurrent access control through SQLite's WAL mode, transactions, and retry mechanisms. Database-level concurrency control provides safe and efficient simultaneous access capabilities.
 
 ### Application Extension Guidelines
 
@@ -774,7 +773,7 @@ The following is a complete implementation example of multi-agent collaboration 
 
 #### Technical Requirements
 
-**⚠️ Concurrent Access Control**: This multi-agent system is designed based on the optimistic locking mechanism detailed in [A.11 Concurrent Access Control and Optimistic Locking](#a11-concurrent-access-control-and-optimistic-locking). Safe concurrent writing to variables.json is ensured through optimistic locking implementation (optimistic_lock.py). Race conditions may occur with standard variables.json operations.
+**⚠️ Concurrent Access Control**: This multi-agent system is designed to use SQLite-based variable management for robust concurrent access control. Database-level transaction management ensures safe concurrent operations without race conditions. For optimal performance in multi-agent environments, SQLite-based implementation is recommended.
 
 #### Main System (haiku-agent.md)
 
@@ -941,7 +940,7 @@ Automatic evaluation initiation after multi-agent execution completion. Agent sy
 **High Visibility**:
 All agent states (themes, progress, results) are centrally managed in variables.json, enabling real-time monitoring.
 
-This implementation example demonstrates the practicality and technical depth of multi-agent systems through natural language macro programming, providing industrial-level reliability through integration with [A.11 Concurrent Access Control](#a11-concurrent-access-control-and-optimistic-locking).
+This implementation example demonstrates the practicality and technical depth of multi-agent systems through natural language macro programming, providing industrial-level reliability through robust database-based variable management.
 
 ## A.6: Audit Log System
 
@@ -1630,247 +1629,8 @@ Execute type check for all variables
 
 The implementation demonstrates practical type safety that maintains the ease of use of natural language macros while providing robust data validation for mission-critical applications.
 
-## A.11: Concurrent Access Control and Optimistic Locking
 
-### Background and Problem Definition
-
-In natural language macro programming, the variables.json file may be accessed simultaneously by multiple processes. Particularly when utilizing advanced features such as parallel processing (Pattern 2), multi-agent systems (A.5), and event-driven execution (A.2), **concurrent access control** becomes a crucial technical challenge.
-
-**Note**: When using variables.json, the optimistic locking mechanisms described in this section are necessary. Alternatively, SQLite-based variable management (see A.17) automatically resolves these issues through database-native concurrent control features.
-
-**Typical Concurrent Access Problems**:
-- **Race Conditions**: Multiple processes simultaneously read variables.json, perform different updates, and some updates are lost
-- **Data Corruption**: Another process reads during write operations, resulting in inconsistent data generation
-- **File Lock Conflicts**: Simple file locking can cause deadlocks or prolonged blocking
-
-### Optimistic Locking Implementation
-
-**Optimistic Locking** is an established concurrent control method also adopted in database systems. Unlike pessimistic locking, it does not acquire locks at the start of processing but verifies data integrity during updates, minimizing performance degradation.
-
-#### Implementation Architecture
-
-Add version management functionality to variables.json and verify version integrity during updates:
-
-```json
-{
-  "_version": 15,
-  "user_name": "Tanaka Taro",
-  "analysis_results": [1.2, 3.4, 5.6],
-  "task_status": "completed"
-}
-```
-
-#### Python Implementation Example
-
-The following is optimistic locking implementation code with confirmed stable operation:
-
-```python
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Simple optimistic locking implementation
-"""
-import json
-import time
-import random
-
-class VersionConflictError(Exception):
-    """Version conflict error"""
-    pass
-
-def update_with_optimistic_lock(key, value):
-    max_retries = 5
-    for i in range(max_retries):
-        try:
-            # 1. Read file and get version
-            try:
-                with open("variables.json", 'r') as f:
-                    data = json.load(f)
-                    original_version = data.get("_version", 0)
-            except FileNotFoundError:
-                data = {"_version": 0}
-                original_version = 0
-
-            # 2. Apply updates from LLM instructions in memory
-            data[key] = value
-            data["_version"] = original_version + 1
-
-            # 3. Write to file
-            with open("variables.json", 'w') as f:
-                json.dump(data, f, ensure_ascii=False, indent=2)
-
-            return "Success"
-
-        except Exception as e:
-            if i < max_retries - 1:
-                # Wait briefly before retry
-                time.sleep(random.uniform(0.1, 0.5)) 
-                continue
-            else:
-                return f"Failed after multiple retries: {str(e)}"
-    
-    return "Failed after multiple retries"
-
-def save_variable(key, value):
-    """Save variable with optimistic locking"""
-    return update_with_optimistic_lock(key, value)
-
-def load_variable(key):
-    """Load variable"""
-    try:
-        with open("variables.json", 'r') as f:
-            data = json.load(f)
-            return data.get(key)
-    except FileNotFoundError:
-        return None
-    except Exception:
-        return None
-```
-
-#### Key Implementation Features
-
-**1. Version Management Functionality**:
-- Tracking update count through `_version` field
-- Automatic start from version 0 when file doesn't exist
-- Automatic version increment with each update
-
-**2. Retry Functionality**:
-- Up to 5 retries to handle temporary conflicts
-- Random delay (0.1-0.5 seconds) for collision avoidance
-- Linear delay simplification instead of exponential backoff
-
-**3. Error Handling**:
-- Proper initialization when file doesn't exist
-- Robust handling of various exceptions
-- Clear error messages for problem diagnosis support
-
-### Integration with Natural Language Macro Programming
-
-#### Application to CLAUDE.md Variable Writing Rules
-
-Safer concurrent processing can be achieved by integrating optimistic locking functionality into CLAUDE.md. For detailed implementation, refer to the practical example section below.
-
-#### Implementation Benefits
-
-**1. Transparency**:
-- Add concurrent access control without modifying existing macro code
-- Basic variable operations maintain traditional behavior
-- Concurrent control features automatically applied only when using advanced functions
-
-**2. Robustness**:
-- Effective prevention of race condition occurrence
-- Retry functionality for temporary conflicts
-- Avoidance of data corruption and inconsistencies
-
-**3. Performance**:
-- Maintain high performance through optimistic locking
-- Minimize overhead when no conflicts occur
-- Efficient conflict resolution through appropriate retry strategy
-
-### Application Scenarios
-
-**1. Safety Assurance in Parallel Processing**:
-- In Pattern 2 parallel processing, when multiple Tasks simultaneously update variables.json
-- Each task independently updates data while maintaining final data consistency
-
-**2. Coordination in Multi-Agent Systems**:
-- Safe information sharing in A.5 multi-agent systems using shared blackboard model
-- Consistency guarantee when multiple agents simultaneously update variables.json
-
-**3. Robustness in Event-Driven Execution**:
-- In A.2 event-driven execution, when multiple events occur simultaneously and variable updates conflict
-- Each event handler safely updates variables while maintaining overall system consistency
-
-### Implementation Evaluation
-
-**Stability**:
-- Long-term operation testing in concurrent access environments confirmed no data corruption or lock conflicts
-- Stable operation confirmed in multiple implementation environments
-
-**Scalability**:
-- Easy addition of more advanced concurrent control features based on basic optimistic locking functionality
-- Capable of extension to distributed systems and cluster environments
-
-**Maintainability**:
-- Easy understanding through simple implementation
-- Ability to leverage existing knowledge through adoption of standard optimistic locking methods
-
-### Practical Example: Optimistic Locking-Compatible CLAUDE.md Rules
-
-The following shows the actual CLAUDE.md rules for optimistic locking compatibility that have been implemented and verified. This example provides concrete specifications for operating the optimistic locking mechanism explained in the theoretical background within an actual natural language macro programming environment.
-
-#### Optimistic Locking-Compatible Variable Save Rules
-
-**Important**: Agent code is written using conventional natural language notation. Optimistic locking processing is executed transparently.
-
-```markdown
-### 🚨 Absolute Compliance Rule: Variable Save (Optimistic Locking Compatible)
-
-When receiving variable save instructions "Save VALUE to {{variable_name}}" or "Store VALUE in {{variable_name}}":
-
-1. **Automatically execute optimistic locking save via optimistic_lock.py**
-   - Agent writes conventionally "Save to {{variable_name}}"
-   - Internally uses optimistic locking library for safe storage
-   - Automatically prevents data conflicts between parallel processes
-
-2. **Internal Processing (Transparent to Agent)**
-   ```python
-   # The following processing is automatically executed (no need to write in agent code)
-   from optimistic_lock import save_variable
-   result = save_variable("variable_name", "VALUE")
-   ```
-
-3. **Automatic Save Result Reporting**
-   - On success: "Saved 'VALUE' to {{variable_name}}"
-   - On conflict resolution: "Saved 'VALUE' to {{variable_name}}" (conflict resolved internally)
-   - On failure: Report failure with error details
-
-4. **Automatic Safety Guarantee in Parallel Execution Environment**
-   - Automatically maintain data consistency even with simultaneous execution of multiple agents
-   - Conflict resolution through version management and automatic retry
-   - No changes required to agent code
-```
-
-#### Execution Example: Transparent Conflict Resolution
-
-```markdown
-# Variable save example (optimistic locking compatible - agent side uses conventional notation)
-Agent Code: "Save Tanaka Taro to {{user_name}}"
-AI Execution:
-1. Automatically execute optimistic_lock.py according to CLAUDE.md rules
-2. Safe save with optimistic locking: save_variable("user_name", "Tanaka Taro")
-3. Conflict detection and retry processing (executed transparently)
-4. Display: "Saved 'Tanaka Taro' to {{user_name}}"
-
-# Transparent conflict resolution during parallel execution
-When multiple agents simultaneously update variables:
-1. Agent1: "Save haiku to {{agent_1_haiku}}"
-2. Agent2: "Save haiku to {{agent_2_haiku}}"  
-3. Optimistic locking automatically detects and resolves conflicts
-4. Both agents complete saving normally
-5. Agent code remains in conventional natural language notation
-6. Data consistency is transparently guaranteed
-```
-
-#### Implementation Transparency
-
-The most important feature of this example is **minimizing the burden on agent developers**:
-
-**1. Simplicity of Description**:
-- Agents write conventionally "Save to {{variable_name}}"
-- Hide complexity of concurrent control while maintaining natural language-like description
-
-**2. Automated Safety**:
-- Optimistic locking conflict detection and resolution executed transparently
-- No need for agent side to be aware of concurrent control
-
-**3. Complete Compatibility with Existing Code**:
-- No changes required to existing agent code even when enabling optimistic locking functionality
-- Gradual migration is possible
-
-This example represents a proven method for operating theoretical optimistic locking implementation in actual natural language macro programming environments, enabling construction of systems with high-level reliability through integration with **A.5 Multi-Agent Systems** and **Pattern 2 Parallel Processing**.
-
-## A.12: LLM-based Post-execution Evaluation
+## A.11: LLM-based Post-execution Evaluation
 
 **Relationship to 4-Layer Defense Strategy**: This system addresses evaluation challenges specific to probabilistic systems in Layer 4 "Quality Assurance Testing" of [A.3](#a3-risk-mitigation-strategies-for-important-tasks). It objectively realizes evaluation of creativity, logic, and appropriateness that are difficult to achieve with conventional software testing.
 
@@ -2000,7 +1760,7 @@ LLM-based Evaluation Testing represents one approach to quality assurance in pro
 
 ---
 
-## A.13: Variable Management Persistence and Scaling: Database Utilization
+## A.12: Variable Management Persistence and Scaling: Database Utilization
 
 ### Background and Purpose
 
@@ -2040,7 +1800,7 @@ Optimal as the first step for introducing database robustness like transactions 
 - Transaction support
 - Lightweight and fast
 
-**Implementation Details**: For specific SQLite-based implementation examples, please refer to [A.17: SQLite-Based Variable Management Implementation](#a17-sqlite-based-variable-management-implementation).
+**Implementation Details**: For specific SQLite-based implementation examples, please refer to [A.16: SQLite-Based Variable Management Implementation](#a16-sqlite-based-variable-management-implementation).
 
 #### MongoDB (Document-oriented DB)
 
@@ -2100,7 +1860,7 @@ Implement version management-based optimistic locking to safely handle concurren
 #### Automatic Audit Logging
 Utilize database trigger functionality to automatically record complete variable change history. This achieves highly transparent audit systems without polluting agent code.
 
-**Specific Implementation Examples**: For detailed SQLite-based implementations, please refer to [A.17: SQLite-Based Variable Management Implementation](#a17-sqlite-based-variable-management-implementation).
+**Specific Implementation Examples**: For detailed SQLite-based implementations, please refer to [A.16: SQLite-Based Variable Management Implementation](#a16-sqlite-based-variable-management-implementation).
 
 ### Integration with Existing Technologies
 
@@ -2114,7 +1874,7 @@ Database change log functionality integrates completely with [A.6 Audit Log Syst
 
 #### Extension of A.11 Concurrent Access Control
 
-Optimistic locking described in [A.11 Concurrent Access Control](#a11-concurrent-access-control-and-optimistic-locking) is implemented more reliably at the database level, supporting safe collaborative operations among multiple agents.
+Database-level concurrency control mechanisms provide more reliable implementation than file-based approaches, supporting safe collaborative operations among multiple agents through SQLite's built-in transaction management.
 
 ### Integration with Event-Driven Execution
 
@@ -2191,7 +1951,7 @@ Database utilization provides natural language macro programming with the follow
 
 This extension significantly expands system possibilities without wasting any existing learning investment, making it a crucial technical component.
 
-## A.14: Vector Database and RAG Utilization
+## A.13: Vector Database and RAG Utilization
 
 This section demonstrates the integration of **ChromaDB-based RAG system** into natural language macro programming, enabling semantic similarity search for knowledge utilization and experience learning. The Chroma/ folder implementation provides dynamic knowledge search and experience utilization capabilities in addition to traditional SQLite variable management.
 
@@ -2421,7 +2181,7 @@ cp variables.db variables_backup_$(date +%Y%m%d).db
 
 Through the ChromaDB integrated RAG system, natural language macro programming evolves into an **autonomous system rich in knowledge and experience**, acquiring advanced problem-solving capabilities through semantic similarity search.
 
-## A.15: Goal-Oriented Architecture and Autonomous Planning
+## A.14: Goal-Oriented Architecture and Autonomous Planning
 
 ### Background and Necessity
 
@@ -2449,7 +2209,7 @@ The 10 patterns and Appendix technologies have primarily focused on "efficient e
 **Evaluation Axes**:
 - **Logical Consistency**: Static analysis of plan contradictions and inefficiencies using [A.7: LLM-based Verification System]
 - **Resource/Cost Evaluation**: Estimation of API calls, execution time, and computational resources required
-- **Success Probability**: Prediction based on past similar experiences accumulated through [A.14: Vector DB & RAG]
+- **Success Probability**: Prediction based on past similar experiences accumulated through [A.13: Vector DB & RAG]
 - **Risk Analysis**: Proactive identification of potential problems based on [A.3: Risk Mitigation Strategies]
 
 **Technology Utilization**:
@@ -2478,7 +2238,7 @@ Save evaluation results to {{plan_evaluation}}"
 - **[Pattern 2: Parallel Processing]**: Simultaneous execution of parallelizable tasks
 - **[A.4: Python Tool Integration]**: Utilization of external specialized tools
 - **[A.11: Concurrent Access Control]**: Safe state updates
-- **[A.13: Database Utilization]**: Large-scale state management
+- **[A.12: Database Utilization]**: Large-scale state management
 
 **Execution Monitoring**:
 ```markdown
@@ -2497,8 +2257,8 @@ Save evaluation results to {{plan_evaluation}}"
 **Analysis Process**:
 - **[Pattern 7: Environment Sensing]**: Detection and evaluation of environmental changes
 - **[A.6: Audit Log System]**: Systematic reflection on one's own action history
-- **[A.12: LLM-based Evaluation Testing]**: Quality, creativity, and logic evaluation of outcomes
-- **[A.14: Experience Learning]**: Extraction and storage of success/failure patterns
+- **[A.11: LLM-based Evaluation Testing]**: Quality, creativity, and logic evaluation of outcomes
+- **[A.13: Experience Learning]**: Extraction and storage of success/failure patterns
 
 **Feedback Loop**:
 ```markdown
@@ -2549,7 +2309,7 @@ graph TD
 
 Goal: Launch new product within 6 months and achieve 1 million yen in first-month sales
 
-Save goal to {{project_goal}} and start A.15's 4-stage flow:
+Save goal to {{project_goal}} and start A.14's 4-stage flow:
 1. First search {{memory:product_development_projects}} for similar cases
 2. Decompose into major tasks using Pattern 5
 3. Verify logical consistency of plan using A.7
@@ -2572,7 +2332,7 @@ Save goal to {{project_goal}} and start A.15's 4-stage flow:
 
 ---
 
-## A.16: Python Orchestration-Based Hybrid Approach
+## A.15: Python Orchestration-Based Hybrid Approach
 
 Systematizes a hybrid approach that combines Python orchestration with natural language macro programming for systems requiring high speed and token efficiency. Provides methodology for building lightweight yet powerful agent systems without relying on external frameworks.
 
@@ -2593,7 +2353,7 @@ Systematizes a hybrid approach that combines Python orchestration with natural l
 - High-dimensional decision making
 
 **Seamless Integration via SQLite**:
-SQLite database (see A.17) functions as an efficient interface between Python orchestrator and natural language macros. Python rapidly sets data, natural language macros read and process it, then write results back to SQLite, creating an integrated system that maximizes the advantages of both components.
+SQLite database (see A.16) functions as an efficient interface between Python orchestrator and natural language macros. Python rapidly sets data, natural language macros read and process it, then write results back to SQLite, creating an integrated system that maximizes the advantages of both components.
 
 #### Efficiency Pursuit
 
@@ -2713,7 +2473,7 @@ Save the final customer response in {{customer_response}}.
 - Extends A.4's integration patterns to resident systems
 - Evolution from single tool execution to continuous collaborative processing
 
-**Relationship with A.17 (SQLite Variable Management)**:
+**Relationship with A.16 (SQLite Variable Management)**:
 - Efficient data exchange based on SQLite
 - Safe collaborative operations through concurrent access control
 
@@ -2730,11 +2490,11 @@ To ensure reliability of the orchestration layer, we strongly recommend adherenc
 
 This enables construction of reliable systems where Python and macros collaborate effectively.
 
-## A.17: SQLite-Based Variable Management
+## A.16: SQLite-Based Variable Management
 
 ### Overview and Positioning
 
-This section provides specific implementation examples utilizing SQLite databases based on the theoretical background described in [A.13: Variable Management Persistence and Scaling](#a13-variable-management-persistence-and-scaling-database-utilization). As a gradual migration path from variables.json, it offers a practical solution that maintains convenience while significantly improving robustness.
+This section provides specific implementation examples utilizing SQLite databases based on the theoretical background described in [A.12: Variable Management Persistence and Scaling](#a12-variable-management-persistence-and-scaling-database-utilization). As a gradual migration path from variables.json, it offers a practical solution that maintains convenience while significantly improving robustness.
 
 **Implementation File Location**: The implementation files described in this section (variable_db.py, watch_variables.py, CLAUDE.md, etc.) are located in the SQLite/ folder of this document.
 

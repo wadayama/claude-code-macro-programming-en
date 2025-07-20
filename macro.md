@@ -44,12 +44,11 @@
 - [A.8: Metaprogramming](./Appendix.md#a8-metaprogramming) - Self-adaptive systems through dynamic macro generation, verification, evaluation, and improvement
 - [A.9: Ensemble Execution and Consensus Formation](./Appendix.md#a9-ensemble-execution-and-consensus-formation) - Statistical countermeasures for probabilistic behavior
 - [A.10: Type Safety and Schema Management](./Appendix.md#a10-type-safety-and-schema-management) - Gradual type safety enhancement and schema-based systematic data management
-- [A.11: Concurrent Access Control and Optimistic Locking](./Appendix.md#a11-concurrent-access-control-and-optimistic-locking) - variables.json concurrent access control for safety assurance
-- [A.12: LLM-based Post-execution Evaluation](./Appendix.md#a12-llm-based-post-execution-evaluation) - Quality, creativity, and logic evaluation for probabilistic systems
-- [A.13: Variable Management Persistence and Scaling](./Appendix.md#a13-variable-management-persistence-and-scaling-database-utilization) - Robust state management via databases
-- [A.14: Vector Database and RAG Utilization](./Appendix.md#a14-vector-database-and-rag-utilization) - Dynamic knowledge systems through knowledge bases and experience learning
-- [A.15: Goal-Oriented Architecture and Autonomous Planning](./Appendix.md#a15-goal-oriented-architecture-and-autonomous-planning) - Complete autonomous systems via 4-stage flow and PDCA cycle
-- [A.16: Python Orchestration-Based Hybrid Approach](./Appendix.md#a16-python-orchestration-based-hybrid-approach) - High-speed, cost-efficient systems via Python + natural language macros
+- [A.11: LLM-based Post-execution Evaluation](./Appendix.md#a11-llm-based-post-execution-evaluation) - Quality, creativity, and logic evaluation for probabilistic systems
+- [A.12: Variable Management Persistence and Scaling](./Appendix.md#a12-variable-management-persistence-and-scaling-database-utilization) - Robust state management via databases
+- [A.13: Vector Database and RAG Utilization](./Appendix.md#a13-vector-database-and-rag-utilization) - Dynamic knowledge systems through knowledge bases and experience learning
+- [A.14: Goal-Oriented Architecture and Autonomous Planning](./Appendix.md#a14-goal-oriented-architecture-and-autonomous-planning) - Complete autonomous systems via 4-stage flow and PDCA cycle
+- [A.15: Python Orchestration-Based Hybrid Approach](./Appendix.md#a15-python-orchestration-based-hybrid-approach) - High-speed, cost-efficient systems via Python + natural language macros
 
 ### Disclaimer
 - [Disclaimer](#-disclaimer)
@@ -301,7 +300,7 @@ Depending on {{data_type}}, execute the following:
 
 ## 📚 Basic Syntax Sample Collection
 
-> **📝 About Variable Management**: The examples in this guide are written assuming basic variable management implementation using variables.json files. For more robust and high-performance variable management, please refer to [A.17: SQLite-Based Variable Management Implementation](./Appendix.md#a17-sqlite-based-variable-management-implementation).
+> **📝 About Variable Management**: The examples in this guide are written assuming basic variable management implementation using variables.json files. For more robust and high-performance variable management, please refer to [A.16: SQLite-Based Variable Management](./Appendix.md#a16-sqlite-based-variable-management).
 
 ### 1. Sequential Execution: Python Learning Guide Creation
 
@@ -1817,7 +1816,7 @@ Finally:
 **Gradual Quality Adjustment** provides valuable results even when not perfect. **Adaptation to Constraints** optimizes under resource or data limitations. **User Expectation Management** clearly explains limitations. **Continuous Service** maintains system value through partial functionality provision.
 
 **Concurrent Access Control**:
-**Race Condition Prevention** prevents variables.json conflicts through optimistic locking mechanisms (detailed implementation in [A.11](./Appendix.md#a11-concurrent-access-control-and-optimistic-locking)). **Data Consistency** maintains integrity during simultaneous access by multiple processes. **Safe File Operations** ensure reliable concurrent updates with automatic retry mechanisms.
+**Robust Variable Management** provides reliable data management through SQLite-based variable systems (detailed implementation in [A.16](./Appendix.md#a16-sqlite-based-variable-management)). **Data Consistency** maintains integrity during simultaneous access by multiple processes. **Safe Database Operations** ensure reliable concurrent updates with automatic transaction management.
 
 ### 📁 Practical Samples
 
