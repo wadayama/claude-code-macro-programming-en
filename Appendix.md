@@ -1800,7 +1800,7 @@ Optimal as the first step for introducing database robustness like transactions 
 - Transaction support
 - Lightweight and fast
 
-**Implementation Details**: For specific SQLite-based implementation examples, please refer to [A.16: SQLite-Based Variable Management Implementation](#a16-sqlite-based-variable-management-implementation).
+**Implementation Details**: For specific SQLite-based implementation examples, please refer to [A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management).
 
 #### MongoDB (Document-oriented DB)
 
@@ -1860,7 +1860,7 @@ Implement version management-based optimistic locking to safely handle concurren
 #### Automatic Audit Logging
 Utilize database trigger functionality to automatically record complete variable change history. This achieves highly transparent audit systems without polluting agent code.
 
-**Specific Implementation Examples**: For detailed SQLite-based implementations, please refer to [A.16: SQLite-Based Variable Management Implementation](#a16-sqlite-based-variable-management-implementation).
+**Specific Implementation Examples**: For detailed SQLite-based implementations, please refer to [A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management).
 
 ### Integration with Existing Technologies
 
@@ -2237,7 +2237,7 @@ Save evaluation results to {{plan_evaluation}}"
 - **[Pattern 1: Sequential Pipeline]**: Efficient execution of sequential tasks
 - **[Pattern 2: Parallel Processing]**: Simultaneous execution of parallelizable tasks
 - **[A.4: Python Tool Integration]**: Utilization of external specialized tools
-- **[A.11: Concurrent Access Control]**: Safe state updates
+- **[Concurrent Access Control]**: SQLite-based safe state updates
 - **[A.12: Database Utilization]**: Large-scale state management
 
 **Execution Monitoring**:
