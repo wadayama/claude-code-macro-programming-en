@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-俳句ジェネレータ Pythonオーケストレータ
-A.15 Pythonオーケストレーション型ハイブリッドアプローチの実践例
+Haiku Generator Python Orchestrator
+Practical example of A.15 Python Orchestration-Based Hybrid Approach
 """
 
 import subprocess
@@ -10,16 +10,16 @@ from variable_db import save_variable, VariableDB
 
 
 def run_macro(macro_file):
-    """マクロファイルを実行"""
+    """Execute macro file"""
     with open(macro_file, 'r', encoding='utf-8') as f:
         subprocess.run(["claude", "-p", "--dangerously-skip-permissions"], stdin=f)
 
 
 def create_agent_macro(agent_id):
-    """エージェント専用マクロを生成"""
+    """Generate agent-specific macro"""
     import os
     
-    # agents/フォルダが存在しない場合は作成
+    # Create agents/ folder if it doesn't exist
     os.makedirs('agents', exist_ok=True)
     
     with open('agent_template.md', 'r', encoding='utf-8') as f:
@@ -35,44 +35,44 @@ def create_agent_macro(agent_id):
 
 
 def run_agent(agent_id):
-    """エージェント実行"""
+    """Execute agent"""
     macro_file = create_agent_macro(agent_id)
     run_macro(macro_file)
     return agent_id
 
 
 def main():
-    print("=== 俳句生成マルチエージェントシステム開始 ===")
+    print("=== Haiku Generation Multi-Agent System Started ===")
     
-    # 初期化
+    # Initialization
     import os
     import glob
     
-    # 変数クリア
+    # Clear variables
     count = VariableDB().clear_all()
-    print(f"🔄 {count}個の変数をクリア")
+    print(f"🔄 Cleared {count} variables")
     
-    # agents/フォルダ内のファイルをクリア
+    # Clear files in agents/ folder
     for file in glob.glob('agents/agent_*.md'):
         os.remove(file)
-    print("🔄 agents/フォルダをクリア")
+    print("🔄 Cleared agents/ folder")
     
-    # 設定
+    # Configuration
     agent_count = 3
 
     save_variable('agent_count', str(agent_count))
     
-    # テーマ生成
+    # Theme generation
     run_macro('generate_themes.md')
     
-    # 並列俳句生成
+    # Parallel haiku generation
     with concurrent.futures.ThreadPoolExecutor() as executor:
         list(executor.map(run_agent, range(1, agent_count + 1)))
     
-    # 評価
+    # Evaluation
     run_macro('evaluate_haiku.md')
     
-    print("=== 俳句生成マルチエージェントシステム完了 ===")
+    print("=== Haiku Generation Multi-Agent System Completed ===")
 
 
 if __name__ == "__main__":

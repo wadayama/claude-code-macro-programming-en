@@ -1,25 +1,25 @@
-# テーマ生成
+# Theme Generation
 
-{{agent_count}}個の創造的で奇妙な俳句テーマを生成してください。季節や自然要素ではなく、独特で興味深い概念に焦点を当ててください。
+Generate {{agent_count}} creative and strange haiku themes. Focus on unique and interesting concepts rather than seasonal or natural elements.
 
-各テーマは以下の形式で出力してください：
-1. [テーマ1]
-2. [テーマ2]
-（{{agent_count}}個まで続く）
+Output each theme in the following format:
+1. [Theme 1]
+2. [Theme 2]
+(Continue up to {{agent_count}} themes)
 
-テーマのみを出力し、追加の説明は不要です。
+Output only the themes, no additional explanation needed.
 
-## テーマ配布
+## Theme Distribution
 
-生成したテーマを各エージェントに配布してください：
+Distribute the generated themes to each agent:
 
-{{agent_count}}個のテーマを以下の形式で保存してください：
-- 1番目のテーマを{{agent_1_theme}}に保存してください
-- 2番目のテーマを{{agent_2_theme}}に保存してください
-- 3番目のテーマを{{agent_3_theme}}に保存してください
-- 4番目のテーマを{{agent_4_theme}}に保存してください
-- 5番目のテーマを{{agent_5_theme}}に保存してください
+Save the {{agent_count}} themes in the following format:
+- Save the 1st theme to {{agent_1_theme}}
+- Save the 2nd theme to {{agent_2_theme}}
+- Save the 3rd theme to {{agent_3_theme}}
+- Save the 4th theme to {{agent_4_theme}}
+- Save the 5th theme to {{agent_5_theme}}
 
-（{{agent_count}}が5以外の場合は、対応する数まで{{agent_N_theme}}形式で保存してください）
+(If {{agent_count}} is not 5, save up to the corresponding number in {{agent_N_theme}} format)
 
-全テーマを{{themes}}に保存してください。
+Save all themes to {{themes}}.

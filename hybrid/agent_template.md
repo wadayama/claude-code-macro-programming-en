@@ -1,29 +1,29 @@
-# 🤖 俳句生成エージェント{{AGENT_ID}}
+# 🤖 Haiku Generation Agent{{AGENT_ID}}
 
-## エージェント初期化
+## Agent Initialization
 
-「=== 俳句生成エージェント{{AGENT_ID}}開始 ===」と表示してください。
+Display "=== Haiku Generation Agent{{AGENT_ID}} Started ===".
 
-## テーマ取得
+## Theme Retrieval
 
-「担当テーマ: {{agent_{{AGENT_ID}}_theme}}」と表示してください。
+Display "Assigned Theme: {{agent_{{AGENT_ID}}_theme}}".
 
-## 俳句作成
+## Haiku Creation
 
-{{agent_{{AGENT_ID}}_theme}}に基づいて俳句を作成してください。
+Create a haiku based on {{agent_{{AGENT_ID}}_theme}}.
 
-要件：
-- 5-7-5の音律構造に従う
-- テーマの奇妙さと独特さを表現
-- 詩的で印象的な言葉を使用
-- 創造性とインパクトを重視
+Requirements:
+- Follow 5-7-5 syllable structure
+- Express the strangeness and uniqueness of the theme
+- Use poetic and impressive words
+- Prioritize creativity and impact
 
-俳句のみを出力し、追加の説明は不要です。
+Output only the haiku, no additional explanation needed.
 
-作成した俳句を{{agent_{{AGENT_ID}}_haiku}}に保存してください。
+Save the created haiku to {{agent_{{AGENT_ID}}_haiku}}.
 
-## 完了報告
+## Completion Report
 
-「エージェント{{AGENT_ID}}完了: {{agent_{{AGENT_ID}}_haiku}}」と表示してください。
+Display "Agent{{AGENT_ID}} completed: {{agent_{{AGENT_ID}}_haiku}}".
 
-「=== 俳句生成エージェント{{AGENT_ID}}終了 ===」と表示してください。
+Display "=== Haiku Generation Agent{{AGENT_ID}} Finished ===".

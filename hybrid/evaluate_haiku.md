@@ -1,29 +1,29 @@
-# 俳句評価・選択
+# Haiku Evaluation and Selection
 
-収集された俳句を評価し、最も奇妙で印象的な俳句を選択してください：
+Evaluate the collected haiku and select the most strange and impressive one:
 
-**生成されたテーマ**: {{themes}}
+**Generated Themes**: {{themes}}
 
-**俳句候補**:
-以下の{{agent_count}}個の俳句を評価してください：
+**Haiku Candidates**:
+Evaluate the following {{agent_count}} haiku:
 1. {{agent_1_haiku}}
 2. {{agent_2_haiku}}
 3. {{agent_3_haiku}}
 4. {{agent_4_haiku}}
 5. {{agent_5_haiku}}
 
-（{{agent_count}}が5以外の場合は、対応する数まで{{agent_N_haiku}}を評価してください）
+(If {{agent_count}} is not 5, evaluate up to the corresponding number of {{agent_N_haiku}})
 
-評価基準：
-- 独創性と奇妙さ
-- 詩的表現の美しさ
-- インパクトの強さ
+Evaluation Criteria:
+- Originality and strangeness
+- Beauty of poetic expression
+- Strength of impact
 
-空の結果は評価対象から除外してください。
+Exclude empty results from evaluation.
 
-最も優秀な俳句を選択し、以下の形式で評価結果を表示してください：
-**最優秀俳句**: [選択した俳句をそのまま記載]
-**選択**: 俳句[番号]
-**理由**: [1-2文での具体的な理由]
+Select the most excellent haiku and display the evaluation results in the following format:
+**Best Haiku**: [Write the selected haiku exactly as is]
+**Selection**: Haiku [number]
+**Reason**: [Specific reason in 1-2 sentences]
 
-この評価結果（最優秀俳句、選択、理由の3項目すべて）を{{best_selection}}に保存してください。
+Save this evaluation result (all three items: best haiku, selection, and reason) to {{best_selection}}.
