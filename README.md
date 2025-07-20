@@ -74,17 +74,17 @@ Development support pattern that visualizes execution status and assists in prob
 - A.4: Python Tool Integration
 - A.5: Multi-Agent System Design (variables.json blackboard model, haiku generation multi-agent implementation example)
 - A.6: Audit Log System (transparency and accountability tracking)
-- A.7: LLM-based Verification System (LLM-powered pre-execution static analysis for security)
+- A.7: LLM-based Pre-execution Inspection (LLM-powered pre-execution static analysis for security)
 - A.8: Metaprogramming (dynamic macro generation, verification, evaluation, and improvement)
 - A.9: Ensemble Execution and Consensus Formation (statistical countermeasures for probabilistic behavior)
 - A.10: Type Safety and Schema Management (gradual type safety enhancement and schema-based systematic data management)
 - A.11: Concurrent Access Control and Optimistic Locking (variables.json concurrent access control for safety assurance)
-- A.12: LLM-based Evaluation Testing (quality, creativity, and logic evaluation for probabilistic systems)
+- A.12: LLM-based Post-execution Evaluation (quality, creativity, and logic evaluation for probabilistic systems)
 - A.13: Variable Management Persistence and Scaling (robust state management via databases)
 - A.14: Vector Database and RAG Utilization (dynamic knowledge systems through knowledge bases and experience learning)
 - A.15: Goal-Oriented Architecture and Autonomous Planning (complete autonomous systems via 4-stage flow and PDCA cycle)
 - A.16: Python Orchestration-Based Hybrid Approach (high-speed, cost-efficient systems via Python orchestration + natural language macros)
-- A.17: SQLite-Based Variable Management Implementation (gradual migration from variables.json to SQLite, enhanced robustness)
+- A.17: SQLite-Based Variable Management (gradual migration from variables.json to SQLite, enhanced robustness)
 
 ## 📚 Main Contents
 

@@ -10,17 +10,17 @@ A systematic compilation of advanced technical elements for the practical implem
 - [A.4: Python Tool Integration](#a4-python-tool-integration)
 - [A.5: Multi-Agent System Design](#a5-multi-agent-system-design)
 - [A.6: Audit Log System](#a6-audit-log-system)
-- [A.7: LLM-based Verification System (LLM-based Lint)](#a7-llm-based-verification-system-llm-based-lint)
+- [A.7: LLM-based Pre-execution Inspection](#a7-llm-based-pre-execution-inspection)
 - [A.8: Metaprogramming](#a8-metaprogramming)
 - [A.9: Ensemble Execution and Consensus Formation](#a9-ensemble-execution-and-consensus-formation)
 - [A.10: Type Safety and Schema Management](#a10-type-safety-and-schema-management)
 - [A.11: Concurrent Access Control and Optimistic Locking](#a11-concurrent-access-control-and-optimistic-locking)
-- [A.12: LLM-based Evaluation Testing](#a12-llm-based-evaluation-testing)
+- [A.12: LLM-based Post-execution Evaluation](#a12-llm-based-post-execution-evaluation)
 - [A.13: Variable Management Persistence and Scaling: Database Utilization](#a13-variable-management-persistence-and-scaling-database-utilization)
 - [A.14: Vector Database and RAG Utilization](#a14-vector-database-and-rag-utilization)
 - [A.15: Goal-Oriented Architecture and Autonomous Planning](#a15-goal-oriented-architecture-and-autonomous-planning)
 - [A.16: Python Orchestration-Based Hybrid Approach](#a16-python-orchestration-based-hybrid-approach)
-- [A.17: SQLite-Based Variable Management Implementation](#a17-sqlite-based-variable-management-implementation)
+- [A.17: SQLite-Based Variable Management](#a17-sqlite-based-variable-management)
 
 ---
 
@@ -986,7 +986,7 @@ By utilizing the optimistic locking mechanism, it is possible to automatically r
 **Learning Capability**: Continuous improvement through analysis of success and failure patterns
 **Reliability**: Compliance with research ethics reviews and business audit requirements
 
-## A.7: LLM-based Verification System (LLM-based Lint)
+## A.7: LLM-based Pre-execution Inspection
 
 **Relationship to 4-Layer Defense Strategy**: This system automates Layer 1 "Proactive Design" and Layer 4 "Quality Assurance Testing" from [A.3](#a3-risk-mitigation-strategies-for-important-tasks). Through pre-execution static verification, it proactively detects and avoids risks that are difficult to discover through post-execution testing.
 
@@ -1718,7 +1718,7 @@ The most important feature of this example is **minimizing the burden on agent d
 
 This example represents a proven method for operating theoretical optimistic locking implementation in actual natural language macro programming environments, enabling construction of systems with high-level reliability through integration with **A.5 Multi-Agent Systems** and **Pattern 2 Parallel Processing**.
 
-## A.12: LLM-based Evaluation Testing
+## A.12: LLM-based Post-execution Evaluation
 
 **Relationship to 4-Layer Defense Strategy**: This system addresses evaluation challenges specific to probabilistic systems in Layer 4 "Quality Assurance Testing" of [A.3](#a3-risk-mitigation-strategies-for-important-tasks). It objectively realizes evaluation of creativity, logic, and appropriateness that are difficult to achieve with conventional software testing.
 
@@ -2485,7 +2485,7 @@ To ensure reliability of the orchestration layer, we strongly recommend adherenc
 
 This enables construction of reliable systems where Python and macros collaborate effectively.
 
-## A.17: SQLite-Based Variable Management Implementation
+## A.17: SQLite-Based Variable Management
 
 ### Overview and Positioning
 
