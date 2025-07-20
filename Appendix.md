@@ -15,11 +15,6 @@ All technical elements in this appendix are unified around an **SQLite-based var
 ### Importance of A.17
 Implementation details, migration methods, and technical specifications are comprehensively covered in **[A.17: SQLite-Based Variable Management](#a17-sqlite-based-variable-management)**. We recommend understanding the basic architecture in A.17 first before reading other sections.
 
-### Relationship with variables.json
-- **Learning/Prototyping Stage**: variables.json method can still be used
-- **Production Stage**: Migration to SQLite-based management is recommended
-- **Migration Procedures**: Detailed guidelines provided in A.17
-
 ## Table of Contents
 
 - [A.1: System Control and Resource Management](#a1-system-control-and-resource-management)
