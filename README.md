@@ -72,7 +72,7 @@ Development support pattern that visualizes execution status and assists in prob
 - A.2: Event-Driven Execution
 - A.3: Four-Layer Defense Strategy
 - A.4: Python Tool Integration
-- A.5: Multi-Agent System Design (variables.json blackboard model, haiku generation multi-agent implementation example)
+- A.5: Multi-Agent System Design (shared blackboard model, haiku generation multi-agent implementation example)
 - A.6: Audit Log System (transparency and accountability tracking)
 - A.7: LLM-based Pre-execution Inspection (LLM-powered pre-execution static analysis for security)
 - A.8: Metaprogramming (dynamic macro generation, verification, evaluation, and improvement)
