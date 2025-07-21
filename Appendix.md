@@ -81,56 +81,64 @@ The use of slash commands enables economically rational agent design that consid
 
 ## A.2: Event-Driven Execution
 
-Many processes in the real world occur asynchronously. Systems that can immediately respond to external stimuli such as file creation, email reception, and sensor value changes are required to have high responsiveness. Event-Driven execution is a primitive that asynchronously listens for specific events and executes corresponding tasks when detected.
+Real-world processes occur asynchronously. Event-driven execution monitors external events and automatically executes macros when changes are detected. The most practical approach is a hybrid design that delegates monitoring to existing technologies while the LLM focuses on post-trigger processing.
 
-### What is Event-Driven?
+### Implementation Example: Polling-Based Event Monitoring
 
-**Event-Driven execution** is an execution model that starts tasks asynchronously triggered by external events, in contrast to Sequential Pipeline which is synchronous. Agents monitor events in a waiting state and automatically begin processing when specific conditions are met.
+This section demonstrates a polling-based implementation that monitors SQLite variable changes and automatically executes macros when modifications occur.
 
-### External Trigger Model
+#### File Structure
 
-The most practical and robust approach is a hybrid design that delegates event monitoring to existing proven technologies and allows the LLM to focus on post-trigger processing.
+```
+event/
+├── event_handler.py      # Variable monitoring and automatic macro execution
+├── simple_macro.md       # Macro file to be executed
+├── CLAUDE.md            # Natural language macro syntax definition
+├── variable_db.py       # SQLite variable management system
+├── watch_variables.py   # Variable monitoring debug tool
+└── variables.db         # SQLite variable database
+```
 
-#### Main Implementation Technology Examples
+#### Implementation Details
 
-**1. Time Triggers with cron**
-- Automatic invocation at specified times
-- Basic implementation method for scheduled tasks
+**event_handler.py**: Monitors changes to the `user_status` variable with 0.1-second polling intervals and automatically executes `simple_macro.md` when the value changes. During initialization, all variables are cleared and initial values are set for monitored variables.
 
-**2. File Monitoring with watchdog**
-- File system monitoring using Python's watchdog library
-- Detection of file creation, modification, and deletion events
-- Continuous monitoring of specified directories with immediate response
+```python
+# Core monitoring loop
+while True:
+    current_value = get_variable(WATCH_VARIABLE)
+    
+    if current_value != last_value:
+        print("event detected")
+        run_macro()  # Execute macro via Claude CLI
+        last_value = current_value
+    
+    time.sleep(0.1)
+```
 
-**3. Polling**
-- Change detection through periodic state checking
-- Monitoring SQLite databases and API endpoints
-- Simple and reliable implementation with resource usage trade-offs
+**simple_macro.md**: Natural language macro executed when events are detected. Demonstrates basic patterns of variable reference and storage.
 
-### Integration Patterns
+```markdown
+{{user_status}}の値を{{macro_result}}に保存してください。
+```
 
-Typical integration example: "Continuously monitor directory `/orders`, and when a new file (e.g., `order123.json`) is created, evaluate `order_processing.md` with that file path as an argument" by running a resident script.
+**Execution Workflow**:
+1. System initialization (variable clearing, initial value setting)
+2. Continuous monitoring of `user_status` variable
+3. Immediate macro execution upon value change detection
+4. Automatic storage of results in `macro_result` variable
 
-**Variable Change Monitoring**: Variable changes within SQLite databases can also be utilized as event sources. Through polling monitoring with `watch_variables.py`, patterns such as "execute the next macro when {{status}} changes to completed" become feasible (see A.16 for detailed implementation).
+#### Technical Features
 
-### Key Points
+**1. Polling Monitoring**: Simple and reliable implementation. Achieves balance between real-time responsiveness and resource efficiency with 0.1-second intervals.
 
-**1. Asynchronous Processing Implementation**
-- Immediate response to external events
-- Parallel monitoring of multiple events
-- Improved system-wide responsiveness
+**2. Automatic Macro Execution**: Direct execution of natural language macros through Claude CLI enables complex processing logic to be written in natural language.
 
-**2. Flexibility in Technology Selection**
-- Choice of monitoring technology according to requirements
-- Easy integration with existing systems
-- Adaptability to operational environments
+**3. Error Handling**: Proper exception handling for macro execution failures ensures continuous system operation.
 
-**3. Integration with Macro Files**
-- Separation of event information and processing logic
-- Dynamic modification of processing content
-- Construction of reusable processing patterns
+**4. Variable-Based Events**: Utilizing SQLite database variable changes as event sources enables collaborative operation between multiple processes.
 
-Event-Driven execution enables the construction of agent systems with high responsiveness for real-time systems and business automation.
+This implementation enables automatic processing execution triggered by external system variable updates, making it possible to build highly responsive agent systems for real-time systems and business automation.
 
 ## A.3: Four-Layer Defense Strategy
 
@@ -657,10 +665,7 @@ Retrieve {{output_file}}
 - Flexible application through configuration changes
 
 **3. Real-time Monitoring**:
-```bash
-# Variable state monitoring in separate terminal
-uv run python watch_variables.py --continuous
-```
+For variable state monitoring, see [A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management).
 
 **4. Execution Demonstration**:
 ```bash
@@ -681,7 +686,30 @@ This implementation example demonstrates theoretical integration patterns as a c
 
 ### Python Quality Guidelines
 
-**Quality Standards**: We recommend applying the Python development guidelines for scientific computing described in [python_dev.md](./python_dev.md).
+For robust and reliable system construction in natural language macro and Python tool integration, we recommend adherence to Python code quality standards.
+
+#### Development Guidelines
+
+**Quality Standards**: We recommend applying the Python development guidelines for scientific computing described in [python_dev.md](./python_dev.md). This provides the following benefits:
+
+- **Accuracy Assurance**: Robust SQLite variable management integration through type hints and testing
+- **Improved Readability**: Maintainable code adhering to international development standards
+- **Reproducibility**: Consistent execution environment through uv environment management
+
+#### AI Collaborative Development
+
+When requesting Python code generation from LLMs, referencing python_dev.md standards can deliver the following effects:
+
+- Consistent quality code generation
+- Appropriate error handling implementation
+- Design suitable for long-term maintenance
+
+**Implementation Example**:
+```markdown
+"Please create a Python script to process order data.
+Follow python_dev.md quality standards, including type hints, error handling,
+and test code implementation."
+```
 
 
 ## A.5: Multi-Agent System Design
@@ -700,13 +728,17 @@ This section details the complete implementation of a fully operational multi-ag
 
 #### System Overview and File Structure
 
-**multi-haiku/** folder composition:
-- **CLAUDE.md** - SQLite version macro definition file
-- **agent.md** - Individual agent template file
-- **haiku-agent.md** - Multi-agent system main file
-- **variable_db.py** - SQLite variable management system implementation
-- **watch_variables.py** - Variable monitoring and debugging tool
-- **variables.db** - SQLite database file
+**File Structure**:
+```
+multi-haiku/
+├── CLAUDE.md         # SQLite version macro definition file
+├── agent.md          # Individual agent template file
+├── haiku-agent.md    # Multi-agent system main file
+├── variable_db.py    # SQLite variable management system implementation
+└── watch_variables.py # Variable monitoring and debugging tool
+```
+
+**Note**: The `variables.db` file is an SQLite database file automatically generated at runtime.
 
 #### Dynamic Agent Generation Mechanism
 
@@ -756,22 +788,15 @@ SQLite's WAL mode, retry mechanisms, and transaction management safely handle si
 
 #### Variable Monitoring Tool Utilization
 
-**Variable state monitoring with watch_variables.py**:
+Multi-agent environment real-time variable monitoring is available through `watch_variables.py`. For detailed usage and features, see [A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management).
+
 ```bash
-# Real-time monitoring
+# Basic real-time monitoring example
 python watch_variables.py --continuous
 
-# Specific variable tracking
+# Track specific agent variables
 python watch_variables.py --watch agent_1_haiku --continuous
-
-# Statistics display
-python watch_variables.py --stats
 ```
-
-**Debugging Support Features**:
-- Visual representation of variable changes through color output
-- Flexible output in JSON/table formats
-- Timestamped change history tracking
 
 ### Technical Design Principles
 
@@ -1074,6 +1099,19 @@ This implementation example demonstrates the practicality and technical depth of
 
 In natural language macro programming, a comprehensive audit system is built using **SQLite-based AuditLogger class** that permanently records all variable operations, decisions, and reasoning processes. The AuditLogger in `audit_logger.py` extends `VariableDB` to integrate automatic audit recording with variable management functionality, ensuring complete transparency and explainability.
 
+#### System Configuration
+
+**File Structure**:
+```
+audit/
+├── CLAUDE.md          # SQLite-based natural language macro syntax definition
+├── audit_logger.py    # Audit log system (VariableDB extension)
+├── audit_viewer.py    # Audit log analysis and visualization tool
+├── test_macro.md      # Comprehensive verification test macro
+├── variable_db.py     # SQLite variable management system
+└── variables.db       # SQLite database file
+```
+
 **Architecture Features**:
 - **Automatic Variable Logging**: All variable creation, updates, and deletions are automatically recorded in the audit_logs table
 - **Decision Recording**: Decision content and rationale are structurally stored in permanent storage
@@ -1192,10 +1230,9 @@ python audit_viewer.py --format json --recent 5
 **Variable Operations**: Automatic recording of all variable creation, updates, deletions (old_value → new_value)
 **Decision Making**: Structured recording of decision content and rationale through `log_decision`
 **Reasoning Processes**: Recording LLM thought processes as context, reasoning, and results through `log_reasoning`
-**System Operations**: File operations, external API calls, Python Tool execution
-**Human Interventions**: Human-in-the-Loop approvals, modification instructions, emergency stops  
-**Error Handling**: Exception occurrences, recovery processing, alternative method selection
-**Agent Communication**: Message exchange in multi-agent systems
+**Macro Lifecycle**: Macro start/end times and session information
+**Error Handling**: Exception occurrences, recovery processing, alternative method selection recording
+**User Input**: Human-in-the-Loop interventions, modification instructions, approval processes
 
 ### Advantages
 
@@ -1207,13 +1244,6 @@ python audit_viewer.py --format json --recent 5
 **Debugging Support**: Dramatically improved efficiency in root cause analysis during problem occurrence through variable history tracking and decision trails
 **Multi-Agent Support**: In [A.5 Multi-Agent System](#a5-multi-agent-system-design) environments, identifies concurrent variable operations by multiple agents through `source` and `session_id`, enabling complete chronological tracking of inter-agent interactions and state changes. Streamlines debugging of race conditions and unexpected behaviors
 
-### 📁 Practical Samples
-
-Detailed practical examples of audit log systems:
-
-- **Basic**: [A.6 Audit Log System Test Macro](./audit/test_macro.md) - Comprehensive verification of variable operations, conditional judgment, and decision rationale recording
-- **Analysis**: `python audit/audit_viewer.py` - Visualization and analysis of accumulated audit logs
-- **System**: [AuditLogger Class](./audit/audit_logger.py) - Detailed implementation of SQLite-based audit system
 
 ## A.7: LLM-based Pre-execution Inspection
 
@@ -1265,20 +1295,9 @@ llm_lint/
 
 #### Core Components
 
-**natural_language_validator.md** - Complete 4-axis verification system implementation
-- Systematic verification with 5 test cases (physical impossibility, logical contradictions, ambiguity, etc.)
-- Automated FEASIBLE/INFEASIBLE judgment
-- Staged verification process (initialization → analysis → judgment → report)
+**natural_language_validator.md** - Complete 4-axis verification system implementation with 5 test cases (physical impossibility, logical contradictions, ambiguity, etc.), automated FEASIBLE/INFEASIBLE judgment, and staged verification process (initialization → analysis → judgment → report)
 
-**variable_db.py** - Verification result persistence system (shared with [A.16](#a16-sqlite-based-variable-management))
-- Verification state and tracking
-- Robust concurrent access with multi-process support
-- Timestamped history management
-
-**watch_variables.py** - Developer support tool (shared with [A.16](#a16-sqlite-based-variable-management))
-- Real-time verification process monitoring
-- Status display with ANSI color codes
-- Flexible output in JSON/table formats
+**variable_db.py, watch_variables.py** - See [A.16](#a16-sqlite-based-variable-management) for detailed SQLite-based variable management & monitoring system
 
 ### Practical Verification Workflow
 
@@ -1463,11 +1482,7 @@ System completion notification
 #### Advanced Features
 
 **Real-time Variable Monitoring**:
-```bash
-uv run python watch_variables.py --continuous
-# Provides live view of variable changes during execution
-# Useful for debugging and system observation
-```
+For real-time variable monitoring, see [A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management).
 
 **Error Handling and Recovery**:
 - Exponential backoff for database lock scenarios
@@ -1578,7 +1593,19 @@ The unified save function provides both traditional string storage and typed sto
 
 In natural language macro programming, **SQLite-based integrated type validation system** ensures type safety and data integrity during variable storage. The unified save function in `schema/variable_db.py` provides both traditional string-based storage and typed storage through a single interface, enabling gradual type safety adoption.
 
-**System Components**:
+#### System Configuration
+
+**File Structure**:
+```
+schema/
+├── CLAUDE.md           # SQLite-based typed variable management syntax definition
+├── test_sample.md      # Type safety verification test macro
+├── test_schema.json    # JSON Schema format type constraint definitions
+├── variable_db.py      # Integrated type validation system implementation
+└── watch_variables.py  # Real-time variable monitoring with type information
+```
+
+**Key Components**:
 - **Unified Save Function**: `save_variable(name, value, type_name=None)` - Behavior switches based on type specification presence
 - **External Schema Definition**: `test_schema.json` - Type constraint definitions in JSON Schema format
 - **Type Validation Engine**: Validation logic supporting basic types, constrained types, and enumeration types
@@ -1722,29 +1749,6 @@ python watch_variables.py --validate
 
 ### Type Check Tools
 
-#### Variable Monitoring with `watch_variables.py`
-
-Real-time variable monitoring tool with type information visualization:
-
-```bash
-# Real-time monitoring with type information
-python watch_variables.py --continuous
-
-# Single snapshot with schema information
-python watch_variables.py --once --schemas
-
-# Validation status check for all typed variables
-python watch_variables.py --validate
-
-# Database statistics with type distribution
-python watch_variables.py --stats
-```
-
-**Key Features**:
-- **Color-coded output**: Green for valid, red for invalid, yellow for untyped
-- **Type information display**: Shows type name and validation status for each variable
-- **Real-time change tracking**: Monitors variable modifications with timestamps
-- **Schema type listing**: Displays available schema types and their constraints
 
 #### Bulk Type Validation System
 
@@ -1784,7 +1788,7 @@ uv run python -c "from variable_db import save_variable; save_variable('task_pro
 # Agent 2: Read validated progress data
 uv run python -c "from variable_db import get_variable_typed; progress, type_name = get_variable_typed('task_progress'); print(f'Current progress: {progress}% (validated as {type_name})')"
 
-# System: Monitor all agent variables with types
+# System: Monitor all agent variables with types (see A.16 for details)
 python watch_variables.py --continuous
 ```
 
@@ -2156,6 +2160,18 @@ This extension significantly expands system possibilities without wasting any ex
 This section demonstrates the integration of **ChromaDB-based RAG system** into natural language macro programming, enabling semantic similarity search for knowledge utilization and experience learning. The Chroma/ folder implementation provides dynamic knowledge search and experience utilization capabilities in addition to traditional SQLite variable management.
 
 ### Basic Architecture
+
+#### System Configuration
+
+**File Structure**:
+```
+Chroma/
+├── CLAUDE.md               # ChromaDB integrated natural language macro syntax definition
+├── simple_chroma_rag.py    # ChromaDB RAG system implementation
+├── test_macro.md          # RAG functionality verification test macro
+├── variable_db.py         # SQLite variable management system
+└── watch_integrated.py    # ChromaDB & SQLite integrated monitoring tool
+```
 
 #### ChromaDB Integrated Implementation System (`Chroma/simple_chroma_rag.py`)
 
@@ -2625,6 +2641,19 @@ A complete implementation example that demonstrates the theories of this section
 
 #### System Architecture
 
+**File Structure**:
+```
+hybrid/
+├── CLAUDE.md              # Hybrid system natural language macro syntax definition
+├── agent_template.md      # Agent template file
+├── evaluate_haiku.md      # Haiku evaluation macro
+├── generate_themes.md     # Theme generation macro
+├── haiku_orchestrator.py  # Python orchestration engine
+├── variable_db.py         # SQLite variable management system
+├── variables.db           # SQLite database file
+└── watch_variables.py     # Real-time variable monitoring tool
+```
+
 **haiku_orchestrator.py** - Python Orchestrator:
 ```python
 #!/usr/bin/env python3
@@ -2792,14 +2821,7 @@ To help readers make appropriate technical choices, we provide a systematic comp
 
 To ensure reliability of the orchestration layer, we strongly recommend adherence to quality standards in Python implementation.
 
-**Development Guidelines**: Implementation following [python_dev.md](./python_dev.md) ensures the following important characteristics:
-
-- **Type Safety**: Improved safety of SQLite variable operations through type hints
-- **Error Handling**: Robust exception handling for long-running systems
-- **Testing Strategy**: Comprehensive testing of collaborative processing
-- **Reproducibility**: Consistent operation guarantee in production environments
-
-This enables construction of reliable systems where Python and macros collaborate effectively.
+For Python code quality standards, see [A.4: Python Quality Guidelines](#python-quality-guidelines). In multi-agent environments, type safety, error handling, testing strategy, and reproducibility are particularly important for collaborative processing.
 
 ## A.16: SQLite-Based Variable Management
 
@@ -2851,6 +2873,15 @@ Clear all TODO lists
 
 ### System Architecture
 
+**File Structure**:
+```
+SQLite/
+├── CLAUDE.md         # SQLite-based natural language macro syntax definition
+├── haiku_direct.md   # SQLite version haiku generation system implementation example
+├── variable_db.py    # SQLite database management system
+└── watch_variables.py # Real-time monitoring and debugging tool
+```
+
 This implementation consists of the following four components:
 
 #### 1. variable_db.py - SQLite Database Management System
@@ -2891,7 +2922,17 @@ uv run python watch_variables.py --continuous
 
 # Monitor specific variable
 uv run python watch_variables.py --watch user_name --continuous
+
+# Display statistics information
+uv run python watch_variables.py --stats
 ```
+
+**Visualization Features:**
+- **Color-coded Display**: Variable type-based color coding (new creation=green, update=yellow, deletion=red)
+- **Type Information Display**: Typed variables show type names and validation status (typed=magenta, untyped=yellow)
+- **Validation Status**: Visual indicators ✓ (valid), ✗ (invalid), - (no type)
+- **Change Tracking**: Real-time timestamped display of variable value and type changes
+- **Statistical Analysis**: Type distribution, recently updated variables, database usage statistics
 
 #### 3. CLAUDE.md - SQLite-Based Macro Syntax Definition
 
