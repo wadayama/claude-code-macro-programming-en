@@ -65,25 +65,25 @@ Development support pattern that visualizes execution status and assists in prob
 
 **Structure**: Combine Pattern 1-4 (Basic Patterns) and Pattern 5-10 (Advanced Patterns), along with Appendix (Specialized Technologies) to build practical systems.
 
-**Integration Effects**: By combining multiple patterns, collaborative systems like the **A.5 Haiku Generation Multi-Agent** can be constructed.
+**Integration Effects**: By combining multiple patterns, collaborative systems like the **A.4 Haiku Generation Multi-Agent** can be constructed.
 
-**Appendix: Advanced Technical Elements and Practical Implementation**
-- A.1: System Control and Resource Management
-- A.2: Event-Driven Execution
-- A.3: Four-Layer Defense Strategy
-- A.4: Python Tool Integration
-- A.5: Multi-Agent System Design (shared blackboard model, haiku generation multi-agent implementation example)
-- A.6: Audit Log System (transparency and accountability tracking)
-- A.7: LLM-based Pre-execution Inspection (LLM-powered pre-execution static analysis for security)
-- A.8: Metaprogramming (dynamic macro generation, verification, evaluation, and improvement)
-- A.9: Ensemble Execution and Consensus Formation (statistical countermeasures for probabilistic behavior)
-- A.10: Type Safety and Schema Management (gradual type safety enhancement and schema-based systematic data management)
-- A.11: LLM-based Post-execution Evaluation (quality, creativity, and logic evaluation for probabilistic systems)
-- A.12: Variable Management Persistence and Scaling (robust state management via databases)
-- A.13: Vector Database and RAG Utilization (dynamic knowledge systems through knowledge bases and experience learning)
-- A.14: Goal-Oriented Architecture and Autonomous Planning (complete autonomous systems via 4-stage flow and PDCA cycle)
-- A.15: Python Orchestration-Based Hybrid Approach (high-speed, cost-efficient systems via Python orchestration + natural language macros)
-- A.16: SQLite-Based Variable Management (gradual migration from variables.json to SQLite, enhanced robustness)
+### 📖 Appendix (Advanced Technologies) - [Appendix.md](./Appendix.md)
+
+- **[A.1: Event-Driven Execution](./Appendix.md#a1-event-driven-execution)** - Asynchronous processing and real-time response systems
+- **[A.2: Four-Layer Defense Strategy](./Appendix.md#a2-four-layer-defense-strategy)** - Four-layer defense strategies for reliable operations
+- **[A.3: Python Tool Integration](./Appendix.md#a3-python-tool-integration)** - Python ecosystem utilization via variables.json integration
+- **[A.4: Multi-Agent System Design](./Appendix.md#a4-multi-agent-system-design)** - Collaborative agent systems with shared blackboard model (includes haiku generation multi-agent implementation example)
+- **[A.5: Audit Log System](./Appendix.md#a5-audit-log-system)** - Transparency and accountability tracking via variables.json extension
+- **[A.6: LLM-based Pre-execution Inspection](./Appendix.md#a6-llm-based-pre-execution-inspection)** - LLM-powered pre-execution static analysis for security and quality assurance
+- **[A.7: Metaprogramming](./Appendix.md#a7-metaprogramming)** - Self-adaptive systems through dynamic macro generation, verification, evaluation, and improvement
+- **[A.8: Ensemble Execution and Consensus Formation](./Appendix.md#a8-ensemble-execution-and-consensus-formation)** - Statistical countermeasures for probabilistic behavior
+- **[A.9: Type Safety and Schema Management](./Appendix.md#a9-type-safety-and-schema-management)** - Gradual type safety enhancement and schema-based systematic data management
+- **[A.10: LLM-based Post-execution Evaluation](./Appendix.md#a10-llm-based-post-execution-evaluation)** - Quality, creativity, and logic evaluation for probabilistic systems
+- **[A.11: Variable Management Persistence and Scaling](./Appendix.md#a11-variable-management-persistence-and-scaling-database-utilization)** - Robust state management via databases
+- **[A.12: Vector Database and RAG Utilization](./Appendix.md#a12-vector-database-and-rag-utilization)** - Dynamic knowledge systems through knowledge bases and experience learning
+- **[A.13: Goal-Oriented Architecture and Autonomous Planning](./Appendix.md#a13-goal-oriented-architecture-and-autonomous-planning)** - Complete autonomous systems via 4-stage flow and PDCA cycle
+- **[A.14: Python Orchestration-Based Hybrid Approach](./Appendix.md#a14-python-orchestration-based-hybrid-approach)** - High-speed, cost-efficient systems via Python + natural language macros
+- **[A.15: SQLite-Based Variable Management](./Appendix.md#a15-sqlite-based-variable-management)** - Gradual migration from variables.json to SQLite, enhanced robustness
 
 ## 📚 Main Contents
 
