@@ -27,39 +27,21 @@ Execute these directly in Claude Code to experience natural language macro progr
 
 The core of natural language macro programming consists of 10 design patterns, systematically organized into **4 Basic Patterns** and **6 Advanced Patterns**.
 
-### 📋 Basic 4 Patterns
+### 📋 Basic 4 Patterns - [macro.md](./macro.md)
 
-#### Pattern 1: Sequential Pipeline
-Basic execution pattern that processes tasks sequentially, passing results from one stage to the next
+- **[Pattern 1: Sequential Pipeline](./macro.md#pattern-1-sequential-pipeline)** - Basic execution pattern that processes tasks sequentially, passing results from one stage to the next
+- **[Pattern 2: Parallel Processing](./macro.md#pattern-2-parallel-processing)** - Parallel execution pattern that runs multiple tasks simultaneously for efficient processing
+- **[Pattern 3: Conditional Execution](./macro.md#pattern-3-conditional-execution)** - Conditional branching pattern that selects different processing paths based on situations
+- **[Pattern 4: Loop & Modular Programming](./macro.md#pattern-4-loop--modular-programming)** - Efficient repetitive control through TODO-list based iteration and Few-shot Pattern Loop
 
-#### Pattern 2: Parallel Processing
-Parallel execution pattern that runs multiple tasks simultaneously for efficient processing
+### 🚀 Advanced 6 Patterns - [macro.md](./macro.md)
 
-#### Pattern 3: Conditional Execution
-Conditional branching pattern that selects different processing paths based on situations
-
-#### Pattern 4: Loop & Modular Programming
-Efficient repetitive control through TODO-list based iteration and Few-shot Pattern Loop
-
-### 🚀 Advanced 6 Patterns
-
-#### Pattern 5: Problem Solving & Recursion
-Recursive approach that breaks down complex problems step by step and solves them through TODO management
-
-#### Pattern 6: Learning from Experience
-Experience learning pattern that learns from past execution results and generates improvement suggestions
-
-#### Pattern 7: Environment Sensing, Knowledge-base & Environment Model
-Acquires external environment information, builds knowledge systems, and executes adaptive processing according to situations
-
-#### Pattern 8: Human-in-the-Loop
-Collaborative execution pattern that incorporates human judgment at appropriate timings
-
-#### Pattern 9: Error Handling
-Robustness improvement pattern that predicts errors and executes appropriate recovery processing
-
-#### Pattern 10: Debug & Tracing
-Development support pattern that visualizes execution status and assists in problem identification and resolution
+- **[Pattern 5: Problem Solving & Recursion](./macro.md#pattern-5-problem-solving--recursion)** - Recursive approach that breaks down complex problems step by step and solves them through TODO management
+- **[Pattern 6: Learning from Experience](./macro.md#pattern-6-learning-from-experience)** - Experience learning pattern that learns from past execution results and generates improvement suggestions
+- **[Pattern 7: Environment Sensing, Knowledge-base & Environment Model](./macro.md#pattern-7-environment-sensing-knowledge-base-and-environment-model)** - Acquires external environment information, builds knowledge systems, and executes adaptive processing according to situations
+- **[Pattern 8: Human-in-the-Loop](./macro.md#pattern-8-human-in-the-loop-hitl)** - Collaborative execution pattern that incorporates human judgment at appropriate timings
+- **[Pattern 9: Error Handling](./macro.md#pattern-9-error-handling)** - Robustness improvement pattern that predicts errors and executes appropriate recovery processing
+- **[Pattern 10: Debug & Tracing](./macro.md#pattern-10-debug--tracing)** - Development support pattern that visualizes execution status and assists in problem identification and resolution
 
 ### 🔧 Pattern Utilization and Integration
 
