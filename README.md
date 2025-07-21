@@ -51,9 +51,9 @@ The core of natural language macro programming consists of 10 design patterns, s
 
 - **[A.1: Event-Driven Execution](./Appendix.md#a1-event-driven-execution)** - Asynchronous processing and real-time response systems
 - **[A.2: Four-Layer Defense Strategy](./Appendix.md#a2-four-layer-defense-strategy)** - Four-layer defense strategies for reliable operations
-- **[A.3: Python Tool Integration](./Appendix.md#a3-python-tool-integration)** - Python ecosystem utilization via variables.json integration
+- **[A.3: Python Tool Integration](./Appendix.md#a3-python-tool-integration)** - Python ecosystem utilization via SQLite variable management integration
 - **[A.4: Multi-Agent System Design](./Appendix.md#a4-multi-agent-system-design)** - Collaborative agent systems with shared blackboard model (includes haiku generation multi-agent implementation example)
-- **[A.5: Audit Log System](./Appendix.md#a5-audit-log-system)** - Transparency and accountability tracking via variables.json extension
+- **[A.5: Audit Log System](./Appendix.md#a5-audit-log-system)** - Transparency and accountability tracking via SQLite variable management extension
 - **[A.6: LLM-based Pre-execution Inspection](./Appendix.md#a6-llm-based-pre-execution-inspection)** - LLM-powered pre-execution static analysis for security and quality assurance
 - **[A.7: Metaprogramming](./Appendix.md#a7-metaprogramming)** - Self-adaptive systems through dynamic macro generation, verification, evaluation, and improvement
 - **[A.8: Ensemble Execution and Consensus Formation](./Appendix.md#a8-ensemble-execution-and-consensus-formation)** - Statistical countermeasures for probabilistic behavior
@@ -63,7 +63,7 @@ The core of natural language macro programming consists of 10 design patterns, s
 - **[A.12: Vector Database and RAG Utilization](./Appendix.md#a12-vector-database-and-rag-utilization)** - Dynamic knowledge systems through knowledge bases and experience learning
 - **[A.13: Goal-Oriented Architecture and Autonomous Planning](./Appendix.md#a13-goal-oriented-architecture-and-autonomous-planning)** - Complete autonomous systems via 4-stage flow and PDCA cycle
 - **[A.14: Python Orchestration-Based Hybrid Approach](./Appendix.md#a14-python-orchestration-based-hybrid-approach)** - High-speed, cost-efficient systems via Python + natural language macros
-- **[A.15: SQLite-Based Variable Management](./Appendix.md#a15-sqlite-based-variable-management)** - Gradual migration from variables.json to SQLite, enhanced robustness
+- **[A.15: SQLite-Based Variable Management](./Appendix.md#a15-sqlite-based-variable-management)** - Robust variable management system with SQLite database, enhanced performance
 
 ## 📚 Main Contents
 
