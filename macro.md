@@ -299,7 +299,7 @@ Depending on {{data_type}}, execute the following:
 
 ## 📚 Basic Syntax Sample Collection
 
-> **📝 About Variable Management**: The examples in this guide are written assuming basic variable management implementation using variables.json files. For more robust and high-performance variable management, please refer to [A.16: SQLite-Based Variable Management](./Appendix.md#a16-sqlite-based-variable-management).
+> **📝 About Variable Management**: The examples in this guide are written assuming basic variable management implementation using variables.json files. For more robust and high-performance variable management, please refer to [A.15: SQLite-Based Variable Management](./Appendix.md#a15-sqlite-based-variable-management).
 
 ### 1. Sequential Execution: Python Learning Guide Creation
 
@@ -1815,7 +1815,7 @@ Finally:
 **Gradual Quality Adjustment** provides valuable results even when not perfect. **Adaptation to Constraints** optimizes under resource or data limitations. **User Expectation Management** clearly explains limitations. **Continuous Service** maintains system value through partial functionality provision.
 
 **Concurrent Access Control**:
-**Robust Variable Management** provides reliable data management through SQLite-based variable systems (detailed implementation in [A.16](./Appendix.md#a16-sqlite-based-variable-management)). **Data Consistency** maintains integrity during simultaneous access by multiple processes. **Safe Database Operations** ensure reliable concurrent updates with automatic transaction management.
+**Robust Variable Management** provides reliable data management through SQLite-based variable systems (detailed implementation in [A.15](./Appendix.md#a15-sqlite-based-variable-management)). **Data Consistency** maintains integrity during simultaneous access by multiple processes. **Safe Database Operations** ensure reliable concurrent updates with automatic transaction management.
 
 ### 📁 Practical Samples
 
