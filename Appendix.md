@@ -1571,6 +1571,77 @@ Compare {{result_1}}, {{result_2}}, {{result_3}}:
 
 Ensemble execution and consensus formation represent an approach that actively utilizes the characteristics of probabilistic systems as a **foundation for statistical robustness**, rather than avoiding them as "constraints". This methodology ensures practical reliability for important tasks and enables broader applications in natural language macro programming with LLM probabilistic behavioral characteristics.
 
+### Implementation Example: Ensemble Summarization System (with Lie Detection)
+
+A complete implementation example that demonstrates the theory of this section through actual code. This system extracts correct information using ensemble methods in environments where agents probabilistically "lie."
+
+#### System Overview
+
+**Problem Setting**:
+- Three summarization agents operate in parallel
+- Each agent injects "lies" (information not in the original text) with a configured probability
+- The orchestrator does not know in advance which agents will lie
+- Goal: Identify accurate summaries or prevent output through lie detection
+
+#### File Structure
+
+```
+ensemble/
+├── ensemble_summarizer.md    # Main orchestrator
+├── summarizer_agent.md       # Common agent template
+├── sample_article.md         # Test sample article
+├── agents/                   # Runtime generation folder
+│   ├── summarizer_agent_1.md # Agent 1 (ID replaced)
+│   ├── summarizer_agent_2.md # Agent 2 (ID replaced)
+│   └── summarizer_agent_3.md # Agent 3 (ID replaced)
+├── CLAUDE.md                 # SQLite-based natural language macro syntax definition
+├── variable_db.py           # SQLite variable management system
+├── variables.db             # SQLite variable database
+└── watch_variables.py       # Variable monitoring tool
+```
+
+#### Implementation Details
+
+**ensemble_summarizer.md**: Main orchestrator controlling the entire system. Handles variable initialization, lie probability configuration, parallel execution of three agents, ensemble judgment, and final result determination.
+
+**Ensemble Judgment Algorithm**:
+```
+IF (summary1 == summary2): Adopt summary1
+ELIF (summary2 == summary3): Adopt summary2
+ELIF (summary1 == summary3): Adopt summary1
+ELSE: "No matching summaries. Output blocked by lie detection"
+```
+
+**summarizer_agent.md**: Common template for each agent. Probabilistic lie determination, honest mode or lie injection mode execution, ID replacement system (`<<ID>>` → actual numbers) for dynamic agent generation.
+
+**Lie Injection Patterns**:
+- Pattern A: Adding non-existent names ("According to expert Mr. Sato", etc.)
+- Pattern B: 10-30% modification of numbers (120 million yen → 150 million yen, etc.)
+- Pattern C: Adding fictional quotes/statements ("Very promising future", etc.)
+- Pattern D: Adding non-existent facts ("Government subsidies under consideration", etc.)
+
+#### Technical Features
+
+**1. Probabilistic Behavior Control**: Lie probability determination using true randomness from Python random
+
+**2. Template-based Dynamic Generation**: Generation of three agents from one template using `<<ID>>` replacement system
+
+**3. Task Tool Parallel Execution**: Complete parallel execution of three agent processes
+
+**4. SQLite Variable Management**: SQLite-based state management and real-time monitoring maintaining consistency with A.16
+
+**5. Mathematical Foundation**: Expected value calculation of ensemble effects
+- Success probability = (1-p)²(1+2p)
+- Example: 30% lie probability → ~78% success probability
+
+#### Security Significance
+
+- **Malicious Agent Countermeasures**: Information extraction in environments with untrusted agents
+- **Fault-tolerant Design**: Robustness through elimination of single points of failure
+- **Transparency and Verifiability**: Complete recording and verification of all judgment processes through SQLite variables
+
+This implementation demonstrates how theoretical ensemble execution concepts are realized as concrete, operational systems, proving the effectiveness of reliability improvement in probabilistic systems.
+
 ## A.10: Type Safety and Schema Management
 
 ### Schema and Type Safety Fundamentals
