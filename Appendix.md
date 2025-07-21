@@ -7,79 +7,35 @@ A systematic compilation of advanced technical elements for the practical implem
 All technical elements in this appendix are unified around an **SQLite-based variable management system** implementation approach. This represents an evolution from the traditional variables.json method to a robust and scalable database-based management system.
 
 ### Implementation Consistency
-- **Core System**: SQLite database variable management (see [A.16](#a16-sqlite-based-variable-management))
-- **Extensions**: Type safety (A.10), audit logs (A.6), vector search (A.13), etc. are integrated with SQLite
+- **Core System**: SQLite database variable management (see [A.14](#a14-sqlite-based-variable-management))
+- **Extensions**: Type safety (A.8), audit logs (A.4), vector search (A.11), etc. are integrated with SQLite
 - **Concurrency Control**: Safe concurrent access through WAL mode
 - **Monitoring Tools**: Real-time status monitoring with watch_variables.py
 
-### Importance of A.16
-Implementation details, migration methods, and technical specifications are comprehensively covered in **[A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management)**. We recommend understanding the basic architecture in A.16 first before reading other sections.
+### Importance of A.15
+Implementation details, migration methods, and technical specifications are comprehensively covered in **[A.15: SQLite-Based Variable Management](#a15-sqlite-based-variable-management)**. We recommend understanding the basic architecture in A.15 first before reading other sections.
 
 ## Table of Contents
 
-- [A.1: System Control and Resource Management](#a1-system-control-and-resource-management)
-- [A.2: Event-Driven Execution](#a2-event-driven-execution)
-- [A.3: Four-Layer Defense Strategy](#a3-four-layer-defense-strategy)
-- [A.4: Python Tool Integration](#a4-python-tool-integration)
-- [A.5: Multi-Agent System Design](#a5-multi-agent-system-design)
-- [A.6: Audit Log System](#a6-audit-log-system)
-- [A.7: LLM-based Pre-execution Inspection](#a7-llm-based-pre-execution-inspection)
-- [A.8: Metaprogramming](#a8-metaprogramming)
-- [A.9: Ensemble Execution and Consensus Formation](#a9-ensemble-execution-and-consensus-formation)
-- [A.10: Type Safety and Schema Management](#a10-type-safety-and-schema-management)
-- [A.11: LLM-based Post-execution Evaluation](#a11-llm-based-post-execution-evaluation)
-- [A.12: Variable Management Persistence and Scaling: Database Utilization](#a12-variable-management-persistence-and-scaling-database-utilization)
-- [A.13: Vector Database and RAG Utilization](#a13-vector-database-and-rag-utilization)
-- [A.14: Goal-Oriented Architecture and Autonomous Planning](#a14-goal-oriented-architecture-and-autonomous-planning)
-- [A.15: Python Orchestration-Based Hybrid Approach](#a15-python-orchestration-based-hybrid-approach)
-- [A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management)
+- [A.1: Event-Driven Execution](#a1-event-driven-execution)
+- [A.2: Four-Layer Defense Strategy](#a2-four-layer-defense-strategy)
+- [A.3: Python Tool Integration](#a3-python-tool-integration)
+- [A.4: Multi-Agent System Design](#a4-multi-agent-system-design)
+- [A.5: Audit Log System](#a5-audit-log-system)
+- [A.6: LLM-based Pre-execution Inspection](#a6-llm-based-pre-execution-inspection)
+- [A.7: Metaprogramming](#a7-metaprogramming)
+- [A.8: Ensemble Execution and Consensus Formation](#a8-ensemble-execution-and-consensus-formation)
+- [A.9: Type Safety and Schema Management](#a9-type-safety-and-schema-management)
+- [A.10: LLM-based Post-execution Evaluation](#a10-llm-based-post-execution-evaluation)
+- [A.11: Variable Management Persistence and Scaling: Database Utilization](#a11-variable-management-persistence-and-scaling-database-utilization)
+- [A.12: Vector Database and RAG Utilization](#a12-vector-database-and-rag-utilization)
+- [A.13: Goal-Oriented Architecture and Autonomous Planning](#a13-goal-oriented-architecture-and-autonomous-planning)
+- [A.14: Python Orchestration-Based Hybrid Approach](#a14-python-orchestration-based-hybrid-approach)
+- [A.15: SQLite-Based Variable Management](#a15-sqlite-based-variable-management)
 
 ---
 
-## A.1: System Control and Resource Management
-
-When agents perform tasks, they need to be mindful of resource constraints (budget, API call limits, time allowances, computational costs, etc.). Real-world agents do not possess infinite resources, and cost-conscious decision-making under resource constraints is essential for practical systems.
-
-### What are Slash Commands?
-
-**Slash commands** are special commands in Claude Code that begin with "/". They can be executed directly during natural language conversations and enable checking and controlling Claude Code's system state. Unlike traditional command-line operations, they can be executed seamlessly within the flow of dialogue.
-
-#### Main Built-in Commands
-
-Claude Code provides the following built-in slash commands:
-
-- `/help` - Display list and descriptions of available commands
-- `/clear` - Reset conversation history and context (memory optimization)
-- `/model` - Switch between Claude models (Opus/Sonnet, etc.)
-- `/ide` - Check IDE integration status (open files, linter errors, etc.)
-- `/permissions` - Manage tool allowlists
-
-
-### Key Points
-
-**1. Actual System Information Retrieval**
-- Real-time development environment status checking via `/ide`
-- Dynamic discovery of available functions via `/help`
-- Decision-making based on actual system state
-
-**2. Dynamic Environment Control**
-- Timely memory management via `/clear`
-- Optimization according to processing characteristics via `/model`
-- Dynamic adjustment based on performance requirements
-
-**3. Integration with Conditional Branching**
-- Processing branches based on system state
-- Determining next actions based on execution results
-- Practical workflow automation
-
-**4. Economic Rationality-based Resource Management**
-- Cost prediction before task execution and outcome maximization within budget constraints
-- Dynamic model selection based on task importance (`/model` strategic switching)
-- Continuous budget monitoring and automatic throttling when exceeding risk occurs
-
-The use of slash commands enables economically rational agent design that considers resource constraints.
-
-## A.2: Event-Driven Execution
+## A.1: Event-Driven Execution
 
 Real-world processes occur asynchronously. Event-driven execution monitors external events and automatically executes macros when changes are detected. The most practical approach is a hybrid design that delegates monitoring to existing technologies while the LLM focuses on post-trigger processing.
 
@@ -140,7 +96,7 @@ while True:
 
 This implementation enables automatic processing execution triggered by external system variable updates, making it possible to build highly responsive agent systems for real-time systems and business automation.
 
-## A.3: Four-Layer Defense Strategy
+## A.2: Four-Layer Defense Strategy
 
 ### Background and Challenge Recognition
 
@@ -276,12 +232,12 @@ Approval rationale: {{approval_reason}}
 - Fundamental neutralization of privilege escalation attacks
 - Implementation of zero-trust principles
 
-**Coordination with A.7 LLM-based Verification**:
+**Coordination with A.6 LLM-based Verification**:
 - Risk assessment through pre-verification
 - Automatic sandbox level selection based on assessment results
 - Execution of verified code also in isolated environment
 
-**Combination with A.14 Autonomous Planning**:
+**Combination with A.13 Autonomous Planning**:
 - Safe long-term execution of autonomous agents
 - Security risk assessment at planning stage
 - Experimental code execution within sandbox
@@ -445,17 +401,17 @@ The evaluation framework employs a multi-dimensional assessment matrix:
 
 *Research Development Directions*: Current research focuses on developing standardized evaluation frameworks, creating benchmarks for different types of natural language tasks, and investigating methods to minimize evaluator bias while maintaining assessment quality.
 
-*Future Prospects*: The approach shows promise for development into an integrated testing framework (A.9 candidate) that would enable construction of multi-layer quality assurance systems with executors, evaluators, and meta-evaluators. This evolution could establish natural language macro programming as a reliable foundation for critical business applications, expanding its applicability beyond experimental contexts to production environments requiring high reliability and accountability.
+*Future Prospects*: The approach shows promise for development into an integrated testing framework (A.8 candidate) that would enable construction of multi-layer quality assurance systems with executors, evaluators, and meta-evaluators. This evolution could establish natural language macro programming as a reliable foundation for critical business applications, expanding its applicability beyond experimental contexts to production environments requiring high reliability and accountability.
 
-For planning-stage risk analysis and preventive quality management through continuous monitoring, see [A.14: Goal-Oriented Architecture and Autonomous Planning](#a14-goal-oriented-architecture-and-autonomous-planning) for detailed coverage.
+For planning-stage risk analysis and preventive quality management through continuous monitoring, see [A.12: Goal-Oriented Architecture and Autonomous Planning](#a12-goal-oriented-architecture-and-autonomous-planning) for detailed coverage.
 
-## A.4: Python Tool Integration
+## A.3: Python Tool Integration
 
 ### Background and Concept
 
 Python Tool Integration enables natural language macro programming to achieve universal access to the entire Python ecosystem, making possible a wide range of applications from specialized computational processing to business automation.
 
-In natural language macro programming, information exchange between macros and Python programs through SQLite database (see A.16) enables utilization of Python's rich library ecosystem. This integration approach makes it possible to infinitely extend the functionality of macro systems.
+In natural language macro programming, information exchange between macros and Python programs through SQLite database (see A.14) enables utilization of Python's rich library ecosystem. This integration approach makes it possible to infinitely extend the functionality of macro systems.
 
 ### Basic Integration Pattern
 
@@ -665,7 +621,7 @@ Retrieve {{output_file}}
 - Flexible application through configuration changes
 
 **3. Real-time Monitoring**:
-For variable state monitoring, see [A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management).
+For variable state monitoring, see [A.14: SQLite-Based Variable Management](#a14-sqlite-based-variable-management).
 
 **4. Execution Demonstration**:
 ```bash
@@ -712,13 +668,13 @@ and test code implementation."
 ```
 
 
-## A.5: Multi-Agent System Design
+## A.4: Multi-Agent System Design
 
 ### Basic Architecture
 
-In natural language macro programming, a multi-agent system where multiple agents cooperate can be constructed by utilizing SQLite database (see A.16) as a shared blackboard (Blackboard Model).
+In natural language macro programming, a multi-agent system where multiple agents cooperate can be constructed by utilizing SQLite database (see A.14) as a shared blackboard (Blackboard Model).
 
-**Important**: In multi-agent environments where concurrent access occurs frequently, SQLite-based variable management (A.16) is recommended. SQLite provides concurrent access control, transaction management, and data integrity, enabling robust multi-agent cooperation.
+**Important**: In multi-agent environments where concurrent access occurs frequently, SQLite-based variable management (A.14) is recommended. SQLite provides concurrent access control, transaction management, and data integrity, enabling robust multi-agent cooperation.
 
 All inter-agent communication occurs via the shared state, resulting in a loosely coupled design where agents have no direct dependencies on each other. This design facilitates dynamic addition, removal, and modification of agents while ensuring system-wide transparency.
 
@@ -788,7 +744,7 @@ SQLite's WAL mode, retry mechanisms, and transaction management safely handle si
 
 #### Variable Monitoring Tool Utilization
 
-Multi-agent environment real-time variable monitoring is available through `watch_variables.py`. For detailed usage and features, see [A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management).
+Multi-agent environment real-time variable monitoring is available through `watch_variables.py`. For detailed usage and features, see [A.14: SQLite-Based Variable Management](#a14-sqlite-based-variable-management).
 
 ```bash
 # Basic real-time monitoring example
@@ -885,7 +841,7 @@ Provide guidelines for applying multi-haiku design principles to other domains.
 
 **Parallel Processing Pattern**: Multiple agents execute independent tasks simultaneously, saving results to different keys in the shared SQLite variable management system. Agent progress status is shared, and overall processing flow is cooperatively controlled.
 
-**Collaborative Problem-Solving Pattern**: Complex problems are divided among multiple agents, with intermediate results shared for step-by-step resolution. Information integration and decision-making are executed jointly between agents. For code collaboration examples, see [A.8: Metaprogramming](#a8-metaprogramming).
+**Collaborative Problem-Solving Pattern**: Complex problems are divided among multiple agents, with intermediate results shared for step-by-step resolution. Information integration and decision-making are executed jointly between agents. For code collaboration examples, see [A.6: Metaprogramming](#a6-metaprogramming).
 
 **Autonomous Learning Pattern**: A monitoring agent for system performance, an optimization proposal agent, and an improvement implementation agent cooperate to achieve continuous system improvement.
 
@@ -1091,9 +1047,9 @@ All agent states (themes, progress, results) are centrally managed in SQLite dat
 
 This implementation example demonstrates the practicality and technical depth of multi-agent systems through natural language macro programming, providing industrial-level reliability through robust database-based variable management.
 
-## A.6: Audit Log System
+## A.5: Audit Log System
 
-**Relationship to 4-Layer Defense Strategy**: This system specifically implements Layer 3 "Auditing and Continuous Improvement" from [A.3](#a3-risk-mitigation-strategies-for-important-tasks). It records all system actions and utilizes them for future risk reduction and quality improvement.
+**Relationship to 4-Layer Defense Strategy**: This system specifically implements Layer 3 "Auditing and Continuous Improvement" from [A.1](#a1-risk-mitigation-strategies-for-important-tasks). It records all system actions and utilizes them for future risk reduction and quality improvement.
 
 ### Basic Architecture
 
@@ -1242,14 +1198,14 @@ python audit_viewer.py --format json --recent 5
 **Continuous Improvement**: Discovery and learning from success and failure patterns through analysis of accumulated audit trails
 **Compliance**: Comprehensive support for research ethics reviews, business audits, and regulatory requirements
 **Debugging Support**: Dramatically improved efficiency in root cause analysis during problem occurrence through variable history tracking and decision trails
-**Multi-Agent Support**: In [A.5 Multi-Agent System](#a5-multi-agent-system-design) environments, identifies concurrent variable operations by multiple agents through `source` and `session_id`, enabling complete chronological tracking of inter-agent interactions and state changes. Streamlines debugging of race conditions and unexpected behaviors
+**Multi-Agent Support**: In [A.3 Multi-Agent System](#a3-multi-agent-system-design) environments, identifies concurrent variable operations by multiple agents through `source` and `session_id`, enabling complete chronological tracking of inter-agent interactions and state changes. Streamlines debugging of race conditions and unexpected behaviors
 
 
-## A.7: LLM-based Pre-execution Inspection
+## A.6: LLM-based Pre-execution Inspection
 
 **Overview**: An LLM-based verification system for natural language macro programming that performs static analysis before macro execution. A multi-layered inspection tool that comprehensively verifies security risks, feasibility, syntax consistency, and quality issues to prevent problems before execution.
 
-**Relationship to 4-Layer Defense Strategy**: This system automates Layer 1 "Proactive Design" and Layer 4 "Quality Assurance Testing" from [A.3](#a3-risk-mitigation-strategies-for-important-tasks). Through pre-execution static verification, it proactively detects and avoids risks that are difficult to discover through post-execution testing.
+**Relationship to 4-Layer Defense Strategy**: This system automates Layer 1 "Proactive Design" and Layer 4 "Quality Assurance Testing" from [A.1](#a1-risk-mitigation-strategies-for-important-tasks). Through pre-execution static verification, it proactively detects and avoids risks that are difficult to discover through post-execution testing.
 
 ---
 
@@ -1260,7 +1216,7 @@ The safety and feasibility of natural language macros are systematically analyze
 #### 1. Security Analysis
 **Verification Content**: Detection of dangerous system commands, external network access, and confidential information exposure risks
 **Detection Examples**: "sudo rm -rf", "unauthorized transmission of confidential files", "plaintext storage of authentication credentials"
-**Judgment Criteria**: Risk assessment based on security principles from [A.3](#a3-risk-mitigation-strategies-for-important-tasks)
+**Judgment Criteria**: Risk assessment based on security principles from [A.1](#a1-risk-mitigation-strategies-for-important-tasks)
 
 #### 2. Physical Feasibility
 **Verification Content**: Determining whether AI agents can execute tasks in the physical world
@@ -1279,7 +1235,7 @@ The safety and feasibility of natural language macros are systematically analyze
 
 ### llm_lint System Implementation
 
-The practical verification system deployed in the `llm_lint/` folder consists of a feasibility verification workflow centered on **natural_language_validator.md** and a SQLite-based variable management system (see [A.16](#a16-sqlite-based-variable-management)).
+The practical verification system deployed in the `llm_lint/` folder consists of a feasibility verification workflow centered on **natural_language_validator.md** and a SQLite-based variable management system (see [A.14](#a14-sqlite-based-variable-management)).
 
 #### System Architecture
 
@@ -1297,7 +1253,7 @@ llm_lint/
 
 **natural_language_validator.md** - Complete 4-axis verification system implementation with 5 test cases (physical impossibility, logical contradictions, ambiguity, etc.), automated FEASIBLE/INFEASIBLE judgment, and staged verification process (initialization → analysis → judgment → report)
 
-**variable_db.py, watch_variables.py** - See [A.16](#a16-sqlite-based-variable-management) for detailed SQLite-based variable management & monitoring system
+**variable_db.py, watch_variables.py** - See [A.14](#a14-sqlite-based-variable-management) for detailed SQLite-based variable management & monitoring system
 
 ### Practical Verification Workflow
 
@@ -1332,7 +1288,7 @@ Save "Please make it nice. Thank you in advance. Please handle it appropriately.
 4. **Judgment**: Final FEASIBLE/INFEASIBLE determination with clear reasoning
 5. **Report**: Detailed verification result report generation and recommended response presentation
 
-## A.8: Metaprogramming
+## A.7: Metaprogramming
 
 ### Background and Concept
 
@@ -1356,12 +1312,12 @@ Generate macro for {{target_data}} based on data_analysis_template.md
 If {{task_type}} is "reporting":
 Generate macro for {{output_format}} based on report_generation_template.md
 
-Save generated macro to {{generated_macro}} and execute after verification with A.7 LLM-based Pre-execution Inspection
+Save generated macro to {{generated_macro}} and execute after verification with A.6 LLM-based Pre-execution Inspection
 ```
 
 #### 2. LLM-based Verification Integration
 
-**Integration with A.7 LLM-based Pre-execution Inspection** automates quality assurance of generated macros. Meta-verification (macros verifying macros) ensures advanced reliability.
+**Integration with A.6 LLM-based Pre-execution Inspection** automates quality assurance of generated macros. Meta-verification (macros verifying macros) ensures advanced reliability.
 
 ```markdown
 ## Meta-Verification Process
@@ -1482,7 +1438,7 @@ System completion notification
 #### Advanced Features
 
 **Real-time Variable Monitoring**:
-For real-time variable monitoring, see [A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management).
+For real-time variable monitoring, see [A.14: SQLite-Based Variable Management](#a14-sqlite-based-variable-management).
 
 **Error Handling and Recovery**:
 - Exponential backoff for database lock scenarios
@@ -1492,11 +1448,11 @@ For real-time variable monitoring, see [A.16: SQLite-Based Variable Management](
 
 #### Integration with Other Appendix Sections
 
-**Connection to A.5 (Multi-Agent Systems)**: The code collaboration system demonstrates advanced multi-agent coordination with shared SQLite state management, enabling more sophisticated agent interactions than simple JSON file sharing.
+**Connection to A.4 (Multi-Agent Systems)**: The code collaboration system demonstrates advanced multi-agent coordination with shared SQLite state management, enabling more sophisticated agent interactions than simple JSON file sharing.
 
-**Connection to A.7 (LLM-based Lint)**: Generated code automatically undergoes quality verification through the review agent, implementing practical LLM-based validation as described in A.7.
+**Connection to A.6 (LLM-based Lint)**: Generated code automatically undergoes quality verification through the review agent, implementing practical LLM-based validation as described in A.6.
 
-**Connection to A.16 (Performance Optimization)**: SQLite-based variable management provides significant performance improvements over JSON file I/O, especially in concurrent execution scenarios.
+**Connection to A.14 (Performance Optimization)**: SQLite-based variable management provides significant performance improvements over JSON file I/O, especially in concurrent execution scenarios.
 
 #### Measured Improvements
 
@@ -1518,7 +1474,7 @@ For real-time variable monitoring, see [A.16: SQLite-Based Variable Management](
 
 **4. Demonstrable Learning**: Actual execution results provide concrete examples of metaprogramming benefits rather than theoretical descriptions.
 
-## A.9: Ensemble Execution and Consensus Formation
+## A.8: Ensemble Execution and Consensus Formation
 
 ### Background and Basic Concepts
 
@@ -1630,7 +1586,7 @@ ELSE: "No matching summaries. Output blocked by lie detection"
 
 **3. Task Tool Parallel Execution**: Complete parallel execution of three agent processes
 
-**4. SQLite Variable Management**: SQLite-based state management and real-time monitoring maintaining consistency with A.16
+**4. SQLite Variable Management**: SQLite-based state management and real-time monitoring maintaining consistency with A.14
 
 **5. Mathematical Foundation**: Expected value calculation of ensemble effects
 - Success probability = (1-p)²(1+2p)
@@ -1644,7 +1600,7 @@ ELSE: "No matching summaries. Output blocked by lie detection"
 
 This implementation demonstrates how theoretical ensemble execution concepts are realized as concrete, operational systems, proving the effectiveness of reliability improvement in probabilistic systems.
 
-## A.10: Type Safety and Schema Management
+## A.9: Type Safety and Schema Management
 
 ### Schema and Type Safety Fundamentals
 
@@ -1861,7 +1817,7 @@ uv run python -c "from variable_db import save_variable; save_variable('task_pro
 # Agent 2: Read validated progress data
 uv run python -c "from variable_db import get_variable_typed; progress, type_name = get_variable_typed('task_progress'); print(f'Current progress: {progress}% (validated as {type_name})')"
 
-# System: Monitor all agent variables with types (see A.16 for details)
+# System: Monitor all agent variables with types (see A.14 for details)
 python watch_variables.py --continuous
 ```
 
@@ -1907,11 +1863,11 @@ Execute type check for all variables
 The implementation demonstrates practical type safety that maintains the ease of use of natural language macros while providing robust data validation for mission-critical applications.
 
 
-## A.11: LLM-based Post-execution Evaluation
+## A.10: LLM-based Post-execution Evaluation
 
-**Relationship to 4-Layer Defense Strategy**: This system addresses evaluation challenges specific to probabilistic systems in Layer 4 "Quality Assurance Testing" of [A.3](#a3-risk-mitigation-strategies-for-important-tasks). It objectively realizes evaluation of creativity, logic, and appropriateness that are difficult to achieve with conventional software testing.
+**Relationship to 4-Layer Defense Strategy**: This system addresses evaluation challenges specific to probabilistic systems in Layer 4 "Quality Assurance Testing" of [A.1](#a1-risk-mitigation-strategies-for-important-tasks). It objectively realizes evaluation of creativity, logic, and appropriateness that are difficult to achieve with conventional software testing.
 
-**Distinction from Pre-execution Evaluation**: While [A.7 LLM-based Verification System](#a7-llm-based-verification-system-llm-based-lint) handles pre-execution evaluation through static analysis, this section focuses on post-execution evaluation that includes actual output results.
+**Distinction from Pre-execution Evaluation**: While [A.5 LLM-based Verification System](#a5-llm-based-verification-system-llm-based-lint) handles pre-execution evaluation through static analysis, this section focuses on post-execution evaluation that includes actual output results.
 
 ### Basic Concepts
 
@@ -2019,9 +1975,9 @@ If there are significant differences between evaluators, analyze the reasons and
 
 ### Future Prospects
 
-#### Integration with A.9 Ensemble Systems
+#### Integration with A.8 Ensemble Systems
 
-The combination of single evaluator (A.12) and consensus formation by multiple evaluators (A.9) is expected to enable construction of evaluation systems with higher reliability.
+The combination of single evaluator (A.11) and consensus formation by multiple evaluators (A.8) is expected to enable construction of evaluation systems with higher reliability.
 
 #### Development of Specialized Evaluators
 
@@ -2037,7 +1993,7 @@ LLM-based Evaluation Testing represents one approach to quality assurance in pro
 
 ---
 
-## A.12: Variable Management Persistence and Scaling: Database Utilization
+## A.11: Variable Management Persistence and Scaling: Database Utilization
 
 ### Background and Purpose
 
@@ -2077,7 +2033,7 @@ Optimal as the first step for introducing database robustness like transactions 
 - Transaction support
 - Lightweight and fast
 
-**Implementation Details**: For specific SQLite-based implementation examples, please refer to [A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management).
+**Implementation Details**: For specific SQLite-based implementation examples, please refer to [A.14: SQLite-Based Variable Management](#a14-sqlite-based-variable-management).
 
 #### MongoDB (Document-oriented DB)
 
@@ -2137,25 +2093,25 @@ Implement version management-based optimistic locking to safely handle concurren
 #### Automatic Audit Logging
 Utilize database trigger functionality to automatically record complete variable change history. This achieves highly transparent audit systems without polluting agent code.
 
-**Specific Implementation Examples**: For detailed SQLite-based implementations, please refer to [A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management).
+**Specific Implementation Examples**: For detailed SQLite-based implementations, please refer to [A.14: SQLite-Based Variable Management](#a14-sqlite-based-variable-management).
 
 ### Integration with Existing Technologies
 
-#### Integration with A.5 Multi-Agent Systems
+#### Integration with A.4 Multi-Agent Systems
 
-Database implementation enables collaborative operations among multiple agents mentioned in [A.5 Multi-Agent Systems](#a5-multi-agent-system-design) on more robust and reliable foundations.
+Database implementation enables collaborative operations among multiple agents mentioned in [A.3 Multi-Agent Systems](#a3-multi-agent-system-design) on more robust and reliable foundations.
 
-#### Natural Integration with A.6 Audit Log System
+#### Natural Integration with A.5 Audit Log System
 
-Database change log functionality integrates completely with [A.6 Audit Log System](#a6-audit-log-system). In particular, automatic variable change logging mentioned in A.6 is naturally implemented in database environments.
+Database change log functionality integrates completely with [A.4 Audit Log System](#a4-audit-log-system). In particular, automatic variable change logging mentioned in A.4 is naturally implemented in database environments.
 
-#### Extension of A.11 Concurrent Access Control
+#### Extension of A.10 Concurrent Access Control
 
 Database-level concurrency control mechanisms provide more reliable implementation than file-based approaches, supporting safe collaborative operations among multiple agents through SQLite's built-in transaction management.
 
 ### Integration with Event-Driven Execution
 
-Database systems provide powerful event notification capabilities by integrating with [A.2 Event-Driven Execution](#a2-event-driven-execution):
+Database systems provide powerful event notification capabilities by integrating with [A.1 Event-Driven Execution](#a1-event-driven-execution):
 
 #### Automatic Variable Change Event Notifications
 
@@ -2228,7 +2184,7 @@ Database utilization provides natural language macro programming with the follow
 
 This extension significantly expands system possibilities without wasting any existing learning investment, making it a crucial technical component.
 
-## A.13: Vector Database and RAG Utilization
+## A.12: Vector Database and RAG Utilization
 
 This section demonstrates the integration of **ChromaDB-based RAG system** into natural language macro programming, enabling semantic similarity search for knowledge utilization and experience learning. The Chroma/ folder implementation provides dynamic knowledge search and experience utilization capabilities in addition to traditional SQLite variable management.
 
@@ -2470,7 +2426,7 @@ cp variables.db variables_backup_$(date +%Y%m%d).db
 
 Through the ChromaDB integrated RAG system, natural language macro programming evolves into an **autonomous system rich in knowledge and experience**, acquiring advanced problem-solving capabilities through semantic similarity search.
 
-## A.14: Goal-Oriented Architecture and Autonomous Planning
+## A.13: Goal-Oriented Architecture and Autonomous Planning
 
 ### Background and Necessity
 
@@ -2487,7 +2443,7 @@ The 10 patterns and Appendix technologies have primarily focused on "efficient e
 **Technology Utilization**:
 - **Pattern 5**: Hierarchical decomposition of complex goals
 - **TodoWrite Tool**: Structuring executable task lists
-- **A.14 RAG**: Leveraging insights from past similar projects
+- **A.13 RAG**: Leveraging insights from past similar projects
 
 **Output**: Structured executable task list
 
@@ -2496,15 +2452,15 @@ The 10 patterns and Appendix technologies have primarily focused on "efficient e
 **Purpose**: Multi-faceted verification of whether the formulated plan is a "good plan" before execution
 
 **Evaluation Axes**:
-- **Logical Consistency**: Static analysis of plan contradictions and inefficiencies using [A.7: LLM-based Verification System]
+- **Logical Consistency**: Static analysis of plan contradictions and inefficiencies using [A.6: LLM-based Verification System]
 - **Resource/Cost Evaluation**: Estimation of API calls, execution time, and computational resources required
-- **Success Probability**: Prediction based on past similar experiences accumulated through [A.13: Vector DB & RAG]
-- **Risk Analysis**: Proactive identification of potential problems based on [A.3: Risk Mitigation Strategies]
+- **Success Probability**: Prediction based on past similar experiences accumulated through [A.12: Vector DB & RAG]
+- **Risk Analysis**: Proactive identification of potential problems based on [A.2: Risk Mitigation Strategies]
 
 **Technology Utilization**:
 ```markdown
 # Plan Evaluation Macro Example
-"Please execute A.7 LLM-based verification for the following execution plan:
+"Please execute A.6 LLM-based verification for the following execution plan:
 {{plan_content}}
 
 Evaluation Items:
@@ -2525,18 +2481,18 @@ Save evaluation results to {{plan_evaluation}}"
 **Integrated Technology Utilization**:
 - **[Pattern 1: Sequential Pipeline]**: Efficient execution of sequential tasks
 - **[Pattern 2: Parallel Processing]**: Simultaneous execution of parallelizable tasks
-- **[A.4: Python Tool Integration]**: Utilization of external specialized tools
+- **[A.3: Python Tool Integration]**: Utilization of external specialized tools
 - **[Concurrent Access Control]**: SQLite-based safe state updates
-- **[A.12: Database Utilization]**: Large-scale state management
+- **[A.11: Database Utilization]**: Large-scale state management
 
 **Execution Monitoring**:
 ```markdown
 # Execution Monitoring Macro Example
 "Please continue the following monitoring during task execution:
 1. Regular updates to {{task_progress}}
-2. Switch to A.9 ensemble execution when errors occur
+2. Switch to A.8 ensemble execution when errors occur
 3. Plan re-evaluation when execution time exceeds 150% of schedule
-4. Record entire execution process via A.6 audit log system"
+4. Record entire execution process via A.5 audit log system"
 ```
 
 #### 4. Monitoring & Analysis
@@ -2545,9 +2501,9 @@ Save evaluation results to {{plan_evaluation}}"
 
 **Analysis Process**:
 - **[Pattern 7: Environment Sensing]**: Detection and evaluation of environmental changes
-- **[A.6: Audit Log System]**: Systematic reflection on one's own action history
-- **[A.11: LLM-based Evaluation Testing]**: Quality, creativity, and logic evaluation of outcomes
-- **[A.13: Experience Learning]**: Extraction and storage of success/failure patterns
+- **[A.5: Audit Log System]**: Systematic reflection on one's own action history
+- **[A.10: LLM-based Evaluation Testing]**: Quality, creativity, and logic evaluation of outcomes
+- **[A.12: Experience Learning]**: Extraction and storage of success/failure patterns
 
 **Feedback Loop**:
 ```markdown
@@ -2598,10 +2554,10 @@ graph TD
 
 Goal: Launch new product within 6 months and achieve 1 million yen in first-month sales
 
-Save goal to {{project_goal}} and start A.14's 4-stage flow:
+Save goal to {{project_goal}} and start A.12's 4-stage flow:
 1. First search {{memory:product_development_projects}} for similar cases
 2. Decompose into major tasks using Pattern 5
-3. Verify logical consistency of plan using A.7
+3. Verify logical consistency of plan using A.6
 4. Start execution after approval"
 ```
 
@@ -2621,7 +2577,7 @@ Save goal to {{project_goal}} and start A.14's 4-stage flow:
 
 ---
 
-## A.15: Python Orchestration-Based Hybrid Approach
+## A.14: Python Orchestration-Based Hybrid Approach
 
 Systematizes a hybrid approach that combines Python orchestration with natural language macro programming for systems requiring high speed and token efficiency. Provides methodology for building lightweight yet powerful agent systems without relying on external frameworks.
 
@@ -2642,7 +2598,7 @@ Systematizes a hybrid approach that combines Python orchestration with natural l
 - High-dimensional decision making
 
 **Seamless Integration via SQLite**:
-SQLite database (see A.16) functions as an efficient interface between Python orchestrator and natural language macros. Python rapidly sets data, natural language macros read and process it, then write results back to SQLite, creating an integrated system that maximizes the advantages of both components.
+SQLite database (see A.14) functions as an efficient interface between Python orchestrator and natural language macros. Python rapidly sets data, natural language macros read and process it, then write results back to SQLite, creating an integrated system that maximizes the advantages of both components.
 
 #### Efficiency Pursuit
 
@@ -2654,7 +2610,7 @@ SQLite database (see A.16) functions as an efficient interface between Python or
 **Processing Speed Improvement**:
 - Utilization of parallel processing and callback mechanisms
 - High-speed data exchange via lightweight SQLite integration
-- For event processing, see [A.2: Event-Driven Execution](#a2-event-driven-execution)
+- For event processing, see [A.1: Event-Driven Execution](#a1-event-driven-execution)
 
 ### Basic Integration Pattern
 
@@ -2710,7 +2666,7 @@ Save a comprehensive analysis report in {{sales_analysis}}.
 
 A complete implementation example that demonstrates the theories of this section with actual code. Detailed explanation of the practical multi-agent system located in the `hybrid/` folder.
 
-**Relationship with A.5**: This implementation is the **Python orchestration version** of the haiku generation system introduced in [A.5: Multi-Agent System Design](#a5-multi-agent-system-design). While A.5 demonstrates pure natural language macro-based collaboration, this example achieves speedup and token efficiency by migrating control flow to Python. Comparing both approaches helps understand the trade-offs between pure macro-based and hybrid approaches.
+**Relationship with A.3**: This implementation is the **Python orchestration version** of the haiku generation system introduced in [A.3: Multi-Agent System Design](#a3-multi-agent-system-design). While A.3 demonstrates pure natural language macro-based collaboration, this example achieves speedup and token efficiency by migrating control flow to Python. Comparing both approaches helps understand the trade-offs between pure macro-based and hybrid approaches.
 
 #### System Architecture
 
@@ -2732,7 +2688,7 @@ hybrid/
 #!/usr/bin/env python3
 """
 Haiku Generator Python Orchestrator
-Practical example of A.15 Python Orchestration-Based Hybrid Approach
+Practical example of A.14 Python Orchestration-Based Hybrid Approach
 """
 
 import subprocess
@@ -2817,20 +2773,20 @@ Save the created haiku to {{agent_{{AGENT_ID}}_haiku}}.
 - LLM resources used only for macro execution
 - Complete migration of routine processing to Python
 
-### A.5 vs A.15: Approach Comparison Analysis
+### A.4 vs A.14: Approach Comparison Analysis
 
-To help readers make appropriate technical choices, we provide a systematic comparison between pure natural language macros (A.5) and Python orchestration-based approach (A.15).
+To help readers make appropriate technical choices, we provide a systematic comparison between pure natural language macros (A.4) and Python orchestration-based approach (A.14).
 
 #### Technical Selection Criteria
 
-**When A.5 (Pure Natural Language Macros) is suitable**:
+**When A.4 (Pure Natural Language Macros) is suitable**:
 - Prototype development and proof of concept
 - Small-scale systems (3 agents or fewer)
 - Learning and experimental purposes
 - When Python environment setup is difficult
 - Early development stages with frequent specification changes
 
-**When A.15 (Python Orchestration) is suitable**:
+**When A.14 (Python Orchestration) is suitable**:
 - Production systems
 - Large-scale parallel processing (4+ agents)
 - Business systems where speed and efficiency are critical
@@ -2839,16 +2795,16 @@ To help readers make appropriate technical choices, we provide a systematic comp
 
 #### Detailed Comparison Matrix
 
-| Evaluation Axis | A.5 Pure Natural Language Macros | A.15 Python Orchestration | Recommended Use Case |
+| Evaluation Axis | A.4 Pure Natural Language Macros | A.14 Python Orchestration | Recommended Use Case |
 |------------------|-----------------------------------|----------------------------|---------------------|
-| **Implementation Complexity** | 🟢 Simple (macros only) | 🟡 Moderate (Python + macros) | Rapid development: A.5 |
-| **Execution Speed** | 🟡 Sequential execution (baseline) | 🟢 Parallel execution (theoretical speedup) | High-speed processing: A.15 |
-| **Token Cost** | 🟡 LLM usage for all processing | 🟢 Zero cost for control logic | Cost-sensitive: A.15 |
-| **Scalability** | 🔴 Limited agent count | 🟢 Dynamic scaling support | Large-scale: A.15 |
-| **Debugging Ease** | 🔴 Difficult LLM behavior tracking | 🟢 Standard Python tools available | Development efficiency: A.15 |
-| **Learning Curve** | 🟢 Natural language only | 🟡 Python knowledge required | Non-engineers: A.5 |
-| **Flexibility** | 🟢 Natural language expressiveness | 🟡 Python constraints | Creative processing: A.5 |
-| **Operational Stability** | 🔴 Probabilistic LLM behavior | 🟢 Deterministic Python control | Production use: A.15 |
+| **Implementation Complexity** | 🟢 Simple (macros only) | 🟡 Moderate (Python + macros) | Rapid development: A.4 |
+| **Execution Speed** | 🟡 Sequential execution (baseline) | 🟢 Parallel execution (theoretical speedup) | High-speed processing: A.14 |
+| **Token Cost** | 🟡 LLM usage for all processing | 🟢 Zero cost for control logic | Cost-sensitive: A.14 |
+| **Scalability** | 🔴 Limited agent count | 🟢 Dynamic scaling support | Large-scale: A.14 |
+| **Debugging Ease** | 🔴 Difficult LLM behavior tracking | 🟢 Standard Python tools available | Development efficiency: A.14 |
+| **Learning Curve** | 🟢 Natural language only | 🟡 Python knowledge required | Non-engineers: A.4 |
+| **Flexibility** | 🟢 Natural language expressiveness | 🟡 Python constraints | Creative processing: A.4 |
+| **Operational Stability** | 🔴 Probabilistic LLM behavior | 🟢 Deterministic Python control | Production use: A.14 |
 
 #### Practical Selection Guidelines
 
@@ -2856,37 +2812,37 @@ To help readers make appropriate technical choices, we provide a systematic comp
 
 ```markdown
 📋 Development Stage
-- Concept validation → A.5 (rapid iteration)
-- Prototyping → A.5 (requirements flexibility)
-- MVP development → A.15 (performance & stability)
-- Production → A.15 (scalability & monitoring)
+- Concept validation → A.4 (rapid iteration)
+- Prototyping → A.4 (requirements flexibility)
+- MVP development → A.14 (performance & stability)
+- Production → A.14 (scalability & monitoring)
 
 👥 Team Composition
-- Non-technical focused → A.5 (minimal learning cost)
-- Mixed teams → A.5 (common understanding)
-- Engineer-focused → A.15 (technical optimization)
-- DevOps environment → A.15 (operational tooling)
+- Non-technical focused → A.4 (minimal learning cost)
+- Mixed teams → A.4 (common understanding)
+- Engineer-focused → A.14 (technical optimization)
+- DevOps environment → A.14 (operational tooling)
 
 ⚡ Performance Requirements
-- Responsiveness priority → A.15 (parallel processing)
-- Cost priority → A.15 (token efficiency)
-- Flexibility priority → A.5 (natural language expressiveness)
-- Stability priority → A.15 (deterministic control)
+- Responsiveness priority → A.14 (parallel processing)
+- Cost priority → A.14 (token efficiency)
+- Flexibility priority → A.4 (natural language expressiveness)
+- Stability priority → A.14 (deterministic control)
 ```
 
-**Migration Strategy**: For many practical projects, an effective path is to start with A.5 for proof of concept, then migrate to A.15. The natural language macro design expertise gained from A.5 can be leveraged in A.15 orchestration design, maximizing the benefits of both approaches.
+**Migration Strategy**: For many practical projects, an effective path is to start with A.4 for proof of concept, then migrate to A.14. The natural language macro design expertise gained from A.4 can be leveraged in A.14 orchestration design, maximizing the benefits of both approaches.
 
 ### Relationship with Existing Technologies
 
-**Relationship with A.2 (Event-Driven Execution)**:
-- Event monitoring and trigger functionality refer to A.2
-- A.16 focuses on collaborative processing
+**Relationship with A.1 (Event-Driven Execution)**:
+- Event monitoring and trigger functionality refer to A.1
+- A.14 focuses on collaborative processing
 
-**Relationship with A.4 (Python Tool Integration)**:
-- Extends A.4's integration patterns to resident systems
+**Relationship with A.3 (Python Tool Integration)**:
+- Extends A.3's integration patterns to resident systems
 - Evolution from single tool execution to continuous collaborative processing
 
-**Relationship with A.16 (SQLite Variable Management)**:
+**Relationship with A.14 (SQLite Variable Management)**:
 - Efficient data exchange based on SQLite
 - Safe collaborative operations through concurrent access control
 
@@ -2894,13 +2850,13 @@ To help readers make appropriate technical choices, we provide a systematic comp
 
 To ensure reliability of the orchestration layer, we strongly recommend adherence to quality standards in Python implementation.
 
-For Python code quality standards, see [A.4: Python Quality Guidelines](#python-quality-guidelines). In multi-agent environments, type safety, error handling, testing strategy, and reproducibility are particularly important for collaborative processing.
+For Python code quality standards, see [A.3: Python Quality Guidelines](#python-quality-guidelines). In multi-agent environments, type safety, error handling, testing strategy, and reproducibility are particularly important for collaborative processing.
 
-## A.16: SQLite-Based Variable Management
+## A.15: SQLite-Based Variable Management
 
 ### Overview and Positioning
 
-This section provides specific implementation examples utilizing SQLite databases based on the theoretical background described in [A.12: Variable Management Persistence and Scaling](#a12-variable-management-persistence-and-scaling-database-utilization). As a gradual migration path from file-based variable management, it offers a practical solution that maintains convenience while significantly improving robustness.
+This section provides specific implementation examples utilizing SQLite databases based on the theoretical background described in [A.11: Variable Management Persistence and Scaling](#a11-variable-management-persistence-and-scaling-database-utilization). As a gradual migration path from file-based variable management, it offers a practical solution that maintains convenience while significantly improving robustness.
 
 **Implementation File Location**: The implementation files described in this section (variable_db.py, watch_variables.py, CLAUDE.md, etc.) are located in the SQLite/ folder of this document.
 

@@ -34,21 +34,20 @@
 - [Pattern 10: Debug & Tracing](#pattern-10-debug--tracing)
 
 ### Appendix (Advanced Technologies) - [Appendix.md](./Appendix.md)
-- [A.1: System Control and Resource Management](./Appendix.md#a1-system-control-and-resource-management) - Real-time system control and economically rational resource management
-- [A.2: Event-Driven Execution](./Appendix.md#a2-event-driven-execution) - Asynchronous processing and real-time response systems
-- [A.3: Four-Layer Defense Strategy](./Appendix.md#a3-four-layer-defense-strategy) - Four-layer defense strategies for reliable operations
-- [A.4: Python Tool Integration](./Appendix.md#a4-python-tool-integration) - Python ecosystem utilization via variables.json integration
-- [A.5: Multi-Agent System Design](./Appendix.md#a5-multi-agent-system-design) - Collaborative agent systems with shared blackboard model (includes haiku generation multi-agent implementation example)
-- [A.6: Audit Log System](./Appendix.md#a6-audit-log-system) - Transparency and accountability tracking via variables.json extension
-- [A.7: LLM-based Pre-execution Inspection](./Appendix.md#a7-llm-based-pre-execution-inspection) - LLM-powered pre-execution static analysis for security and quality assurance
-- [A.8: Metaprogramming](./Appendix.md#a8-metaprogramming) - Self-adaptive systems through dynamic macro generation, verification, evaluation, and improvement
-- [A.9: Ensemble Execution and Consensus Formation](./Appendix.md#a9-ensemble-execution-and-consensus-formation) - Statistical countermeasures for probabilistic behavior
-- [A.10: Type Safety and Schema Management](./Appendix.md#a10-type-safety-and-schema-management) - Gradual type safety enhancement and schema-based systematic data management
-- [A.11: LLM-based Post-execution Evaluation](./Appendix.md#a11-llm-based-post-execution-evaluation) - Quality, creativity, and logic evaluation for probabilistic systems
-- [A.12: Variable Management Persistence and Scaling](./Appendix.md#a12-variable-management-persistence-and-scaling-database-utilization) - Robust state management via databases
-- [A.13: Vector Database and RAG Utilization](./Appendix.md#a13-vector-database-and-rag-utilization) - Dynamic knowledge systems through knowledge bases and experience learning
-- [A.14: Goal-Oriented Architecture and Autonomous Planning](./Appendix.md#a14-goal-oriented-architecture-and-autonomous-planning) - Complete autonomous systems via 4-stage flow and PDCA cycle
-- [A.15: Python Orchestration-Based Hybrid Approach](./Appendix.md#a15-python-orchestration-based-hybrid-approach) - High-speed, cost-efficient systems via Python + natural language macros
+- [A.1: Event-Driven Execution](./Appendix.md#a1-event-driven-execution) - Asynchronous processing and real-time response systems
+- [A.2: Four-Layer Defense Strategy](./Appendix.md#a2-four-layer-defense-strategy) - Four-layer defense strategies for reliable operations
+- [A.3: Python Tool Integration](./Appendix.md#a3-python-tool-integration) - Python ecosystem utilization via variables.json integration
+- [A.4: Multi-Agent System Design](./Appendix.md#a4-multi-agent-system-design) - Collaborative agent systems with shared blackboard model (includes haiku generation multi-agent implementation example)
+- [A.5: Audit Log System](./Appendix.md#a5-audit-log-system) - Transparency and accountability tracking via variables.json extension
+- [A.6: LLM-based Pre-execution Inspection](./Appendix.md#a6-llm-based-pre-execution-inspection) - LLM-powered pre-execution static analysis for security and quality assurance
+- [A.7: Metaprogramming](./Appendix.md#a7-metaprogramming) - Self-adaptive systems through dynamic macro generation, verification, evaluation, and improvement
+- [A.8: Ensemble Execution and Consensus Formation](./Appendix.md#a8-ensemble-execution-and-consensus-formation) - Statistical countermeasures for probabilistic behavior
+- [A.9: Type Safety and Schema Management](./Appendix.md#a9-type-safety-and-schema-management) - Gradual type safety enhancement and schema-based systematic data management
+- [A.10: LLM-based Post-execution Evaluation](./Appendix.md#a10-llm-based-post-execution-evaluation) - Quality, creativity, and logic evaluation for probabilistic systems
+- [A.11: Variable Management Persistence and Scaling](./Appendix.md#a11-variable-management-persistence-and-scaling-database-utilization) - Robust state management via databases
+- [A.12: Vector Database and RAG Utilization](./Appendix.md#a12-vector-database-and-rag-utilization) - Dynamic knowledge systems through knowledge bases and experience learning
+- [A.13: Goal-Oriented Architecture and Autonomous Planning](./Appendix.md#a13-goal-oriented-architecture-and-autonomous-planning) - Complete autonomous systems via 4-stage flow and PDCA cycle
+- [A.14: Python Orchestration-Based Hybrid Approach](./Appendix.md#a14-python-orchestration-based-hybrid-approach) - High-speed, cost-efficient systems via Python + natural language macros
 
 ### Disclaimer
 - [Disclaimer](#-disclaimer)
