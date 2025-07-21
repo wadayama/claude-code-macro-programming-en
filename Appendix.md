@@ -1217,57 +1217,72 @@ Detailed practical examples of audit log systems:
 
 ## A.7: LLM-based Pre-execution Inspection
 
+**Overview**: An LLM-based verification system for natural language macro programming that performs static analysis before macro execution. A multi-layered inspection tool that comprehensively verifies security risks, feasibility, syntax consistency, and quality issues to prevent problems before execution.
+
 **Relationship to 4-Layer Defense Strategy**: This system automates Layer 1 "Proactive Design" and Layer 4 "Quality Assurance Testing" from [A.3](#a3-risk-mitigation-strategies-for-important-tasks). Through pre-execution static verification, it proactively detects and avoids risks that are difficult to discover through post-execution testing.
 
-### Basic Architecture
-
-In natural language macro programming, an LLM-based verification system can be constructed where LLM performs static analysis of macros before execution. This represents a form of metaprogramming as "code that reads code," managing verification results through SQLite database and ensuring safety through conditional branching.
+---
 
 ### Key Verification Items
 
-**Security Analysis**: Detection of dangerous system commands, external network access, and confidential information exposure risks
-**Syntax Consistency**: Analysis of variable reference consistency, logical contradictions, and infinite loop possibilities
-**Quality Assessment**: Evaluation of error handling completeness and appropriateness of Human-in-the-Loop approval points
+The safety and feasibility of natural language macros are systematically analyzed from the following 4 perspectives:
 
-### Implementation Patterns
+#### 1. Security Analysis
+**Verification Content**: Detection of dangerous system commands, external network access, and confidential information exposure risks
+**Detection Examples**: "sudo rm -rf", "unauthorized transmission of confidential files", "plaintext storage of authentication credentials"
+**Judgment Criteria**: Risk assessment based on security principles from [A.3](#a3-risk-mitigation-strategies-for-important-tasks)
 
-**Pre-execution Verification**: Analyze macro content to detect security risks, syntax issues, and quality concerns
+#### 2. Physical Feasibility
+**Verification Content**: Determining whether AI agents can execute tasks in the physical world
+**Detection Examples**: "fly to the moon and bring back lunar rocks", "physically hand-deliver printed documents"
+**Judgment Criteria**: Realistic evaluation of execution feasibility in digital environments
 
+#### 3. Tool & Resource Requirements
+**Verification Content**: Confirming whether tools and resources required for execution are available in AI environments
+**Detection Examples**: "my home printer", "specific physical devices", "uninstalled software"
+**Judgment Criteria**: Verification against Claude Code's available tool range (file operations, web search, calculations, etc.)
+
+#### 4. Quality & Clarity
+**Verification Content**: Evaluation of error handling completeness, specificity, and appropriateness of Human-in-the-Loop approval points
+**Detection Examples**: "make it nice", "please handle appropriately", "lack of error processing"
+**Judgment Criteria**: Convertibility to executable specific instructions, presence of quality assurance mechanisms
+
+### llm_lint System Implementation
+
+The practical verification system deployed in the `llm_lint/` folder consists of a feasibility verification workflow centered on **natural_language_validator.md** and a SQLite-based variable management system (see [A.16](#a16-sqlite-based-variable-management)).
+
+### Practical Verification Workflow
+
+#### Test Case Examples
+
+**Detection of Physical Impossibility**:
 ```markdown
-"Please verify the safety of the following macro: {{macro_content}}"
-Save verification results to {{lint_result}}
+# Test Case 1
+Save "Please eat an apple. Then, fly to the moon and bring back lunar rocks." to {{target_macro}}
+→ Analysis Result: INFEASIBLE (impossible due to physical constraints)
 ```
 
-**Result Judgment**: Conditional execution based on verification results
-
+**Detection of Logical Contradictions**:
 ```markdown
-If {{lint_result}} severity is "error", halt execution
-If {{lint_result}} severity is "warning", request human approval
+# Test Case 2
+Save "Please completely delete file test.txt. After deletion, display the contents of that file test.txt." to {{target_macro}}
+→ Analysis Result: INFEASIBLE (logical contradiction: cannot reference file after deletion)
 ```
 
-### Advantages
+**Detection of Ambiguity**:
+```markdown
+# Test Case 3
+Save "Please make it nice. Thank you in advance. Please handle it appropriately." to {{target_macro}}
+→ Analysis Result: INFEASIBLE (impossible due to insufficient specificity)
+```
 
-**Proactive Safety**: Problem avoidance through pre-execution risk detection
-**Development Efficiency**: Time savings and quality improvement through early problem detection
-**Learning Support**: Real-time guidance and best practice recommendations for beginners
+#### Verification Process
 
-### Enhancing Verification Reliability
-
-**Applying Context Independence**
-
-While not mandatory, static checks by context-independent LLMs are desirable. Applying the "context independence" concept detailed in A.3 enables more objective and reliable verification:
-
-- **Information Isolation**: Verification LLMs refer only to the macro code itself, performing evaluations independent from execution context or intent
-- **Temporal Separation**: Independent verification before execution avoids interference with the execution process
-- **Perspective Neutrality**: Objective security and quality assessment maintaining distance from original task objectives
-
-This independence provides verification results with reduced bias and more robust static check functionality.
-
-### 📁 Practical Samples
-
-Detailed practical examples of self-verification systems:
-
-- **Basic**: [Code Verification System](./examples/self_lint/code_verification.md) - Automated execution of basic security, syntax, and quality checks
+1. **Initialization**: Variable clearing and verification environment preparation
+2. **Macro Input**: Set the natural language macro to be verified in {{target_macro}}
+3. **LLM Analysis**: Systematic feasibility analysis using 4 axes
+4. **Judgment**: Final FEASIBLE/INFEASIBLE determination with clear reasoning
+5. **Report**: Detailed verification result report generation and recommended response presentation
 
 ## A.8: Metaprogramming
 
@@ -1293,12 +1308,12 @@ Generate macro for {{target_data}} based on data_analysis_template.md
 If {{task_type}} is "reporting":
 Generate macro for {{output_format}} based on report_generation_template.md
 
-Save generated macro to {{generated_macro}} and execute after verification with A.7 LLM-based Lint
+Save generated macro to {{generated_macro}} and execute after verification with A.7 LLM-based Pre-execution Inspection
 ```
 
 #### 2. LLM-based Verification Integration
 
-**Integration with A.7 LLM-based Lint** automates quality assurance of generated macros. Meta-verification (macros verifying macros) ensures advanced reliability.
+**Integration with A.7 LLM-based Pre-execution Inspection** automates quality assurance of generated macros. Meta-verification (macros verifying macros) ensures advanced reliability.
 
 ```markdown
 ## Meta-Verification Process
