@@ -21,8 +21,6 @@ Try variable storage and reference:
 Execute these directly in Claude Code to experience natural language macro programming.
 (Note: CLAUDE.md macro definition is required)
 
-## 🎯 Overview
-
 ## 🎯 10 Design Patterns
 
 The core of natural language macro programming consists of 10 design patterns, systematically organized into **4 Basic Patterns** and **6 Advanced Patterns**.
