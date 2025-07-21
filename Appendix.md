@@ -1251,6 +1251,35 @@ The safety and feasibility of natural language macros are systematically analyze
 
 The practical verification system deployed in the `llm_lint/` folder consists of a feasibility verification workflow centered on **natural_language_validator.md** and a SQLite-based variable management system (see [A.16](#a16-sqlite-based-variable-management)).
 
+#### System Architecture
+
+**File Structure**:
+```
+llm_lint/
+├── CLAUDE.md                      # SQLite-based natural language macro syntax definition
+├── natural_language_validator.md  # Feasibility verification workflow
+├── variable_db.py                 # SQLite variable management system
+├── variables.db                   # SQLite database file
+└── watch_variables.py             # Real-time variable monitoring tool
+```
+
+#### Core Components
+
+**natural_language_validator.md** - Complete 4-axis verification system implementation
+- Systematic verification with 5 test cases (physical impossibility, logical contradictions, ambiguity, etc.)
+- Automated FEASIBLE/INFEASIBLE judgment
+- Staged verification process (initialization → analysis → judgment → report)
+
+**variable_db.py** - Verification result persistence system (shared with [A.16](#a16-sqlite-based-variable-management))
+- Verification state and tracking
+- Robust concurrent access with multi-process support
+- Timestamped history management
+
+**watch_variables.py** - Developer support tool (shared with [A.16](#a16-sqlite-based-variable-management))
+- Real-time verification process monitoring
+- Status display with ANSI color codes
+- Flexible output in JSON/table formats
+
 ### Practical Verification Workflow
 
 #### Test Case Examples
