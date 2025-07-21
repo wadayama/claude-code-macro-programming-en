@@ -1573,7 +1573,9 @@ Ensemble execution and consensus formation represent an approach that actively u
 
 ### Implementation Example: Ensemble Summarization System (with Lie Detection)
 
-A complete implementation example that demonstrates the theory of this section through actual code. This system extracts correct information using ensemble methods in environments where agents probabilistically "lie."
+A complete implementation example that demonstrates the theory of this section through actual code. This system is located in the `ensemble/` folder and provides a practical demonstration.
+
+**Experimental Background**: This experiment assumes an environment where malicious agents exist, demonstrating the extraction of correct information from agents that probabilistically inject "lies" (information not present in the original text). This validates the effectiveness of ensemble methods as a countermeasure against realistic security threats in multi-agent systems where untrustworthy agents may be present.
 
 #### System Overview
 
