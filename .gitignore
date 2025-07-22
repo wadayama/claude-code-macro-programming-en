@@ -46,3 +46,4 @@ experiments/
 
 # Archive directory (development use only, not for end users)
 archive/
+variables.db
