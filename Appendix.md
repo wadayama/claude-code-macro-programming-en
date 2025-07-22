@@ -2095,6 +2095,17 @@ Since it handles data in JSON format, systems can benefit from powerful database
 **Advantages for Multi-Machine Multi-Agent Systems:**
 MongoDB's replication capabilities enable distributed deployment of agents across multiple physical machines while maintaining unified shared state. This enables horizontal scaling of computational resources, elimination of single points of failure, geographically distributed deployment, and construction of large-scale multi-agent systems.
 
+**Implementation Details**: For a MongoDB-based variable management system, this project provides a practical implementation example in the `mongo/` directory.
+
+```
+mongo/
+├── CLAUDE.md                # MongoDB variable management macro syntax definition
+├── config.py               # Configuration management system
+└── mongo_variables.py      # Core implementation
+```
+
+This implementation provides advanced features including MongoDB Change Streams for event-driven processing, enterprise-level configuration management, atomic upsert operations, and variables.json compatibility, while maintaining full compatibility with existing `{{variable}}` syntax.
+
 
 #### Redis (Key-Value DB)
 
