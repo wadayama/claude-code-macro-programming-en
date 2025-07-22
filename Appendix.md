@@ -2271,17 +2271,8 @@ Database utilization provides natural language macro programming with the follow
 
 This extension significantly expands system possibilities without wasting any existing learning investment, making it a crucial technical component.
 
-<<<<<<< Updated upstream
 ## A.12: Vector Database and RAG Utilization
-=======
-## A.13: Goal-Oriented Architecture and Autonomous Planning
->>>>>>> Stashed changes
 
-The 10 patterns and Appendix technologies have primarily focused on "efficient execution of given tasks." However, truly autonomous agents require the ability to "set goals themselves, formulate plans, execute them, evaluate results, and continuously improve." This section presents a complete operational model for autonomous systems by integrating existing technical elements, demonstrated through a concrete dice game implementation.
-
-### 4-Stage Flow of Goal-Oriented Architecture
-
-<<<<<<< Updated upstream
 #### System Configuration
 
 **File Structure**:
@@ -2295,77 +2286,13 @@ Chroma/
 ```
 
 #### ChromaDB Integrated Implementation System (`Chroma/simple_chroma_rag.py`)
-=======
-#### 1. Planning
->>>>>>> Stashed changes
 
-**Starting Point**: Long-term goals given by users or possessed by the agent itself
+This system enables knowledge-based retrieval through ChromaDB integration, providing intelligent information access based on accumulated experience and external knowledge sources.
 
-**Process**: The agent systematically analyzes the major steps and tasks necessary to achieve the goal. This applies the capabilities of [Pattern 5: Problem Solving & Recursion] to decompose abstract objectives into concrete subtask groups.
-
-**Technology Utilization**:
-- **Pattern 5**: Hierarchical decomposition of complex goals
-- **TodoWrite Tool**: Structuring executable task lists
-- **A.12 RAG**: Leveraging insights from past similar projects
-
-**Output**: Structured executable task list
-
-#### 2. Evaluation
-
-**Purpose**: Multi-faceted verification of whether the formulated plan is a "good plan" before execution
-
-**Evaluation Axes**:
-- **Logical Consistency**: Static analysis of plan contradictions and inefficiencies using [A.7: LLM-based Pre-execution Inspection](#a7-llm-based-pre-execution-inspection)
-- **Resource/Cost Evaluation**: Estimation of API calls, execution time, and computational resources
-- **Success Probability**: Prediction based on past similar experiences accumulated through [A.12: Vector DB & RAG]
-- **Risk Analysis**: Proactive identification of potential problems based on [A.3: Four-Layer Defense Strategy]
-
-**Technology Utilization**:
-```markdown
-# Plan Evaluation Macro Example
-"Please execute A.7 LLM lint verification for the following execution plan:
-{{plan_content}}
-
-Evaluation Items:
-1. Logical consistency (presence of contradictions)
-2. Execution time estimation (based on API call count)
-3. Success rate prediction from {{memory:similar_projects}}
-4. Potential risk identification
-
-Save evaluation results to {{plan_evaluation}}"
-```
-
-**Output**: Verified or evaluation-based modified execution plan
-
-#### 3. Execution
-
-**Process**: Execute the evaluated and approved plan using existing patterns and Appendix technologies
-
-**Integrated Technology Utilization**:
-- **[Pattern 1: Sequential Pipeline]**: Efficient execution of sequential tasks
-- **[Pattern 2: Parallel Processing]**: Simultaneous execution of parallelizable tasks
-- **[A.4: Python Tool Integration]**: Utilization of external specialized tools
-- **[Concurrent Access Control]**: Safe state updates using SQLite-based system
-- **[A.12: Database Utilization]**: Large-scale state management
-
-**Execution Monitoring**:
-```markdown
-# Execution Monitoring Macro Example
-"Continue monitoring during task execution:
-1. Regular updates of {{task_progress}}
-2. Switch to A.9 ensemble execution when errors occur
-3. Re-evaluate plan when execution time exceeds 150% of schedule
-4. Record entire execution process via A.6 audit log system"
-```
-
-#### 4. Monitoring & Analysis
-
-**Purpose**: Evaluate how much execution results contribute to goal achievement and utilize for continuous improvement
-
-**Analysis Process**:
-- **[Pattern 7: Environment Sensing]**: Detection and evaluation of environmental changes
-- **[A.6: Audit Log System]**: Systematic reflection on own action history
-- **[A.11: LLM-based Post-execution Evaluation]**: Quality, creativity, and logic evaluation of outcomes
+**Key Features**:
+- **Dynamic Knowledge Retrieval**: Context-aware information access
+- **Experience Learning**: Accumulation and utilization of execution history
+- **Scalable Knowledge Base**: Vector-based similarity search
 - **[A.12: Experience Learning]**: Extraction and storage of success/failure patterns
 
 **Feedback Loop**:
@@ -2510,7 +2437,7 @@ The 10 patterns and Appendix technologies have primarily focused on "efficient e
 **Technology Utilization**:
 - **Pattern 5**: Hierarchical decomposition of complex goals
 - **TodoWrite Tool**: Structuring executable task lists
-- **A.13 RAG**: Leveraging insights from past similar projects
+- **A.12 RAG**: Leveraging insights from past similar projects
 
 **Output**: Structured executable task list
 
