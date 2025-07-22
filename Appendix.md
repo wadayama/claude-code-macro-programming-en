@@ -2273,6 +2273,10 @@ This extension significantly expands system possibilities without wasting any ex
 
 ## A.12: Vector Database and RAG Utilization
 
+By integrating a **ChromaDB-based RAG system** into natural language macro programming, we enable knowledge utilization and experience learning through semantic similarity search. The implementation in the Chroma/ folder provides dynamic knowledge search and experience utilization capabilities in addition to traditional SQLite variable management.
+
+### Basic Architecture
+
 #### System Configuration
 
 **File Structure**:
@@ -2287,12 +2291,305 @@ Chroma/
 
 #### ChromaDB Integrated Implementation System (`Chroma/simple_chroma_rag.py`)
 
-This system enables knowledge-based retrieval through ChromaDB integration, providing intelligent information access based on accumulated experience and external knowledge sources.
+**Dual Collection Design** for separate management of knowledge and experience:
 
-**Key Features**:
-- **Dynamic Knowledge Retrieval**: Context-aware information access
-- **Experience Learning**: Accumulation and utilization of execution history
-- **Scalable Knowledge Base**: Vector-based similarity search
+```python
+# Main class structure
+class SimpleChromaRAG:
+    def __init__(self, persist_directory: str = "./chroma_db"):
+        # Persistent vector database
+        self.client = chromadb.PersistentClient(path=str(persist_directory))
+        
+        # Knowledge collection
+        self.knowledge_collection = self.client.get_or_create_collection(
+            name="knowledge_base",
+            metadata={"description": "General knowledge documents"}
+        )
+        
+        # Experience collection
+        self.experience_collection = self.client.get_or_create_collection(
+            name="experience_base", 
+            metadata={"description": "Task execution experiences"}
+        )
+```
+
+**Integration with SQLite Variable System**:
+- `variable_db.py`: Basic variable management (simplified version for Chroma)
+- `simple_chroma_rag.py`: Vector search and knowledge management
+- `watch_integrated.py`: Integrated monitoring of both systems
+
+**Persistence Design**:
+- Vector database: Automatically saved to `./chroma_db` directory
+- Variable database: Managed by `variables.db` file
+- Cross-session data continuity preservation
+
+### Implementation Patterns
+
+#### Integrated Operations via CLAUDE.md Natural Language Syntax
+
+The Chroma system can be operated with **simplified natural language syntax**:
+
+**Knowledge Search (`{{knowledge:query}}`)**: 
+```bash
+# CLAUDE.md syntax: {{knowledge:Python optimization}}
+# Internal execution: 
+uv run python -c "from simple_chroma_rag import search_knowledge_base; print(search_knowledge_base('Python optimization'))"
+```
+
+**Experience Search (`{{memory:task}}`)**: 
+```bash
+# CLAUDE.md syntax: {{memory:API development}}
+# Internal execution:
+uv run python -c "from simple_chroma_rag import find_similar_experience; print(find_similar_experience('API development'))"
+```
+
+**Knowledge Storage**:
+```bash
+# Natural language instruction: "Save this content to knowledge base"
+# Internal execution:
+uv run python -c "from simple_chroma_rag import add_knowledge_from_text; print(add_knowledge_from_text('content', 'manual_input'))"
+```
+
+**Experience Storage**:
+```bash
+# Natural language instruction: "Save this success case as experience"
+# Internal execution:
+uv run python -c "from simple_chroma_rag import save_experience; print(save_experience('task_description', 'outcome_summary', True))"
+```
+
+#### Variable System Integration Patterns
+
+**Dynamic Search via Nested Syntax**:
+```markdown
+# Knowledge search with variable values
+{{knowledge:{{project_type}}}}
+
+# Experience search with variable values  
+{{memory:{{current_task}}}}
+
+# Execution flow example
+1. Get {{project_type}} value: "Python Web API"
+2. Execute knowledge search: search_knowledge_base("Python Web API")
+3. Return related knowledge: FastAPI implementation patterns, etc.
+```
+
+### Integrated Monitoring System
+
+#### Real-time Monitoring via `watch_integrated.py`
+
+**Integrated monitoring of SQLite variables and Chroma vector DB**:
+
+```bash
+# Display system status overview
+python watch_integrated.py --status
+
+# Continuous monitoring (2-second intervals)
+python watch_integrated.py --watch --interval 2.0
+
+# Integrated search test
+python watch_integrated.py --search "Python API"
+```
+
+**Monitoring screen output example**:
+```
+======================================================================
+ Natural Language Macro System Status - 2025-01-20 14:30:15 
+======================================================================
+
+📊 SQLite Variables:
+   Count: 3
+   {{ project_name }} = Python Web API Project
+   {{ skill_level }} = Intermediate
+   {{ research_topic }} = API optimization techniques
+
+🧠 Chroma Vector Database:
+   Knowledge: 5
+   Experience: 3
+   Total Vector Items: 8
+
+📚 Recent Knowledge:
+   1. [a1b2c3d4...] from manual_input
+      For Python Web API development, FastAPI framework balances high performance and development efficiency...
+
+💡 Recent Experience:
+   1. [x9y8z7w6...] (SUCCESS)
+      Task: Python API development
+      Result: FastAPI + PostgreSQL + Docker configuration completed full REST API in 2 weeks...
+```
+
+#### Change Monitoring Features
+
+**Real-time change tracking**:
+```
+[14:32:15] NEW VARIABLE: {{ user_feedback }} = "UI responsiveness improved"
+[14:32:18] NEW KNOWLEDGE: [def45678...] from manual_input
+         For API response time optimization, database query optimization, cache strategies...
+[14:32:22] NEW EXPERIENCE: [abc12345...] (SUCCESS)
+         Task: Response improvement
+         Result: 50% performance improvement achieved by introducing Redis cache...
+         System state: 4 vars, 6 knowledge, 4 experience
+```
+
+### Practical Examples
+
+#### Complete Workflow Example (`test_macro.md`)
+
+**Practical example in Python Web API development project**:
+
+```markdown
+# 1. Project initialization
+Clear all variables
+Save "Python Web API Project" to {{project_name}}
+Save "Intermediate" to {{skill_level}}
+Save "API optimization techniques" to {{research_topic}}
+
+# 2. Knowledge base construction
+Save this content to knowledge base:
+"For Python Web API development, FastAPI framework balances high performance and development efficiency. With automatic API documentation generation, type hints utilization, and asynchronous processing support, modern API development is possible. Full-scale web services can be built with PostgreSQL integration."
+
+Save this content to knowledge base:
+"For API response time optimization, database query optimization, cache strategies, and asynchronous processing utilization are effective. Particularly Redis-based session management and query result caching can achieve over 50% performance improvement."
+
+# 3. Knowledge search via simple syntax
+{{knowledge:FastAPI}}
+{{knowledge:{{project_name}}}}
+{{knowledge:{{research_topic}}}}
+
+# 4. Experience learning and search
+Save this success case as experience:
+"In Python API development, built full REST API in 2 weeks with FastAPI + PostgreSQL + Docker configuration. Team development efficiency improved 40% by introducing automated testing for quality and speed balance."
+
+{{memory:Python API development}}
+{{memory:{{project_name}}}}
+{{memory:new web development project}}
+
+# 5. Conditional branching and integrated utilization
+If {{skill_level}} is intermediate, suggest efficiency-focused development methods; if beginner, suggest learning-focused approaches
+```
+
+#### Expected Operation Results
+
+**Automatic execution of simple syntax**:
+- `{{knowledge:FastAPI}}` → Execute vector similarity search, automatically display related knowledge
+- `{{memory:API development}}` → Discover and present similar patterns from past successful experiences
+- `{{knowledge:{{project_name}}}}` → Dynamic search with variable values (nested syntax)
+
+**Establishment of learning cycle**:
+1. Knowledge accumulation → Vectorized storage
+2. Experience recording → Storage of success/failure patterns  
+3. Automatic recall in similar situations → Related information discovery through semantic search
+4. Application to strategy formulation → Decision support based on past insights
+
+### Initial Setup and Operations
+
+#### ChromaDB Environment Setup
+
+```bash
+# Install required packages
+uv add chromadb
+
+# System operation verification
+python -c "from simple_chroma_rag import SimpleChromaRAG; rag = SimpleChromaRAG(); print(rag.get_stats())"
+
+# Start integrated monitoring
+python watch_integrated.py --watch
+```
+
+#### Database Management
+
+**Persistence files**:
+- `./chroma_db/` - Chroma vector database
+- `variables.db` - SQLite variable database
+
+**Backup and maintenance**:
+```bash
+# Check database statistics
+python watch_integrated.py --status
+
+# Backup (copy entire directory)
+cp -r ./chroma_db ./chroma_db_backup_$(date +%Y%m%d)
+cp variables.db variables_backup_$(date +%Y%m%d).db
+```
+
+The ChromaDB-integrated RAG system evolves natural language macro programming into **knowledge-rich and experience-rich autonomous systems**, acquiring advanced problem-solving capabilities through semantic similarity search.
+
+## A.13: Goal-Oriented Architecture and Autonomous Planning
+
+### Background and Necessity
+
+The 10 patterns and Appendix technologies have primarily focused on "efficient execution of given tasks." However, truly autonomous agents require the ability to "set goals themselves, formulate plans, execute them, evaluate results, and continuously improve." This section presents a complete operational model for autonomous systems by integrating existing technical elements.
+
+### 4-Stage Flow of Goal-Oriented Architecture
+
+#### 1. Planning
+
+**Starting Point**: Long-term goals given by users or possessed by the agent itself
+
+**Process**: The agent systematically analyzes the major steps and tasks necessary to achieve the goal. This applies the capabilities of [Pattern 5: Problem Solving & Recursion] to decompose abstract objectives into concrete subtask groups.
+
+**Technology Utilization**:
+- **Pattern 5**: Hierarchical decomposition of complex goals
+- **TodoWrite Tool**: Structuring executable task lists
+- **A.12 RAG**: Leveraging insights from past similar projects
+
+**Output**: Structured executable task list
+
+#### 2. Evaluation
+
+**Purpose**: Multi-faceted verification of whether the formulated plan is a "good plan" before execution
+
+**Evaluation Axes**:
+- **Logical Consistency**: Static analysis of plan contradictions and inefficiencies using [A.6: LLM-based Verification System]
+- **Resource/Cost Evaluation**: Estimation of API calls, execution time, and computational resources required
+- **Success Probability**: Prediction based on past similar experiences accumulated through [A.12: Vector DB & RAG]
+- **Risk Analysis**: Proactive identification of potential problems based on [A.2: Risk Mitigation Strategies]
+
+**Technology Utilization**:
+```markdown
+# Plan Evaluation Macro Example
+"Please execute A.6 LLM-based verification for the following execution plan:
+{{plan_content}}
+
+Evaluation Items:
+1. Logical consistency (presence of contradictions)
+2. Execution time estimation (based on API call count)
+3. Success rate prediction from {{memory:similar_projects}}
+4. Potential risk identification
+
+Save evaluation results to {{plan_evaluation}}"
+```
+
+**Output**: Verified or evaluation-based modified execution plan
+
+#### 3. Execution
+
+**Process**: Execute the evaluated and approved plan using existing patterns and Appendix technologies
+
+**Integrated Technology Utilization**:
+- **[Pattern 1: Sequential Pipeline]**: Efficient execution of sequential tasks
+- **[Pattern 2: Parallel Processing]**: Simultaneous execution of parallelizable tasks
+- **[A.3: Python Tool Integration]**: Utilization of external specialized tools
+- **[Concurrent Access Control]**: SQLite-based safe state updates
+- **[A.11: Database Utilization]**: Large-scale state management
+
+**Execution Monitoring**:
+```markdown
+# Execution Monitoring Macro Example
+"Please continue the following monitoring during task execution:
+1. Regular updates to {{task_progress}}
+2. Switch to A.8 ensemble execution when errors occur
+3. Plan re-evaluation when execution time exceeds 150% of schedule
+4. Record entire execution process via A.5 audit log system"
+```
+
+#### 4. Monitoring & Analysis
+
+**Purpose**: Evaluate how much the execution results contributed to goal achievement and utilize for continuous improvement
+
+**Analysis Process**:
+- **[Pattern 7: Environment Sensing]**: Detection and evaluation of environmental changes
+- **[A.5: Audit Log System]**: Systematic reflection on one's own action history
+- **[A.10: LLM-based Post-execution Evaluation]**: Quality, creativity, and logic evaluation of outcomes
 - **[A.12: Experience Learning]**: Extraction and storage of success/failure patterns
 
 **Feedback Loop**:
@@ -2300,7 +2597,7 @@ This system enables knowledge-based retrieval through ChromaDB integration, prov
 # PDCA Cycle Implementation Example
 "Post-execution analysis:
 1. Goal achievement evaluation (0-100%)
-2. Deviation analysis from plan (time, quality, cost)
+2. Deviation analysis from plan (time, quality, cost)  
 3. Save as {{learning:key_insights_this_time}} for experience
 4. Generate improvement proposals and save to {{next_iteration_plan}}
 5. Automatically formulate revised plan if goal not achieved"
@@ -2411,165 +2708,14 @@ dice_game/
 
 **Complete Autonomous System Realization**:
 - **Theory to Implementation Concretization**: Demonstrate abstract concepts with working systems
-- **A.16 SQLite Integration Practical Example**: Demonstrate practical utility of database integration
+- **A.15 SQLite Integration Practical Example**: Demonstrate practical utility of database integration
 - **Complete Autonomous System Realization**: Goal achievement process without human intervention
 - **Learning & Research Utilization**: Value as an actually working demo system
 
 **Extensibility**:
 - **Complex Strategy Games**: Game designs requiring more advanced decision-making
-- **Multi-Agent Competition**: Integration with [A.5: Multi-Agent System Design](#a5-multi-agent-system-design)
+- **Multi-Agent Competition**: Integration with [A.4: Multi-Agent System Design](#a4-multi-agent-system-design)
 - **Long-term Learning Systems**: Strategy optimization through [Pattern 6: Learning from Experience](./macro.md#pattern-6-learning-from-experience)
-
-## A.13: Goal-Oriented Architecture and Autonomous Planning
-
-### Background and Necessity
-
-The 10 patterns and Appendix technologies have primarily focused on "efficient execution of given tasks." However, truly autonomous agents require the ability to "set goals themselves, formulate plans, execute them, evaluate results, and continuously improve." This section presents a complete operational model for autonomous systems by integrating existing technical elements.
-
-### 4-Stage Flow of Goal-Oriented Architecture
-
-#### 1. Planning
-
-**Starting Point**: Long-term goals given by users or possessed by the agent itself
-
-**Process**: The agent systematically analyzes the major steps and tasks necessary to achieve the goal. This applies the capabilities of [Pattern 5: Problem Solving & Recursion] to decompose abstract objectives into concrete subtask groups.
-
-**Technology Utilization**:
-- **Pattern 5**: Hierarchical decomposition of complex goals
-- **TodoWrite Tool**: Structuring executable task lists
-- **A.12 RAG**: Leveraging insights from past similar projects
-
-**Output**: Structured executable task list
-
-#### 2. Evaluation
-
-**Purpose**: Multi-faceted verification of whether the formulated plan is a "good plan" before execution
-
-**Evaluation Axes**:
-- **Logical Consistency**: Static analysis of plan contradictions and inefficiencies using [A.6: LLM-based Verification System]
-- **Resource/Cost Evaluation**: Estimation of API calls, execution time, and computational resources required
-- **Success Probability**: Prediction based on past similar experiences accumulated through [A.12: Vector DB & RAG]
-- **Risk Analysis**: Proactive identification of potential problems based on [A.2: Risk Mitigation Strategies]
-
-**Technology Utilization**:
-```markdown
-# Plan Evaluation Macro Example
-"Please execute A.6 LLM-based verification for the following execution plan:
-{{plan_content}}
-
-Evaluation Items:
-1. Logical consistency (presence of contradictions)
-2. Execution time estimation (based on API call count)
-3. Success rate prediction from {{memory:similar_projects}}
-4. Potential risk identification
-
-Save evaluation results to {{plan_evaluation}}"
-```
-
-**Output**: Verified or evaluation-based modified execution plan
-
-#### 3. Execution
-
-**Process**: Execute the evaluated and approved plan using existing patterns and Appendix technologies
-
-**Integrated Technology Utilization**:
-- **[Pattern 1: Sequential Pipeline]**: Efficient execution of sequential tasks
-- **[Pattern 2: Parallel Processing]**: Simultaneous execution of parallelizable tasks
-- **[A.3: Python Tool Integration]**: Utilization of external specialized tools
-- **[Concurrent Access Control]**: SQLite-based safe state updates
-- **[A.11: Database Utilization]**: Large-scale state management
-
-**Execution Monitoring**:
-```markdown
-# Execution Monitoring Macro Example
-"Please continue the following monitoring during task execution:
-1. Regular updates to {{task_progress}}
-2. Switch to A.8 ensemble execution when errors occur
-3. Plan re-evaluation when execution time exceeds 150% of schedule
-4. Record entire execution process via A.5 audit log system"
-```
-
-#### 4. Monitoring & Analysis
-
-**Purpose**: Evaluate how much the execution results contributed to goal achievement and utilize for continuous improvement
-
-**Analysis Process**:
-- **[Pattern 7: Environment Sensing]**: Detection and evaluation of environmental changes
-- **[A.5: Audit Log System]**: Systematic reflection on one's own action history
-- **[A.10: LLM-based Evaluation Testing]**: Quality, creativity, and logic evaluation of outcomes
-- **[A.12: Experience Learning]**: Extraction and storage of success/failure patterns
-
-**Feedback Loop**:
-```markdown
-# PDCA Cycle Implementation Example
-"Post-execution analysis:
-1. Goal achievement evaluation (0-100%)
-2. Deviation analysis from plan (time, quality, cost)
-3. Save experience as {{learning:important_lessons_learned}}
-4. Generate improvement proposals and save to {{next_iteration_plan}}
-5. Automatically formulate revised plan if goal unachieved"
-```
-
-### Continuous Improvement through PDCA Cycle
-
-#### Cycle Design
-
-```mermaid
-graph TD
-    A[Goal Setting] --> B(① Planning);
-    B --> C(② Evaluation);
-    C --> D(③ Execution);
-    D --> E{④ Monitoring & Analysis};
-    E -- Goal Unachieved --> F[Learning & Improvement];
-    F --> B;
-    E -- Goal Achieved --> G[Completion & New Goal Setting];
-    G --> A;
-```
-
-#### Autonomous Improvement Mechanism
-
-**Learning and Adaptation**:
-- Analysis of failure patterns and automatic generation of avoidance strategies
-- Extraction of success factors and application to other tasks
-- Dynamic response to environmental changes
-
-**Meta-improvement**:
-- Improvement of planning methodologies themselves
-- Refinement of evaluation criteria
-- Optimization of execution efficiency
-
-### Implementation Example: Long-term Project Management Agent
-
-#### Initialization
-
-```markdown
-# Long-term Project Management Agent Startup
-"Starting management of a new product development project.
-
-Goal: Launch new product within 6 months and achieve 1 million yen in first-month sales
-
-Save goal to {{project_goal}} and start A.12's 4-stage flow:
-1. First search {{memory:product_development_projects}} for similar cases
-2. Decompose into major tasks using Pattern 5
-3. Verify logical consistency of plan using A.6
-4. Start execution after approval"
-```
-
-#### Dynamic Adjustment During Execution
-
-```markdown
-# Mid-term Evaluation and Plan Revision
-"2 months since project start. Execute progress evaluation:
-
-1. Check current status of {{project_progress}}
-2. Analyze deviation from original plan
-3. Evaluate external environmental changes (competitive trends, market conditions)
-4. Revise plan as needed and save to {{revised_plan}}
-5. Generate explanation materials for team on revision content"
-```
-
-
----
 
 ## A.14: Python Orchestration-Based Hybrid Approach
 
