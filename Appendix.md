@@ -90,7 +90,6 @@ while True:
 
 **2. Automatic Macro Execution**: Direct execution of natural language macros through Claude CLI enables complex processing logic to be written in natural language.
 
-<<<<<<< Updated upstream
 **3. Error Handling**: Proper exception handling for macro execution failures ensures continuous system operation.
 
 **4. Variable-Based Events**: Utilizing SQLite database variable changes as event sources enables collaborative operation between multiple processes.
@@ -98,10 +97,10 @@ while True:
 This implementation enables automatic processing execution triggered by external system variable updates, making it possible to build highly responsive agent systems for real-time systems and business automation.
 
 ## A.2: Four-Layer Defense Strategy
-=======
-Real-world processes occur asynchronously. Event-driven execution monitors external events and automatically executes macros when changes are detected. The most practical approach is a hybrid design that delegates monitoring to existing technologies while the LLM focuses on post-trigger processing.
 
-### Implementation Example: Polling-Based Event Monitoring
+### Background and Challenge Recognition
+
+Natural Language Macro Programming is expected to be utilized across diverse fields due to its intuitiveness and high explainability. However, due to uncertainties derived from the probabilistic behavioral characteristics of LLMs (Large Language Models), appropriate risk mitigation strategies are necessary for high-importance tasks.
 
 This section demonstrates a polling-based implementation that monitors SQLite variable changes and automatically executes macros when modifications occur.
 
@@ -158,21 +157,6 @@ while True:
 
 This implementation enables automatic processing execution triggered by external system variable updates, making it possible to build highly responsive agent systems for real-time systems and business automation.
 
-## A.3: Four-Layer Defense Strategy
->>>>>>> Stashed changes
-
-### Background and Challenge Recognition
-
-Natural Language Macro Programming is expected to be utilized across diverse fields due to its intuitiveness and high explainability. However, due to uncertainties derived from the probabilistic behavioral characteristics of LLMs (Large Language Models), appropriate risk mitigation strategies are necessary for high-importance tasks.
-
-**Characteristics and Challenges of Probabilistic Systems**:
-- Difficulty in guaranteeing 100% operational reliability in principle (probabilistic operating system)
-- Possibility of unexpected interpretations or execution results
-- Need for careful operation in important business processes
-- Clarification of application scope and recognition of limitations
-
-**Purpose of This Section**:
-Assuming the nature of probabilistic systems, to achieve safe and responsible utilization of natural language macro programming for important business tasks through a four-layer defense strategy (proactive design prevention, runtime error handling, auditing and continuous improvement, quality assurance testing).
 
 ### Layer 1: Proactive Design Measures (Proactive Design)
 
@@ -684,11 +668,7 @@ Retrieve {{output_file}}
 - Flexible application through configuration changes
 
 **3. Real-time Monitoring**:
-<<<<<<< Updated upstream
-For variable state monitoring, see [A.14: SQLite-Based Variable Management](#a14-sqlite-based-variable-management).
-=======
-For variable state monitoring, see [A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management).
->>>>>>> Stashed changes
+For variable state monitoring, see [A.15: SQLite-Based Variable Management](#a15-sqlite-based-variable-management).
 
 **4. Execution Demonstration**:
 ```bash
@@ -811,11 +791,7 @@ SQLite's WAL mode, retry mechanisms, and transaction management safely handle si
 
 #### Variable Monitoring Tool Utilization
 
-<<<<<<< Updated upstream
-Multi-agent environment real-time variable monitoring is available through `watch_variables.py`. For detailed usage and features, see [A.14: SQLite-Based Variable Management](#a14-sqlite-based-variable-management).
-=======
-Multi-agent environment real-time variable monitoring is available through `watch_variables.py`. For detailed usage and features, see [A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management).
->>>>>>> Stashed changes
+Multi-agent environment real-time variable monitoring is available through `watch_variables.py`. For detailed usage and features, see [A.15: SQLite-Based Variable Management](#a15-sqlite-based-variable-management).
 
 ```bash
 # Basic real-time monitoring example
@@ -1272,11 +1248,7 @@ python audit_viewer.py --format json --recent 5
 **Multi-Agent Support**: In [A.3 Multi-Agent System](#a3-multi-agent-system-design) environments, identifies concurrent variable operations by multiple agents through `source` and `session_id`, enabling complete chronological tracking of inter-agent interactions and state changes. Streamlines debugging of race conditions and unexpected behaviors
 
 
-<<<<<<< Updated upstream
 ## A.6: LLM-based Pre-execution Inspection
-=======
-## A.7: LLM-based Pre-execution Inspection
->>>>>>> Stashed changes
 
 **Overview**: An LLM-based verification system for natural language macro programming that performs static analysis before macro execution. A multi-layered inspection tool that comprehensively verifies security risks, feasibility, syntax consistency, and quality issues to prevent problems before execution.
 
@@ -1328,11 +1300,7 @@ llm_lint/
 
 **natural_language_validator.md** - Complete 4-axis verification system implementation with 5 test cases (physical impossibility, logical contradictions, ambiguity, etc.), automated FEASIBLE/INFEASIBLE judgment, and staged verification process (initialization → analysis → judgment → report)
 
-<<<<<<< Updated upstream
-**variable_db.py, watch_variables.py** - See [A.14](#a14-sqlite-based-variable-management) for detailed SQLite-based variable management & monitoring system
-=======
-**variable_db.py, watch_variables.py** - See [A.16](#a16-sqlite-based-variable-management) for detailed SQLite-based variable management & monitoring system
->>>>>>> Stashed changes
+**variable_db.py, watch_variables.py** - See [A.15](#a15-sqlite-based-variable-management) for detailed SQLite-based variable management & monitoring system
 
 ### Practical Verification Workflow
 
@@ -1517,11 +1485,7 @@ System completion notification
 #### Advanced Features
 
 **Real-time Variable Monitoring**:
-<<<<<<< Updated upstream
-For real-time variable monitoring, see [A.14: SQLite-Based Variable Management](#a14-sqlite-based-variable-management).
-=======
-For real-time variable monitoring, see [A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management).
->>>>>>> Stashed changes
+For real-time variable monitoring, see [A.15: SQLite-Based Variable Management](#a15-sqlite-based-variable-management).
 
 **Error Handling and Recovery**:
 - Exponential backoff for database lock scenarios
@@ -1900,11 +1864,7 @@ uv run python -c "from variable_db import save_variable; save_variable('task_pro
 # Agent 2: Read validated progress data
 uv run python -c "from variable_db import get_variable_typed; progress, type_name = get_variable_typed('task_progress'); print(f'Current progress: {progress}% (validated as {type_name})')"
 
-<<<<<<< Updated upstream
-# System: Monitor all agent variables with types (see A.14 for details)
-=======
-# System: Monitor all agent variables with types (see A.16 for details)
->>>>>>> Stashed changes
+# System: Monitor all agent variables with types (see A.15 for details)
 python watch_variables.py --continuous
 ```
 
@@ -2990,15 +2950,9 @@ To help readers make appropriate technical choices, we provide a systematic comp
 
 To ensure reliability of the orchestration layer, we strongly recommend adherence to quality standards in Python implementation.
 
-<<<<<<< Updated upstream
-For Python code quality standards, see [A.3: Python Quality Guidelines](#python-quality-guidelines). In multi-agent environments, type safety, error handling, testing strategy, and reproducibility are particularly important for collaborative processing.
+For Python code quality standards, see [A.3: Python Tool Integration](#a3-python-tool-integration). In multi-agent environments, type safety, error handling, testing strategy, and reproducibility are particularly important for collaborative processing.
 
 ## A.15: SQLite-Based Variable Management
-=======
-For Python code quality standards, see [A.4: Python Quality Guidelines](#python-quality-guidelines). In multi-agent environments, type safety, error handling, testing strategy, and reproducibility are particularly important for collaborative processing.
-
-## A.16: SQLite-Based Variable Management
->>>>>>> Stashed changes
 
 ### Overview and Positioning
 
