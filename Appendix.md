@@ -90,6 +90,7 @@ while True:
 
 **2. Automatic Macro Execution**: Direct execution of natural language macros through Claude CLI enables complex processing logic to be written in natural language.
 
+<<<<<<< Updated upstream
 **3. Error Handling**: Proper exception handling for macro execution failures ensures continuous system operation.
 
 **4. Variable-Based Events**: Utilizing SQLite database variable changes as event sources enables collaborative operation between multiple processes.
@@ -97,6 +98,68 @@ while True:
 This implementation enables automatic processing execution triggered by external system variable updates, making it possible to build highly responsive agent systems for real-time systems and business automation.
 
 ## A.2: Four-Layer Defense Strategy
+=======
+Real-world processes occur asynchronously. Event-driven execution monitors external events and automatically executes macros when changes are detected. The most practical approach is a hybrid design that delegates monitoring to existing technologies while the LLM focuses on post-trigger processing.
+
+### Implementation Example: Polling-Based Event Monitoring
+
+This section demonstrates a polling-based implementation that monitors SQLite variable changes and automatically executes macros when modifications occur.
+
+#### File Structure
+
+```
+event/
+├── event_handler.py      # Variable monitoring and automatic macro execution
+├── simple_macro.md       # Macro file to be executed
+├── CLAUDE.md            # Natural language macro syntax definition
+├── variable_db.py       # SQLite variable management system
+├── watch_variables.py   # Variable monitoring debug tool
+└── variables.db         # SQLite variable database
+```
+
+#### Implementation Details
+
+**event_handler.py**: Monitors changes to the `user_status` variable with 0.1-second polling intervals and automatically executes `simple_macro.md` when the value changes. During initialization, all variables are cleared and initial values are set for monitored variables.
+
+```python
+# Core monitoring loop
+while True:
+    current_value = get_variable(WATCH_VARIABLE)
+    
+    if current_value != last_value:
+        print("event detected")
+        run_macro()  # Execute macro via Claude CLI
+        last_value = current_value
+    
+    time.sleep(0.1)
+```
+
+**simple_macro.md**: Natural language macro executed when events are detected. Demonstrates basic patterns of variable reference and storage.
+
+```markdown
+{{user_status}}の値を{{macro_result}}に保存してください。
+```
+
+**Execution Workflow**:
+1. System initialization (variable clearing, initial value setting)
+2. Continuous monitoring of `user_status` variable
+3. Immediate macro execution upon value change detection
+4. Automatic storage of results in `macro_result` variable
+
+#### Technical Features
+
+**1. Polling Monitoring**: Simple and reliable implementation. Achieves balance between real-time responsiveness and resource efficiency with 0.1-second intervals.
+
+**2. Automatic Macro Execution**: Direct execution of natural language macros through Claude CLI enables complex processing logic to be written in natural language.
+
+**3. Error Handling**: Proper exception handling for macro execution failures ensures continuous system operation.
+
+**4. Variable-Based Events**: Utilizing SQLite database variable changes as event sources enables collaborative operation between multiple processes.
+
+This implementation enables automatic processing execution triggered by external system variable updates, making it possible to build highly responsive agent systems for real-time systems and business automation.
+
+## A.3: Four-Layer Defense Strategy
+>>>>>>> Stashed changes
 
 ### Background and Challenge Recognition
 
@@ -621,7 +684,11 @@ Retrieve {{output_file}}
 - Flexible application through configuration changes
 
 **3. Real-time Monitoring**:
+<<<<<<< Updated upstream
 For variable state monitoring, see [A.14: SQLite-Based Variable Management](#a14-sqlite-based-variable-management).
+=======
+For variable state monitoring, see [A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management).
+>>>>>>> Stashed changes
 
 **4. Execution Demonstration**:
 ```bash
@@ -744,7 +811,11 @@ SQLite's WAL mode, retry mechanisms, and transaction management safely handle si
 
 #### Variable Monitoring Tool Utilization
 
+<<<<<<< Updated upstream
 Multi-agent environment real-time variable monitoring is available through `watch_variables.py`. For detailed usage and features, see [A.14: SQLite-Based Variable Management](#a14-sqlite-based-variable-management).
+=======
+Multi-agent environment real-time variable monitoring is available through `watch_variables.py`. For detailed usage and features, see [A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management).
+>>>>>>> Stashed changes
 
 ```bash
 # Basic real-time monitoring example
@@ -1201,7 +1272,11 @@ python audit_viewer.py --format json --recent 5
 **Multi-Agent Support**: In [A.3 Multi-Agent System](#a3-multi-agent-system-design) environments, identifies concurrent variable operations by multiple agents through `source` and `session_id`, enabling complete chronological tracking of inter-agent interactions and state changes. Streamlines debugging of race conditions and unexpected behaviors
 
 
+<<<<<<< Updated upstream
 ## A.6: LLM-based Pre-execution Inspection
+=======
+## A.7: LLM-based Pre-execution Inspection
+>>>>>>> Stashed changes
 
 **Overview**: An LLM-based verification system for natural language macro programming that performs static analysis before macro execution. A multi-layered inspection tool that comprehensively verifies security risks, feasibility, syntax consistency, and quality issues to prevent problems before execution.
 
@@ -1253,7 +1328,11 @@ llm_lint/
 
 **natural_language_validator.md** - Complete 4-axis verification system implementation with 5 test cases (physical impossibility, logical contradictions, ambiguity, etc.), automated FEASIBLE/INFEASIBLE judgment, and staged verification process (initialization → analysis → judgment → report)
 
+<<<<<<< Updated upstream
 **variable_db.py, watch_variables.py** - See [A.14](#a14-sqlite-based-variable-management) for detailed SQLite-based variable management & monitoring system
+=======
+**variable_db.py, watch_variables.py** - See [A.16](#a16-sqlite-based-variable-management) for detailed SQLite-based variable management & monitoring system
+>>>>>>> Stashed changes
 
 ### Practical Verification Workflow
 
@@ -1438,7 +1517,11 @@ System completion notification
 #### Advanced Features
 
 **Real-time Variable Monitoring**:
+<<<<<<< Updated upstream
 For real-time variable monitoring, see [A.14: SQLite-Based Variable Management](#a14-sqlite-based-variable-management).
+=======
+For real-time variable monitoring, see [A.16: SQLite-Based Variable Management](#a16-sqlite-based-variable-management).
+>>>>>>> Stashed changes
 
 **Error Handling and Recovery**:
 - Exponential backoff for database lock scenarios
@@ -1817,7 +1900,11 @@ uv run python -c "from variable_db import save_variable; save_variable('task_pro
 # Agent 2: Read validated progress data
 uv run python -c "from variable_db import get_variable_typed; progress, type_name = get_variable_typed('task_progress'); print(f'Current progress: {progress}% (validated as {type_name})')"
 
+<<<<<<< Updated upstream
 # System: Monitor all agent variables with types (see A.14 for details)
+=======
+# System: Monitor all agent variables with types (see A.16 for details)
+>>>>>>> Stashed changes
 python watch_variables.py --continuous
 ```
 
@@ -2184,12 +2271,17 @@ Database utilization provides natural language macro programming with the follow
 
 This extension significantly expands system possibilities without wasting any existing learning investment, making it a crucial technical component.
 
+<<<<<<< Updated upstream
 ## A.12: Vector Database and RAG Utilization
+=======
+## A.13: Goal-Oriented Architecture and Autonomous Planning
+>>>>>>> Stashed changes
 
-This section demonstrates the integration of **ChromaDB-based RAG system** into natural language macro programming, enabling semantic similarity search for knowledge utilization and experience learning. The Chroma/ folder implementation provides dynamic knowledge search and experience utilization capabilities in addition to traditional SQLite variable management.
+The 10 patterns and Appendix technologies have primarily focused on "efficient execution of given tasks." However, truly autonomous agents require the ability to "set goals themselves, formulate plans, execute them, evaluate results, and continuously improve." This section presents a complete operational model for autonomous systems by integrating existing technical elements, demonstrated through a concrete dice game implementation.
 
-### Basic Architecture
+### 4-Stage Flow of Goal-Oriented Architecture
 
+<<<<<<< Updated upstream
 #### System Configuration
 
 **File Structure**:
@@ -2203,228 +2295,203 @@ Chroma/
 ```
 
 #### ChromaDB Integrated Implementation System (`Chroma/simple_chroma_rag.py`)
+=======
+#### 1. Planning
+>>>>>>> Stashed changes
 
-**Dual Collection Design** for separate management of knowledge and experience:
+**Starting Point**: Long-term goals given by users or possessed by the agent itself
+
+**Process**: The agent systematically analyzes the major steps and tasks necessary to achieve the goal. This applies the capabilities of [Pattern 5: Problem Solving & Recursion] to decompose abstract objectives into concrete subtask groups.
+
+**Technology Utilization**:
+- **Pattern 5**: Hierarchical decomposition of complex goals
+- **TodoWrite Tool**: Structuring executable task lists
+- **A.12 RAG**: Leveraging insights from past similar projects
+
+**Output**: Structured executable task list
+
+#### 2. Evaluation
+
+**Purpose**: Multi-faceted verification of whether the formulated plan is a "good plan" before execution
+
+**Evaluation Axes**:
+- **Logical Consistency**: Static analysis of plan contradictions and inefficiencies using [A.7: LLM-based Pre-execution Inspection](#a7-llm-based-pre-execution-inspection)
+- **Resource/Cost Evaluation**: Estimation of API calls, execution time, and computational resources
+- **Success Probability**: Prediction based on past similar experiences accumulated through [A.12: Vector DB & RAG]
+- **Risk Analysis**: Proactive identification of potential problems based on [A.3: Four-Layer Defense Strategy]
+
+**Technology Utilization**:
+```markdown
+# Plan Evaluation Macro Example
+"Please execute A.7 LLM lint verification for the following execution plan:
+{{plan_content}}
+
+Evaluation Items:
+1. Logical consistency (presence of contradictions)
+2. Execution time estimation (based on API call count)
+3. Success rate prediction from {{memory:similar_projects}}
+4. Potential risk identification
+
+Save evaluation results to {{plan_evaluation}}"
+```
+
+**Output**: Verified or evaluation-based modified execution plan
+
+#### 3. Execution
+
+**Process**: Execute the evaluated and approved plan using existing patterns and Appendix technologies
+
+**Integrated Technology Utilization**:
+- **[Pattern 1: Sequential Pipeline]**: Efficient execution of sequential tasks
+- **[Pattern 2: Parallel Processing]**: Simultaneous execution of parallelizable tasks
+- **[A.4: Python Tool Integration]**: Utilization of external specialized tools
+- **[Concurrent Access Control]**: Safe state updates using SQLite-based system
+- **[A.12: Database Utilization]**: Large-scale state management
+
+**Execution Monitoring**:
+```markdown
+# Execution Monitoring Macro Example
+"Continue monitoring during task execution:
+1. Regular updates of {{task_progress}}
+2. Switch to A.9 ensemble execution when errors occur
+3. Re-evaluate plan when execution time exceeds 150% of schedule
+4. Record entire execution process via A.6 audit log system"
+```
+
+#### 4. Monitoring & Analysis
+
+**Purpose**: Evaluate how much execution results contribute to goal achievement and utilize for continuous improvement
+
+**Analysis Process**:
+- **[Pattern 7: Environment Sensing]**: Detection and evaluation of environmental changes
+- **[A.6: Audit Log System]**: Systematic reflection on own action history
+- **[A.11: LLM-based Post-execution Evaluation]**: Quality, creativity, and logic evaluation of outcomes
+- **[A.12: Experience Learning]**: Extraction and storage of success/failure patterns
+
+**Feedback Loop**:
+```markdown
+# PDCA Cycle Implementation Example
+"Post-execution analysis:
+1. Goal achievement evaluation (0-100%)
+2. Deviation analysis from plan (time, quality, cost)
+3. Save as {{learning:key_insights_this_time}} for experience
+4. Generate improvement proposals and save to {{next_iteration_plan}}
+5. Automatically formulate revised plan if goal not achieved"
+```
+
+### Implementation Example: Dice Game Autonomous Agent
+
+This implementation example demonstrates the A.13 goal-oriented architecture's 4-stage flow (Plan→Do→Check→Act) through a fully autonomous system. In this strategic dice game aimed at increasing assets from 20 chips to 30 chips, an AI agent makes autonomous decisions and strives to achieve its goals.
+
+#### Game System Overview
+
+**Basic Design**: A strategic dice game aimed at increasing assets from 20 chips to 30 chips (details in [rule.md](./dice_game/rule.md))
+
+**Game Basic Structure**:
+- **Initial Assets**: Start with 20 chips
+- **Victory Condition**: Obtain 30 or more chips at the end of 10 rounds
+- **Betting Options**: Even bet (safe), specific number bet (high risk), pass
+
+**Strategic Complexity**:
+- **Normal Rounds**: Even bet expected value 0%, specific number bet expected value -16.7%
+- **Final Bonus Round**: Both bets have positive expected value due to 2x payout
+- **Strategic Dilemma**: Accept short-term losses and bet big in the final round, or conservatively preserve assets
+
+This design forces the agent to make multiple strategic choices and requires autonomous decision-making through the 4-stage flow (Plan→Do→Check→Act).
+
+#### 4-Stage Flow Demonstration
+
+##### 1. Plan (Planning)
+
+**Situation Analysis Process**:
+```markdown
+# Situation recognition in agent_action.md
+Please get the game round number {{round}}
+Please get the game assets {{assets}}
+
+Based on the values of {{round}} and {{assets}}, **think strategically to win by obtaining 30 or more chips at the end of round 10** and decide your action.
+```
+
+The agent retrieves the current round number and held assets from the SQLite database, dynamically calculating the remaining rounds and required assets to achieve the goal. During this process, it formulates strategies considering risk tolerance, expected returns, and bankruptcy probability.
+
+##### 2. Do (Execution)
+
+**Action Decision and Execution**:
+```markdown
+# Save decided actions to variables
+- Save action to {{action}} (must set one of "even_bet", "specific_number_bet", "pass")
+- Save bet amount to {{bet_amount}} (integer from 1 to current assets, 0 for pass)
+- Save number to {{target_number}} (1-6 for specific number bet, 0 otherwise)
+- Save decision reasoning to {{decision_reason}} in natural language (explain why that action was chosen, strategic reasoning)
+```
+
+The agent's decisions are saved to the SQLite database, and the Python system immediately reads them and proceeds to execution. During this process, input value validation (bet amount range check, action format verification, etc.) is also automatically executed.
+
+**Python-side Execution Control**:
+```python
+# Execution process in dice_game.py
+def play_round(round_num):
+    # 1. Start agent
+    run_macro("agent_action.md")
+    
+    # 2. Validate decision
+    action, bet_amount, target_number = validate_agent_action()
+    
+    # 3. Execute game
+    dice_result = roll_dice()
+    payout = calculate_payout(action, bet_amount, target_number, dice_result, is_final)
+```
+
+##### 3. Check (Evaluation & Verification)
+
+**Result Evaluation System**:
+The dice results and payout calculations immediately evaluate the action's outcomes. This evaluation information is structured and saved to SQLite for use as material for future decisions.
 
 ```python
-# Main class structure
-class SimpleChromaRAG:
-    def __init__(self, persist_directory: str = "./chroma_db"):
-        # Persistent vector database
-        self.client = chromadb.PersistentClient(path=str(persist_directory))
-        
-        # Knowledge collection
-        self.knowledge_collection = self.client.get_or_create_collection(
-            name="knowledge_base",
-            metadata={"description": "General knowledge documents"}
-        )
-        
-        # Experience collection
-        self.experience_collection = self.client.get_or_create_collection(
-            name="experience_base", 
-            metadata={"description": "Task execution experiences"}
-        )
+# Structured result recording
+save_variable("game_status", f"R{round_num} | {action_desc} | Dice:{dice_result} | {result} | Assets:{current_assets}→{new_assets}")
 ```
 
-**Integration with SQLite Variable System**:
-- `variable_db.py`: Basic variable management (simplified version for Chroma)
-- `simple_chroma_rag.py`: Vector search and knowledge management
-- `watch_integrated.py`: Unified monitoring of both systems
+##### 4. Act (Adjustment & Learning)
 
-**Persistence Design**:
-- Vector database: Automatically saved to `./chroma_db` directory
-- Variable database: Managed in `variables.db` file
-- Cross-session data continuity
+**Strategic Adjustment for Next Round**:
+After each round ends, the agent receives the updated situation (new {{round}} and {{assets}}) and makes strategic adjustments based on previous results.
 
-### Implementation Patterns
+#### Execution Results Analysis
 
-#### Integrated Operations via CLAUDE.md Natural Language Syntax
+**System Autonomy Demonstration**:
+- **Fully Unmanned Execution**: Complete 10 rounds without human intervention
+- **Dynamic Strategic Adjustment**: Real-time strategy changes according to game situation
+- **Goal-Oriented Behavior**: Rational decisions always considering 30-chip achievement
+- **Risk Management**: Balance between bankruptcy avoidance and aggressive offense
 
-The Chroma system can be operated using **simplified natural language syntax**:
+### 📁 Implementation File Structure
 
-**Knowledge Search (`{{knowledge:query}})**:
-```bash
-# CLAUDE.md syntax: {{knowledge:Python optimization}}
-# Internal execution: 
-uv run python -c "from simple_chroma_rag import search_knowledge_base; print(search_knowledge_base('Python optimization'))"
+Detailed technical configuration of the dice_game folder:
+
+```
+dice_game/
+├── CLAUDE.md          # SQLite-based natural language macro syntax definition
+├── rule.md            # Game rules (20→30 chip strategy game)
+├── agent_action.md    # AI agent decision macro
+├── dice_game.py       # Python game control system
+├── variable_db.py     # SQLite database API
+├── watch_variables.py # Real-time variable monitoring tool
+└── variables.db       # SQLite database file
 ```
 
-**Experience Search (`{{memory:task}})**:
-```bash
-# CLAUDE.md syntax: {{memory:API development}}
-# Internal execution:
-uv run python -c "from simple_chroma_rag import find_similar_experience; print(find_similar_experience('API development'))"
-```
+### Benefits and Applications
 
-**Knowledge Storage**:
-```bash
-# Natural language instruction: "Save this content to the knowledge base"
-# Internal execution:
-uv run python -c "from simple_chroma_rag import add_knowledge_from_text; print(add_knowledge_from_text('content', 'manual_input'))"
-```
+**Complete Autonomous System Realization**:
+- **Theory to Implementation Concretization**: Demonstrate abstract concepts with working systems
+- **A.16 SQLite Integration Practical Example**: Demonstrate practical utility of database integration
+- **Complete Autonomous System Realization**: Goal achievement process without human intervention
+- **Learning & Research Utilization**: Value as an actually working demo system
 
-**Experience Storage**:
-```bash
-# Natural language instruction: "Save this success case as experience"
-# Internal execution:
-uv run python -c "from simple_chroma_rag import save_experience; print(save_experience('task_description', 'outcome_summary', True))"
-```
-
-#### Variable System Integration Patterns
-
-**Dynamic Search via Nested Syntax**:
-```markdown
-# Knowledge search with variable values
-{{knowledge:{{project_type}}}}
-
-# Experience search with variable values  
-{{memory:{{current_task}}}}
-
-# Example execution flow
-1. Get {{project_type}} value: "Python Web API"
-2. Execute knowledge search: search_knowledge_base("Python Web API")
-3. Return related knowledge: FastAPI implementation patterns, etc.
-```
-
-### Integrated Monitoring System
-
-#### Real-time Monitoring with `watch_integrated.py`
-
-**Unified monitoring of SQLite variables and Chroma vector database**:
-
-```bash
-# Display system status overview
-python watch_integrated.py --status
-
-# Continuous monitoring (2-second intervals)
-python watch_integrated.py --watch --interval 2.0
-
-# Integrated search testing
-python watch_integrated.py --search "Python API"
-```
-
-**Example monitoring output**:
-```
-======================================================================
- Natural Language Macro System Status - 2025-01-20 14:30:15 
-======================================================================
-
-📊 SQLite Variables:
-   Count: 3
-   {{ project_name }} = Python Web API Project
-   {{ skill_level }} = Intermediate
-   {{ research_topic }} = API optimization techniques
-
-🧠 Chroma Vector Database:
-   Knowledge: 5
-   Experience: 3
-   Total Vector Items: 8
-
-📚 Recent Knowledge:
-   1. [a1b2c3d4...] from manual_input
-      Python Web API development with FastAPI framework achieves both high performance and development efficiency...
-
-💡 Recent Experience:
-   1. [x9y8z7w6...] (SUCCESS)
-      Task: Python API development
-      Result: FastAPI + PostgreSQL + Docker configuration completed full REST API in 2 weeks...
-```
-
-#### Change Monitoring Features
-
-**Real-time change tracking**:
-```
-[14:32:15] NEW VARIABLE: {{ user_feedback }} = "UI responsiveness improved"
-[14:32:18] NEW KNOWLEDGE: [def45678...] from manual_input
-         API response time optimization involves database query optimization, caching strategies...
-[14:32:22] NEW EXPERIENCE: [abc12345...] (SUCCESS)
-         Task: Response improvement
-         Result: Redis cache implementation achieved 50% performance improvement...
-         System state: 4 vars, 6 knowledge, 4 experience
-```
-
-### Practical Samples
-
-#### Complete Workflow Example (`test_macro.md`)
-
-**Practical example for Python Web API development project**:
-
-```markdown
-# 1. Project initialization
-Clear all variables
-Save "Python Web API Project" to {{project_name}}
-Save "Intermediate" to {{skill_level}}
-Save "API optimization techniques" to {{research_topic}}
-
-# 2. Knowledge base construction
-Save this content to the knowledge base:
-"Python Web API development with FastAPI framework achieves both high performance and development efficiency. Through automatic API specification generation, type hint utilization, and asynchronous processing support, modern API development is possible. Full-scale web services can be built in combination with PostgreSQL."
-
-Save this content to the knowledge base:
-"API response time optimization effectively involves database query optimization, caching strategies, and asynchronous processing utilization. Particularly, session management and query result caching using Redis can achieve over 50% performance improvement."
-
-# 3. Knowledge search test (simple syntax)
-{{knowledge:FastAPI}}
-{{knowledge:{{project_name}}}}
-{{knowledge:{{research_topic}}}}
-
-# 4. Experience learning and search
-Save this success case as experience:
-"In Python API development, FastAPI + PostgreSQL + Docker configuration completed full REST API in 2 weeks. Through automatic testing introduction, achieved both quality and speed, improving team development efficiency by 40%."
-
-{{memory:Python API development}}
-{{memory:{{project_name}}}}
-{{memory:new web development project}}
-
-# 5. Conditional branching and integrated utilization
-If {{skill_level}} is intermediate, suggest efficiency-focused development methods; if beginner, suggest learning-focused approaches
-```
-
-#### Expected Operational Results
-
-**Automatic execution of simple syntax**:
-- `{{knowledge:FastAPI}}` → Execute vector similarity search, automatically display related knowledge
-- `{{memory:API development}}` → Discover and suggest similar patterns from past successful experiences
-- `{{knowledge:{{project_name}}}}` → Dynamic search with variable values (nested syntax)
-
-**Establishment of learning cycle**:
-1. Knowledge accumulation → Vectorized storage
-2. Experience recording → Success/failure pattern storage  
-3. Automatic recall in similar situations → Related information discovery through semantic search
-4. Strategy formulation utilization → Judgment support based on past insights
-
-### Initial Setup and Operations
-
-#### ChromaDB Environment Construction
-
-```bash
-# Install required packages
-uv add chromadb
-
-# Verify system operation
-python -c "from simple_chroma_rag import SimpleChromaRAG; rag = SimpleChromaRAG(); print(rag.get_stats())"
-
-# Start integrated monitoring
-python watch_integrated.py --watch
-```
-
-#### Database Management
-
-**Persistent files**:
-- `./chroma_db/` - Chroma vector database
-- `variables.db` - SQLite variable database
-
-**Backup and maintenance**:
-```bash
-# Check database statistics
-python watch_integrated.py --status
-
-# Backup (copy entire directories)
-cp -r ./chroma_db ./chroma_db_backup_$(date +%Y%m%d)
-cp variables.db variables_backup_$(date +%Y%m%d).db
-```
-
-Through the ChromaDB integrated RAG system, natural language macro programming evolves into an **autonomous system rich in knowledge and experience**, acquiring advanced problem-solving capabilities through semantic similarity search.
+**Extensibility**:
+- **Complex Strategy Games**: Game designs requiring more advanced decision-making
+- **Multi-Agent Competition**: Integration with [A.5: Multi-Agent System Design](#a5-multi-agent-system-design)
+- **Long-term Learning Systems**: Strategy optimization through [Pattern 6: Learning from Experience](./macro.md#pattern-6-learning-from-experience)
 
 ## A.13: Goal-Oriented Architecture and Autonomous Planning
 
@@ -2850,9 +2917,15 @@ To help readers make appropriate technical choices, we provide a systematic comp
 
 To ensure reliability of the orchestration layer, we strongly recommend adherence to quality standards in Python implementation.
 
+<<<<<<< Updated upstream
 For Python code quality standards, see [A.3: Python Quality Guidelines](#python-quality-guidelines). In multi-agent environments, type safety, error handling, testing strategy, and reproducibility are particularly important for collaborative processing.
 
 ## A.15: SQLite-Based Variable Management
+=======
+For Python code quality standards, see [A.4: Python Quality Guidelines](#python-quality-guidelines). In multi-agent environments, type safety, error handling, testing strategy, and reproducibility are particularly important for collaborative processing.
+
+## A.16: SQLite-Based Variable Management
+>>>>>>> Stashed changes
 
 ### Overview and Positioning
 
