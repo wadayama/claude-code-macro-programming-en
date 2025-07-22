@@ -7,7 +7,7 @@ A systematic compilation of advanced technical elements for the practical implem
 All technical elements in this appendix are unified around an **SQLite-based variable management system** implementation approach. This represents an evolution from the traditional variables.json method to a robust and scalable database-based management system.
 
 ### Implementation Consistency
-- **Core System**: SQLite database variable management (see [A.14](#a14-sqlite-based-variable-management))
+- **Core System**: SQLite database variable management (see [A.15](#a15-sqlite-based-variable-management))
 - **Extensions**: Type safety (A.8), audit logs (A.4), vector search (A.11), etc. are integrated with SQLite
 - **Concurrency Control**: Safe concurrent access through WAL mode
 - **Monitoring Tools**: Real-time status monitoring with watch_variables.py
@@ -458,7 +458,7 @@ For planning-stage risk analysis and preventive quality management through conti
 
 Python Tool Integration enables natural language macro programming to achieve universal access to the entire Python ecosystem, making possible a wide range of applications from specialized computational processing to business automation.
 
-In natural language macro programming, information exchange between macros and Python programs through SQLite database (see A.14) enables utilization of Python's rich library ecosystem. This integration approach makes it possible to infinitely extend the functionality of macro systems.
+In natural language macro programming, information exchange between macros and Python programs through SQLite database (see A.15) enables utilization of Python's rich library ecosystem. This integration approach makes it possible to infinitely extend the functionality of macro systems.
 
 ### Basic Integration Pattern
 
@@ -719,9 +719,9 @@ and test code implementation."
 
 ### Basic Architecture
 
-In natural language macro programming, a multi-agent system where multiple agents cooperate can be constructed by utilizing SQLite database (see A.14) as a shared blackboard (Blackboard Model).
+In natural language macro programming, a multi-agent system where multiple agents cooperate can be constructed by utilizing SQLite database (see A.15) as a shared blackboard (Blackboard Model).
 
-**Important**: In multi-agent environments where concurrent access occurs frequently, SQLite-based variable management (A.14) is recommended. SQLite provides concurrent access control, transaction management, and data integrity, enabling robust multi-agent cooperation.
+**Important**: In multi-agent environments where concurrent access occurs frequently, SQLite-based variable management (A.15) is recommended. SQLite provides concurrent access control, transaction management, and data integrity, enabling robust multi-agent cooperation.
 
 All inter-agent communication occurs via the shared state, resulting in a loosely coupled design where agents have no direct dependencies on each other. This design facilitates dynamic addition, removal, and modification of agents while ensuring system-wide transparency.
 
@@ -1282,7 +1282,7 @@ The safety and feasibility of natural language macros are systematically analyze
 
 ### llm_lint System Implementation
 
-The practical verification system deployed in the `llm_lint/` folder consists of a feasibility verification workflow centered on **natural_language_validator.md** and a SQLite-based variable management system (see [A.14](#a14-sqlite-based-variable-management)).
+The practical verification system deployed in the `llm_lint/` folder consists of a feasibility verification workflow centered on **natural_language_validator.md** and a SQLite-based variable management system (see [A.15](#a15-sqlite-based-variable-management)).
 
 #### System Architecture
 
@@ -1499,7 +1499,7 @@ For real-time variable monitoring, see [A.15: SQLite-Based Variable Management](
 
 **Connection to A.6 (LLM-based Lint)**: Generated code automatically undergoes quality verification through the review agent, implementing practical LLM-based validation as described in A.6.
 
-**Connection to A.14 (Performance Optimization)**: SQLite-based variable management provides significant performance improvements over JSON file I/O, especially in concurrent execution scenarios.
+**Connection to A.15 (Performance Optimization)**: SQLite-based variable management provides significant performance improvements over JSON file I/O, especially in concurrent execution scenarios.
 
 #### Measured Improvements
 
@@ -1633,7 +1633,7 @@ ELSE: "No matching summaries. Output blocked by lie detection"
 
 **3. Task Tool Parallel Execution**: Complete parallel execution of three agent processes
 
-**4. SQLite Variable Management**: SQLite-based state management and real-time monitoring maintaining consistency with A.14
+**4. SQLite Variable Management**: SQLite-based state management and real-time monitoring maintaining consistency with A.15
 
 **5. Mathematical Foundation**: Expected value calculation of ensemble effects
 - Success probability = (1-p)²(1+2p)
@@ -2080,7 +2080,7 @@ Optimal as the first step for introducing database robustness like transactions 
 - Transaction support
 - Lightweight and fast
 
-**Implementation Details**: For specific SQLite-based implementation examples, please refer to [A.14: SQLite-Based Variable Management](#a14-sqlite-based-variable-management).
+**Implementation Details**: For specific SQLite-based implementation examples, please refer to [A.15: SQLite-Based Variable Management](#a15-sqlite-based-variable-management).
 
 #### MongoDB (Document-oriented DB)
 
@@ -2140,7 +2140,7 @@ Implement version management-based optimistic locking to safely handle concurren
 #### Automatic Audit Logging
 Utilize database trigger functionality to automatically record complete variable change history. This achieves highly transparent audit systems without polluting agent code.
 
-**Specific Implementation Examples**: For detailed SQLite-based implementations, please refer to [A.14: SQLite-Based Variable Management](#a14-sqlite-based-variable-management).
+**Specific Implementation Examples**: For detailed SQLite-based implementations, please refer to [A.15: SQLite-Based Variable Management](#a15-sqlite-based-variable-management).
 
 ### Integration with Existing Technologies
 
@@ -2698,7 +2698,7 @@ Systematizes a hybrid approach that combines Python orchestration with natural l
 - High-dimensional decision making
 
 **Seamless Integration via SQLite**:
-SQLite database (see A.14) functions as an efficient interface between Python orchestrator and natural language macros. Python rapidly sets data, natural language macros read and process it, then write results back to SQLite, creating an integrated system that maximizes the advantages of both components.
+SQLite database (see A.15) functions as an efficient interface between Python orchestrator and natural language macros. Python rapidly sets data, natural language macros read and process it, then write results back to SQLite, creating an integrated system that maximizes the advantages of both components.
 
 #### Efficiency Pursuit
 

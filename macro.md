@@ -48,6 +48,7 @@
 - [A.12: Vector Database and RAG Utilization](./Appendix.md#a12-vector-database-and-rag-utilization) - Dynamic knowledge systems through knowledge bases and experience learning
 - [A.13: Goal-Oriented Architecture and Autonomous Planning](./Appendix.md#a13-goal-oriented-architecture-and-autonomous-planning) - Complete autonomous systems via 4-stage flow and PDCA cycle
 - [A.14: Python Orchestration-Based Hybrid Approach](./Appendix.md#a14-python-orchestration-based-hybrid-approach) - High-speed, cost-efficient systems via Python + natural language macros
+- [A.15: SQLite-Based Variable Management](./Appendix.md#a15-sqlite-based-variable-management) - Robust state management via database integration
 
 ### Disclaimer
 - [Disclaimer](#-disclaimer)
