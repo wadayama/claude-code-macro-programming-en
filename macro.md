@@ -1677,6 +1677,8 @@ The Error Handling pattern provides methods for dealing with various types of pr
 
 By combining these two approaches, robust systems capable of handling various situations can be constructed.
 
+This pattern is positioned as a core technology of Layer 2 "Runtime Error Handling" in [A.2: Four-Layer Defense Strategy](./Appendix.md#a2-four-layer-defense-strategy). Additionally, the Graceful Degradation approach also provides quality adjustment functionality in Layer 1 "Proactive Design".
+
 ### 9-1: Try-Catch-Finally (Traditional Exception Handling)
 
 Realizes a structure similar to try-catch-finally in programming languages using natural language. Defines explicit recovery processes for unexpected runtime errors such as API call failures, network errors, and tool bugs.
@@ -1743,6 +1745,8 @@ Create instructions for manual processing and notify the administrator.
 Finally:
 Record the execution result and tools used to the execution history.
 ```
+
+These redundancy techniques are specific implementations of the "Runtime Error Handling" strategy detailed in Layer 2 of [A.2: Four-Layer Defense Strategy](./Appendix.md#a2-four-layer-defense-strategy). By preparing multiple alternative approaches in advance, single points of failure are eliminated and the overall system availability is improved.
 
 ### 9-2: Graceful Degradation (Gradual Quality Adjustment)
 
@@ -1853,6 +1857,11 @@ Detailed practical examples of Error Handling patterns:
 4. **Restore WebSearch tool to "Allow" in interactive UI**
 
 **Note**: Claude Code permission changes are only possible through interactive UI operations for security reasons. Command-line format (`/permissions remove WebSearch` etc.) does not work. This procedure enables actual experience of the complete Try-Catch-Finally flow and stepwise quality adjustment through Graceful Degradation.
+
+**Related Advanced Technologies**:
+- [A.2: Four-Layer Defense Strategy](./Appendix.md#a2-four-layer-defense-strategy) - Comprehensive risk management system including Error Handling
+- [A.6: LLM-based Pre-execution Inspection](./Appendix.md#a6-llm-based-pre-execution-inspection) - Static analysis for proactive error prevention
+- [A.8: Ensemble Execution and Consensus Formation](./Appendix.md#a8-ensemble-execution-and-consensus-formation) - Reliability improvement through redundancy
 
 ---
 
