@@ -2244,6 +2244,17 @@ This extension significantly expands system possibilities without wasting any ex
 
 ## A.12: Vector Database and RAG Utilization
 
+### Background & Concepts
+
+**General Significance of Vector Databases**:
+While traditional relational databases are suited for strict matching of structured data, vector databases enable search based on "semantic similarity." This revolutionary information retrieval allows discovering not exact matches but "similar concepts" and "related experiences."
+
+**Value of RAG (Retrieval-Augmented Generation)**:
+RAG is a technique that overcomes the "knowledge limitations" of generative AI through integration with external databases. By dynamically referencing domain-specific expertise, latest information, and past experiences while generating responses, it achieves more accurate and practical outputs.
+
+**Revolutionary Applications in Natural Language Macro Programming**:
+While traditional variable management focuses on "current state," vector database integration enables "semantic search of past knowledge and experiences." This evolution transforms macro systems from mere process automation into intelligent systems with "learning, experience accumulation, and insight utilization."
+
 By integrating a **ChromaDB-based RAG system** into natural language macro programming, we enable knowledge utilization and experience learning through semantic similarity search. The implementation in the Chroma/ folder provides dynamic knowledge search and experience utilization capabilities in addition to traditional SQLite variable management.
 
 ### Basic Architecture
@@ -2690,6 +2701,17 @@ dice_game/
 
 ## A.14: Python Orchestration-Based Hybrid Approach
 
+### Background & Concepts
+
+**Necessity of Hybrid Approaches**:
+While pure natural language macro programming excels in expressiveness and flexibility, large-scale systems face challenges in execution speed, token efficiency, and control flow precision. Conversely, traditional Python programming is fast and accurate but unsuitable for complex judgment and creative processing.
+
+**Achieving Optimal Role Distribution**:
+In hybrid approaches, Python handles "fast and reliable control and data processing" while natural language macros handle "flexible judgment and creative generation." This division maximizes the strengths of both technologies and enables ideal system construction where their weaknesses complement each other.
+
+**Seamless Integration through SQLite**:
+For data exchange between Python code and natural language macros, SQLite database serves as an intermediate layer. This design efficiently coordinates high-speed Python processing with expressive macro processing, realizing advanced automation systems that were difficult to achieve individually.
+
 Systematizes a hybrid approach that combines Python orchestration with natural language macro programming for systems requiring high speed and token efficiency. Provides methodology for building lightweight yet powerful agent systems without relying on external frameworks.
 
 ### Design Concept
@@ -2964,6 +2986,17 @@ To ensure reliability of the orchestration layer, we strongly recommend adherenc
 For Python code quality standards, see [A.3: Python Tool Integration](#a3-python-tool-integration). In multi-agent environments, type safety, error handling, testing strategy, and reproducibility are particularly important for collaborative processing.
 
 ## A.15: SQLite-Based Variable Management
+
+### Background & Concepts
+
+**General Value of Database Technology**:
+Databases provide essential functionality for robust system construction, including data persistence, integrity, concurrent access control, and transaction management. SQLite, in particular, is an excellent solution that achieves enterprise-grade functionality in a lightweight manner without requiring a server.
+
+**Need for Evolution from variables.json**:
+In the early stages of natural language macro programming, simple state management through variables.json is effective. However, as systems mature and require multiple agents, long-term operation, and high-frequency access, issues such as file lock contention, data corruption risks, and performance degradation become apparent.
+
+**Revolutionary Value of SQLite Integration**:
+SQLite-based variable management maintains traditional simplicity while enabling enterprise-level features such as ACID properties for consistency assurance, concurrent access through WAL mode, automatic timestamps, type safety, and audit logs. This provides a consistent development experience from prototype to production operation.
 
 ### Overview and Positioning
 
