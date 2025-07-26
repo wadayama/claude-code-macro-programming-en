@@ -1049,9 +1049,6 @@ After all task completion, integrate results and present as complete recipe
 ```
 
 
-**Key Learning Points**: 
-**Recursive decomposition thinking** masters programming-like problem solving. **TODO tool coordination** realizes reliable state management. **Decomposition judgment logic** learns appropriate granularity control. **Integration process** practices systematization of distributed results.
-
 ### 📁 Practical Samples
 
 Detailed practical examples of Problem Solving & Recursion:
@@ -1192,9 +1189,6 @@ After game completion, reflect on improvement process from {{game_history}}:
 ## Learning Completion and Cleanup
 For next execution, delete game_history.json file.
 ```
-
-**Key Learning Points**: 
-**Experience persistence** realizes long-term memory across sessions. **Continuous learning cycle** constructs iterative improvement processes. **Insight extraction** discovers general principles from individual experiences. **State management** tracks and visualizes learning progress.
 
 ### 📁 Practical Samples
 
@@ -1477,9 +1471,6 @@ Append updated insights to past_meetings.json.
 - **Learning from Experience**: Knowledge and model updates from judgment results
 - **Parallel Processing**: Parallel reference and integration of multiple knowledge sources
 
-**Key Learning Points**:
-**Appropriate knowledge separation** to distinguish between knowledge base and environment model usage. **State management design** to reliably capture important environment changes. **Multiple information integration** to realize judgment leveraging characteristics of each information source. **Continuous updates** to gradually improve knowledge and model accuracy.
-
 ### 📁 Practical Samples
 
 Detailed practical examples of Environment sensing, Knowledge-base and Environment model:
@@ -1634,9 +1625,6 @@ Record this series of intervention processes to hitl_log.json:
 2. **Explicit waiting** controls automated processing and clarifies responsibility
 3. **Feedback integration** reflects human insights into system
 4. **Record retention** ensures transparency of decision-making process
-
-**Key Learning Points**:
-**Appropriate intervention frequency** balances efficiency and safety. **Clear judgment criteria** reduce human burden and promote quick decisions. **Flexible modification function** effectively utilizes human feedback. **Responsibility visualization** ensures transparency and accountability of decisions.
 
 ### 📁 Practical Samples
 
@@ -1842,6 +1830,8 @@ Detailed practical examples of Error Handling patterns:
 
 **Overview**: State tracking and problem diagnosis functionality for macro execution processes. LLM provides real-time natural language debug information, explicitly showing variable values and decision rationales to enable identification of unintended behavior causes and promote understanding.
 
+This pattern is closely related to [A.2: Four-Layer Defense Strategy](./Appendix.md#a2-four-layer-defense-strategy) Layer 3 'Audit and Continuous Improvement', and [A.5: Audit Log System](./Appendix.md#a5-audit-log-system). By combining these technologies, consistent visibility can be ensured from development-time debugging to production-time auditing.
+
 **Processing Flow**: `Execution → State Recording → Analysis & Judgment → Diagnostic Information Output`
 
 **Application Criteria**:
@@ -2009,11 +1999,17 @@ Expected Effects:
 [DEBUG] Next Action: [next processing to execute]
 ```
 
+For production environment audit logging, see [A.5: Audit Log System](./Appendix.md#a5-audit-log-system). For comprehensive defense strategies, see [A.2: Four-Layer Defense Strategy](./Appendix.md#a2-four-layer-defense-strategy).
+
 ### 📁 Practical Samples
 
 Detailed practical examples of Debug & Tracing:
 
 - **Beginner**: [Variable Debugging System](./examples/debug_tracing/variable_debugging.md) - Master basic variable state tracking and debug output
+
+**Related Advanced Technologies**:
+- [A.2: Four-Layer Defense Strategy](./Appendix.md#a2-four-layer-defense-strategy) - Comprehensive risk management utilizing debug information
+- [A.5: Audit Log System](./Appendix.md#a5-audit-log-system) - Persistent execution recording and analysis in production environments
 
 ---
 
