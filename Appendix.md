@@ -3215,7 +3215,7 @@ This enables the generation of practical, maintainable, and structured macro cod
 
 #### Declarative Specifications vs Procedural Macros
 
-**Declarative Specifications (What)**: Requirements specifications that describe what needs to be achieved, independent of specific implementation methods.
+**Declarative Specifications (What)**: Requirements specifications that describe what needs to be achieved, independent of specific implementation methods. Declarative specifications can **include design pattern instructions** for efficient macro generation (e.g., "Process multiple data sources using Pattern 2 (Parallel Processing)").
 
 Example:
 ```markdown
@@ -3237,19 +3237,6 @@ Example:
 5. Generate report format
 6. Display to user interface
 ```
-
-### Conversion Pattern Classifications
-
-The conversion from declarative specifications to procedural macros can be systematically organized into the following three pattern types:
-
-#### Type 1: Aggregation Patterns
-Patterns that combine multiple simple specifications into complex processes.
-
-#### Type 2: Filter Patterns  
-Patterns that extract specific procedural elements from broad requirement specifications.
-
-#### Type 3: Transform Patterns
-Patterns that transform abstract conceptual specifications into concrete implementation procedures.
 
 While existing [A.7: Metaprogramming](#a7-metaprogramming) focuses on internal dynamic macro generation, this approach is characterized by generation through collaboration with external agents. Particularly important is the significant improvement in intent communication accuracy between humans and LLMs by **utilizing design patterns as a common language**.
 
