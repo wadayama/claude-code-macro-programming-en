@@ -3204,6 +3204,15 @@ This section describes methods for efficiently generating natural language macro
 
 **Goal**: Systematization of the process for automatically converting human-written requirement specifications (What) into executable procedural macros (How), and establishment of quality improvement methods for this process.
 
+#### High-Quality Macro Generation by Coding Agents
+
+When automatically generating procedural macros from declarative specifications, coding agents (such as Claude Code) can significantly improve generation quality by pre-loading the following files:
+
+- **macro.md**: Utilize 10 design patterns as a common language for structured, pattern-based macro generation
+- **Appendix.md**: Reference and incorporate advanced system integration techniques (multi-agent systems, SQLite integration, error handling, etc.)
+
+This enables the generation of practical, maintainable, and structured macro code rather than simple requirement conversion. Note that execution of generated macros requires **only CLAUDE.md**.
+
 #### Declarative Specifications vs Procedural Macros
 
 **Declarative Specifications (What)**: Requirements specifications that describe what needs to be achieved, independent of specific implementation methods.
