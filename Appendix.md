@@ -32,6 +32,7 @@ Implementation details, migration methods, and technical specifications are comp
 - [A.13: Goal-Oriented Architecture and Autonomous Planning](#a13-goal-oriented-architecture-and-autonomous-planning)
 - [A.14: Python Orchestration-Based Hybrid Approach](#a14-python-orchestration-based-hybrid-approach)
 - [A.15: SQLite-Based Variable Management](#a15-sqlite-based-variable-management)
+- [A.16: LLM Agent Collaborative Macro Auto-Generation](#a16-llm-agent-collaborative-macro-auto-generation)
 
 ---
 
@@ -3193,6 +3194,109 @@ Based on the current implementation, extensions to more advanced features such a
 3. **Prepared Statements**: Reduced SQL parsing overhead
 4. **Batch Processing**: Bulk updates of multiple variables
 
-
-
 ---
+
+## A.16: LLM Agent Collaborative Macro Auto-Generation
+
+### Background and Concepts
+
+In natural language macro programming, **LLM Agent Collaborative Macro Auto-Generation** is an innovative approach that realizes "automatic conversion from declarative specifications to procedural macros." It collaborates with external LLM agents like Claude Code to automatically convert human-written requirement specifications into executable natural language macros.
+
+While existing [A.7: Metaprogramming](#a7-metaprogramming) focuses on internal dynamic macro generation, this approach is characterized by generation through collaboration with external agents. Particularly important is the significant improvement in intent communication accuracy between humans and LLMs by **utilizing design patterns as a common language**.
+
+#### Improved Intent Communication Accuracy through Pattern Common Language
+
+```markdown
+# Traditional Approach
+Human: "I want to collect information from multiple data sources in parallel and analyze it"
+LLM: (asyncio? threading? Specific implementation details unclear)
+
+# Pattern-Based Approach
+Human: "Use Pattern 2 (Parallel Processing) to collect from 3 sources,
+        then Pattern 1 (Sequential Pipeline) for integration and analysis"
+LLM: "I'll define 3 parallel tasks with Task tool and process results through sequential pipeline"
+```
+
+### Design Pattern Effects as Common Language
+
+#### Hierarchical Sharing of Abstraction Levels
+
+Design patterns function as a common language that enables instant context sharing between humans and LLMs. By presenting pattern names, consensus is immediately formed at the conceptual level rather than implementation details, achieving significant reduction in ambiguity and minimizing intent discrepancies.
+
+#### Collaborative Design Process
+
+```markdown
+Human: "Incorporate Pattern 6 (Learning from Experience) for customer analysis too"
+LLM: "A design that accumulates past analysis results and utilizes insights from similar cases.
+      I'll manage history with SQLite and add similarity determination logic"
+```
+
+**Traditional Development Flow**:
+Long natural language explanation → Confirmation → Misunderstanding → Re-explanation → Agreement
+
+**Pattern-Based Flow**:
+Pattern name presentation → Immediate shared understanding → Detail adjustment
+
+### Classification of Conversion Patterns
+
+#### 1. Aggregation-Type Conversion
+
+**Declarative Specification**: "Calculate average price of all products"
+**Procedural Macro**:
+```markdown
+Step1: Retrieve product data to {{product_data}}
+Step2: Extract price list to {{prices}}
+Step3: Calculate average and save to {{average_price}}
+```
+
+#### 2. Filter-Type Conversion
+
+**Declarative Specification**: "Identify top 10% customers by sales"
+**Procedural Macro**:
+```markdown
+Step1: Retrieve sales data to {{sales_data}}
+Step2: Sort by sales amount in descending order and save to {{sorted_data}}
+Step3: Calculate top 10% threshold and set to {{threshold}}
+Step4: Extract customers above threshold to {{top_customers}}
+```
+
+#### 3. Transform-Type Conversion
+
+**Declarative Specification**: "Export product catalog in markdown format"
+**Procedural Macro**:
+```markdown
+Step1: Retrieve product data to {{catalog_data}}
+Step2: Convert to markdown format and generate to {{markdown_content}}
+Step3: Save to catalog_export.md file
+```
+
+### Implementation Patterns and Collaborative Mechanisms
+
+#### Pattern-Driven Specification Description
+
+Through structured requirement specifications centered on design patterns, "Pattern X + Pattern Y" combination design becomes possible. The gradual refinement process using common language efficiently converts abstract requirements into concrete implementation specifications.
+
+#### Integration with Quality Assurance
+
+**Pre-verification**: Collaboration with [A.6: LLM-based Pre-execution Inspection](#a6-llm-based-pre-execution-inspection) automatically verifies security and executability of generated macros.
+
+**Post-evaluation**: Multi-axis evaluation (quality, creativity, logic, appropriateness) of generation quality through [A.10: LLM-based Post-execution Evaluation](#a10-llm-based-post-execution-evaluation).
+
+#### Iterative Improvement Cycle
+
+```
+Pattern Selection → Specification Description → Macro Generation → Verification → Execution → Evaluation → Pattern Adjustment
+```
+
+This cycle enables continuous improvement of generation quality and discovery of optimal pattern combinations.
+
+### Practical Example: Collaborative Design through Pattern Dialogue
+
+#### Actual Stepwise Refinement
+
+```markdown
+Human: "Product review analysis system with Pattern 2 and Pattern 8"
+
+LLM: "Multi-perspective analysis with parallel processing and Human-in-the-Loop for critical decisions.
+      I propose a design that executes sentiment analysis, summarization, and improvement suggestions 
+      in parallel, with human confirmation for final approval"
