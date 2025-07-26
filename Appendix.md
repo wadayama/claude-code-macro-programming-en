@@ -3277,40 +3277,6 @@ Long natural language explanation → Confirmation → Misunderstanding → Re-e
 **Pattern-Based Flow**:
 Pattern name presentation → Immediate shared understanding → Detail adjustment
 
-### Implementation Patterns
-
-#### 1. Aggregation-Type Conversion
-
-**Declarative Specification**: "Calculate average price of all products"
-**Procedural Macro**:
-```markdown
-Step1: Retrieve product data to {{product_data}}
-Step2: Extract price list to {{prices}}
-Step3: Calculate average and save to {{average_price}}
-```
-
-#### 2. Filter-Type Conversion
-
-**Declarative Specification**: "Identify top 10% customers by sales"
-**Procedural Macro**:
-```markdown
-Step1: Retrieve sales data to {{sales_data}}
-Step2: Sort by sales amount in descending order and save to {{sorted_data}}
-Step3: Calculate top 10% threshold and set to {{threshold}}
-Step4: Extract customers above threshold to {{top_customers}}
-```
-
-#### 3. Transform-Type Conversion
-
-**Declarative Specification**: "Export product catalog in markdown format"
-**Procedural Macro**:
-```markdown
-Step1: Retrieve product data to {{catalog_data}}
-Step2: Convert to markdown format and generate to {{markdown_content}}
-Step3: Save to catalog_export.md file
-Step2: Transform to markdown format and save to {{markdown_catalog}}
-Step3: Export to file with filename {{filename}}
-```
 
 ### Implementation Patterns and Collaborative Mechanisms
 
@@ -3341,4 +3307,63 @@ Human: "Product review analysis system with Pattern 2 and Pattern 8"
 
 LLM: "Multi-perspective analysis with parallel processing and Human-in-the-Loop for critical decisions.
       I propose a design that executes sentiment analysis, summarization, and improvement suggestions 
-      in parallel, with human confirmation for final approval"
+      in parallel, with human confirmation for final approval"Human: "Add Pattern 9 Graceful Degradation as well"
+
+LLM: "I'll modify the configuration to continue providing value through gradual quality adjustment even when API failures occur:
+      - Obtain sentiment analysis from main API
+      - Switch to rule-based sentiment determination on failure
+      - Finally inform users of limitations"
+```
+
+#### Generated Macro Example
+
+Actual macro generated from the above dialogue:
+
+```markdown
+## Product Review Analysis System
+
+### Pattern 2: Parallel Analysis Execution
+**Execute the following 3 tasks in parallel using Task tool:**
+
+#### Task 1: Sentiment Analysis
+Execute sentiment analysis on {{review_text}} and save results to {{sentiment_result}}
+On failure, save word-based determination to {{sentiment_fallback}}
+
+#### Task 2: Summary Generation  
+Generate summary of {{review_text}} to {{summary_result}}
+On failure, extract first 200 characters to {{summary_fallback}}
+
+#### Task 3: Improvement Suggestions
+Generate improvement suggestions from {{review_text}} to {{improvement_result}}
+
+### Pattern 8: Human-in-the-Loop Approval
+Please review the analysis results:
+- Sentiment analysis: {{sentiment_result}}
+- Summary: {{summary_result}}  
+- Improvement suggestions: {{improvement_result}}
+
+If approved, enter "approved"; if modifications are needed, please provide instructions.
+```
+
+### Impact and Value on Development Processes
+
+**Rapid Prototyping**: Pattern specification reduces time from specification to operation
+
+**Enhanced Design Participation**: Pattern understanding enables non-programmers to participate in design processes
+
+**Quality Improvement**: Utilization of best practices embedded in patterns
+
+**Structured Experience Knowledge**: Express veteran experience rules ("expect failure in external API integration" → Pattern 9 + Pattern 3) through pattern combinations
+
+### Application Constraints and Considerations
+
+This approach should be carefully considered for application in the following cases:
+
+- **Simple one-time tasks**: When pattern learning costs exceed benefits
+- **Highly specialized and unique requirements**: Areas not covered by existing patterns
+- **Real-time critical processing**: When delays from pattern selection are unacceptable
+- **Cases where standard programming suffices**: Simple tasks where conventional methods are more efficient
+
+By understanding these constraints, maximum effectiveness can be achieved through appropriate application in suitable scenarios.
+
+---
