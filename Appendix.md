@@ -3198,13 +3198,59 @@ Based on the current implementation, extensions to more advanced features such a
 
 ## A.16: LLM Agent Collaborative Macro Auto-Generation
 
-### Background and Concepts
+### Background and Purpose
 
-In natural language macro programming, **LLM Agent Collaborative Macro Auto-Generation** is an innovative approach that realizes "automatic conversion from declarative specifications to procedural macros." It collaborates with external LLM agents like Claude Code to automatically convert human-written requirement specifications into executable natural language macros.
+This section describes methods for efficiently generating natural language macro programs containing procedural descriptions from declarative specifications using coding agents such as Claude Code.
+
+**Goal**: Systematization of the process for automatically converting human-written requirement specifications (What) into executable procedural macros (How), and establishment of quality improvement methods for this process.
+
+#### Declarative Specifications vs Procedural Macros
+
+**Declarative Specifications (What)**: Requirements specifications that describe what needs to be achieved, independent of specific implementation methods.
+
+Example:
+```markdown
+# Requirement Specification
+- Collect information from multiple data sources
+- Analyze collected data and generate reports
+- Display results to users
+```
+
+**Procedural Macros (How)**: Natural language macro programs containing specific execution procedures.
+
+Example:
+```markdown
+# Generated Macro
+1. Initialize parallel processing framework
+2. For each data source, execute collection task
+3. Aggregate collected data
+4. Apply analysis algorithm
+5. Generate report format
+6. Display to user interface
+```
+
+### Conversion Pattern Classifications
+
+The conversion from declarative specifications to procedural macros can be systematically organized into the following three pattern types:
+
+#### Type 1: Aggregation Patterns
+Patterns that combine multiple simple specifications into complex processes.
+
+#### Type 2: Filter Patterns  
+Patterns that extract specific procedural elements from broad requirement specifications.
+
+#### Type 3: Transform Patterns
+Patterns that transform abstract conceptual specifications into concrete implementation procedures.
 
 While existing [A.7: Metaprogramming](#a7-metaprogramming) focuses on internal dynamic macro generation, this approach is characterized by generation through collaboration with external agents. Particularly important is the significant improvement in intent communication accuracy between humans and LLMs by **utilizing design patterns as a common language**.
 
-#### Improved Intent Communication Accuracy through Pattern Common Language
+#### Design Pattern-Based Quality Improvement
+
+By referencing design patterns during the conversion process, the quality and consistency of generated macros can be significantly enhanced. This approach contributes to improved communication accuracy between humans and LLMs.
+
+#### Pattern Effects on Conversion Process
+
+Utilizing design patterns as a common language contributes to significant improvements in intent communication accuracy between humans and LLMs.
 
 ```markdown
 # Traditional Approach
@@ -3217,11 +3263,9 @@ Human: "Use Pattern 2 (Parallel Processing) to collect from 3 sources,
 LLM: "I'll define 3 parallel tasks with Task tool and process results through sequential pipeline"
 ```
 
-### Design Pattern Effects as Common Language
-
 #### Hierarchical Sharing of Abstraction Levels
 
-Design patterns function as a common language that enables instant context sharing between humans and LLMs. By presenting pattern names, consensus is immediately formed at the conceptual level rather than implementation details, achieving significant reduction in ambiguity and minimizing intent discrepancies.
+Design patterns function as a common language that enables instant context sharing between humans and LLMs. By presenting pattern names, consensus is immediately formed at the conceptual level rather than implementation details, contributing to significant reduction in ambiguity and minimizing intent discrepancies.
 
 #### Collaborative Design Process
 
@@ -3237,7 +3281,7 @@ Long natural language explanation → Confirmation → Misunderstanding → Re-e
 **Pattern-Based Flow**:
 Pattern name presentation → Immediate shared understanding → Detail adjustment
 
-### Classification of Conversion Patterns
+### Implementation Patterns
 
 #### 1. Aggregation-Type Conversion
 
@@ -3268,6 +3312,8 @@ Step4: Extract customers above threshold to {{top_customers}}
 Step1: Retrieve product data to {{catalog_data}}
 Step2: Convert to markdown format and generate to {{markdown_content}}
 Step3: Save to catalog_export.md file
+Step2: Transform to markdown format and save to {{markdown_catalog}}
+Step3: Export to file with filename {{filename}}
 ```
 
 ### Implementation Patterns and Collaborative Mechanisms
