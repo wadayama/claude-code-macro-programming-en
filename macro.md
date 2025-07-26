@@ -768,6 +768,7 @@ Detailed practical examples of the basic 3 patterns can be learned from the foll
 - ✅ Want to implement debuggable loop processing
 - ✅ Want to avoid complexity of counter management
 - ❌ Very simple one-time processing (→Basic processing is sufficient)
+- ❌ When loop processing is unstable and reliability is critical (→Consider [A.14: Python Orchestration-Based Hybrid Approach](./Appendix.md#a14-python-orchestration-based-hybrid-approach))
 
 **TODO-list Based Value**:
 - **Reliability**: High stability through elimination of counter management
@@ -950,6 +951,15 @@ If {{counter}} reaches [limit], terminate processing
 - **Safe Execution**: No infinite loop risk through maximum task limits
 - **Clean Restart**: Reproducible execution environment
 
+### ⚠️ Loop Processing Stability Considerations
+
+While natural language macro loop processing offers high flexibility, the probabilistic nature of LLMs may occasionally lead to unexpected behaviors. For critical systems where reliability is paramount, consider the following alternative approach:
+
+**[A.14: Python Orchestration-Based Hybrid Approach](./Appendix.md#a14-python-orchestration-based-hybrid-approach)**:
+- Python handles reliable loop control
+- Natural language macros focus on flexible decision-making within each iteration
+- Provides optimal solution combining strengths of both technologies
+
 ### 📁 Practical Samples
 
 Detailed practical examples of TODO-list Based Loop Processing:
@@ -1060,6 +1070,8 @@ Detailed practical examples of Problem Solving & Recursion:
 ### Pattern 6: Learning from Experience
 
 **Overview**: Advanced pattern where agents save processing results to persistent files and improve decision-making quality by learning from accumulated experience. Gradually constructs from simple experience recording to similarity-based knowledge search and failure pattern recognition.
+
+This pattern plays a crucial role as the learning functionality for autonomous agents in [A.13: Goal-Oriented Architecture and Autonomous Planning](./Appendix.md#a13-goal-oriented-architecture-and-autonomous-planning). In autonomous planning systems, past planning and execution experiences can be accumulated and utilized to improve the accuracy of future goal setting and plan evaluation.
 
 **Processing Flow**: `Experience Recording → Knowledge Accumulation → Experience Search → Knowledge Utilization`
 
@@ -1197,11 +1209,17 @@ Detailed practical examples of Learning from Experience:
 - **Beginner**: [Writing Style Analysis & Improvement System](./examples/learning_experience/writing_style_learning.md) - Writing experience recording, accumulation, and utilization through JSON persistence
 - **Intermediate**: [Prompt Continuous Improvement System](./examples/learning_experience/prompt_improvement_learning.md) - Gradual prompt optimization learning through Loop Pattern integration
 
+**Related Advanced Technologies**:
+- [A.13: Goal-Oriented Architecture and Autonomous Planning](./Appendix.md#a13-goal-oriented-architecture-and-autonomous-planning) - Autonomous agent systems utilizing experience learning
+- [A.12: Vector Database and RAG Utilization](./Appendix.md#a12-vector-database-and-rag-utilization) - Efficient search and utilization of large-scale experiential knowledge
+
 ---
 
 ### Pattern 7: Environment Sensing, Knowledge-base and Environment Model
 
 **Overview**: Knowledge systems and model construction techniques for agents to understand environments and make optimal situation-based decisions. Adds "environment understanding" and "situation judgment" intellectual capabilities to basic pattern execution abilities, realizing more practical and adaptive agent systems.
+
+This pattern is closely related to [A.12: Vector Database and RAG Utilization](./Appendix.md#a12-vector-database-and-rag-utilization). Particularly in building and searching large-scale knowledge bases, the utilization of vector search and RAG systems enables efficient matching and utilization of environmental information and knowledge.
 
 **Processing Flow**: `Environment Sensing → Knowledge Matching → Situation Estimation → Experience Integration → Action Judgment`
 
@@ -1349,8 +1367,8 @@ A: Usually 3-5 business days, express delivery next day
 }
 ```
 
-#### RAG System Integration
-Integration with Retrieval-Augmented Generation (RAG) systems enables dynamic search and utilization from large-scale knowledge bases. In Claude Code environments, you can build document search → summarization → decision pipelines through integration with external vector databases or RAG services. Particularly effective for business agents utilizing large volumes of technical documents, regulations, and past cases.
+#### RAG System Integration and Vector Search
+By utilizing the technologies detailed in [A.12: Vector Database and RAG Utilization](./Appendix.md#a12-vector-database-and-rag-utilization), dynamic search and utilization from large-scale knowledge bases becomes possible. In Claude Code environments, you can build document search → summarization → decision pipelines through integration with external vector databases or RAG services. Particularly effective for business agents utilizing large volumes of technical documents, regulations, and past cases.
 
 **Usage Example: Knowledge Base Reference System**
 ```markdown
@@ -1478,11 +1496,17 @@ Detailed practical examples of Environment sensing, Knowledge-base and Environme
 - **Beginner**: [Time-aware User State Estimation System](./examples/environment_sensing/time_based_user_model.md) - State estimation and response adaptation through time sensing
 - **Beginner**: [Presentation Structure Advisor](./examples/knowledge_base_patterns/presentation_advisor/presentation_advisor.md) - Individual requirement-responsive structure generation through specialized knowledge
 
+**Related Advanced Technologies**:
+- [A.12: Vector Database and RAG Utilization](./Appendix.md#a12-vector-database-and-rag-utilization) - Efficient search and utilization systems for large-scale knowledge bases
+- [A.13: Goal-Oriented Architecture and Autonomous Planning](./Appendix.md#a13-goal-oriented-architecture-and-autonomous-planning) - Autonomous systems integrating environment understanding capabilities
+
 ---
 
 ### Pattern 8: Human-in-the-Loop (HITL)
 
 **Overview**: Advanced pattern that strategically incorporates human judgment, creativity, and supervision into agent automated processing, constructing safe and responsible systems while maintaining efficiency. Overcomes limitations of complete automation through appropriate intervention point design, realizing complementary human-AI collaboration.
+
+This pattern is positioned as a core technology of Layer 1 "Proactive Design at Design Stage" in [A.2: Four-Layer Defense Strategy](./Appendix.md#a2-four-layer-defense-strategy). Through strategic placement of Human-in-the-Loop, it provides defense functionality against the uncertainty of probabilistic systems, realizing safe and responsible system operation.
 
 **Processing Flow**: `Automated Processing → Intervention Judgment → [Human Intervention | Continue Execution] → Result Integration → Record Retention`
 
@@ -1499,6 +1523,8 @@ Detailed practical examples of Environment sensing, Knowledge-base and Environme
 - **Direction Adjustment**: Human correction of strategic judgment and priorities
 - **Safety Assurance**: Prevention of unexpected misconduct and harmful outputs
 - **Responsibility Clarification**: Human approval and responsibility recording for important decisions
+
+These values form the foundation of the multi-layered defense approach in [A.2: Four-Layer Defense Strategy](./Appendix.md#a2-four-layer-defense-strategy), enabling robust system design that does not rely on a single defense method.
 
 ### 🎯 Efficient Intervention Design Principles
 
@@ -1632,6 +1658,10 @@ Detailed practical examples of Human-in-the-Loop:
 
 - **Beginner**: [Creative Blog Article Creation System](./examples/human_in_the_loop/creative_blog_writer.md) - Human-collaborative article creation with strategic intervention points
 - **Intermediate**: [Investment Decision Support System](./experiments/investment_decision_support/experiment.md) - Responsibility clarification and staged approval process for high-risk decisions
+
+**Related Advanced Technologies**:
+- [A.2: Four-Layer Defense Strategy](./Appendix.md#a2-four-layer-defense-strategy) - Comprehensive risk management system integrating Human-in-the-Loop
+- [A.5: Audit Log System](./Appendix.md#a5-audit-log-system) - Complete recording and tracking of human judgment and approval processes
 
 ---
 
