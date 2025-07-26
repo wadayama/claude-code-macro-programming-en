@@ -8,7 +8,7 @@ All technical elements in this appendix are unified around an **SQLite-based var
 
 ### Implementation Consistency
 - **Core System**: SQLite database variable management (see [A.15](#a15-sqlite-based-variable-management))
-- **Extensions**: Type safety (A.8), audit logs (A.4), vector search (A.11), etc. are integrated with SQLite
+- **Extensions**: Type safety ([A.9](#a9-type-safety-and-schema-management)), audit logs ([A.5](#a5-audit-log-system)), vector database ([A.12](#a12-vector-database-and-rag-utilization)), etc. are integrated with SQLite
 - **Concurrency Control**: Safe concurrent access through WAL mode
 - **Monitoring Tools**: Real-time status monitoring with watch_variables.py
 
