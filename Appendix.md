@@ -678,6 +678,8 @@ cd integration
 cat visualization_demo.md | claude -p --dangerously-skip-permissions
 ```
 
+**⚠️ Warning**: The `--dangerously-skip-permissions` option bypasses normal security checks. Use this option only in trusted environments and ensure you fully understand the risks. Not recommended for production use.
+
 #### Extensibility
 
 **Templates for Other Python Libraries**:
