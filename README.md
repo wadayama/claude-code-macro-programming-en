@@ -64,7 +64,7 @@ The core of natural language macro programming consists of 10 design patterns, s
 - **[A.13: Goal-Oriented Architecture and Autonomous Planning](./Appendix.md#a13-goal-oriented-architecture-and-autonomous-planning)** - Complete autonomous systems via 4-stage flow and PDCA cycle
 - **[A.14: Python Orchestration-Based Hybrid Approach](./Appendix.md#a14-python-orchestration-based-hybrid-approach)** - High-speed, cost-efficient systems via Python + natural language macros
 - **[A.15: SQLite-Based Variable Management](./Appendix.md#a15-sqlite-based-variable-management)** - Robust variable management system with SQLite database, enhanced performance
-- **[A.16: LLM Agent Collaborative Macro Auto-Generation](./Appendix.md#a16-llm-agent-collaborative-macro-auto-generation)** - Automatic conversion methods from declarative specifications to procedural macros with design pattern utilization
+- **[A.16: Macro Auto-Generation by Coding Agents](./Appendix.md#a16-macro-auto-generation-by-coding-agents)** - Automatic conversion methods from declarative specifications to procedural macros with design pattern utilization
 
 ## 📚 Main Contents
 

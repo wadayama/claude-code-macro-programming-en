@@ -32,7 +32,7 @@ Implementation details, migration methods, and technical specifications are comp
 - [A.13: Goal-Oriented Architecture and Autonomous Planning](#a13-goal-oriented-architecture-and-autonomous-planning)
 - [A.14: Python Orchestration-Based Hybrid Approach](#a14-python-orchestration-based-hybrid-approach)
 - [A.15: SQLite-Based Variable Management](#a15-sqlite-based-variable-management)
-- [A.16: LLM Agent Collaborative Macro Auto-Generation](#a16-llm-agent-collaborative-macro-auto-generation)
+- [A.16: Macro Auto-Generation by Coding Agents](#a16-macro-auto-generation-by-coding-agents)
 
 ---
 
@@ -3196,7 +3196,7 @@ Based on the current implementation, extensions to more advanced features such a
 
 ---
 
-## A.16: LLM Agent Collaborative Macro Auto-Generation
+## A.16: Macro Auto-Generation by Coding Agents
 
 ### Background and Purpose
 
