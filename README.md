@@ -4,6 +4,17 @@
 
 A guide to building agent systems using **Claude Code** as a natural language interpreter.
 
+This guide presents **Natural Language Macro Programming** that **executes structured tasks using natural language as macro code, with LLM as interpreter**.
+
+While conventional programming requires computers to interpret programming languages with specific syntax, natural language macro programming enables:
+
+- **Natural language and Markdown notation** as program descriptions
+- **Claude Code** functioning as an interpreter that parses and executes these descriptions
+- **Advanced control structures** (Task tool, TODO tool, variable management, conditional branching, parallel execution) realized through natural language  
+- **Agent systems** for automating and optimizing complex tasks
+
+You can design agent behaviors using intuitive natural language and have Claude Code execute them.
+
 ## ⚡ Quick Start
 
 Try variable storage and reference:
