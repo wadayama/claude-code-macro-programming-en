@@ -3198,7 +3198,7 @@ Based on the current implementation, extensions to more advanced features such a
 
 ## A.16: Macro Auto-Generation by Coding Agents
 
-### Background and Purpose
+### Background and Concept
 
 This section describes methods for efficiently generating natural language macro programs containing procedural descriptions from declarative specifications using coding agents such as Claude Code.
 
