@@ -92,6 +92,6 @@ MIT License - see [LICENSE](./LICENSE) for details.
 
 ---
 
-**Last Updated**: 2025-07-05  
+**Last Updated**: 2025-07-27  
 **Author**: Tadashi Wadayama (with assistance from Claude Code)  
 **License**: MIT License (2025)
