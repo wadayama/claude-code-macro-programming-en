@@ -15,6 +15,8 @@ While conventional programming requires computers to interpret programming langu
 
 You can design agent behaviors using intuitive natural language and have Claude Code execute them.
 
+Natural language macro programming provides **high explainability**, which is crucial for responsible AI development. The natural language descriptions make processing steps human-readable, ensuring execution transparency, auditability, and debuggability, thereby facilitating system verification and traceability.
+
 ## ⚡ Quick Start
 
 Try variable storage and reference:
