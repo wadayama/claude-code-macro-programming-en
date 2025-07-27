@@ -1,63 +1,63 @@
-# 自然言語マクロテスト
+# Natural Language Macro Test
 
-このファイルは、Chroma RAGシステム統合自然言語マクロプログラミングのシンプル化された構文をテストします。
+This file tests the simplified syntax of Chroma RAG system integrated natural language macro programming.
 
-## テストシナリオ: Python Web開発プロジェクト
+## Test Scenario: Python Web Development Project
 
-### 1. 初期化
-全ての変数をクリアしてください
+### 1. Initialization
+Clear all variables
 
-### 2. 変数設定
-{{project_name}}にPython Web APIプロジェクトを保存してください
+### 2. Variable Setup
+Save Python Web API Project to {{project_name}}
 
-{{skill_level}}に中級者を保存してください
+Save intermediate to {{skill_level}}
 
-{{research_topic}}にAPI最適化手法を保存してください
+Save API optimization techniques to {{research_topic}}
 
-### 3. 知識ベース構築
-この内容を知識ベースに保存してください：
-「Python Web API開発では、FastAPIフレームワークが高性能と開発効率を両立します。自動API仕様生成、型ヒント活用、非同期処理サポートにより、モダンなAPI開発が可能です。PostgreSQLとの組み合わせで本格的なWebサービスが構築できます。」
+### 3. Knowledge Base Construction
+Save this content to knowledge base:
+"In Python Web API development, the FastAPI framework achieves both high performance and development efficiency. Modern API development is possible through automatic API specification generation, type hint utilization, and asynchronous processing support. Full-fledged web services can be built in combination with PostgreSQL."
 
-この内容を知識ベースに保存してください：
-「API応答時間最適化には、データベースクエリ最適化、キャッシュ戦略、非同期処理の活用が効果的です。特にRedisを使ったセッション管理とクエリ結果キャッシュにより、50%以上の性能向上が期待できます。」
+Save this content to knowledge base:
+"For API response time optimization, database query optimization, cache strategies, and asynchronous processing utilization are effective. In particular, session management and query result caching using Redis can be expected to improve performance by more than 50%."
 
-### 4. 知識検索テスト（シンプル構文）
+### 4. Knowledge Search Test (Simple Syntax)
 {{knowledge:FastAPI}}
 
 {{knowledge:{{project_name}}}}
 
 {{knowledge:{{research_topic}}}}
 
-### 5. 経験学習テスト
-この成功例を経験として保存してください：
-「Python API開発において、FastAPI + PostgreSQL + Dockerの構成で2週間で本格的なREST APIを構築。自動テスト導入により品質とスピードを両立し、チーム開発効率が40%向上した。」
+### 5. Experience Learning Test
+Save this success example as experience:
+"In Python API development, built a full-fledged REST API in 2 weeks using FastAPI + PostgreSQL + Docker configuration. Achieved both quality and speed through automatic test introduction, improving team development efficiency by 40%."
 
-今回の学びを記録してください：
-「小規模チームでのAPI開発では、早期のDockerコンテナ化と自動テスト導入が開発効率向上の鍵となる。」
+Record this learning:
+"For small team API development, early Docker containerization and automatic test introduction are key to improving development efficiency."
 
-### 6. 経験検索テスト（シンプル構文）
-{{memory:Python API開発}}
+### 6. Experience Search Test (Simple Syntax)
+{{memory:Python API development}}
 
 {{memory:{{project_name}}}}
 
-{{memory:新しいWeb開発プロジェクト}}
+{{memory:new Web development project}}
 
-### 7. 条件分岐と統合活用
-{{skill_level}}が中級者の場合は効率重視の開発手法を、初心者の場合は学習重視のアプローチを提案してください
+### 7. Conditional Branching and Integrated Utilization
+If {{skill_level}} is intermediate, suggest efficiency-focused development methods; if beginner, suggest learning-focused approaches
 
-## 期待される結果
+## Expected Results
 
-### シンプル構文の動作確認
-- `{{knowledge:query}}` → 知識検索が実行される
-- `{{memory:task}}` → 経験検索が実行される  
-- `{{knowledge:{{variable}}}}` → 変数値での知識検索（ネスト構文）
-- `{{memory:{{variable}}}}` → 変数値での経験検索（ネスト構文）
+### Simple Syntax Operation Verification
+- `{{knowledge:query}}` → Knowledge search is executed
+- `{{memory:task}}` → Experience search is executed  
+- `{{knowledge:{{variable}}}}` → Knowledge search with variable value (nested syntax)
+- `{{memory:{{variable}}}}` → Experience search with variable value (nested syntax)
 
-### 統合動作
-- SQLite変数とChromaベクトルデータベースの連携
-- 条件分岐と知識活用の組み合わせ
-- 意味的類似性による適切な検索結果
+### Integrated Operation
+- Integration of SQLite variables and Chroma vector database
+- Combination of conditional branching and knowledge utilization
+- Appropriate search results through semantic similarity
 
 ---
 
-**使用方法**: 上記の指示を順番にClaude Codeで実行してください。新しいシンプル構文が正しく動作することを確認できます。
+**Usage**: Execute the above instructions in order with Claude Code. You can confirm that the new simple syntax operates correctly.
