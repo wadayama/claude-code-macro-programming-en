@@ -38,7 +38,43 @@ Implementation details, migration methods, and technical specifications are comp
 
 ## A.1: Event-Driven Execution
 
-Real-world processes occur asynchronously. Event-driven execution monitors external events and automatically executes macros when changes are detected. The most practical approach is a hybrid design that delegates monitoring to existing technologies while the LLM focuses on post-trigger processing.
+### Overview and Basic Concepts
+
+**Event-driven execution** is an execution model that automatically starts processing when predefined conditions or events occur. Unlike traditional manual execution or time-based execution, it enables building highly responsive systems that immediately react to changes in the external environment.
+
+**Basic Mechanism**:
+1. **Event Monitoring**: Continuously monitor specific conditions, files, databases, and network states
+2. **Change Detection**: Trigger activation when set conditions are met
+3. **Automatic Execution**: Execute corresponding macros or scripts in response to detected events
+4. **Continuous Monitoring**: Return to monitoring state after processing completion and wait for next event
+
+### Major External Trigger Technologies
+
+**Time-Based Triggers**:
+- **cron**: Periodic execution scheduler for Unix/Linux environments
+- **Task Scheduler**: Task automation for Windows environments
+- Use cases: Periodic report generation, backup processing, regular maintenance
+
+**File System Monitoring**:
+- **watchdog (Python)**: Cross-platform file monitoring library
+- **inotify (Linux)**: High-efficiency file system event notification
+- **fswatch**: Lightweight file change monitoring tool
+- Use cases: Log file monitoring, automatic reflection of configuration changes, hot reload
+
+**Database Change Monitoring**:
+- **SQLite WAL mode**: Change detection through Write-Ahead Logging
+- **PostgreSQL NOTIFY/LISTEN**: Real-time change notification
+- **MongoDB Change Streams**: Real-time collection change acquisition
+- Use cases: Data synchronization, real-time analysis, business flow automation
+
+**Network/API Monitoring**:
+- **Webhook**: Immediate notification via HTTP POST
+- **WebSocket**: Bidirectional real-time communication
+- **Server-Sent Events (SSE)**: Continuous data transmission from server
+- Use cases: External service integration, real-time notifications, inter-system coordination
+
+**Value of Hybrid Approach**:
+The most practical method is a role division where these proven monitoring technologies detect external events, and the LLM focuses on complex judgment and processing after detection. This design achieves both monitoring reliability and LLM flexibility.
 
 ### Implementation Example: Polling-Based Event Monitoring
 
@@ -76,7 +112,7 @@ while True:
 **simple_macro.md**: Natural language macro executed when events are detected. Demonstrates basic patterns of variable reference and storage.
 
 ```markdown
-{{user_status}}の値を{{macro_result}}に保存してください。
+Please save the value of {{user_status}} to {{macro_result}}.
 ```
 
 **Execution Workflow**:
@@ -96,68 +132,68 @@ while True:
 **4. Variable-Based Events**: Utilizing SQLite database variable changes as event sources enables collaborative operation between multiple processes.
 
 This implementation enables automatic processing execution triggered by external system variable updates, making it possible to build highly responsive agent systems for real-time systems and business automation.
+
+### Complementary Technology: Event Waiting with Natural Language Macros
+
+In addition to Python monitoring in the event/ folder, implementing event waiting loops within natural language macros themselves is also practical. This method enables event monitoring through pure natural language without using Python scripts.
+
+#### Implementation Pattern
+
+Basic pattern demonstrated in **event/test_macro.md**:
+
+```markdown
+1. Get the current value of {{kick_condition}}
+2. Event waiting loop: If the value is not "ready", get {{kick_condition}} again
+3. Repeat step 2 until it becomes "ready"
+4. Once "ready" is confirmed, proceed to the next process
+```
+
+This implementation allows natural language macros to directly monitor changes in SQLite variable `{{kick_condition}}` and wait until conditions are met.
+
+#### Important Execution Environment Constraints
+
+**Execution Environment Constraints**:
+- Event waiting loops do not work properly in interactive environments
+- Command-line execution is required (`claude -p --dangerously-skip-permissions < test_macro.md`)
+  - **⚠️ Warning**: The `--dangerously-skip-permissions` option bypasses normal security checks. Use this option only in trusted environments and ensure you fully understand the risks. Not recommended for production use.
+- Reason: Interactive environment timeout functionality interrupts infinite loops
+- Must be designed with CLI execution as prerequisite for practical use
+
+#### Comparison of Two Approaches
+
+| Approach | Implementation Method | Execution Environment | Application Scenario | Advantages |
+|----------|----------------------|---------------------|---------------------|------------|
+| Python Monitoring | event_handler.py | Any | Background resident | High efficiency, no environment constraints |
+| Natural Language Waiting | test_macro.md | CLI only | Waiting within macro | Intuitive, no coding required |
+
+#### Practical Value
+
+**1. High Expressiveness**: Complex waiting conditions can be intuitively expressed in natural language
+
+**2. Easy Debugging**: Waiting states are visualized within macro flow, making debugging easy
+
+**3. Reduced Learning Cost**: Event-driven implementation possible without Python skills
+
+**4. Execution Constraint Consideration**: CLI execution required, so use in automation scripts is prerequisite
+
+**5. Hybrid Design**: Enables selection between two approaches according to environment and requirements
+
+This complementary technology enables natural language macro programming to realize event-driven execution in both external monitoring and macro-internal waiting patterns, allowing for more flexible and comprehensive system design.
 
 ## A.2: Four-Layer Defense Strategy
 
-### Background and Challenge Recognition
+### Background and Concept
 
 Natural Language Macro Programming is expected to be utilized across diverse fields due to its intuitiveness and high explainability. However, due to uncertainties derived from the probabilistic behavioral characteristics of LLMs (Large Language Models), appropriate risk mitigation strategies are necessary for high-importance tasks.
 
-This section demonstrates a polling-based implementation that monitors SQLite variable changes and automatically executes macros when modifications occur.
+**Characteristics and Challenges of Probabilistic Systems**:
+- 100% operational guarantee is fundamentally difficult (probabilistic behavior system)
+- Possibility of unexpected interpretations and execution results
+- Need for careful operation in important business processes
+- Clarification of application scope and recognition of limitations
 
-#### File Structure
-
-```
-event/
-├── event_handler.py      # Variable monitoring and automatic macro execution
-├── simple_macro.md       # Macro file to be executed
-├── CLAUDE.md            # Natural language macro syntax definition
-├── variable_db.py       # SQLite variable management system
-├── watch_variables.py   # Variable monitoring debug tool
-└── variables.db         # SQLite variable database
-```
-
-#### Implementation Details
-
-**event_handler.py**: Monitors changes to the `user_status` variable with 0.1-second polling intervals and automatically executes `simple_macro.md` when the value changes. During initialization, all variables are cleared and initial values are set for monitored variables.
-
-```python
-# Core monitoring loop
-while True:
-    current_value = get_variable(WATCH_VARIABLE)
-    
-    if current_value != last_value:
-        print("event detected")
-        run_macro()  # Execute macro via Claude CLI
-        last_value = current_value
-    
-    time.sleep(0.1)
-```
-
-**simple_macro.md**: Natural language macro executed when events are detected. Demonstrates basic patterns of variable reference and storage.
-
-```markdown
-{{user_status}}の値を{{macro_result}}に保存してください。
-```
-
-**Execution Workflow**:
-1. System initialization (variable clearing, initial value setting)
-2. Continuous monitoring of `user_status` variable
-3. Immediate macro execution upon value change detection
-4. Automatic storage of results in `macro_result` variable
-
-#### Technical Features
-
-**1. Polling Monitoring**: Simple and reliable implementation. Achieves balance between real-time responsiveness and resource efficiency with 0.1-second intervals.
-
-**2. Automatic Macro Execution**: Direct execution of natural language macros through Claude CLI enables complex processing logic to be written in natural language.
-
-**3. Error Handling**: Proper exception handling for macro execution failures ensures continuous system operation.
-
-**4. Variable-Based Events**: Utilizing SQLite database variable changes as event sources enables collaborative operation between multiple processes.
-
-This implementation enables automatic processing execution triggered by external system variable updates, making it possible to build highly responsive agent systems for real-time systems and business automation.
-
+**Purpose of This Section**:
+Assuming the nature of probabilistic systems, this section realizes safe and responsible utilization of natural language macro programming in important business tasks through a four-layer defense strategy (proactive design at design stage, runtime error handling, auditing and continuous improvement, quality assurance testing).
 
 ### Layer 1: Proactive Design Measures (Proactive Design)
 
@@ -1099,7 +1135,7 @@ This implementation example demonstrates the practicality and technical depth of
 
 ## A.5: Audit Log System
 
-**Relationship to 4-Layer Defense Strategy**: This system specifically implements Layer 3 "Auditing and Continuous Improvement" from [A.1](#a1-risk-mitigation-strategies-for-important-tasks). It records all system actions and utilizes them for future risk reduction and quality improvement.
+**Relationship to 4-Layer Defense Strategy**: This system specifically implements Layer 3 "Auditing and Continuous Improvement" from [A.2](#a2-four-layer-defense-strategy). It records all system actions and utilizes them for future risk reduction and quality improvement.
 
 ### Basic Architecture
 
@@ -1255,7 +1291,7 @@ python audit_viewer.py --format json --recent 5
 
 **Overview**: An LLM-based verification system for natural language macro programming that performs static analysis before macro execution. A multi-layered inspection tool that comprehensively verifies security risks, feasibility, syntax consistency, and quality issues to prevent problems before execution.
 
-**Relationship to 4-Layer Defense Strategy**: This system automates Layer 1 "Proactive Design" and Layer 4 "Quality Assurance Testing" from [A.1](#a1-risk-mitigation-strategies-for-important-tasks). Through pre-execution static verification, it proactively detects and avoids risks that are difficult to discover through post-execution testing.
+**Relationship to 4-Layer Defense Strategy**: This system automates Layer 1 "Proactive Design" and Layer 4 "Quality Assurance Testing" from [A.2](#a2-four-layer-defense-strategy). Through pre-execution static verification, it proactively detects and avoids risks that are difficult to discover through post-execution testing.
 
 ---
 
@@ -1266,7 +1302,7 @@ The safety and feasibility of natural language macros are systematically analyze
 #### 1. Security Analysis
 **Verification Content**: Detection of dangerous system commands, external network access, and confidential information exposure risks
 **Detection Examples**: "sudo rm -rf", "unauthorized transmission of confidential files", "plaintext storage of authentication credentials"
-**Judgment Criteria**: Risk assessment based on security principles from [A.1](#a1-risk-mitigation-strategies-for-important-tasks)
+**Judgment Criteria**: Risk assessment based on security principles from [A.2](#a2-four-layer-defense-strategy)
 
 #### 2. Physical Feasibility
 **Verification Content**: Determining whether AI agents can execute tasks in the physical world
@@ -1915,9 +1951,9 @@ The implementation demonstrates practical type safety that maintains the ease of
 
 ## A.10: LLM-based Post-execution Evaluation
 
-**Relationship to 4-Layer Defense Strategy**: This system addresses evaluation challenges specific to probabilistic systems in Layer 4 "Quality Assurance Testing" of [A.1](#a1-risk-mitigation-strategies-for-important-tasks). It objectively realizes evaluation of creativity, logic, and appropriateness that are difficult to achieve with conventional software testing.
+**Relationship to 4-Layer Defense Strategy**: This system addresses evaluation challenges specific to probabilistic systems in Layer 4 "Quality Assurance Testing" of [A.2](#a2-four-layer-defense-strategy). It objectively realizes evaluation of creativity, logic, and appropriateness that are difficult to achieve with conventional software testing.
 
-**Distinction from Pre-execution Evaluation**: While [A.5 LLM-based Verification System](#a5-llm-based-verification-system-llm-based-lint) handles pre-execution evaluation through static analysis, this section focuses on post-execution evaluation that includes actual output results.
+**Distinction from Pre-execution Evaluation**: While [A.6: LLM-based Pre-execution Inspection](#a6-llm-based-pre-execution-inspection) handles pre-execution evaluation through static analysis, this section focuses on post-execution evaluation that includes actual output results.
 
 ### Basic Concepts
 
