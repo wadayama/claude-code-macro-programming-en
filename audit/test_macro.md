@@ -1,77 +1,77 @@
-# A.6監査ログシステム テストマクロ
+# A.6 Audit Log System Test Macro
 
-A.6監査ログシステムのコアコンセプト確認用のシンプルなテストマクロです。
-変数の複数回設定、条件判定、判断理由記録の基本機能を検証します。
+A simple test macro for verifying core concepts of the A.6 audit log system.
+Tests basic functionality of multiple variable settings, conditional judgments, and decision reasoning recording.
 
-## 実行手順
+## Execution Steps
 
-### ステップ1: 初期値設定
-{{value}}に10を保存してください
+### Step 1: Initial Value Setting
+Save 10 to {{value}}
 
-### ステップ2: 値の更新（複数回）
-{{value}}を取得してください
+### Step 2: Value Update (Multiple Times)
+Get {{value}}
 
-{{value}}に20を保存してください
+Save 20 to {{value}}
 
-「初期値10から20に更新」を判断理由「値の段階的な変更テスト」としてログに記録してください
+Record 'Updated from initial value 10 to 20' with reasoning 'Gradual value change test' to log
 
-### ステップ3: 条件判定1
-{{value}}を取得してください
+### Step 3: Conditional Judgment 1
+Get {{value}}
 
-{{value}}が15以上の場合は{{status}}に「高」を、15未満の場合は{{status}}に「低」を保存してください
+If {{value}} is 15 or higher, save "high" to {{status}}; if less than 15, save "low" to {{status}}
 
-「{{value}}なので{{status}}と判定」を判断理由「15を基準とした二段階判定」としてログに記録してください
+Record 'Judged as {{status}} because {{value}}' with reasoning 'Two-stage judgment based on 15 threshold' to log
 
-### ステップ4: 値の再更新
-{{value}}に5を保存してください
+### Step 4: Value Re-update
+Save 5 to {{value}}
 
-「値を20から5に変更」における推論「条件判定の動作確認のため」で結果「低カテゴリのテスト実行」をログに記録してください
+Record reasoning 'For confirming conditional judgment behavior' with result 'Low category test execution' in context 'Changed value from 20 to 5' to log
 
-### ステップ5: 条件判定2（再実行）
-{{value}}を取得してください
+### Step 5: Conditional Judgment 2 (Re-execution)
+Get {{value}}
 
-{{value}}が15以上の場合は{{status}}に「高」を、15未満の場合は{{status}}に「低」を保存してください
+If {{value}} is 15 or higher, save "high" to {{status}}; if less than 15, save "low" to {{status}}
 
-「{{value}}なので{{status}}に再判定」を判断理由「同一ロジックでの値変更後の判定確認」としてログに記録してください
+Record 'Re-judged {{value}} as {{status}}' with reasoning 'Judgment confirmation after value change with same logic' to log
 
-### ステップ6: 三段階判定
-{{value}}を取得してください
+### Step 6: Three-stage Judgment
+Get {{value}}
 
-{{value}}の値に基づいて{{category}}を設定してください：
-- 20以上: 「A」
-- 10以上20未満: 「B」  
-- 10未満: 「C」
+Set {{category}} based on {{value}} value:
+- 20 or higher: "A"
+- 10 or higher but less than 20: "B"  
+- Less than 10: "C"
 
-「{{value}}により{{category}}カテゴリに分類」を判断理由「三段階閾値による分類ロジック」としてログに記録してください
+Record 'Classified into {{category}} category by {{value}}' with reasoning 'Classification logic using three-stage thresholds' to log
 
-### ステップ7: 結果表示
-{{value}}、{{status}}、{{category}}を取得して結果を表示してください
+### Step 7: Result Display
+Get {{value}}, {{status}}, and {{category}} and display the results
 
-## 期待される監査ログ記録
+## Expected Audit Log Records
 
-1. **変数操作ログ（7件）**:
+1. **Variable Operation Logs (7 records)**:
    - {{value}} CREATE: 10
    - {{value}} UPDATE: 10→20  
-   - {{status}} CREATE: 高
+   - {{status}} CREATE: high
    - {{value}} UPDATE: 20→5
-   - {{status}} UPDATE: 高→低
+   - {{status}} UPDATE: high→low
    - {{category}} CREATE: C
 
-2. **判断理由ログ（4件）**:
-   - 初期値更新の判断
-   - 第1回条件判定の判断
-   - 第2回条件判定の判断  
-   - 三段階判定の判断
+2. **Decision Reasoning Logs (4 records)**:
+   - Initial value update judgment
+   - 1st conditional judgment decision
+   - 2nd conditional judgment decision  
+   - Three-stage judgment decision
 
-3. **推論プロセスログ（1件）**:
-   - 値変更の推論プロセス
+3. **Reasoning Process Logs (1 record)**:
+   - Value change reasoning process
 
-## 検証ポイント
+## Verification Points
 
-- [ ] 同一変数の複数回更新が正しく記録される
-- [ ] 条件判定の判断理由が構造化して保存される
-- [ ] 変数履歴で変更の軌跡が追跡できる
-- [ ] audit_viewer.py で全ログが確認できる
-- [ ] 判定ロジックの透明性が確保される
+- [ ] Multiple updates of the same variable are correctly recorded
+- [ ] Conditional judgment decision reasoning is saved in structured format
+- [ ] Variable history allows tracking of change trajectories
+- [ ] All logs can be verified with audit_viewer.py
+- [ ] Transparency of judgment logic is ensured
 
-このシンプルな構造により、監査ログシステムの基本機能が確実に検証できます。
+This simple structure ensures reliable verification of the audit log system's basic functionality.
